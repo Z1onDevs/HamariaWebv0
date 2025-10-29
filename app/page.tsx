@@ -1,0 +1,347 @@
+"use client"
+
+import { CustomCursor } from "@/components/custom-cursor"
+import { GrainOverlay } from "@/components/grain-overlay"
+import { ConceptSection } from "@/components/sections/concept-section"
+import { ServicesSection } from "@/components/sections/services-section"
+import { GallerySection } from "@/components/sections/gallery-section"
+import { ContactSection } from "@/components/sections/contact-section"
+import { MembershipSection } from "@/components/sections/membership-section"
+import { MagneticButton } from "@/components/magnetic-button"
+import { ShaderWrapper } from "@/components/shader-wrapper"
+import { DNAHelix } from "@/components/dna-helix"
+import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "@/hooks/use-translation"
+import { useRef, useEffect, useState } from "react"
+import site from "@/content/site.json"
+
+export default function Home() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [currentSection, setCurrentSection] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const touchStartY = useRef(0)
+  const touchStartX = useRef(0)
+  const shaderContainerRef = useRef<HTMLDivElement>(null)
+  const scrollThrottleRef = useRef<number>()
+  const [heroScrollProgress, setHeroScrollProgress] = useState(0)
+  const { language, setLanguage } = useLanguage()
+  const { t } = useTranslation()
+  const hero = t.hero
+
+  useEffect(() => {
+    const checkShaderReady = () => {
+      if (shaderContainerRef.current) {
+        const canvas = shaderContainerRef.current.querySelector("canvas")
+        if (canvas && canvas.width > 0 && canvas.height > 0) {
+          setIsLoaded(true)
+          return true
+        }
+      }
+      return false
+    }
+
+    if (checkShaderReady()) return
+
+    const intervalId = setInterval(() => {
+      if (checkShaderReady()) {
+        clearInterval(intervalId)
+      }
+    }, 100)
+
+    const fallbackTimer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 1500)
+
+    return () => {
+      clearInterval(intervalId)
+      clearTimeout(fallbackTimer)
+    }
+  }, [])
+
+  const scrollToSection = (index: number) => {
+    if (scrollContainerRef.current) {
+      const sectionWidth = scrollContainerRef.current.offsetWidth
+      scrollContainerRef.current.scrollTo({
+        left: sectionWidth * index,
+        behavior: "smooth",
+      })
+      setCurrentSection(index)
+    }
+  }
+
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY.current = e.touches[0].clientY
+      touchStartX.current = e.touches[0].clientX
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (Math.abs(e.touches[0].clientY - touchStartY.current) > 10) {
+        e.preventDefault()
+      }
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const touchEndY = e.changedTouches[0].clientY
+      const touchEndX = e.changedTouches[0].clientX
+      const deltaY = touchStartY.current - touchEndY
+      const deltaX = touchStartX.current - touchEndX
+
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
+        if (deltaY > 0 && currentSection < 5) {
+          scrollToSection(currentSection + 1)
+        } else if (deltaY < 0 && currentSection > 0) {
+          scrollToSection(currentSection - 1)
+        }
+      }
+    }
+
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener("touchstart", handleTouchStart, { passive: true })
+      container.addEventListener("touchmove", handleTouchMove, { passive: false })
+      container.addEventListener("touchend", handleTouchEnd, { passive: true })
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("touchstart", handleTouchStart)
+        container.removeEventListener("touchmove", handleTouchMove)
+        container.removeEventListener("touchend", handleTouchEnd)
+      }
+    }
+  }, [currentSection])
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault()
+
+        if (!scrollContainerRef.current) return
+
+        scrollContainerRef.current.scrollBy({
+          left: e.deltaY,
+          behavior: "instant",
+        })
+
+        const sectionWidth = scrollContainerRef.current.offsetWidth
+        const scrollLeft = scrollContainerRef.current.scrollLeft
+        const newSection = Math.round(scrollLeft / sectionWidth)
+
+        if (newSection !== currentSection && newSection >= 0 && newSection <= 5) {
+          setCurrentSection(newSection)
+        }
+      }
+    }
+
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false })
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("wheel", handleWheel)
+      }
+    }
+  }, [currentSection])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollThrottleRef.current) return
+
+      scrollThrottleRef.current = requestAnimationFrame(() => {
+        if (!scrollContainerRef.current) {
+          scrollThrottleRef.current = undefined
+          return
+        }
+
+        const sectionWidth = scrollContainerRef.current.offsetWidth
+        const scrollLeft = scrollContainerRef.current.scrollLeft
+        const newSection = Math.round(scrollLeft / sectionWidth)
+
+        // Calculate hero scroll progress (0 to 1 in first section)
+        if (scrollLeft < sectionWidth) {
+          setHeroScrollProgress(scrollLeft / sectionWidth)
+        }
+
+        if (newSection !== currentSection && newSection >= 0 && newSection <= 5) {
+          setCurrentSection(newSection)
+        }
+
+        scrollThrottleRef.current = undefined
+      })
+    }
+
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener("scroll", handleScroll, { passive: true })
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll)
+      }
+      if (scrollThrottleRef.current) {
+        cancelAnimationFrame(scrollThrottleRef.current)
+      }
+    }
+  }, [currentSection])
+
+  return (
+    <main className="relative h-screen w-full overflow-hidden bg-background">
+      <CustomCursor />
+      <GrainOverlay />
+
+      <div
+        ref={shaderContainerRef}
+        className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        style={{ contain: "strict" }}
+      >
+        <ShaderWrapper />
+        <div className="absolute inset-0 bg-background/60" />
+      </div>
+
+      <nav
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-4 py-3 transition-opacity duration-700 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-12 lg:py-6 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <button
+          onClick={() => scrollToSection(0)}
+          className="flex items-center gap-2 transition-transform hover:scale-105 sm:gap-3"
+        >
+          <span className="font-sans text-lg font-light tracking-wide text-foreground sm:text-xl md:text-2xl">{t.siteName}</span>
+        </button>
+
+        <div className="hidden items-center gap-4 lg:flex lg:gap-6 xl:gap-8">
+          {t.nav.map((item: string, index: number) => {
+            let sectionIndex = index
+            if (item === "Membership") sectionIndex = 4
+            if (item === "Contact") sectionIndex = 5
+            return (
+              <button
+                key={item}
+                onClick={() => scrollToSection(sectionIndex)}
+                className={`group relative font-sans text-xs font-normal tracking-wide transition-colors sm:text-sm ${
+                  currentSection === sectionIndex ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+                }`}
+              >
+                {item}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 ${
+                    currentSection === sectionIndex ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Language Switcher */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-1 border-r border-foreground/20 pr-3 sm:pr-4">
+            <button
+              onClick={() => setLanguage("en")}
+              className={`font-mono text-[10px] uppercase tracking-wide transition-colors sm:text-xs ${
+                language === "en" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
+              }`}
+            >
+              EN
+            </button>
+            <span className="text-foreground/20">|</span>
+            <button
+              onClick={() => setLanguage("es")}
+              className={`font-mono text-[10px] uppercase tracking-wide transition-colors sm:text-xs ${
+                language === "es" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
+              }`}
+            >
+              ES
+            </button>
+          </div>
+          
+          <MagneticButton variant="primary" className="text-xs sm:text-sm" onClick={() => scrollToSection(4)}>
+            <span className="hidden sm:inline">{t.applyButton}</span>
+            <span className="inline sm:hidden">{t.applyButtonShort}</span>
+          </MagneticButton>
+        </div>
+      </nav>
+
+      <div
+        ref={scrollContainerRef}
+        data-scroll-container
+        className={`relative z-10 flex h-screen overflow-x-auto overflow-y-hidden transition-opacity duration-700 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
+          <div className="flex w-full items-end justify-between gap-8">
+            <div className="max-w-4xl flex-1">
+              <p className="mb-3 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm">
+                {t.openingText}
+              </p>
+              <h1 className="mb-4 animate-in fade-in slide-in-from-bottom-8 font-sans text-4xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl">
+                <span className="text-balance">
+                  {hero.titleLines[0]}
+                  <br />
+                  {hero.titleLines[1]}
+                </span>
+              </h1>
+
+              <p className="mb-6 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-sm leading-relaxed text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
+                <span className="text-pretty">
+                  {hero.description}
+                </span>
+              </p>
+              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center sm:gap-4">
+                <MagneticButton size="lg" variant="primary" className="text-sm sm:text-base" onClick={() => scrollToSection(4)}>
+                  {hero.primaryCta}
+                </MagneticButton>
+                <MagneticButton size="lg" variant="secondary" className="text-sm sm:text-base" onClick={() => scrollToSection(1)}>
+                  {hero.secondaryCta}
+                </MagneticButton>
+              </div>
+            </div>
+
+            {/* DNA Helix with Vertical Text */}
+            <div className="hidden lg:flex lg:items-center lg:gap-4 lg:-ml-12">
+              {/* DNA Helix */}
+              <DNAHelix scrollProgress={heroScrollProgress} />
+              {/* Vertical Text */}
+              <div className="flex items-center">
+                <p 
+                  className="animate-in fade-in slide-in-from-right-8 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 lg:text-base xl:text-lg"
+                  style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+                >
+                  {t.verticalText}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 sm:block md:bottom-8">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <p className="font-sans text-[10px] uppercase tracking-widest text-foreground/70 sm:text-xs">{t.scrollText}</p>
+              <div className="flex h-5 w-10 items-center justify-center rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md sm:h-6 sm:w-12">
+                <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary/80 sm:h-2 sm:w-2" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <ConceptSection />
+        <ServicesSection />
+        <GallerySection />
+        <MembershipSection scrollToSection={scrollToSection} />
+        <ContactSection />
+      </div>
+
+      <style jsx global>{`
+        div::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+    </main>
+  )
+}

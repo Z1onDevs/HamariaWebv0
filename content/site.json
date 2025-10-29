@@ -1,0 +1,288 @@
+{
+  "en": {
+  "siteName": "Hamaria Club",
+  "nav": ["Home", "Concept", "Services", "Spaces", "Membership", "Contact"],
+    "openingText": "Opening Fall 2026",
+    "verticalText": "FEEL THE CHANGE",
+    "scrollText": "Scroll to explore",
+    "applyButton": "Apply for Membership",
+    "applyButtonShort": "Join",
+    "moreLink": "More",
+    "membershipForm": {
+      "earlyBirdTitle": "Early Bird Offer",
+      "earlyBirdText": "Limited to first 42 admitted applicants",
+      "discount": "discount",
+      "applyFor": "Apply for",
+      "subtitle": "Complete the form below to begin your wellness journey",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Your full name",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+34 123 456 789",
+      "inviteLabel": "Invitation Code",
+      "inviteOptional": "(Optional)",
+      "invitePlaceholder": "EARLYBIRD",
+      "submitButton": "Submit Application",
+      "submitting": "Submitting...",
+      "success": "Application Sent!",
+      "successMessage": "Thank you! We'll be in touch soon.",
+      "includesAll": "Includes all Longevity + therapies plus:"
+    },
+    "hero": {
+    "titleLines": ["Where wellness", "meets luxury"],
+    "description": "Experience holistic rejuvenation in the heart of Madrid. Hamaria Club offers bespoke wellness journeys that harmonize mind, body, and spirit through ancient wisdom and modern innovation.",
+    "primaryCta": "Explore Memberships",
+    "secondaryCta": "Discover Our Philosophy"
+  },
+  "gallery": {
+    "folder": "/retiro render copia",
+      "items": [],
+      "modalTitle": "Our Spaces",
+      "modalDescription": "Step into our meticulously designed sanctuary in Madrid's Retiro district. Every space has been crafted to create an immersive wellness experience—from our state-of-the-art gym equipped with cutting-edge training technology, to our serene spa entrance that sets the tone for transformation. Our facilities include dedicated rooms for therapeutic massage and recovery, advanced hydrotherapy zones with salt and magnesium baths, traditional and infrared saunas paired with ice plunge pools for contrast therapy, and specialized aquatic training areas featuring swimming treadmills. Each environment is intentionally designed to support your journey toward optimal health and longevity."
+  },
+  "concept": {
+    "heading": "Your Wellness Journey Begins Here",
+    "vision": "Our Approach",
+    "paragraph1": "At Hamaria, we've redefined longevity and wellness for the modern age. Through evidence-based biohacking, advanced regenerative therapies, and precision diagnostics, we empower you to optimize every aspect of your health—from cellular function to mental performance.",
+    "paragraph2": "Located in the heart of Madrid's Retiro district, our state-of-the-art facility combines cutting-edge technology with personalized care. Every protocol is tailored to your unique biology, lifestyle, and goals.",
+    "paragraph3": "Backed by world-class doctors and medical experts, our team brings decades of experience in functional medicine, sports performance, and regenerative therapies to guide your transformation.",
+    "features": [
+      {
+        "title": "Science-Driven Protocols",
+        "description": "Every therapy is backed by peer-reviewed research and clinical evidence. We leverage proven modalities to enhance cellular health, boost recovery, and extend healthspan."
+      },
+      {
+        "title": "Precision Diagnostics",
+        "description": "Comprehensive baseline assessments, metabolic testing, and continuous biomarker tracking ensure your protocols evolve with your progress. Data-driven insights guide every decision."
+      },
+      {
+        "title": "Holistic Integration",
+        "description": "True optimization requires balance. We address recovery, performance, aesthetics, and longevity through an integrated approach that treats the body as an interconnected system."
+      }
+    ]
+  },
+  "services": {
+    "heading": "Our Pillars",
+    "subheading": "/ Comprehensive wellness optimization",
+      "modalTitle": "Complete Wellness Ecosystem",
+      "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
+    "items": [
+      {
+        "title": "Aesthetics",
+        "description": "Advanced facial and body treatments using Sofwave, microcurrent, LED therapy, and regenerative protocols for natural rejuvenation.",
+          "direction": "top",
+          "primary": true
+        },
+        {
+          "title": "Longevity",
+          "description": "Evidence-based protocols combining advanced diagnostics, regenerative therapies, and precision medicine to extend healthspan and optimize cellular function.",
+          "direction": "right",
+          "primary": true
+        },
+        {
+          "title": "Performance",
+          "description": "Integrated approach to physical and mental optimization through functional training, recovery protocols, and cognitive enhancement for peak performance.",
+          "direction": "left",
+          "primary": true
+        },
+        {
+          "title": "Physical Medicine & Regeneration",
+          "description": "HBOT, PEMF, Red/NIR Light, Cryotherapyand IHHT training to optimize recovery, mobility, and physical performance.",
+          "direction": "top",
+          "primary": false
+        },
+        {
+          "title": "Stress Management & Relaxation",
+          "description": "Sauna, ice plunge, signature massages, and flotation therapy to optimize stress management and enhance relaxation.",
+          "direction": "right",
+          "primary": false
+      },
+      {
+        "title": "Information Medicine",
+        "description": "Physician-led consultations and comprehensive metabolic panels to optimize your health.",
+          "direction": "left",
+          "primary": false
+      },
+      {
+        "title": "Advanced Diagnostics",
+        "description": "Epigenetic age tracking,hormone analysis, VO₂ testing, and continuous biomarker tracking for precision optimization.",
+          "direction": "bottom",
+          "primary": false
+      },
+      {
+          "title": "Detox, Nutrition & Supplementation",
+        "description": "Personalized nutrition protocols, IV therapy, NAD+, and targeted supplementation based on your unique biology.",
+          "direction": "top",
+          "primary": false
+      },
+      {
+        "title": "Movement",
+        "description": "Personal functional training, mobility work, and movement assessment to build resilience and enhance physical capacity.",
+          "direction": "right",
+          "primary": false
+      },
+      {
+        "title": "Psyche & Cognition",
+          "description": "Mindfulness practices, cognitive enhancement protocols, and personalized protocols for mental optimization.",
+          "direction": "left",
+          "primary": false
+      },
+      {
+        "title": "Sleep & Biorhythms",
+        "description": "Sleep optimization protocols, hormone optimization, and circadian rhythm optimization for enhanced recovery and sustainable energy.",
+          "direction": "bottom",
+          "primary": false
+      }
+    ]
+  },
+  "contact": {
+    "email": "hola@hamaria.com",
+    "location": "Puerta de Alcalá, 28014, Madrid, Spain",
+      "socials": ["Instagram"]
+    }
+  },
+  "es": {
+    "siteName": "Hamaria Club",
+    "nav": ["Inicio", "Concepto", "Servicios", "Espacios", "Membresía", "Contacto"],
+    "openingText": "Apertura Otoño 2026",
+    "verticalText": "SIENTE EL CAMBIO",
+    "scrollText": "Desliza para explorar",
+    "applyButton": "Solicitar Membresía",
+    "applyButtonShort": "Unirse",
+    "moreLink": "Más",
+    "membershipForm": {
+      "earlyBirdTitle": "Oferta Early Bird",
+      "earlyBirdText": "Limitada a los primeros 42 solicitantes admitidos",
+      "discount": "descuento",
+      "applyFor": "Solicitar",
+      "subtitle": "Completa el formulario para comenzar tu viaje de bienestar",
+      "nameLabel": "Nombre Completo",
+      "namePlaceholder": "Tu nombre completo",
+      "emailLabel": "Correo Electrónico",
+      "emailPlaceholder": "tu@email.com",
+      "phoneLabel": "Teléfono",
+      "phonePlaceholder": "+34 123 456 789",
+      "inviteLabel": "Código de Invitación",
+      "inviteOptional": "(Opcional)",
+      "invitePlaceholder": "EARLYBIRD",
+      "submitButton": "Enviar Solicitud",
+      "submitting": "Enviando...",
+      "success": "¡Solicitud Enviada!",
+      "successMessage": "¡Gracias! Nos pondremos en contacto pronto.",
+      "includesAll": "Incluye todas las terapias Longevity + más:"
+    },
+    "hero": {
+      "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
+      "description": "Experimenta la regeneración holística en el corazón de Madrid. Hamaria Club ofrece experiencias de bienestar meticulosamente diseñadas que armonizan mente, cuerpo y espíritu mediante la sabiduría ancestral y la innovación de vanguardia.",
+      "primaryCta": "Explorar Membresías",
+      "secondaryCta": "Descubre Nuestra Filosofía"
+    },
+    "gallery": {
+      "folder": "/retiro render copia",
+      "items": [],
+      "modalTitle": "Nuestros Espacios",
+      "modalDescription": "Descubre nuestro santuario meticulosamente concebido en el emblemático barrio del Retiro madrileño. Cada espacio ha sido diseñado para crear una experiencia de bienestar inmersiva—desde nuestro gimnasio de última generación dotado con tecnología de entrenamiento de vanguardia, hasta nuestra serena entrada al spa que establece el preludio de tu transformación. Nuestras instalaciones comprenden espacios dedicados para masajes terapéuticos y recuperación profunda, zonas avanzadas de hidroterapia con baños de sal y magnesio, saunas tradicionales e infrarrojas complementadas con piscinas de inmersión en hielo para terapia de contraste térmico, y áreas especializadas de entrenamiento acuático con cintas de natación de última generación. Cada ambiente ha sido intencionalmente diseñado para acompañar tu viaje hacia la salud óptima y la longevidad."
+    },
+    "concept": {
+      "heading": "Tu Viaje Hacia el Bienestar Comienza Aquí",
+      "vision": "Nuestra Visión",
+      "paragraph1": "En Hamaria, hemos redefinido la longevidad y el bienestar para la era contemporánea. Mediante biohacking sustentado en evidencia científica, terapias regenerativas de vanguardia y diagnósticos de alta precisión, te acompañamos en la optimización integral de tu salud—desde la función celular hasta el máximo rendimiento mental.",
+      "paragraph2": "Ubicado en el emblemático barrio del Retiro madrileño, nuestro centro de última generación fusiona tecnología de vanguardia con atención meticulosamente personalizada. Cada protocolo se diseña exclusivamente para tu biología única, estilo de vida y aspiraciones vitales.",
+      "paragraph3": "Respaldados por médicos y especialistas de renombre internacional, nuestro equipo atesora décadas de experiencia en medicina funcional, optimización del rendimiento deportivo y terapias regenerativas para acompañar tu transformación personal.",
+      "features": [
+        {
+          "title": "Protocolos Fundamentados en Ciencia",
+          "description": "Cada terapia está sustentada en investigación científica rigurosa y evidencia clínica contrastada. Empleamos modalidades clínicamente validadas para potenciar la salud celular, acelerar la recuperación y prolongar la esperanza de vida saludable."
+        },
+        {
+          "title": "Diagnósticos de Alta Precisión",
+          "description": "Evaluaciones basales exhaustivas, analíticas metabólicas avanzadas y monitorización continua de biomarcadores aseguran que tus protocolos evolucionen en perfecta sintonía con tu progreso. Cada decisión se fundamenta en datos precisos y personalizados."
+        },
+        {
+          "title": "Enfoque Holístico Integrado",
+          "description": "La auténtica optimización requiere armonía y equilibrio. Contemplamos la recuperación, el rendimiento, la estética y la longevidad mediante un enfoque integrado que honra al cuerpo como un sistema interconectado e indivisible."
+        }
+      ]
+    },
+    "services": {
+      "heading": "Nuestros Pilares",
+      "subheading": "/ Optimización integral del bienestar",
+      "modalTitle": "Ecosistema Integral de Bienestar",
+      "modalDescription": "Nuestro enfoque holístico integra nueve pilares interdependientes concebidos para optimizar cada dimensión de tu salud y rendimiento vital. Desde diagnósticos de alta precisión y terapias regenerativas de vanguardia hasta nutrición personalizada, movimiento consciente y potenciación cognitiva—cada pilar opera sinérgicamente para sustentar tu transformación. Descubre nuestra oferta completa de servicios, meticulosamente adaptados a tu singularidad biológica y objetivos de bienestar.",
+      "items": [
+        {
+          "title": "Estética",
+          "description": "Tratamientos faciales y corporales de vanguardia mediante Sofwave, microcorrientes, fototerapia LED y protocolos regenerativos para un rejuvenecimiento natural y sostenible.",
+          "direction": "top",
+          "primary": true
+        },
+        {
+          "title": "Longevidad",
+          "description": "Protocolos sustentados en evidencia científica que conjugan diagnósticos avanzados, terapias regenerativas y medicina de precisión para prolongar la esperanza de vida saludable y optimizar la función celular.",
+          "direction": "right",
+          "primary": true
+        },
+        {
+          "title": "Rendimiento",
+          "description": "Enfoque integrado para la optimización física y mental mediante entrenamiento funcional, protocolos de recuperación avanzada y potenciación cognitiva orientados al máximo rendimiento vital.",
+          "direction": "left",
+          "primary": true
+        },
+        {
+          "title": "Medicina Física y Regeneración",
+          "description": "HBOT, PEMF, fototerapia roja/NIR, crioterapia y entrenamiento IHHT para optimizar la recuperación tisular, movilidad articular y rendimiento físico integral.",
+          "direction": "top",
+          "primary": false
+        },
+        {
+          "title": "Gestión del Estrés y Relajación Profunda",
+          "description": "Sauna de última generación, inmersión en hielo, masajes signature y terapia de flotación sensorial para una gestión óptima del estrés y relajación profunda del sistema nervioso.",
+          "direction": "right",
+          "primary": false
+        },
+        {
+          "title": "Medicina de Información",
+          "description": "Consultas médicas especializadas y paneles metabólicos exhaustivos para la optimización personalizada de tu salud integral.",
+          "direction": "left",
+          "primary": false
+        },
+        {
+          "title": "Diagnósticos Avanzados",
+          "description": "Evaluación de edad epigenética, análisis hormonal de alta precisión, pruebas de VO₂ y monitorización continua de biomarcadores para una optimización personalizada y basada en datos.",
+          "direction": "bottom",
+          "primary": false
+        },
+        {
+          "title": "Detoxificación, Nutrición y Suplementación",
+          "description": "Protocolos nutricionales personalizados, terapia intravenosa, NAD+ y suplementación estratégica fundamentada en tu perfil biológico único.",
+          "direction": "top",
+          "primary": false
+        },
+        {
+          "title": "Movimiento Consciente",
+          "description": "Entrenamiento funcional personalizado, trabajo de movilidad articular y evaluación biomecánica para construir resiliencia física y ampliar tu capacidad de movimiento.",
+          "direction": "right",
+          "primary": false
+        },
+        {
+          "title": "Psique y Optimización Cognitiva",
+          "description": "Prácticas de mindfulness avanzado, protocolos de potenciación cognitiva y programas personalizados para la optimización del rendimiento mental y emocional.",
+          "direction": "left",
+          "primary": false
+        },
+        {
+          "title": "Sueño y Sincronización Circadiana",
+          "description": "Protocolos de optimización del sueño profundo, equilibrio hormonal y sincronización del ritmo circadiano para una recuperación óptima y energía vital sostenible.",
+          "direction": "bottom",
+          "primary": false
+        }
+      ]
+    },
+    "contact": {
+      "email": "hola@hamaria.com",
+      "location": "Puerta de Alcalá, 28014, Madrid, España",
+      "socials": ["Instagram"]
+    }
+  }
+}
