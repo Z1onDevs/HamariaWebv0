@@ -133,6 +133,18 @@
     @apply bg-background text-foreground;
   }
 
+  /* Safe area support for iPhone notch and modern devices */
+  @supports (padding: max(0px)) {
+    body {
+      padding-top: max(0px, env(safe-area-inset-top));
+      padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+    
+    nav {
+      padding-top: max(1rem, calc(env(safe-area-inset-top) + 0.75rem));
+    }
+  }
+
   [data-scroll-container] {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -150,5 +162,16 @@
   button {
     transform: translateZ(0);
     backface-visibility: hidden;
+  }
+
+  /* Optimize animations based on user preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

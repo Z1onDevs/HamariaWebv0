@@ -12,8 +12,10 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { DNAHelix } from "@/components/dna-helix"
 import { MobileNav } from "@/components/mobile-nav"
 import { SectionDots } from "@/components/section-dots"
+import { StickyCTA } from "@/components/sticky-cta"
 import { useLanguage } from "@/contexts/language-context"
 import { useTranslation } from "@/hooks/use-translation"
+import { useDeviceCapabilities } from "@/hooks/use-device-capabilities"
 import { useRef, useEffect, useState } from "react"
 import site from "@/content/site.json"
 
@@ -29,8 +31,18 @@ export default function Home() {
   const { language, setLanguage } = useLanguage()
   const { t } = useTranslation()
   const hero = t.hero
+  
+  // Device capability detection for performance optimization
+  const { isLowEnd, prefersReducedMotion } = useDeviceCapabilities()
+  const shouldRenderShader = !isLowEnd && !prefersReducedMotion
 
   useEffect(() => {
+    // If shaders are disabled, load immediately
+    if (!shouldRenderShader) {
+      setIsLoaded(true)
+      return
+    }
+
     const checkShaderReady = () => {
       if (shaderContainerRef.current) {
         const canvas = shaderContainerRef.current.querySelector("canvas")
@@ -58,7 +70,7 @@ export default function Home() {
       clearInterval(intervalId)
       clearTimeout(fallbackTimer)
     }
-  }, [])
+  }, [shouldRenderShader])
 
   const scrollToSection = (index: number) => {
     if (scrollContainerRef.current) {
@@ -195,14 +207,21 @@ export default function Home() {
       <CustomCursor />
       <GrainOverlay />
 
-      <div
-        ref={shaderContainerRef}
-        className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-        style={{ contain: "strict" }}
-      >
-        <ShaderWrapper />
-        <div className="absolute inset-0 bg-background/60" />
-      </div>
+      {shouldRenderShader && (
+        <div
+          ref={shaderContainerRef}
+          className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+          style={{ contain: "strict" }}
+        >
+          <ShaderWrapper />
+          <div className="absolute inset-0 bg-background/60" />
+        </div>
+      )}
+
+      {/* Fallback background for low-end devices */}
+      {!shouldRenderShader && (
+        <div className="fixed inset-0 z-0 bg-gradient-to-br from-background via-background to-primary/5" />
+      )}
 
       <nav
         className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-4 py-3 transition-opacity duration-700 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-12 lg:py-6 ${
@@ -280,6 +299,13 @@ export default function Home() {
         isLoaded={isLoaded}
       />
 
+      {/* Sticky CTA Button - Mobile Only */}
+      <StickyCTA
+        currentSection={currentSection}
+        onApply={() => scrollToSection(4)}
+        isLoaded={isLoaded}
+      />
+
       <div
         ref={scrollContainerRef}
         data-scroll-container
@@ -317,20 +343,22 @@ export default function Home() {
               </div>
             </div>
 
-            {/* DNA Helix with Vertical Text */}
-            <div className="hidden lg:flex lg:items-center lg:gap-4 lg:-ml-12">
-              {/* DNA Helix */}
-              <DNAHelix scrollProgress={heroScrollProgress} />
-              {/* Vertical Text */}
-              <div className="flex items-center">
-                <p 
-                  className="animate-in fade-in slide-in-from-right-8 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 lg:text-base xl:text-lg"
-                  style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-                >
-                  {t.verticalText}
-                </p>
+            {/* DNA Helix with Vertical Text - Only on desktop with good performance */}
+            {shouldRenderShader && (
+              <div className="hidden lg:flex lg:items-center lg:gap-4 lg:-ml-12">
+                {/* DNA Helix */}
+                <DNAHelix scrollProgress={heroScrollProgress} />
+                {/* Vertical Text */}
+                <div className="flex items-center">
+                  <p 
+                    className="animate-in fade-in slide-in-from-right-8 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 lg:text-base xl:text-lg"
+                    style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+                  >
+                    {t.verticalText}
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <div className="absolute bottom-20 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 lg:bottom-8 lg:block">

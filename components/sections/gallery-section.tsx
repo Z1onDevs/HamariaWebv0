@@ -141,7 +141,12 @@ export function GallerySection() {
                 }}
               >
                 <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-transform duration-500 ease-out group-hover:scale-[1.01] sm:rounded-xl md:rounded-2xl">
-                  <img src={item.src} alt={item.title} className="h-full w-full object-cover" />
+                  <img 
+                    src={item.src} 
+                    alt={item.title} 
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-opacity duration-300" 
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-4 md:p-5">
                     <h3 className="mb-1 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-base md:text-lg lg:text-xl">{item.title}</h3>
@@ -231,7 +236,12 @@ export function GallerySection() {
                     }}
                   >
                     <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-500 ease-out group-hover:scale-[1.01] group-hover:border-primary/20 group-hover:shadow-lg sm:rounded-lg md:rounded-xl">
-                      <img src={item.src} alt={item.title} className="h-full w-full object-cover" />
+                      <img 
+                        src={item.src} 
+                        alt={item.title} 
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-opacity duration-300" 
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                       <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-3 md:p-4">
                         <h3 className="mb-1 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-sm md:text-base lg:text-lg">{item.title}</h3>

@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   title: "Hamaria Club - Luxury Wellness Center in Madrid",
   description: "Experience holistic wellness and rejuvenation at Madrid's premier luxury wellness center",
   generator: "v0.app",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: "cover",
+  },
 }
 
 export default function RootLayout({

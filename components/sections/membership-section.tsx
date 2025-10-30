@@ -196,6 +196,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const handleApply = (plan: string) => {
     setSelectedPlan(plan)
     setIsModalOpen(true)
+    
+    // Focus first input after modal opens
+    setTimeout(() => {
+      const firstInput = document.querySelector('input[type="text"]') as HTMLInputElement
+      if (firstInput) {
+        firstInput.focus()
+      }
+    }, 100)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
