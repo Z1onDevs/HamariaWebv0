@@ -209,7 +209,7 @@ export function GallerySection() {
           {/* Shader Background */}
           <div className="absolute inset-0 z-0">
             <ShaderWrapper />
-            <div className="absolute inset-0 bg-background/60" />
+            <div className="absolute inset-0 bg-background/40" />
           </div>
           <GrainOverlay />
 
@@ -220,14 +220,14 @@ export function GallerySection() {
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute right-4 top-4 z-20 rounded-full border border-primary/30 bg-background/90 p-3 text-foreground shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-background hover:text-foreground sm:right-0 sm:top-0 sm:-right-12 sm:p-3"
+              className="absolute right-4 top-4 z-20 rounded-full border border-primary/20 bg-background/60 p-3 text-foreground shadow-sm backdrop-blur-md transition-all hover:border-primary/30 hover:bg-background/80 hover:text-foreground sm:right-0 sm:top-0 sm:-right-12 sm:p-3"
               aria-label="Close gallery"
             >
               <X className="h-6 w-6 sm:h-6 sm:w-6" />
             </button>
 
             {/* Modal Content */}
-            <div className="relative h-full overflow-y-auto border-primary/20 bg-background/95 p-5 shadow-2xl backdrop-blur-sm sm:max-h-[85vh] sm:rounded-2xl sm:border sm:p-5 md:p-7 lg:p-9">
+            <div className="relative h-full overflow-y-auto border-primary/10 bg-background/30 p-5 shadow-2xl backdrop-blur-md sm:max-h-[85vh] sm:rounded-2xl sm:border sm:p-5 md:p-7 lg:p-9">
               {/* Text Section */}
               {(gallery.modalTitle || gallery.modalDescription) && (
                 <div className="mb-5 animate-in fade-in slide-in-from-top-4 sm:mb-7 md:mb-9">
@@ -263,7 +263,7 @@ export function GallerySection() {
                       setShowCarousel(true)
                     }}
                   >
-                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:border-primary/20 group-hover:shadow-lg group-active:scale-[0.96] sm:rounded-lg md:rounded-xl">
+                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 bg-background/20 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:border-primary/20 group-hover:bg-background/40 group-hover:shadow-md group-active:scale-[0.96] sm:rounded-lg md:rounded-xl">
                       <img 
                         src={item.src} 
                         alt={item.title} 
