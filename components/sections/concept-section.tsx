@@ -11,8 +11,8 @@ export function ConceptSection() {
   const concept = t.concept
 
   return (
-    <section className="flex min-h-screen w-screen shrink-0 items-center justify-center overflow-y-auto px-4 py-20 pt-24 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32">
-      <div className="mx-auto w-full max-w-6xl pt-4 sm:pt-0">
+    <section className="flex min-h-screen w-screen shrink-0 items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32">
+      <div className="mx-auto w-full max-w-6xl">
         {/* Header */}
         <div className="mb-8 text-center sm:mb-10 md:mb-12 lg:mb-16">
           <h2

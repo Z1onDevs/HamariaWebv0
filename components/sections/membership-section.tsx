@@ -398,9 +398,9 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center overflow-y-auto px-5 py-24 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
-      <div className="mx-auto w-full max-w-7xl px-0 pt-20 sm:px-4 sm:pt-12 md:pt-8">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:gap-6">
           {memberships.map((membership, i) => (
             <div

@@ -16,6 +16,7 @@ import { StickyCTA } from "@/components/sticky-cta"
 import { useLanguage } from "@/contexts/language-context"
 import { useTranslation } from "@/hooks/use-translation"
 import { useDeviceCapabilities } from "@/hooks/use-device-capabilities"
+import { useMediaQuery } from "@/hooks/use-media-query"
 import { useRef, useEffect, useState } from "react"
 import site from "@/content/site.json"
 
@@ -35,6 +36,9 @@ export default function Home() {
   // Device capability detection for performance optimization
   const { isLowEnd, prefersReducedMotion } = useDeviceCapabilities()
   const shouldRenderShader = !isLowEnd && !prefersReducedMotion
+  
+  // Media query for mobile vs desktop behavior
+  const isMobile = useMediaQuery('(max-width: 1023px)')
 
   useEffect(() => {
     // If shaders are disabled, load immediately
@@ -73,7 +77,18 @@ export default function Home() {
   }, [shouldRenderShader])
 
   const scrollToSection = (index: number) => {
-    if (scrollContainerRef.current) {
+    if (!scrollContainerRef.current) return
+
+    if (isMobile) {
+      // Mobile: Scroll to section vertically
+      const sections = scrollContainerRef.current.querySelectorAll('section')
+      const targetSection = sections[index] as HTMLElement
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        setCurrentSection(index)
+      }
+    } else {
+      // Desktop: Scroll horizontally
       const sectionWidth = scrollContainerRef.current.offsetWidth
       scrollContainerRef.current.scrollTo({
         left: sectionWidth * index,
@@ -84,6 +99,9 @@ export default function Home() {
   }
 
   useEffect(() => {
+    // Only add touch handlers on desktop (for horizontal scroll)
+    if (isMobile) return
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY.current = e.touches[0].clientY
       touchStartX.current = e.touches[0].clientX
@@ -126,9 +144,12 @@ export default function Home() {
         container.removeEventListener("touchend", handleTouchEnd)
       }
     }
-  }, [currentSection])
+  }, [currentSection, isMobile])
 
   useEffect(() => {
+    // Only add wheel handler on desktop (for horizontal scroll)
+    if (isMobile) return
+
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault()
@@ -160,9 +181,35 @@ export default function Home() {
         container.removeEventListener("wheel", handleWheel)
       }
     }
-  }, [currentSection])
+  }, [currentSection, isMobile])
 
   useEffect(() => {
+    // Mobile: Use Intersection Observer for section detection
+    if (isMobile) {
+      const sections = document.querySelectorAll('section')
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+              const index = Array.from(sections).indexOf(entry.target as HTMLElement)
+              if (index !== -1 && index !== currentSection) {
+                setCurrentSection(index)
+              }
+            }
+          })
+        },
+        { threshold: [0.5], rootMargin: '-64px 0px' }
+      )
+
+      sections.forEach((section) => observer.observe(section))
+
+      return () => {
+        sections.forEach((section) => observer.unobserve(section))
+      }
+    }
+
+    // Desktop: Use scroll position for horizontal scroll detection
     const handleScroll = () => {
       if (scrollThrottleRef.current) return
 
@@ -202,10 +249,10 @@ export default function Home() {
         cancelAnimationFrame(scrollThrottleRef.current)
       }
     }
-  }, [currentSection])
+  }, [currentSection, isMobile])
 
   return (
-    <main className="relative h-screen w-full overflow-hidden bg-background">
+    <main className={`relative w-full bg-background ${isMobile ? 'h-auto' : 'h-screen overflow-hidden'}`}>
       <CustomCursor />
       <GrainOverlay />
 
@@ -311,25 +358,27 @@ export default function Home() {
       <div
         ref={scrollContainerRef}
         data-scroll-container
-        className={`relative z-10 flex h-screen overflow-x-auto overflow-y-hidden transition-opacity duration-700 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
+        className={`relative z-10 transition-opacity duration-700 ${
+          isMobile 
+            ? "flex flex-col h-auto overflow-y-auto overflow-x-hidden" 
+            : "flex flex-row h-screen overflow-x-auto overflow-y-hidden"
+        } ${isLoaded ? "opacity-100" : "opacity-0"}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section className="relative flex min-h-screen w-screen shrink-0 flex-col items-center justify-between px-5 pb-16 pt-20 sm:flex-row sm:items-end sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
-          {/* DNA Helix - Top center on mobile, hidden on desktop */}
-          <div className="flex w-full justify-center pt-8 sm:hidden">
-            <div className="scale-75">
+        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
+          {/* DNA Helix - Horizontal on mobile, top of viewport */}
+          <div className="absolute left-1/2 top-20 -translate-x-1/2 sm:hidden">
+            <div className="rotate-90 scale-50">
               <DNAHelix scrollProgress={heroScrollProgress} />
             </div>
           </div>
 
-          <div className="flex w-full items-end justify-between gap-8 sm:flex-1">
-            <div className="max-w-4xl flex-1">
+          <div className="flex w-full items-end justify-between gap-8">
+            <div className="w-full max-w-4xl lg:flex-1">
               <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm">
                 {t.openingText}
               </p>
-              <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.05] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl sm:leading-[1.1] md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.15] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl sm:leading-[1.1] md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="text-balance">
                   {hero.titleLines[0]}
                   <br />
@@ -337,7 +386,7 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-base leading-relaxed text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
+              <p className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-base leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
                 <span className="text-pretty">
                   {hero.description}
                 </span>

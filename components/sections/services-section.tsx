@@ -62,9 +62,9 @@ export function ServicesSection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center overflow-y-auto px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
-        <div className="mx-auto w-full max-w-7xl pt-16 sm:pt-0">
+        <div className="mx-auto w-full max-w-7xl">
           {/* Hero Text */}
           {services.heroText && (
             <div className="mb-12 mt-8 space-y-3 sm:mb-16 sm:mt-10 sm:space-y-4 md:mb-20 md:mt-12 md:space-y-5 lg:mb-24 lg:mt-16">
