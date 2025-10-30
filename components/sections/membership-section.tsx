@@ -382,67 +382,69 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
-      <div className="mx-auto w-full max-w-7xl px-2 pt-20 sm:px-4 sm:pt-12 md:pt-8">
-        <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:gap-6">
+      <div className="mx-auto w-full max-w-7xl px-0 pt-20 sm:px-4 sm:pt-12 md:pt-8">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:gap-6">
           {memberships.map((membership, i) => (
             <div
               key={i}
-              className={`group relative flex flex-col rounded-lg border border-primary/20 bg-card/60 p-3 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-md sm:rounded-xl sm:p-4 md:p-5 ${
+              className={`group relative flex flex-col rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-md sm:rounded-xl sm:p-4 md:p-5 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
               style={{
                 transitionDelay: `${i * 150}ms`,
               }}
             >
-              <div className="mb-2 sm:mb-3">
-                <h3 className="mb-0.5 font-sans text-base font-light text-foreground sm:mb-1 sm:text-lg md:text-xl">{membership.name}</h3>
-                <p className="font-mono text-[9px] leading-relaxed text-foreground/60 sm:text-[10px]">{membership.description}</p>
+              <div className="mb-3 sm:mb-3">
+                <h3 className="mb-1 font-sans text-lg font-light text-foreground sm:mb-1 sm:text-lg md:text-xl">{membership.name}</h3>
+                <p className="font-mono text-xs leading-relaxed text-foreground/60 sm:text-xs">{membership.description}</p>
               </div>
 
               {/* Show inclusion note for higher tiers */}
               {membership.key !== "core" && (
-                <div className="mb-2 rounded-md bg-primary/10 px-2 py-1.5 sm:mb-3 sm:px-3 sm:py-2">
-                  <p className="font-mono text-[9px] text-primary/80 sm:text-[10px]">
+                <div className="mb-3 rounded-md bg-primary/10 px-3 py-2 sm:mb-3 sm:px-3 sm:py-2">
+                  <p className="font-mono text-xs text-primary/80 sm:text-xs">
                     {form.includesAll}
                   </p>
                 </div>
               )}
 
-              <div className="mb-3 flex-1 overflow-x-auto sm:mb-4">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-foreground/10">
-                      <th className="pb-1.5 text-left font-mono text-[9px] font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-[10px]">
-                        Therapy
-                      </th>
-                      <th className="pb-1.5 text-right font-mono text-[9px] font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-[10px]">
-                        Sessions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {membership.features.map((feature, j) => (
-                      <tr
-                        key={j}
-                        className="border-b border-foreground/5 transition-colors hover:bg-foreground/5"
-                      >
-                        <td className="py-1 pr-1 text-[9px] leading-relaxed text-foreground/80 sm:py-1.5 sm:pr-2 sm:text-[10px]">
-                          {feature.name}
-                        </td>
-                        <td className="py-1 text-right font-mono text-[9px] tracking-wide text-foreground/60 sm:py-1.5 sm:text-[10px]">
-                          {feature.schedule}
-                        </td>
+              <div className="mb-4 flex-1 overflow-x-auto sm:mb-4">
+                <div className="min-w-full">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-foreground/10">
+                        <th className="pb-2 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
+                          Therapy
+                        </th>
+                        <th className="pb-2 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
+                          Sessions
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {membership.features.map((feature, j) => (
+                        <tr
+                          key={j}
+                          className="border-b border-foreground/5 transition-colors active:bg-foreground/10 sm:hover:bg-foreground/5"
+                        >
+                          <td className="py-2.5 pr-3 text-xs leading-relaxed text-foreground/80 sm:py-2 sm:pr-2 sm:text-xs">
+                            {feature.name}
+                          </td>
+                          <td className="py-2.5 text-right font-mono text-xs tracking-wide text-foreground/60 sm:py-2 sm:text-xs">
+                            {feature.schedule}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <MagneticButton
                 variant="secondary"
-                className="w-full text-[10px] sm:text-xs"
+                className="w-full text-xs sm:text-sm"
                 onClick={() => handleApply(membership.name)}
               >
                 Apply Now
@@ -455,7 +457,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       {/* Application Modal */}
       {mounted && isModalOpen && createPortal(
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4"
           onClick={() => setIsModalOpen(false)}
         >
           {/* Shader Background */}
@@ -466,19 +468,20 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           <GrainOverlay />
 
           <div 
-            className="relative z-10 w-full max-w-2xl"
+            className="relative z-10 h-full w-full sm:h-auto sm:max-w-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute -top-12 right-0 rounded-full border border-primary/30 bg-background/90 p-2 text-foreground shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-background hover:text-foreground sm:-right-12 sm:top-0"
+              className="absolute right-4 top-4 z-20 rounded-full border border-primary/30 bg-background/90 p-3 text-foreground shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-background hover:text-foreground sm:right-0 sm:top-0 sm:-right-12 sm:p-3"
+              aria-label="Close form"
             >
-              <X className="h-5 w-5 sm:h-6 sm:w-6" />
+              <X className="h-6 w-6 sm:h-6 sm:w-6" />
             </button>
 
             {/* Modal Content */}
-            <div className="relative max-h-[85vh] overflow-y-auto rounded-xl border border-primary/20 bg-background p-4 shadow-2xl sm:rounded-2xl sm:p-6 md:p-8">
+            <div className="relative h-full overflow-y-auto border-primary/20 bg-background p-5 shadow-2xl sm:max-h-[85vh] sm:rounded-2xl sm:border sm:p-6 md:p-8">
               {/* Early Bird Offer Banner */}
               <div className={`mb-5 animate-in fade-in slide-in-from-top-4 rounded-lg border p-3 text-center transition-all duration-300 sm:mb-6 sm:p-4 ${
                 isSpecialCode 

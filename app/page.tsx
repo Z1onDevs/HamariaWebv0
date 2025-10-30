@@ -10,6 +10,8 @@ import { MembershipSection } from "@/components/sections/membership-section"
 import { MagneticButton } from "@/components/magnetic-button"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { DNAHelix } from "@/components/dna-helix"
+import { MobileNav } from "@/components/mobile-nav"
+import { SectionDots } from "@/components/section-dots"
 import { useLanguage } from "@/contexts/language-context"
 import { useTranslation } from "@/hooks/use-translation"
 import { useRef, useEffect, useState } from "react"
@@ -238,12 +240,12 @@ export default function Home() {
           })}
         </div>
 
-        {/* Language Switcher */}
-        <div className="flex items-center gap-3 sm:gap-4">
-          <div className="flex items-center gap-1 border-r border-foreground/20 pr-3 sm:pr-4">
+        {/* Language Switcher & Mobile Nav */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1 border-r border-foreground/20 pr-2 sm:pr-3">
             <button
               onClick={() => setLanguage("en")}
-              className={`font-mono text-[10px] uppercase tracking-wide transition-colors sm:text-xs ${
+              className={`font-mono text-xs uppercase tracking-wide transition-colors sm:text-xs ${
                 language === "en" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
               }`}
             >
@@ -252,7 +254,7 @@ export default function Home() {
             <span className="text-foreground/20">|</span>
             <button
               onClick={() => setLanguage("es")}
-              className={`font-mono text-[10px] uppercase tracking-wide transition-colors sm:text-xs ${
+              className={`font-mono text-xs uppercase tracking-wide transition-colors sm:text-xs ${
                 language === "es" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
               }`}
             >
@@ -260,12 +262,23 @@ export default function Home() {
             </button>
           </div>
           
-          <MagneticButton variant="primary" className="text-xs sm:text-sm" onClick={() => scrollToSection(4)}>
-            <span className="hidden sm:inline">{t.applyButton}</span>
-            <span className="inline sm:hidden">{t.applyButtonShort}</span>
+          {/* Desktop Apply Button */}
+          <MagneticButton variant="primary" className="hidden text-xs sm:text-sm lg:flex" onClick={() => scrollToSection(4)}>
+            {t.applyButton}
           </MagneticButton>
+
+          {/* Mobile Menu Button */}
+          <MobileNav currentSection={currentSection} onNavigate={scrollToSection} isLoaded={isLoaded} />
         </div>
       </nav>
+
+      {/* Section Navigation Dots - Mobile Only */}
+      <SectionDots
+        totalSections={6}
+        currentSection={currentSection}
+        onNavigate={scrollToSection}
+        isLoaded={isLoaded}
+      />
 
       <div
         ref={scrollContainerRef}
@@ -275,13 +288,13 @@ export default function Home() {
         }`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
+        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
           <div className="flex w-full items-end justify-between gap-8">
             <div className="max-w-4xl flex-1">
-              <p className="mb-3 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm">
+              <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm">
                 {t.openingText}
               </p>
-              <h1 className="mb-4 animate-in fade-in slide-in-from-bottom-8 font-sans text-4xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 className="mb-5 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.05] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl sm:leading-[1.1] md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl">
                 <span className="text-balance">
                   {hero.titleLines[0]}
                   <br />
@@ -289,16 +302,16 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="mb-6 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-sm leading-relaxed text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
+              <p className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-base leading-relaxed text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
                 <span className="text-pretty">
                   {hero.description}
                 </span>
               </p>
-              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:flex-row sm:items-center sm:gap-4">
-                <MagneticButton size="lg" variant="primary" className="text-sm sm:text-base" onClick={() => scrollToSection(4)}>
+              <div className="flex w-full animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+                <MagneticButton size="lg" variant="primary" className="w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(4)}>
                   {hero.primaryCta}
                 </MagneticButton>
-                <MagneticButton size="lg" variant="secondary" className="text-sm sm:text-base" onClick={() => scrollToSection(1)}>
+                <MagneticButton size="lg" variant="secondary" className="w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(1)}>
                   {hero.secondaryCta}
                 </MagneticButton>
               </div>
@@ -320,11 +333,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 sm:block md:bottom-8">
+          <div className="absolute bottom-20 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 lg:bottom-8 lg:block">
             <div className="flex items-center gap-2 sm:gap-3">
-              <p className="font-sans text-[10px] uppercase tracking-widest text-foreground/70 sm:text-xs">{t.scrollText}</p>
-              <div className="flex h-5 w-10 items-center justify-center rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md sm:h-6 sm:w-12">
-                <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary/80 sm:h-2 sm:w-2" />
+              <p className="font-sans text-xs uppercase tracking-widest text-foreground/70 sm:text-xs">{t.scrollText}</p>
+              <div className="flex h-6 w-12 items-center justify-center rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md sm:h-6 sm:w-12">
+                <div className="h-2 w-2 animate-pulse rounded-full bg-primary/80 sm:h-2 sm:w-2" />
               </div>
             </div>
           </div>

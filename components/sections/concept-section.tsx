@@ -35,8 +35,8 @@ export function ConceptSection() {
         >
           {/* Left Column - Introduction */}
           <div className="space-y-5 sm:space-y-6 md:space-y-7">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 sm:px-4 sm:py-1.5">
-              <p className="font-sans text-[10px] uppercase tracking-widest text-primary sm:text-xs">{concept.vision}</p>
+            <div className="inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
+              <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.vision}</p>
             </div>
             <div className="space-y-3 sm:space-y-4">
               <p className="font-sans text-base leading-relaxed text-foreground/90 sm:text-lg md:text-xl">
@@ -58,8 +58,8 @@ export function ConceptSection() {
 
           {/* Right Column - Features */}
           <div className="space-y-5 sm:space-y-6 md:space-y-7">
-            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 sm:px-4 sm:py-1.5">
-              <p className="font-sans text-[10px] uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
+            <div className="inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
+              <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
             </div>
             <div className="space-y-3 sm:space-y-4 md:space-y-5">
               {concept.features.map((feature: any, i: number) => (

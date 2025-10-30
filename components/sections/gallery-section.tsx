@@ -122,7 +122,7 @@ export function GallerySection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-5xl pt-24 sm:pt-16 md:pt-8 lg:max-w-6xl xl:max-w-7xl">
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
             {galleryItems.slice(0, 6).map((item, i) => (
               <div
                 key={i}
@@ -137,9 +137,9 @@ export function GallerySection() {
                   <img src={item.src} alt={item.title} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-4 md:p-5">
-                    <h3 className="mb-0.5 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-base md:text-lg lg:text-xl">{item.title}</h3>
+                    <h3 className="mb-1 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-base md:text-lg lg:text-xl">{item.title}</h3>
                     {item.description ? (
-                      <p className="font-mono text-[10px] text-foreground/70 sm:text-xs">{item.description}</p>
+                      <p className="font-mono text-xs text-foreground/70 sm:text-xs">{item.description}</p>
                     ) : null}
                   </div>
                 </div>
@@ -169,7 +169,7 @@ export function GallerySection() {
       {/* Modal */}
       {mounted && isModalOpen && createPortal(
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4"
           onClick={() => setIsModalOpen(false)}
         >
           {/* Shader Background */}
@@ -180,19 +180,20 @@ export function GallerySection() {
           <GrainOverlay />
 
           <div 
-            className="relative z-10 w-full max-w-5xl sm:max-w-6xl"
+            className="relative z-10 h-full w-full sm:h-auto sm:max-w-5xl md:max-w-6xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute -top-12 right-0 rounded-full border border-primary/30 bg-background/90 p-2 text-foreground shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-background hover:text-foreground sm:-right-12 sm:top-0"
+              className="absolute right-4 top-4 z-20 rounded-full border border-primary/30 bg-background/90 p-3 text-foreground shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-background hover:text-foreground sm:right-0 sm:top-0 sm:-right-12 sm:p-3"
+              aria-label="Close gallery"
             >
-              <X className="h-5 w-5 sm:h-6 sm:w-6" />
+              <X className="h-6 w-6 sm:h-6 sm:w-6" />
             </button>
 
             {/* Modal Content */}
-            <div className="relative max-h-[85vh] overflow-y-auto rounded-xl border border-primary/20 bg-background/95 p-3 shadow-2xl backdrop-blur-sm sm:rounded-2xl sm:p-5 md:p-7 lg:p-9">
+            <div className="relative h-full overflow-y-auto border-primary/20 bg-background/95 p-5 shadow-2xl backdrop-blur-sm sm:max-h-[85vh] sm:rounded-2xl sm:border sm:p-5 md:p-7 lg:p-9">
               {/* Text Section */}
               {(gallery.modalTitle || gallery.modalDescription) && (
                 <div className="mb-5 animate-in fade-in slide-in-from-top-4 sm:mb-7 md:mb-9">
@@ -212,7 +213,7 @@ export function GallerySection() {
 
               {/* Images Grid */}
               {galleryItems.length > 6 && (
-                <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5">
                   {galleryItems.slice(6, 12).map((item, i) => (
                   <div
                     key={i}
@@ -225,10 +226,10 @@ export function GallerySection() {
                     <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-500 ease-out group-hover:scale-[1.01] group-hover:border-primary/20 group-hover:shadow-lg sm:rounded-lg md:rounded-xl">
                       <img src={item.src} alt={item.title} className="h-full w-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                      <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-3 md:p-4">
-                        <h3 className="mb-0.5 font-sans text-xs font-light text-foreground sm:mb-1 sm:text-sm md:text-base lg:text-lg">{item.title}</h3>
+                      <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-3 md:p-4">
+                        <h3 className="mb-1 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-sm md:text-base lg:text-lg">{item.title}</h3>
                         {item.description ? (
-                          <p className="font-mono text-[9px] text-foreground/70 sm:text-[10px] md:text-xs">{item.description}</p>
+                          <p className="font-mono text-xs text-foreground/70 sm:text-xs md:text-xs">{item.description}</p>
                         ) : null}
                       </div>
                     </div>

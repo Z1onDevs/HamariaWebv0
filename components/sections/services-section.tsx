@@ -132,7 +132,7 @@ export function ServicesSection() {
       {/* Modal */}
       {mounted && isModalOpen && createPortal(
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4"
           onClick={() => setIsModalOpen(false)}
         >
           {/* Shader Background */}
@@ -143,19 +143,20 @@ export function ServicesSection() {
           <GrainOverlay />
 
           <div 
-            className="relative z-10 w-full max-w-5xl sm:max-w-6xl"
+            className="relative z-10 h-full w-full sm:h-auto sm:max-w-5xl md:max-w-6xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute -top-12 right-0 rounded-full border border-primary/20 bg-background/60 p-2 text-foreground shadow-sm backdrop-blur-md transition-all hover:border-primary/30 hover:bg-background/80 hover:text-foreground sm:-right-12 sm:top-0"
+              className="absolute right-4 top-4 z-20 rounded-full border border-primary/20 bg-background/60 p-3 text-foreground shadow-sm backdrop-blur-md transition-all hover:border-primary/30 hover:bg-background/80 hover:text-foreground sm:right-0 sm:top-0 sm:-right-12 sm:p-3"
+              aria-label="Close modal"
             >
-              <X className="h-5 w-5 sm:h-6 sm:w-6" />
+              <X className="h-6 w-6 sm:h-6 sm:w-6" />
             </button>
 
             {/* Modal Content */}
-            <div className="relative max-h-[85vh] overflow-y-auto rounded-xl border border-primary/10 bg-background/30 p-3 shadow-2xl backdrop-blur-md sm:rounded-2xl sm:p-5 md:p-7 lg:p-9">
+            <div className="relative h-full overflow-y-auto border-primary/10 bg-background/30 p-5 shadow-2xl backdrop-blur-md sm:max-h-[85vh] sm:rounded-2xl sm:border sm:p-5 md:p-7 lg:p-9">
               {/* Text Section */}
               {(services.modalTitle || services.modalDescription) && (
                 <div className="mb-5 animate-in fade-in slide-in-from-top-4 sm:mb-7 md:mb-9">
@@ -185,12 +186,12 @@ export function ServicesSection() {
                     }}
                   >
                     {/* Title - always visible */}
-                    <h3 className="mb-2 font-sans text-sm font-medium text-foreground transition-all duration-300 sm:text-base md:mb-0 md:text-lg md:group-hover:mb-2">
+                    <h3 className="mb-2 font-sans text-base font-medium text-foreground transition-all duration-300 sm:text-base md:mb-0 md:text-lg md:group-hover:mb-2">
                       {service.title}
                     </h3>
                     
                     {/* Description - visible on mobile, hidden on desktop until hover */}
-                    <p className="max-h-40 overflow-hidden text-[10px] leading-relaxed text-foreground/70 opacity-100 transition-all duration-300 sm:text-xs md:max-h-0 md:text-sm md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100">
+                    <p className="max-h-40 overflow-hidden text-xs leading-relaxed text-foreground/70 opacity-100 transition-all duration-300 sm:text-xs md:max-h-0 md:text-sm md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100">
                       {service.description}
                     </p>
                   </div>
