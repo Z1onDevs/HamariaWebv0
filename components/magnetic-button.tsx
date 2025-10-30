@@ -71,6 +71,8 @@ export function MagneticButton({
       className={`
         relative overflow-hidden rounded-full font-medium
         transition-all duration-300 ease-out will-change-transform
+        hover:shadow-lg hover:shadow-primary/20
+        active:scale-95
         ${variants[variant]}
         ${sizes[size]}
         ${className}
@@ -80,7 +82,9 @@ export function MagneticButton({
         contain: "layout style paint",
       }}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 transition-transform duration-200 inline-block group-active:scale-95">{children}</span>
+      {/* Shine effect on hover */}
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 hover:translate-x-full" />
     </button>
   )
 }

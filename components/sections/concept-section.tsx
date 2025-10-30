@@ -1,14 +1,19 @@
 "use client"
 
 import { useReveal } from "@/hooks/use-reveal"
+import { useVigorousReveal } from "@/hooks/use-vigorous-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 
 export function ConceptSection() {
   const { ref: titleRef, isVisible: titleVisible } = useReveal(0.3)
-  const { ref: contentRef, isVisible: contentVisible } = useReveal(0.3)
+  const { ref: contentRef, isVisible: contentVisible, scrollProgress } = useVigorousReveal({ threshold: 0.2 })
   const { t } = useTranslation()
 
   const concept = t.concept
+  
+  // Calculate parallax values based on scroll progress
+  const parallaxY = scrollProgress * 50 // Move up as user scrolls
+  const scale = 0.95 + (scrollProgress * 0.05) // Scale from 0.95 to 1
 
   return (
     <section className="flex min-h-screen w-screen shrink-0 items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32">
@@ -30,8 +35,12 @@ export function ConceptSection() {
         <div
           ref={contentRef}
           className={`grid gap-8 transition-all duration-700 sm:gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 ${
-            contentVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+            contentVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
           }`}
+          style={{
+            transform: `translateY(${contentVisible ? -parallaxY : 0}px) scale(${contentVisible ? scale : 0.95})`,
+            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease-out',
+          }}
         >
           {/* Left Column - Introduction */}
           <div className="space-y-5 sm:space-y-6 md:space-y-7">
@@ -65,12 +74,16 @@ export function ConceptSection() {
               {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
-                className="group rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-card/50 sm:rounded-xl sm:p-5 md:p-6 active:border-primary/30 active:bg-card/50"
+                className="group rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 sm:rounded-xl sm:p-5 md:p-6 active:border-primary/30 active:bg-card/50 active:scale-95"
+                style={{
+                  transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                  animationDelay: `${i * 100}ms`,
+                }}
               >
-                <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground sm:mb-2 sm:text-base md:text-lg">
+                <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground transition-transform duration-300 group-hover:translate-x-1 sm:mb-2 sm:text-base md:text-lg">
                   {feature.title}
                 </h3>
-                <p className="max-h-40 overflow-hidden font-sans text-xs leading-relaxed text-foreground/60 opacity-100 transition-all duration-300 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 sm:text-sm">
+                <p className="max-h-40 overflow-hidden font-sans text-xs leading-relaxed text-foreground/60 opacity-100 transition-all duration-500 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 sm:text-sm">
                   {feature.description}
                 </p>
               </div>

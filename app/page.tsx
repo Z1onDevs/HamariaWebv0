@@ -17,6 +17,7 @@ import { useLanguage } from "@/contexts/language-context"
 import { useTranslation } from "@/hooks/use-translation"
 import { useDeviceCapabilities } from "@/hooks/use-device-capabilities"
 import { useMediaQuery } from "@/hooks/use-media-query"
+import { useScrollProgress } from "@/hooks/use-scroll-progress"
 import { useRef, useEffect, useState } from "react"
 import site from "@/content/site.json"
 
@@ -39,6 +40,20 @@ export default function Home() {
   
   // Media query for mobile vs desktop behavior
   const isMobile = useMediaQuery('(max-width: 1023px)')
+  
+  // Scroll-based animations for mobile
+  const [scrollY, setScrollY] = useState(0)
+  
+  useEffect(() => {
+    if (!isMobile) return
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isMobile])
 
   useEffect(() => {
     // If shaders are disabled, load immediately
@@ -367,7 +382,14 @@ export default function Home() {
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
           {/* DNA Helix - Horizontal on mobile, top of viewport */}
-          <div className="absolute left-1/2 top-2 -translate-x-1/2 sm:hidden">
+          <div 
+            className="absolute left-1/2 top-2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 sm:hidden"
+            style={isMobile ? {
+              transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
+              opacity: Math.max(0, 1 - (scrollY * 0.003)),
+              transition: 'transform 0.4s ease-out, opacity 0.3s ease-out',
+            } : {}}
+          >
             <div className="rotate-90 scale-50">
               <DNAHelix scrollProgress={heroScrollProgress} />
             </div>
@@ -375,10 +397,22 @@ export default function Home() {
 
           <div className="flex w-full items-end justify-between gap-8">
             <div className="w-full max-w-4xl lg:flex-1">
-              <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm">
+              <p 
+                className="mb-4 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm"
+                style={isMobile ? { 
+                  transform: `translateY(${scrollY * 0.1}px)`,
+                  transition: 'transform 0.3s ease-out'
+                } : {}}
+              >
                 {t.openingText}
               </p>
-              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.15] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl sm:leading-[1.1] md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 
+                className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.15] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl sm:leading-[1.1] md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl"
+                style={isMobile ? { 
+                  transform: `translateY(${scrollY * 0.15}px) scale(${1 - (scrollY * 0.0002)})`,
+                  transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                } : {}}
+              >
                 <span className="text-balance">
                   {hero.titleLines[0]}
                   <br />
@@ -386,12 +420,26 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-base leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
+              <p 
+                className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-base leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl"
+                style={isMobile ? { 
+                  transform: `translateY(${scrollY * 0.2}px)`,
+                  opacity: Math.max(0, 1 - (scrollY * 0.002)),
+                  transition: 'transform 0.5s ease-out, opacity 0.3s ease-out'
+                } : {}}
+              >
                 <span className="text-pretty">
                   {hero.description}
                 </span>
               </p>
-              <div className="flex w-full animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+              <div 
+                className="flex w-full animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
+                style={isMobile ? { 
+                  transform: `translateY(${scrollY * 0.25}px) scale(${Math.max(0.9, 1 - (scrollY * 0.0003))})`,
+                  opacity: Math.max(0, 1 - (scrollY * 0.0025)),
+                  transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-out'
+                } : {}}
+              >
                 <MagneticButton size="lg" variant="primary" className="w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(4)}>
                   {hero.primaryCta}
                 </MagneticButton>

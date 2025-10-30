@@ -137,17 +137,18 @@ export function GallerySection() {
               <div
                 key={i}
                 className={`group relative aspect-[3/4] cursor-pointer transition-all duration-700 md:aspect-[4/3] ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                  isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-90"
                 }`}
                 style={{
                   transitionDelay: `${i * 100}ms`,
+                  transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
                 onClick={() => {
                   setSelectedImageIndex(i)
                   setShowCarousel(true)
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-all duration-300 ease-out group-hover:scale-[1.02] group-active:scale-[0.96] sm:rounded-xl md:rounded-2xl">
+                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-all duration-500 ease-out group-hover:scale-[1.05] group-hover:shadow-2xl group-hover:shadow-primary/20 group-hover:-translate-y-1 group-active:scale-[0.95] sm:rounded-xl md:rounded-2xl">
                   <img 
                     src={item.src} 
                     alt={item.title} 

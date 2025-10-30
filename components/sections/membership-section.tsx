@@ -405,11 +405,12 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           {memberships.map((membership, i) => (
             <div
               key={i}
-              className={`group relative flex flex-col rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-md sm:rounded-xl sm:p-4 md:p-5 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+              className={`group relative flex flex-col rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 hover:-translate-y-2 active:scale-95 sm:rounded-xl sm:p-4 md:p-5 ${
+                isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-90"
               }`}
               style={{
                 transitionDelay: `${i * 150}ms`,
+                transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
             >
               <div className="mb-3 sm:mb-3">
@@ -436,16 +437,22 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               {/* Toggle button for therapy details */}
               <button
                 onClick={() => setExpandedCard(expandedCard === i ? null : i)}
-                className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all hover:border-primary/30 hover:bg-background/40 active:bg-background/50"
+                className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all duration-300 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-md hover:shadow-primary/10 active:bg-background/50 active:scale-95"
+                style={{
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-sm font-medium text-foreground">
+                  <span className="font-sans text-sm font-medium text-foreground transition-all duration-200">
                     {expandedCard === i ? "Hide Details" : "View Details"}
                   </span>
                   <svg
-                    className={`h-5 w-5 text-foreground/60 transition-transform duration-300 ${
-                      expandedCard === i ? "rotate-180" : ""
+                    className={`h-5 w-5 text-foreground/60 transition-all duration-500 ${
+                      expandedCard === i ? "rotate-180 scale-110" : "scale-100"
                     }`}
+                    style={{
+                      transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    }}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -457,9 +464,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
 
               {/* Collapsible therapy list */}
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  expandedCard === i ? "mb-4 max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+                className={`overflow-hidden transition-all ${
+                  expandedCard === i ? "mb-4 max-h-[600px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95"
                 }`}
+                style={{
+                  transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transformOrigin: 'top',
+                }}
               >
                 <div className="overflow-x-auto">
                   <div className="min-w-full">

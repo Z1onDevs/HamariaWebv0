@@ -55,13 +55,23 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-[9998] bg-background/60 backdrop-blur-md animate-in fade-in duration-300 lg:hidden"
+            className="fixed inset-0 z-[9998] animate-in fade-in duration-300 lg:hidden"
             onClick={() => setIsOpen(false)}
+            style={{
+              background: 'rgba(var(--color-background), 0.4)',
+              backdropFilter: 'blur(12px)',
+            }}
           />
 
           {/* Drawer */}
           <div className="fixed right-0 top-0 z-[9999] h-full w-[280px] animate-in slide-in-from-right duration-300 lg:hidden sm:w-[320px]">
-            <div className="flex h-full flex-col border-l border-primary/10 bg-background/80 backdrop-blur-xl shadow-2xl">
+            <div 
+              className="flex h-full flex-col border-l border-primary/10 shadow-2xl"
+              style={{
+                background: 'rgba(250, 248, 245, 0.85)',
+                backdropFilter: 'blur(20px)',
+              }}
+            >
               {/* Header */}
               <div className="flex items-center justify-between border-b border-primary/10 p-4 sm:p-5">
                 <h2 className="font-sans text-lg font-light tracking-wide text-foreground sm:text-xl">
@@ -84,20 +94,31 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
                     const isActive = currentSection === sectionIndex
 
                     return (
-                      <li key={item}>
+                      <li 
+                        key={item}
+                        className="animate-in slide-in-from-right fade-in"
+                        style={{
+                          animationDelay: `${index * 50}ms`,
+                          animationDuration: '400ms',
+                          animationFillMode: 'backwards',
+                        }}
+                      >
                         <button
                           onClick={() => handleNavigate(sectionIndex)}
-                          className={`group relative w-full rounded-lg px-4 py-3 text-left transition-all sm:px-5 sm:py-4 ${
+                          className={`group relative w-full rounded-lg px-4 py-3 text-left transition-all duration-300 sm:px-5 sm:py-4 ${
                             isActive
-                              ? "bg-primary/15 text-foreground shadow-sm"
-                              : "text-foreground/70 hover:bg-background/40 hover:text-foreground"
+                              ? "bg-primary/15 text-foreground shadow-sm scale-105"
+                              : "text-foreground/70 hover:bg-background/40 hover:text-foreground hover:scale-105 hover:translate-x-1"
                           }`}
+                          style={{
+                            transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                          }}
                         >
                           <span className="font-sans text-base font-light tracking-wide sm:text-lg">
                             {item}
                           </span>
                           {isActive && (
-                            <span className="absolute left-0 top-0 h-full w-1 rounded-r-full bg-primary shadow-sm shadow-primary/30" />
+                            <span className="absolute left-0 top-0 h-full w-1 rounded-r-full bg-primary shadow-sm shadow-primary/30 animate-in slide-in-from-left duration-300" />
                           )}
                         </button>
                       </li>

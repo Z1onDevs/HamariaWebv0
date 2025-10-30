@@ -226,25 +226,26 @@ function ServiceCard({
     if (!isVisible) {
       switch (service.direction) {
         case "left":
-          return "-translate-x-16 opacity-0"
+          return "-translate-x-16 opacity-0 scale-95"
         case "right":
-          return "translate-x-16 opacity-0"
+          return "translate-x-16 opacity-0 scale-95"
         case "top":
-          return "-translate-y-16 opacity-0"
+          return "-translate-y-16 opacity-0 scale-95"
         case "bottom":
-          return "translate-y-16 opacity-0"
+          return "translate-y-16 opacity-0 scale-95"
         default:
-          return "translate-y-12 opacity-0"
+          return "translate-y-12 opacity-0 scale-95"
       }
     }
-    return "translate-x-0 translate-y-0 opacity-100"
+    return "translate-x-0 translate-y-0 opacity-100 scale-100"
   }
 
   return (
     <div
-      className={`group flex flex-col items-center justify-center rounded-lg border border-border/50 bg-card/20 p-5 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:bg-card/40 sm:rounded-xl sm:p-6 md:p-8 ${getRevealClass()}`}
+      className={`group flex flex-col items-center justify-center rounded-lg border border-border/50 bg-card/20 p-5 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:bg-card/40 hover:scale-105 hover:shadow-xl hover:shadow-primary/10 active:scale-95 sm:rounded-xl sm:p-6 md:p-8 ${getRevealClass()}`}
       style={{
         transitionDelay: `${index * 80}ms`,
+        transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
       {/* Title */}
