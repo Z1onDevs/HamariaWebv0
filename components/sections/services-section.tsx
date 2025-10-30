@@ -58,15 +58,50 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl pt-16 sm:pt-0">
+          {/* Hero Text */}
+          {services.heroText && (
+            <div className="mb-12 mt-8 space-y-3 sm:mb-16 sm:mt-10 sm:space-y-4 md:mb-20 md:mt-12 md:space-y-5 lg:mb-24 lg:mt-16">
+              <div
+                className={`transition-all duration-700 delay-100 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                }`}
+              >
+                <p className="font-sans text-xl font-normal leading-tight tracking-tight text-foreground/90 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+                  {services.heroText.line1}
+                </p>
+              </div>
+              <div
+                className={`transition-all duration-700 delay-200 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                }`}
+              >
+                <p className="font-sans text-lg font-light leading-snug text-foreground/80 sm:text-xl md:text-2xl lg:text-3xl">
+                  <span className="text-foreground/90">{services.heroText.line2.split(',')[0]}</span>
+                  <span className="text-foreground/70">,</span>
+                  <span className="ml-2 text-foreground/80">{services.heroText.line2.split(',')[1]}</span>
+                </p>
+              </div>
+              <div
+                className={`transition-all duration-700 delay-300 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                }`}
+              >
+                <p className="font-sans text-base font-light leading-relaxed text-foreground/60 sm:text-lg md:text-xl lg:text-2xl">
+                  {services.heroText.line3}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Heading - moved below hero */}
           <div
-            className={`mb-6 transition-all duration-700 sm:mb-8 md:mb-10 lg:mb-12 ${
-              isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
+            className={`mb-8 text-center transition-all duration-700 sm:mb-10 md:mb-12 lg:mb-14 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
             }`}
           >
-            <h2 className="mb-1.5 font-sans text-lg font-light tracking-tight text-foreground sm:mb-2 sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+            <h2 className="font-sans text-sm font-light tracking-tight text-foreground sm:text-base md:text-lg lg:text-xl xl:text-2xl">
               {services.heading}
             </h2>
-            <p className="font-mono text-[10px] text-foreground/60 sm:text-xs md:text-sm lg:text-base">{services.subheading}</p>
           </div>
 
           <div className="grid gap-5 sm:gap-6 md:grid-cols-3 md:gap-x-10 md:gap-y-8 lg:gap-x-12 lg:gap-y-10">
@@ -103,7 +138,7 @@ export function ServicesSection() {
           {/* Shader Background */}
           <div className="absolute inset-0 z-0">
             <ShaderWrapper />
-            <div className="absolute inset-0 bg-background/60" />
+            <div className="absolute inset-0 bg-background/40" />
           </div>
           <GrainOverlay />
 
@@ -114,13 +149,13 @@ export function ServicesSection() {
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute -top-12 right-0 rounded-full border border-primary/30 bg-background/90 p-2 text-foreground shadow-sm backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-background hover:text-foreground sm:-right-12 sm:top-0"
+              className="absolute -top-12 right-0 rounded-full border border-primary/20 bg-background/60 p-2 text-foreground shadow-sm backdrop-blur-md transition-all hover:border-primary/30 hover:bg-background/80 hover:text-foreground sm:-right-12 sm:top-0"
             >
               <X className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
 
             {/* Modal Content */}
-            <div className="relative max-h-[85vh] overflow-y-auto rounded-xl border border-primary/20 bg-background/95 p-3 shadow-2xl backdrop-blur-sm sm:rounded-2xl sm:p-5 md:p-7 lg:p-9">
+            <div className="relative max-h-[85vh] overflow-y-auto rounded-xl border border-primary/10 bg-background/30 p-3 shadow-2xl backdrop-blur-md sm:rounded-2xl sm:p-5 md:p-7 lg:p-9">
               {/* Text Section */}
               {(services.modalTitle || services.modalDescription) && (
                 <div className="mb-5 animate-in fade-in slide-in-from-top-4 sm:mb-7 md:mb-9">
@@ -143,19 +178,19 @@ export function ServicesSection() {
                 {services.items.map((service: any, i: number) => (
                   <div
                     key={i}
-                    className="group flex min-h-[140px] flex-col items-start justify-start rounded-lg border border-primary/20 bg-card/60 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card/80 hover:shadow-md animate-in fade-in slide-in-from-bottom-4 sm:min-h-[160px] sm:rounded-xl sm:p-4 md:p-5"
+                    className="group flex min-h-[100px] flex-col items-start justify-start rounded-lg border border-primary/10 bg-background/20 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-primary/20 hover:bg-background/40 hover:shadow-md animate-in fade-in slide-in-from-bottom-4 active:scale-105 active:border-primary/20 active:bg-background/40 sm:min-h-[110px] sm:rounded-xl sm:p-4 md:p-5"
                     style={{
                       animationDelay: `${i * 80}ms`,
                       animationFillMode: "backwards",
                     }}
                   >
                     {/* Title - always visible */}
-                    <h3 className="mb-2 font-sans text-sm font-medium text-foreground sm:mb-2.5 sm:text-base md:text-lg">
+                    <h3 className="mb-2 font-sans text-sm font-medium text-foreground transition-all duration-300 sm:text-base md:mb-0 md:text-lg md:group-hover:mb-2">
                       {service.title}
                     </h3>
                     
-                    {/* Description - always visible */}
-                    <p className="text-[10px] leading-relaxed text-foreground/70 sm:text-xs md:text-sm">
+                    {/* Description - visible on mobile, hidden on desktop until hover */}
+                    <p className="max-h-40 overflow-hidden text-[10px] leading-relaxed text-foreground/70 opacity-100 transition-all duration-300 sm:text-xs md:max-h-0 md:text-sm md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100">
                       {service.description}
                     </p>
                   </div>

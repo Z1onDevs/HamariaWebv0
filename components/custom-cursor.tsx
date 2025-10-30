@@ -55,7 +55,7 @@ export function CustomCursor() {
       window.removeEventListener("mousemove", handleMouseMove)
       cancelAnimationFrame(animationFrameId)
     }
-  }, [])
+  }, [isTouchDevice])
 
   // Don't render cursor on touch devices
   if (isTouchDevice) return null

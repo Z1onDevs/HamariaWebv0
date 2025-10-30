@@ -34,38 +34,48 @@ export function ConceptSection() {
           }`}
         >
           {/* Left Column - Introduction */}
-          <div className="space-y-4 sm:space-y-5 md:space-y-6">
+          <div className="space-y-5 sm:space-y-6 md:space-y-7">
             <div className="inline-block rounded-full bg-primary/10 px-3 py-1 sm:px-4 sm:py-1.5">
               <p className="font-sans text-[10px] uppercase tracking-widest text-primary sm:text-xs">{concept.vision}</p>
             </div>
-            <p className="font-sans text-sm leading-relaxed text-foreground/80 sm:text-base md:text-lg">
-              <span className="text-pretty">{concept.paragraph1}</span>
-            </p>
-            <p className="font-sans text-xs leading-relaxed text-foreground/60 sm:text-sm md:text-base">
-              <span className="text-pretty">{concept.paragraph2}</span>
-            </p>
+            <div className="space-y-3 sm:space-y-4">
+              <p className="font-sans text-base leading-relaxed text-foreground/90 sm:text-lg md:text-xl">
+                <span className="text-pretty font-medium">{concept.paragraph1.split(".")[0]}.</span>{" "}
+                <span className="text-pretty text-foreground/75">{concept.paragraph1.split(".").slice(1).join(".").trim()}</span>
+              </p>
+            </div>
+            <div className="border-l-2 border-primary/20 pl-4 sm:pl-5 md:pl-6">
+              <p className="font-sans text-sm leading-relaxed text-foreground/70 sm:text-base md:text-lg">
+                <span className="text-pretty">{concept.paragraph2}</span>
+              </p>
+            </div>
             {concept.paragraph3 && (
-              <p className="font-sans text-xs leading-relaxed text-foreground/70 sm:text-sm md:text-base">
+              <p className="font-sans text-xs leading-relaxed text-foreground/60 italic sm:text-sm md:text-base">
                 <span className="text-pretty">{concept.paragraph3}</span>
               </p>
             )}
           </div>
 
           {/* Right Column - Features */}
-          <div className="space-y-3 sm:space-y-4 md:space-y-5">
-            {concept.features.map((feature: any, i: number) => (
+          <div className="space-y-5 sm:space-y-6 md:space-y-7">
+            <div className="inline-block rounded-full bg-primary/10 px-3 py-1 sm:px-4 sm:py-1.5">
+              <p className="font-sans text-[10px] uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
+            </div>
+            <div className="space-y-3 sm:space-y-4 md:space-y-5">
+              {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
-                className="group rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-card/50 sm:rounded-xl sm:p-5 md:p-6"
+                className="group rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-card/50 sm:rounded-xl sm:p-5 md:p-6 active:border-primary/30 active:bg-card/50"
               >
                 <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground sm:mb-2 sm:text-base md:text-lg">
                   {feature.title}
                 </h3>
-                <p className="font-sans text-xs leading-relaxed text-foreground/60 sm:text-sm">
+                <p className="max-h-40 overflow-hidden font-sans text-xs leading-relaxed text-foreground/60 opacity-100 transition-all duration-300 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 sm:text-sm">
                   {feature.description}
                 </p>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </div>

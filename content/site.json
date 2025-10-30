@@ -44,17 +44,18 @@
   "concept": {
     "heading": "Your Wellness Journey Begins Here",
     "vision": "Our Approach",
+    "methodology": "Methodology",
     "paragraph1": "At Hamaria, we've redefined longevity and wellness for the modern age. Through evidence-based biohacking, advanced regenerative therapies, and precision diagnostics, we empower you to optimize every aspect of your health—from cellular function to mental performance.",
     "paragraph2": "Located in the heart of Madrid's Retiro district, our state-of-the-art facility combines cutting-edge technology with personalized care. Every protocol is tailored to your unique biology, lifestyle, and goals.",
     "paragraph3": "Backed by world-class doctors and medical experts, our team brings decades of experience in functional medicine, sports performance, and regenerative therapies to guide your transformation.",
     "features": [
       {
-        "title": "Science-Driven Protocols",
-        "description": "Every therapy is backed by peer-reviewed research and clinical evidence. We leverage proven modalities to enhance cellular health, boost recovery, and extend healthspan."
-      },
-      {
         "title": "Precision Diagnostics",
         "description": "Comprehensive baseline assessments, metabolic testing, and continuous biomarker tracking ensure your protocols evolve with your progress. Data-driven insights guide every decision."
+      },
+      {
+        "title": "Science-Driven Protocols",
+        "description": "Every therapy is backed by peer-reviewed research and clinical evidence. We leverage proven modalities to enhance cellular health, boost recovery, and extend healthspan."
       },
       {
         "title": "Holistic Integration",
@@ -65,6 +66,11 @@
   "services": {
     "heading": "Our Pillars",
     "subheading": "/ Comprehensive wellness optimization",
+    "heroText": {
+      "line1": "Join us in the most exclusive urban longevity facility in Europe.",
+      "line2": "Designed for consistency, optimized for results.",
+      "line3": "A pleasant journey made easy by world class professionals, all in one place"
+    },
       "modalTitle": "Complete Wellness Ecosystem",
       "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
     "items": [
@@ -187,17 +193,18 @@
     "concept": {
       "heading": "Tu Viaje Hacia el Bienestar Comienza Aquí",
       "vision": "Nuestra Visión",
+      "methodology": "Metodología",
       "paragraph1": "En Hamaria, hemos redefinido la longevidad y el bienestar para la era contemporánea. Mediante biohacking sustentado en evidencia científica, terapias regenerativas de vanguardia y diagnósticos de alta precisión, te acompañamos en la optimización integral de tu salud—desde la función celular hasta el máximo rendimiento mental.",
       "paragraph2": "Ubicado en el emblemático barrio del Retiro madrileño, nuestro centro de última generación fusiona tecnología de vanguardia con atención meticulosamente personalizada. Cada protocolo se diseña exclusivamente para tu biología única, estilo de vida y aspiraciones vitales.",
       "paragraph3": "Respaldados por médicos y especialistas de renombre internacional, nuestro equipo atesora décadas de experiencia en medicina funcional, optimización del rendimiento deportivo y terapias regenerativas para acompañar tu transformación personal.",
       "features": [
         {
-          "title": "Protocolos Fundamentados en Ciencia",
-          "description": "Cada terapia está sustentada en investigación científica rigurosa y evidencia clínica contrastada. Empleamos modalidades clínicamente validadas para potenciar la salud celular, acelerar la recuperación y prolongar la esperanza de vida saludable."
-        },
-        {
           "title": "Diagnósticos de Alta Precisión",
           "description": "Evaluaciones basales exhaustivas, analíticas metabólicas avanzadas y monitorización continua de biomarcadores aseguran que tus protocolos evolucionen en perfecta sintonía con tu progreso. Cada decisión se fundamenta en datos precisos y personalizados."
+        },
+        {
+          "title": "Protocolos Fundamentados en Ciencia",
+          "description": "Cada terapia está sustentada en investigación científica rigurosa y evidencia clínica contrastada. Empleamos modalidades clínicamente validadas para potenciar la salud celular, acelerar la recuperación y prolongar la esperanza de vida saludable."
         },
         {
           "title": "Enfoque Holístico Integrado",
@@ -208,6 +215,11 @@
     "services": {
       "heading": "Nuestros Pilares",
       "subheading": "/ Optimización integral del bienestar",
+      "heroText": {
+        "line1": "Únete al centro urbano de longevidad más exclusivo de Europa.",
+        "line2": "Diseñado para la consistencia, optimizado para resultados.",
+        "line3": "Un viaje placentero facilitado por profesionales de clase mundial, todo en un solo lugar"
+      },
       "modalTitle": "Ecosistema Integral de Bienestar",
       "modalDescription": "Nuestro enfoque holístico integra nueve pilares interdependientes concebidos para optimizar cada dimensión de tu salud y rendimiento vital. Desde diagnósticos de alta precisión y terapias regenerativas de vanguardia hasta nutrición personalizada, movimiento consciente y potenciación cognitiva—cada pilar opera sinérgicamente para sustentar tu transformación. Descubre nuestra oferta completa de servicios, meticulosamente adaptados a tu singularidad biológica y objetivos de bienestar.",
       "items": [
