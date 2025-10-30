@@ -160,14 +160,11 @@ export function GallerySection() {
                       <Maximize2 className="h-4 w-4 text-white" />
                     </div>
                   )}
-                  {/* Gradient overlay - always visible on mobile, on hover for desktop */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
+                  {/* Minimal gradient overlay - only at bottom for text readability */}
+                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/80 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
                   {/* Title - always visible on mobile, hover on desktop */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-all duration-300 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 sm:p-4 md:p-5">
-                    <h3 className="mb-0 font-sans text-sm font-medium text-foreground sm:mb-1 sm:text-base md:text-lg lg:text-xl">{item.title}</h3>
-                    {item.description ? (
-                      <p className="font-mono text-xs text-foreground/70 sm:text-xs">{item.description}</p>
-                    ) : null}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-all duration-300 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 sm:p-3 md:p-4">
+                    <h3 className="mb-0 font-mono text-xs font-light tracking-wide text-foreground sm:mb-0 sm:text-sm md:text-base">{item.title}</h3>
                   </div>
                 </div>
               </div>
@@ -273,14 +270,11 @@ export function GallerySection() {
                         loading="lazy"
                         className="h-full w-full object-cover transition-opacity duration-300" 
                       />
-                      {/* Gradient overlay - always visible on mobile */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
+                      {/* Minimal gradient overlay - only at bottom for text readability */}
+                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/80 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
                       {/* Title - always visible on mobile */}
                       <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-all duration-300 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 sm:p-3 md:p-4">
-                        <h3 className="mb-0 font-sans text-sm font-medium text-foreground sm:mb-1 sm:text-sm md:text-base lg:text-lg">{item.title}</h3>
-                        {item.description ? (
-                          <p className="font-mono text-xs text-foreground/70 sm:text-xs md:text-xs">{item.description}</p>
-                        ) : null}
+                        <h3 className="mb-0 font-mono text-xs font-light tracking-wide text-foreground sm:mb-0 sm:text-sm md:text-base">{item.title}</h3>
                       </div>
                     </div>
                   </div>

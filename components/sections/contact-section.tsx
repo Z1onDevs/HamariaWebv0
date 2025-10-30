@@ -22,9 +22,9 @@ export function ContactSection() {
               }`}
             >
               <h2 className="mb-3 font-sans text-3xl font-light leading-[1.05] tracking-tight text-foreground sm:mb-3 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-                Let's talk
+                {contact.heading}
               </h2>
-              <p className="font-mono text-xs text-foreground/60 sm:text-xs md:text-sm lg:text-base">/ Get in touch</p>
+              <p className="font-mono text-xs text-foreground/60 sm:text-xs md:text-sm lg:text-base">{contact.subheading}</p>
             </div>
 
             <div className="space-y-6 sm:space-y-5 md:space-y-6 lg:space-y-8">
@@ -73,6 +73,34 @@ export function ContactSection() {
                   </a>
                 ))}
               </div>
+
+              {/* Footer */}
+              {t.footer && (
+                <div
+                  className={`mt-16 border-t border-primary/10 pt-8 transition-all duration-700 sm:mt-20 sm:pt-10 ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "600ms" }}
+                >
+                  {/* Footer Links */}
+                  <div className="mb-6 flex flex-wrap justify-center gap-4 sm:gap-6">
+                    {t.footer.links.map((link: any, i: number) => (
+                      <a
+                        key={i}
+                        href={link.href}
+                        className="font-mono text-xs text-foreground/50 transition-all hover:text-foreground/70 sm:text-sm"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                  
+                  {/* Copyright */}
+                  <p className="font-mono text-xs text-foreground/40 sm:text-xs">
+                    {t.footer.copyright}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

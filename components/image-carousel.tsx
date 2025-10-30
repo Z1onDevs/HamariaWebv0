@@ -206,14 +206,9 @@ export function ImageCarousel({ images, initialIndex = 0, onClose }: ImageCarous
       }`}>
         {/* Image Title */}
         <div className="p-4 sm:p-5">
-          <h3 className="mb-1 font-sans text-lg font-medium text-foreground sm:text-xl">
+          <h3 className="mb-0 font-mono text-sm font-light tracking-wide text-foreground sm:text-base">
             {currentImage.title}
           </h3>
-          {currentImage.description && (
-            <p className="font-mono text-xs text-foreground/60 sm:text-sm">
-              {currentImage.description}
-            </p>
-          )}
         </div>
 
         {/* Thumbnail Navigation Strip */}

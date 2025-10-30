@@ -143,10 +143,21 @@
     ]
   },
   "contact": {
+    "heading": "Let's talk",
+    "subheading": "/ Get in touch",
     "email": "hola@hamaria.com",
     "location": "Puerta de Alcalá, 28014, Madrid, Spain",
       "socials": ["Instagram"]
-    }
+    },
+  "footer": {
+    "copyright": "© 2026 Hamaria Club. All rights reserved.",
+    "links": [
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Terms & Conditions", "href": "/terms" },
+      { "label": "Cookie Policy", "href": "/cookies" },
+      { "label": "Legal Notice", "href": "/legal" }
+    ]
+  }
   },
   "es": {
     "siteName": "Hamaria Club",
@@ -292,9 +303,20 @@
       ]
     },
     "contact": {
+      "heading": "Hablemos",
+      "subheading": "/ Ponte en contacto",
       "email": "hola@hamaria.com",
       "location": "Puerta de Alcalá, 28014, Madrid, España",
       "socials": ["Instagram"]
+    },
+    "footer": {
+      "copyright": "© 2026 Hamaria Club. Todos los derechos reservados.",
+      "links": [
+        { "label": "Política de Privacidad", "href": "/privacy" },
+        { "label": "Términos y Condiciones", "href": "/terms" },
+        { "label": "Política de Cookies", "href": "/cookies" },
+        { "label": "Aviso Legal", "href": "/legal" }
+      ]
     }
   }
 }

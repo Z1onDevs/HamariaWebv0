@@ -55,13 +55,13 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-[9998] bg-background/80 backdrop-blur-sm animate-in fade-in duration-300 lg:hidden"
+            className="fixed inset-0 z-[9998] bg-background/60 backdrop-blur-md animate-in fade-in duration-300 lg:hidden"
             onClick={() => setIsOpen(false)}
           />
 
           {/* Drawer */}
           <div className="fixed right-0 top-0 z-[9999] h-full w-[280px] animate-in slide-in-from-right duration-300 lg:hidden sm:w-[320px]">
-            <div className="flex h-full flex-col border-l border-primary/20 bg-background/95 backdrop-blur-md">
+            <div className="flex h-full flex-col border-l border-primary/10 bg-background/80 backdrop-blur-xl shadow-2xl">
               {/* Header */}
               <div className="flex items-center justify-between border-b border-primary/10 p-4 sm:p-5">
                 <h2 className="font-sans text-lg font-light tracking-wide text-foreground sm:text-xl">
@@ -69,7 +69,7 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
                 </h2>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="rounded-lg border border-primary/20 bg-background/80 p-2 transition-all hover:border-primary/30 hover:bg-background"
+                  className="rounded-lg border border-primary/10 bg-background/40 p-2 transition-all hover:border-primary/20 hover:bg-background/60"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5 text-foreground sm:h-6 sm:w-6" />
@@ -89,15 +89,15 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
                           onClick={() => handleNavigate(sectionIndex)}
                           className={`group relative w-full rounded-lg px-4 py-3 text-left transition-all sm:px-5 sm:py-4 ${
                             isActive
-                              ? "bg-primary/10 text-foreground"
-                              : "text-foreground/70 hover:bg-primary/5 hover:text-foreground"
+                              ? "bg-primary/15 text-foreground shadow-sm"
+                              : "text-foreground/70 hover:bg-background/40 hover:text-foreground"
                           }`}
                         >
-                          <span className="font-sans text-base font-normal tracking-wide sm:text-lg">
+                          <span className="font-sans text-base font-light tracking-wide sm:text-lg">
                             {item}
                           </span>
                           {isActive && (
-                            <span className="absolute left-0 top-0 h-full w-1 rounded-r-full bg-primary" />
+                            <span className="absolute left-0 top-0 h-full w-1 rounded-r-full bg-primary shadow-sm shadow-primary/30" />
                           )}
                         </button>
                       </li>
@@ -110,7 +110,7 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
               <div className="border-t border-primary/10 p-4 sm:p-5">
                 <button
                   onClick={() => handleNavigate(4)}
-                  className="w-full rounded-lg bg-primary px-6 py-3 font-sans text-sm font-medium text-white transition-all hover:bg-primary/90 sm:text-base"
+                  className="w-full rounded-lg bg-primary px-6 py-3 font-sans text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md sm:text-base"
                 >
                   {t.applyButton}
                 </button>

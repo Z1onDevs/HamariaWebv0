@@ -367,7 +367,7 @@ export default function Home() {
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
           {/* DNA Helix - Horizontal on mobile, top of viewport */}
-          <div className="absolute left-1/2 top-20 -translate-x-1/2 sm:hidden">
+          <div className="absolute left-1/2 top-2 -translate-x-1/2 sm:hidden">
             <div className="rotate-90 scale-50">
               <DNAHelix scrollProgress={heroScrollProgress} />
             </div>
