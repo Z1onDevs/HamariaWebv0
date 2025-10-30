@@ -101,7 +101,9 @@ export default function Home() {
       const deltaY = touchStartY.current - touchEndY
       const deltaX = touchStartX.current - touchEndX
 
-      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
+      // Increase threshold to 150px to allow for scrolling within sections
+      // Only trigger page change for strong vertical swipes
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 150) {
         if (deltaY > 0 && currentSection < 5) {
           scrollToSection(currentSection + 1)
         } else if (deltaY < 0 && currentSection > 0) {
@@ -314,8 +316,15 @@ export default function Home() {
         }`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
-          <div className="flex w-full items-end justify-between gap-8">
+        <section className="relative flex min-h-screen w-screen shrink-0 flex-col items-center justify-between px-5 pb-16 pt-20 sm:flex-row sm:items-end sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
+          {/* DNA Helix - Top center on mobile, hidden on desktop */}
+          <div className="flex w-full justify-center pt-8 sm:hidden">
+            <div className="scale-75">
+              <DNAHelix scrollProgress={heroScrollProgress} />
+            </div>
+          </div>
+
+          <div className="flex w-full items-end justify-between gap-8 sm:flex-1">
             <div className="max-w-4xl flex-1">
               <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm">
                 {t.openingText}
@@ -359,6 +368,7 @@ export default function Home() {
                 </div>
               </div>
             )}
+            </div>
           </div>
 
           <div className="absolute bottom-20 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 lg:bottom-8 lg:block">

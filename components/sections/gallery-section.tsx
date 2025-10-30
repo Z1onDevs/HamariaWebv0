@@ -8,6 +8,7 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
 import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
+import { ImageCarousel } from "@/components/image-carousel"
 
 type GalleryItem = {
   src: string
@@ -30,12 +31,14 @@ export function GallerySection() {
   const folder = gallery.folder || "/gallery"
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+  const [showCarousel, setShowCarousel] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   // Swipe to close modal
   useSwipeToClose({ 
     onClose: () => setIsModalOpen(false), 
-    enabled: isModalOpen 
+    enabled: isModalOpen && !showCarousel 
   })
 
   useEffect(() => {
@@ -133,23 +136,29 @@ export function GallerySection() {
             {galleryItems.slice(0, 6).map((item, i) => (
               <div
                 key={i}
-                className={`group relative aspect-[4/3] transition-all duration-700 ${
+                className={`group relative aspect-[4/3] cursor-pointer transition-all duration-700 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
                 style={{
                   transitionDelay: `${i * 100}ms`,
                 }}
+                onClick={() => {
+                  setSelectedImageIndex(i)
+                  setShowCarousel(true)
+                }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-transform duration-500 ease-out group-hover:scale-[1.01] sm:rounded-xl md:rounded-2xl">
+                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-transform duration-500 ease-out group-hover:scale-[1.01] group-active:scale-[0.98] sm:rounded-xl md:rounded-2xl">
                   <img 
                     src={item.src} 
                     alt={item.title} 
                     loading="lazy"
                     className="h-full w-full object-cover transition-opacity duration-300" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-4 md:p-5">
-                    <h3 className="mb-1 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-base md:text-lg lg:text-xl">{item.title}</h3>
+                  {/* Gradient overlay - always visible on mobile, on hover for desktop */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
+                  {/* Title - always visible on mobile, hover on desktop */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-all duration-300 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 sm:p-4 md:p-5">
+                    <h3 className="mb-0 font-sans text-sm font-medium text-foreground sm:mb-1 sm:text-base md:text-lg lg:text-xl">{item.title}</h3>
                     {item.description ? (
                       <p className="font-mono text-xs text-foreground/70 sm:text-xs">{item.description}</p>
                     ) : null}
@@ -178,7 +187,17 @@ export function GallerySection() {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Image Carousel - Full Screen */}
+      {mounted && showCarousel && createPortal(
+        <ImageCarousel
+          images={galleryItems}
+          initialIndex={selectedImageIndex}
+          onClose={() => setShowCarousel(false)}
+        />,
+        document.body
+      )}
+
+      {/* Modal - Additional Images Grid */}
       {mounted && isModalOpen && createPortal(
         <div 
           className="fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4"
@@ -229,22 +248,30 @@ export function GallerySection() {
                   {galleryItems.slice(6, 12).map((item, i) => (
                   <div
                     key={i}
-                    className="group relative aspect-[4/3] animate-in fade-in slide-in-from-bottom-4"
+                    className="group relative aspect-[4/3] cursor-pointer animate-in fade-in slide-in-from-bottom-4"
                     style={{
                       animationDelay: `${i * 100}ms`,
                       animationFillMode: "backwards",
                     }}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setIsModalOpen(false)
+                      setSelectedImageIndex(i + 6)
+                      setShowCarousel(true)
+                    }}
                   >
-                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-500 ease-out group-hover:scale-[1.01] group-hover:border-primary/20 group-hover:shadow-lg sm:rounded-lg md:rounded-xl">
+                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-500 ease-out group-hover:scale-[1.01] group-hover:border-primary/20 group-hover:shadow-lg group-active:scale-[0.98] sm:rounded-lg md:rounded-xl">
                       <img 
                         src={item.src} 
                         alt={item.title} 
                         loading="lazy"
                         className="h-full w-full object-cover transition-opacity duration-300" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                      <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:p-3 md:p-4">
-                        <h3 className="mb-1 font-sans text-sm font-light text-foreground sm:mb-1 sm:text-sm md:text-base lg:text-lg">{item.title}</h3>
+                      {/* Gradient overlay - always visible on mobile */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
+                      {/* Title - always visible on mobile */}
+                      <div className="absolute bottom-0 left-0 right-0 p-3 opacity-100 transition-all duration-300 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 sm:p-3 md:p-4">
+                        <h3 className="mb-0 font-sans text-sm font-medium text-foreground sm:mb-1 sm:text-sm md:text-base lg:text-lg">{item.title}</h3>
                         {item.description ? (
                           <p className="font-mono text-xs text-foreground/70 sm:text-xs md:text-xs">{item.description}</p>
                         ) : null}

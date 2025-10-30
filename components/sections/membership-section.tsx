@@ -139,6 +139,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>("")
+  const [expandedCard, setExpandedCard] = useState<number | null>(null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -425,35 +426,71 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 </div>
               )}
 
-              <div className="mb-4 flex-1 overflow-x-auto sm:mb-4">
-                <div className="min-w-full">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="border-b border-foreground/10">
-                        <th className="pb-2 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
-                          Therapy
-                        </th>
-                        <th className="pb-2 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
-                          Sessions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {membership.features.map((feature, j) => (
-                        <tr
-                          key={j}
-                          className="border-b border-foreground/5 transition-colors active:bg-foreground/10 sm:hover:bg-foreground/5"
-                        >
-                          <td className="py-2.5 pr-3 text-xs leading-relaxed text-foreground/80 sm:py-2 sm:pr-2 sm:text-xs">
-                            {feature.name}
-                          </td>
-                          <td className="py-2.5 text-right font-mono text-xs tracking-wide text-foreground/60 sm:py-2 sm:text-xs">
-                            {feature.schedule}
-                          </td>
+              {/* Therapy count summary */}
+              <div className="mb-3">
+                <p className="font-mono text-xs text-foreground/60">
+                  {membership.features.length} therapies included
+                </p>
+              </div>
+
+              {/* Toggle button for therapy details */}
+              <button
+                onClick={() => setExpandedCard(expandedCard === i ? null : i)}
+                className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all hover:border-primary/30 hover:bg-background/40 active:bg-background/50"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-sans text-sm font-medium text-foreground">
+                    {expandedCard === i ? "Hide Details" : "View Details"}
+                  </span>
+                  <svg
+                    className={`h-5 w-5 text-foreground/60 transition-transform duration-300 ${
+                      expandedCard === i ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
+
+              {/* Collapsible therapy list */}
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  expandedCard === i ? "mb-4 max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="overflow-x-auto">
+                  <div className="min-w-full">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-foreground/10">
+                          <th className="pb-2 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
+                            Therapy
+                          </th>
+                          <th className="pb-2 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
+                            Sessions
+                          </th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {membership.features.map((feature, j) => (
+                          <tr
+                            key={j}
+                            className="border-b border-foreground/5 transition-colors active:bg-foreground/10 sm:hover:bg-foreground/5"
+                          >
+                            <td className="py-2.5 pr-3 text-xs leading-relaxed text-foreground/80 sm:py-2 sm:pr-2 sm:text-xs">
+                              {feature.name}
+                            </td>
+                            <td className="py-2.5 text-right font-mono text-xs tracking-wide text-foreground/60 sm:py-2 sm:text-xs">
+                              {feature.schedule}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 

@@ -10,21 +10,21 @@ interface SectionDotsProps {
 export function SectionDots({ totalSections, currentSection, onNavigate, isLoaded }: SectionDotsProps) {
   return (
     <div
-      className={`fixed bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-primary/20 bg-background/80 px-3 py-2 backdrop-blur-md transition-all duration-700 sm:bottom-8 sm:gap-3 sm:px-4 sm:py-2.5 lg:hidden ${
-        isLoaded ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      className={`fixed right-4 top-1/2 z-40 flex -translate-y-1/2 flex-col items-center gap-3 rounded-full border border-primary/20 bg-background/80 px-2 py-4 backdrop-blur-md transition-all duration-700 sm:right-6 sm:gap-4 sm:px-2.5 sm:py-5 lg:hidden ${
+        isLoaded ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
       }`}
     >
       {Array.from({ length: totalSections }).map((_, index) => (
         <button
           key={index}
           onClick={() => onNavigate(index)}
-          className="group relative p-2"
+          className="group relative p-1.5"
           aria-label={`Go to section ${index + 1}`}
         >
           <div
-            className={`h-2 w-2 rounded-full transition-all duration-300 sm:h-2.5 sm:w-2.5 ${
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
               currentSection === index
-                ? "bg-primary scale-125"
+                ? "bg-primary h-3 w-3"
                 : "bg-foreground/30 hover:bg-foreground/50 group-hover:scale-110"
             }`}
           />
