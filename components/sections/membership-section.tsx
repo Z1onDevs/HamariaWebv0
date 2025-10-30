@@ -5,6 +5,7 @@ import { createPortal } from "react-dom"
 
 import { useReveal } from "@/hooks/use-reveal"
 import { useTranslation } from "@/hooks/use-translation"
+import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
 import { MagneticButton } from "@/components/magnetic-button"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
@@ -152,6 +153,12 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const isSpecialCode = formData.inviteCode.toUpperCase() === "HAMARIA&FRIENDS"
   const discount = isSpecialCode ? 40 : 30
   const form = t.membershipForm
+
+  // Swipe to close modal
+  useSwipeToClose({ 
+    onClose: () => setIsModalOpen(false), 
+    enabled: isModalOpen 
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -382,7 +389,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center overflow-y-auto px-5 py-24 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
       <div className="mx-auto w-full max-w-7xl px-0 pt-20 sm:px-4 sm:pt-12 md:pt-8">
         <div className="grid gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:gap-6">
@@ -499,20 +506,20 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               </div>
 
               {/* Title */}
-              <div className="mb-4 animate-in fade-in slide-in-from-top-4 sm:mb-5 md:mb-6" style={{ animationDelay: "100ms", animationFillMode: "backwards" }}>
-                <h2 className="mb-2 font-sans text-xl font-light tracking-tight text-foreground sm:text-2xl md:text-3xl">
+              <div className="mb-5 animate-in fade-in slide-in-from-top-4 sm:mb-5 md:mb-6" style={{ animationDelay: "100ms", animationFillMode: "backwards" }}>
+                <h2 className="mb-3 font-sans text-2xl font-light tracking-tight text-foreground sm:text-2xl md:text-3xl">
                   {form.applyFor} {selectedPlan}
                 </h2>
-                <p className="font-mono text-[10px] text-foreground/60 sm:text-xs">
+                <p className="font-mono text-xs text-foreground/60 sm:text-xs">
                   {form.subtitle}
                 </p>
               </div>
 
               {/* Application Form */}
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-5">
                 {/* Name */}
                 <div className="animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: "200ms", animationFillMode: "backwards" }}>
-                  <label className="mb-1 block font-mono text-[10px] text-foreground/60 sm:mb-1.5 sm:text-xs">
+                  <label className="mb-2 block font-mono text-sm font-medium text-foreground/70 sm:mb-1.5 sm:text-xs">
                     {form.nameLabel}
                   </label>
                   <input
@@ -520,14 +527,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-3 py-2 text-xs text-foreground placeholder:text-foreground/40 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-2.5 sm:text-sm"
+                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-4 py-3.5 text-sm text-foreground placeholder:text-foreground/40 transition-all focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3 sm:text-sm"
                     placeholder={form.namePlaceholder}
                   />
                 </div>
 
                 {/* Email */}
                 <div className="animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: "300ms", animationFillMode: "backwards" }}>
-                  <label className="mb-1 block font-mono text-[10px] text-foreground/60 sm:mb-1.5 sm:text-xs">
+                  <label className="mb-2 block font-mono text-sm font-medium text-foreground/70 sm:mb-1.5 sm:text-xs">
                     {form.emailLabel}
                   </label>
                   <input
@@ -535,14 +542,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-3 py-2 text-xs text-foreground placeholder:text-foreground/40 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-2.5 sm:text-sm"
+                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-4 py-3.5 text-sm text-foreground placeholder:text-foreground/40 transition-all focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3 sm:text-sm"
                     placeholder={form.emailPlaceholder}
                   />
                 </div>
 
                 {/* Phone */}
                 <div className="animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: "400ms", animationFillMode: "backwards" }}>
-                  <label className="mb-1 block font-mono text-[10px] text-foreground/60 sm:mb-1.5 sm:text-xs">
+                  <label className="mb-2 block font-mono text-sm font-medium text-foreground/70 sm:mb-1.5 sm:text-xs">
                     {form.phoneLabel}
                   </label>
                   <input
@@ -550,41 +557,41 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-3 py-2 text-xs text-foreground placeholder:text-foreground/40 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-2.5 sm:text-sm"
+                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-4 py-3.5 text-sm text-foreground placeholder:text-foreground/40 transition-all focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3 sm:text-sm"
                     placeholder={form.phonePlaceholder}
                   />
                 </div>
 
                 {/* Invitation Code */}
                 <div className="animate-in fade-in slide-in-from-bottom-4" style={{ animationDelay: "500ms", animationFillMode: "backwards" }}>
-                  <label className="mb-1 block font-mono text-[10px] text-foreground/60 sm:mb-1.5 sm:text-xs">
+                  <label className="mb-2 block font-mono text-sm font-medium text-foreground/70 sm:mb-1.5 sm:text-xs">
                     {form.inviteLabel} <span className="text-foreground/40">{form.inviteOptional}</span>
                   </label>
                   <input
                     type="text"
                     value={formData.inviteCode}
                     onChange={(e) => setFormData({ ...formData, inviteCode: e.target.value })}
-                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-3 py-2 font-mono text-xs uppercase tracking-wider text-foreground placeholder:text-foreground/40 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-2.5 sm:text-sm"
+                    className="w-full rounded-lg border border-primary/20 bg-background/50 px-4 py-3.5 font-mono text-sm uppercase tracking-wider text-foreground placeholder:text-foreground/40 transition-all focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20 sm:px-4 sm:py-3 sm:text-sm"
                     placeholder={form.invitePlaceholder}
                   />
                 </div>
 
                 {/* Submit Button */}
-                <div className="animate-in fade-in slide-in-from-bottom-4 pt-2" style={{ animationDelay: "600ms", animationFillMode: "backwards" }}>
+                <div className="animate-in fade-in slide-in-from-bottom-4 pt-3" style={{ animationDelay: "600ms", animationFillMode: "backwards" }}>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-full bg-primary px-6 py-2.5 font-sans text-xs font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md disabled:opacity-50 sm:px-8 sm:py-3 sm:text-sm"
+                    className="w-full rounded-full bg-primary px-6 py-4 font-sans text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md disabled:opacity-50 sm:px-8 sm:py-3.5 sm:text-sm"
                   >
                     {isSubmitting ? form.submitting : submitSuccess ? form.success : form.submitButton}
                   </button>
                   {submitSuccess && (
-                    <p className="mt-3 text-center font-mono text-[10px] text-primary sm:text-xs">
+                    <p className="mt-3 text-center font-mono text-xs text-primary sm:text-xs">
                       {form.successMessage}
                     </p>
                   )}
                   {submitError && (
-                    <p className="mt-3 text-center font-mono text-[10px] text-destructive sm:text-xs">
+                    <p className="mt-3 text-center font-mono text-xs text-destructive sm:text-xs">
                       {submitError}
                     </p>
                   )}

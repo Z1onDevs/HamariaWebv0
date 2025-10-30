@@ -7,6 +7,7 @@ import { X } from "lucide-react"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
+import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
 
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -17,6 +18,12 @@ export function ServicesSection() {
   
   const primaryServices = services.items.filter((item: any) => item.primary === true)
   const hasMoreServices = services.items.some((item: any) => item.primary === false)
+
+  // Swipe to close modal
+  useSwipeToClose({ 
+    onClose: () => setIsModalOpen(false), 
+    enabled: isModalOpen 
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -55,7 +62,7 @@ export function ServicesSection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center overflow-y-auto px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl pt-16 sm:pt-0">
           {/* Hero Text */}

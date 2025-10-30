@@ -12,22 +12,22 @@ export function ContactSection() {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center overflow-y-auto px-5 py-24 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
       <div className="mx-auto w-full max-w-3xl pt-16 text-center sm:pt-0">
         <div className="flex flex-col items-center justify-center">
             <div
-              className={`mb-6 transition-all duration-700 sm:mb-8 md:mb-10 lg:mb-12 ${
+              className={`mb-8 transition-all duration-700 sm:mb-8 md:mb-10 lg:mb-12 ${
                 isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
               }`}
             >
-              <h2 className="mb-2 font-sans text-3xl font-light leading-[1.05] tracking-tight text-foreground sm:mb-3 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              <h2 className="mb-3 font-sans text-3xl font-light leading-[1.05] tracking-tight text-foreground sm:mb-3 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
                 Let's talk
               </h2>
-              <p className="font-mono text-[10px] text-foreground/60 sm:text-xs md:text-sm lg:text-base">/ Get in touch</p>
+              <p className="font-mono text-xs text-foreground/60 sm:text-xs md:text-sm lg:text-base">/ Get in touch</p>
             </div>
 
-            <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
+            <div className="space-y-6 sm:space-y-5 md:space-y-6 lg:space-y-8">
               <a
                 href={`mailto:${contact.email}`}
                 className={`group block transition-all duration-700 ${
@@ -35,11 +35,11 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "200ms" }}
               >
-                <div className="mb-1 flex items-center justify-center gap-2 sm:mb-1.5 sm:gap-2.5">
-                  <Mail className="h-3 w-3 text-foreground/60 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" />
-                  <span className="font-mono text-[10px] text-foreground/60 sm:text-xs md:text-sm">Email</span>
+                <div className="mb-2 flex items-center justify-center gap-2 sm:mb-1.5 sm:gap-2.5">
+                  <Mail className="h-4 w-4 text-foreground/60 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" />
+                  <span className="font-mono text-xs text-foreground/60 sm:text-xs md:text-sm">Email</span>
                 </div>
-                <p className="text-lg text-foreground transition-colors group-hover:text-foreground/70 sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+                <p className="text-xl text-foreground transition-colors group-hover:text-foreground/70 sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
                   {contact.email}
                 </p>
               </a>
@@ -50,15 +50,15 @@ export function ContactSection() {
                 }`}
                 style={{ transitionDelay: "350ms" }}
               >
-                <div className="mb-1 flex items-center justify-center gap-2 sm:mb-1.5 sm:gap-2.5">
-                  <MapPin className="h-3 w-3 text-foreground/60 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" />
-                  <span className="font-mono text-[10px] text-foreground/60 sm:text-xs md:text-sm">Location</span>
+                <div className="mb-2 flex items-center justify-center gap-2 sm:mb-1.5 sm:gap-2.5">
+                  <MapPin className="h-4 w-4 text-foreground/60 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4" />
+                  <span className="font-mono text-xs text-foreground/60 sm:text-xs md:text-sm">Location</span>
                 </div>
-                <p className="text-lg text-foreground sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{contact.location}</p>
+                <p className="text-base text-foreground sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">{contact.location}</p>
               </div>
 
               <div
-                className={`flex flex-wrap justify-center gap-3 pt-2 transition-all duration-700 sm:gap-4 sm:pt-3 md:pt-4 lg:pt-6 ${
+                className={`flex flex-wrap justify-center gap-4 pt-4 transition-all duration-700 sm:gap-4 sm:pt-3 md:pt-4 lg:pt-6 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
                 style={{ transitionDelay: "500ms" }}
@@ -67,7 +67,7 @@ export function ContactSection() {
                   <a
                     key={social}
                     href="#"
-                    className="border-b border-transparent font-mono text-xs text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90 sm:text-sm"
+                    className="border-b border-transparent py-2 font-mono text-sm text-foreground/60 transition-all hover:border-foreground/60 hover:text-foreground/90 sm:text-sm"
                   >
                     {social}
                   </a>
@@ -78,4 +78,4 @@ export function ContactSection() {
         </div>
       </section>
     )
-}
+  }

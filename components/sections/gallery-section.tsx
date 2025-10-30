@@ -7,6 +7,7 @@ import { X } from "lucide-react"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
+import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
 
 type GalleryItem = {
   src: string
@@ -30,6 +31,12 @@ export function GallerySection() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([])
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+
+  // Swipe to close modal
+  useSwipeToClose({ 
+    onClose: () => setIsModalOpen(false), 
+    enabled: isModalOpen 
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -119,7 +126,7 @@ export function GallerySection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center overflow-y-auto px-4 py-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-5xl pt-24 sm:pt-16 md:pt-8 lg:max-w-6xl xl:max-w-7xl">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
