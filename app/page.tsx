@@ -368,7 +368,6 @@ export default function Home() {
                 </div>
               </div>
             )}
-            </div>
           </div>
 
           <div className="absolute bottom-20 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 lg:bottom-8 lg:block">
