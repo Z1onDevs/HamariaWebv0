@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { useReveal } from "@/hooks/use-reveal"
-import { X } from "lucide-react"
+import { X, Maximize2 } from "lucide-react"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
@@ -132,11 +132,11 @@ export function GallerySection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-5xl lg:max-w-6xl xl:max-w-7xl">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
             {galleryItems.slice(0, 6).map((item, i) => (
               <div
                 key={i}
-                className={`group relative aspect-[4/3] cursor-pointer transition-all duration-700 ${
+                className={`group relative aspect-[3/4] cursor-pointer transition-all duration-700 md:aspect-[4/3] ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
                 style={{
@@ -147,13 +147,19 @@ export function GallerySection() {
                   setShowCarousel(true)
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-transform duration-500 ease-out group-hover:scale-[1.01] group-active:scale-[0.98] sm:rounded-xl md:rounded-2xl">
+                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-all duration-300 ease-out group-hover:scale-[1.02] group-active:scale-[0.96] sm:rounded-xl md:rounded-2xl">
                   <img 
                     src={item.src} 
                     alt={item.title} 
                     loading="lazy"
                     className="h-full w-full object-cover transition-opacity duration-300" 
                   />
+                  {/* Tap hint icon - mobile only, first image */}
+                  {i === 0 && (
+                    <div className="absolute right-2 top-2 animate-pulse rounded-full bg-primary/90 p-2 md:hidden">
+                      <Maximize2 className="h-4 w-4 text-white" />
+                    </div>
+                  )}
                   {/* Gradient overlay - always visible on mobile, on hover for desktop */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
                   {/* Title - always visible on mobile, hover on desktop */}
@@ -244,11 +250,11 @@ export function GallerySection() {
 
               {/* Images Grid */}
               {galleryItems.length > 6 && (
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5">
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5">
                   {galleryItems.slice(6, 12).map((item, i) => (
                   <div
                     key={i}
-                    className="group relative aspect-[4/3] cursor-pointer animate-in fade-in slide-in-from-bottom-4"
+                    className="group relative aspect-[3/4] cursor-pointer animate-in fade-in slide-in-from-bottom-4 md:aspect-[4/3]"
                     style={{
                       animationDelay: `${i * 100}ms`,
                       animationFillMode: "backwards",
@@ -260,7 +266,7 @@ export function GallerySection() {
                       setShowCarousel(true)
                     }}
                   >
-                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-500 ease-out group-hover:scale-[1.01] group-hover:border-primary/20 group-hover:shadow-lg group-active:scale-[0.98] sm:rounded-lg md:rounded-xl">
+                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 shadow-md transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:border-primary/20 group-hover:shadow-lg group-active:scale-[0.96] sm:rounded-lg md:rounded-xl">
                       <img 
                         src={item.src} 
                         alt={item.title} 
