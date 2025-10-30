@@ -85,13 +85,12 @@ export function ContactSection() {
                   {/* Footer Links */}
                   <div className="mb-6 flex flex-wrap justify-center gap-4 sm:gap-6">
                     {t.footer.links.map((link: any, i: number) => (
-                      <a
+                      <span
                         key={i}
-                        href={link.href}
-                        className="font-mono text-xs text-foreground/50 transition-all hover:text-foreground/70 sm:text-sm"
+                        className="font-mono text-xs text-foreground/50 sm:text-sm"
                       >
                         {link.label}
-                      </a>
+                      </span>
                     ))}
                   </div>
                   

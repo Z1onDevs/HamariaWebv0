@@ -8,6 +8,10 @@ interface SectionDotsProps {
 }
 
 export function SectionDots({ totalSections, currentSection, onNavigate, isLoaded }: SectionDotsProps) {
+  // Don't render section dots - not needed
+  return null
+  
+  /* Keeping code for potential future use
   return (
     <div
       className={`fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-3 rounded-full border border-primary/20 bg-background/80 px-2 py-4 backdrop-blur-md transition-all duration-700 sm:right-6 sm:gap-4 sm:px-2.5 sm:py-5 lg:flex ${
