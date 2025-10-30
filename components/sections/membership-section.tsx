@@ -49,7 +49,7 @@ const therapyMatrix = [
   },
   {
     name: "IHHT (intermittent hypoxic-hyperoxic)",
-    allocations: { core: 0, performance: 4, aesthetics: 4 },
+    allocations: { core: 0, performance: 4, aesthetics: 0 },
   },
   {
     name: "Hyperbaric oxygen therapy (HBOT)",
@@ -60,16 +60,8 @@ const therapyMatrix = [
     allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
-    name: "NAD+ IV (per year)",
-    allocations: { core: 1, performance: 1, aesthetics: 2 },
-  },
-  {
     name: "Microcurrent & LED facial",
     allocations: { core: 0, performance: 0, aesthetics: 4 },
-  },
-  {
-    name: "Sofwave (ultrasound facelift) per year",
-    allocations: { core: 1, performance: 1, aesthetics: 2 },
   },
   {
     name: "Indiba (RF/Tecar)",
@@ -77,7 +69,7 @@ const therapyMatrix = [
   },
   {
     name: "Pressotherapy",
-    allocations: { core: 2, performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { core: 4, performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Pilates (class/session)",
@@ -104,20 +96,32 @@ const therapyMatrix = [
     allocations: { core: 0, performance: 0, aesthetics: 1 },
   },
   {
-    name: "Baseline assessment",
-    allocations: { core: 1, performance: 1, aesthetics: 1 },
-  },
-  {
     name: "Swim",
     allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
-    name: "VO2 max",
-    allocations: { core: 0, performance: 4, aesthetics: 4 },
-  },
-  {
     name: "Personal trainer",
     allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+  },
+  {
+    name: "Baseline assessment (per year)",
+    allocations: { core: 1, performance: 1, aesthetics: 1 },
+  },
+  {
+    name: "VO2 max (per year)",
+    allocations: { core: 0, performance: 4, aesthetics: 0 },
+  },
+  {
+    name: "Sofwave (ultrasound facelift) (per year)",
+    allocations: { core: 1, performance: 1, aesthetics: 0 },
+  },
+  {
+    name: "Sofwave (ultrasound facelift)",
+    allocations: { core: 0, performance: 0, aesthetics: 2 },
+  },
+  {
+    name: "NAD+ IV (per year)",
+    allocations: { core: 1, performance: 1, aesthetics: 2 },
   },
 ] satisfies Array<{
   name: string
@@ -230,13 +234,19 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     }
   }
 
-  const formatAllocation = (value: number | string) => {
+  const formatAllocation = (value: number | string, therapyName: string = "") => {
     if (value === "Unlimited") return "Unlimited"
     if (!value || value === 0) return null
+    
+    // Check if therapy is yearly
+    const isYearly = therapyName.includes("(per year)")
+    
     if (typeof value === "number") {
     if (value >= 1) {
       const rounded = Number.isInteger(value) ? value.toFixed(0) : value.toFixed(1)
-      return `${rounded.replace(/\.0$/, "")} sessions/mo`
+      // Don't add /month suffix for yearly therapies
+      if (isYearly) return `${rounded.replace(/\.0$/, "")}`
+      return `${rounded.replace(/\.0$/, "")}/month`
     }
     const months = Math.round(1 / value)
     return months <= 1 ? "Monthly" : `Every ${months} months`
@@ -244,15 +254,18 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     return value
   }
 
-  const formatExtraAllocation = (currentValue: number | string, baseValue: number | string) => {
+  const formatExtraAllocation = (currentValue: number | string, baseValue: number | string, therapyName: string = "") => {
     // If base is Unlimited and current is Unlimited, no difference
     if (baseValue === "Unlimited" && currentValue === "Unlimited") return null
     
     // If base is 0 or doesn't exist, show the full value as new
-    if (!baseValue || baseValue === 0) return formatAllocation(currentValue)
+    if (!baseValue || baseValue === 0) return formatAllocation(currentValue, therapyName)
     
     // If current is Unlimited but base isn't
     if (currentValue === "Unlimited" && baseValue !== "Unlimited") return "Unlimited"
+    
+    // Check if therapy is yearly
+    const isYearly = therapyName.includes("(per year)")
     
     // Calculate numeric difference
     if (typeof currentValue === 'number' && typeof baseValue === 'number') {
@@ -261,14 +274,16 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       
       if (diff >= 1) {
         const rounded = Number.isInteger(diff) ? diff.toFixed(0) : diff.toFixed(1)
-        return `+${rounded.replace(/\.0$/, "")} extra sessions/mo`
+        // Don't add /month suffix for yearly therapies
+        if (isYearly) return `+${rounded.replace(/\.0$/, "")} extra`
+        return `+${rounded.replace(/\.0$/, "")} extra/month`
       }
       
       const months = Math.round(1 / diff)
-      return `+${months <= 1 ? "1 extra/mo" : `1 extra per ${months} months`}`
+      return `+${months <= 1 ? "1 extra" : `1 extra per ${months} months`}`
     }
     
-    return formatAllocation(currentValue)
+    return formatAllocation(currentValue, therapyName)
   }
 
   const formatMinutes = (value: number) =>
@@ -284,7 +299,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           features = therapyMatrix
             .map((therapy) => {
               const allocation = therapy.allocations.core
-              const schedule = formatAllocation(allocation)
+              const schedule = formatAllocation(allocation, therapy.name)
               if (!schedule) return null
               
               return {
@@ -315,7 +330,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               const isIncreased = typeof coreAllocation === 'number' && typeof perfAllocation === 'number' && perfAllocation > coreAllocation
               
               if (isNew || isIncreased) {
-                const schedule = formatExtraAllocation(perfAllocation, coreAllocation)
+                const schedule = formatExtraAllocation(perfAllocation, coreAllocation, therapy.name)
                 if (!schedule) return null
                 
                 return {
@@ -342,7 +357,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               const isIncreased = typeof coreAllocation === 'number' && typeof aesAllocation === 'number' && aesAllocation > coreAllocation
               
               if (isNew || isIncreased) {
-                const schedule = formatExtraAllocation(aesAllocation, coreAllocation)
+                const schedule = formatExtraAllocation(aesAllocation, coreAllocation, therapy.name)
                 if (!schedule) return null
                 
                 return {

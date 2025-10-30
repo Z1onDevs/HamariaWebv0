@@ -69,7 +69,7 @@
     "heroText": {
       "line1": "Join us in the most exclusive urban longevity facility in Europe.",
       "line2": "Designed for consistency, optimized for results.",
-      "line3": "A pleasant journey made easy by world class professionals, all in one place"
+      "line3": "A pleasant journey made easy by world class professionals, all in one place."
     },
       "modalTitle": "Complete Wellness Ecosystem",
       "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
@@ -94,7 +94,7 @@
         },
         {
           "title": "Physical Medicine & Regeneration",
-          "description": "HBOT, PEMF, Red/NIR Light, Cryotherapyand IHHT training to optimize recovery, mobility, and physical performance.",
+          "description": "HBOT, PEMF, Red/NIR Light, Cryotherapy and IHHT training to optimize recovery, mobility, and physical performance.",
           "direction": "top",
           "primary": false
         },
@@ -112,7 +112,7 @@
       },
       {
         "title": "Advanced Diagnostics",
-        "description": "Epigenetic age tracking,hormone analysis, VO₂ testing, and continuous biomarker tracking for precision optimization.",
+        "description": "Epigenetic age tracking, hormone analysis, VO₂ testing, and continuous biomarker tracking for precision optimization.",
           "direction": "bottom",
           "primary": false
       },
@@ -158,11 +158,11 @@
     "applyButtonShort": "Unirse",
     "moreLink": "Más",
     "membershipForm": {
-      "earlyBirdTitle": "Oferta Early Bird",
-      "earlyBirdText": "Limitada a los primeros 42 solicitantes admitidos",
+      "earlyBirdTitle": "Oferta Fundadores",
+      "earlyBirdText": "Limitada a los primeros 42 miembros",
       "discount": "descuento",
       "applyFor": "Solicitar",
-      "subtitle": "Completa el formulario para comenzar tu viaje de bienestar",
+      "subtitle": "Completa el formulario para iniciar tu transformación",
       "nameLabel": "Nombre Completo",
       "namePlaceholder": "Tu nombre completo",
       "emailLabel": "Correo Electrónico",
@@ -175,12 +175,12 @@
       "submitButton": "Enviar Solicitud",
       "submitting": "Enviando...",
       "success": "¡Solicitud Enviada!",
-      "successMessage": "¡Gracias! Nos pondremos en contacto pronto.",
-      "includesAll": "Incluye todas las terapias Longevity + más:"
+      "successMessage": "¡Gracias! Te contactaremos pronto.",
+      "includesAll": "Incluye todas las terapias Longevity más:"
     },
     "hero": {
       "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
-      "description": "Experimenta la regeneración holística en el corazón de Madrid. Hamaria Club ofrece experiencias de bienestar meticulosamente diseñadas que armonizan mente, cuerpo y espíritu mediante la sabiduría ancestral y la innovación de vanguardia.",
+      "description": "Regeneración holística en el corazón de Madrid. Experiencias diseñadas para armonizar mente, cuerpo y espíritu, fusionando sabiduría ancestral e innovación científica.",
       "primaryCta": "Explorar Membresías",
       "secondaryCta": "Descubre Nuestra Filosofía"
     },
@@ -188,27 +188,27 @@
       "folder": "/retiro render copia",
       "items": [],
       "modalTitle": "Nuestros Espacios",
-      "modalDescription": "Descubre nuestro santuario meticulosamente concebido en el emblemático barrio del Retiro madrileño. Cada espacio ha sido diseñado para crear una experiencia de bienestar inmersiva—desde nuestro gimnasio de última generación dotado con tecnología de entrenamiento de vanguardia, hasta nuestra serena entrada al spa que establece el preludio de tu transformación. Nuestras instalaciones comprenden espacios dedicados para masajes terapéuticos y recuperación profunda, zonas avanzadas de hidroterapia con baños de sal y magnesio, saunas tradicionales e infrarrojas complementadas con piscinas de inmersión en hielo para terapia de contraste térmico, y áreas especializadas de entrenamiento acuático con cintas de natación de última generación. Cada ambiente ha sido intencionalmente diseñado para acompañar tu viaje hacia la salud óptima y la longevidad."
+      "modalDescription": "Un santuario en el corazón del Retiro. Gimnasio de última generación, zonas de hidroterapia con baños de sal y magnesio, saunas e inmersión en hielo, áreas de entrenamiento acuático y espacios dedicados a terapias regenerativas. Cada ambiente diseñado para tu transformación hacia la salud óptima."
     },
     "concept": {
-      "heading": "Tu Viaje Hacia el Bienestar Comienza Aquí",
+      "heading": "Tu Viaje de Transformación Comienza Aquí",
       "vision": "Nuestra Visión",
       "methodology": "Metodología",
-      "paragraph1": "En Hamaria, hemos redefinido la longevidad y el bienestar para la era contemporánea. Mediante biohacking sustentado en evidencia científica, terapias regenerativas de vanguardia y diagnósticos de alta precisión, te acompañamos en la optimización integral de tu salud—desde la función celular hasta el máximo rendimiento mental.",
-      "paragraph2": "Ubicado en el emblemático barrio del Retiro madrileño, nuestro centro de última generación fusiona tecnología de vanguardia con atención meticulosamente personalizada. Cada protocolo se diseña exclusivamente para tu biología única, estilo de vida y aspiraciones vitales.",
-      "paragraph3": "Respaldados por médicos y especialistas de renombre internacional, nuestro equipo atesora décadas de experiencia en medicina funcional, optimización del rendimiento deportivo y terapias regenerativas para acompañar tu transformación personal.",
+      "paragraph1": "Redefinimos longevidad y bienestar. Mediante biohacking científico, terapias regenerativas y diagnósticos de precisión, optimizamos tu salud de forma integral—desde la función celular hasta el rendimiento mental.",
+      "paragraph2": "En el corazón del Retiro, fusionamos tecnología avanzada y atención personalizada. Cada protocolo se diseña exclusivamente para tu biología, estilo de vida y objetivos.",
+      "paragraph3": "Nuestro equipo de médicos y especialistas internacionales aporta décadas de experiencia en medicina funcional, rendimiento deportivo y terapias regenerativas.",
       "features": [
         {
-          "title": "Diagnósticos de Alta Precisión",
-          "description": "Evaluaciones basales exhaustivas, analíticas metabólicas avanzadas y monitorización continua de biomarcadores aseguran que tus protocolos evolucionen en perfecta sintonía con tu progreso. Cada decisión se fundamenta en datos precisos y personalizados."
+          "title": "Diagnósticos de Precisión",
+          "description": "Evaluaciones exhaustivas, análisis metabólicos y monitorización continua de biomarcadores. Tus protocolos evolucionan con tu progreso, fundamentados en datos personalizados."
         },
         {
-          "title": "Protocolos Fundamentados en Ciencia",
-          "description": "Cada terapia está sustentada en investigación científica rigurosa y evidencia clínica contrastada. Empleamos modalidades clínicamente validadas para potenciar la salud celular, acelerar la recuperación y prolongar la esperanza de vida saludable."
+          "title": "Protocolos Científicos",
+          "description": "Cada terapia respaldada por investigación rigurosa y evidencia clínica. Empleamos modalidades validadas para potenciar la salud celular, acelerar la recuperación y prolongar la vida saludable."
         },
         {
-          "title": "Enfoque Holístico Integrado",
-          "description": "La auténtica optimización requiere armonía y equilibrio. Contemplamos la recuperación, el rendimiento, la estética y la longevidad mediante un enfoque integrado que honra al cuerpo como un sistema interconectado e indivisible."
+          "title": "Enfoque Holístico",
+          "description": "La verdadera optimización requiere equilibrio. Integramos recuperación, rendimiento, estética y longevidad, honrando al cuerpo como un sistema único e interconectado."
         }
       ]
     },
@@ -216,76 +216,76 @@
       "heading": "Nuestros Pilares",
       "subheading": "/ Optimización integral del bienestar",
       "heroText": {
-        "line1": "Únete al centro urbano de longevidad más exclusivo de Europa.",
+        "line1": "El centro urbano de longevidad más exclusivo de Europa.",
         "line2": "Diseñado para la consistencia, optimizado para resultados.",
-        "line3": "Un viaje placentero facilitado por profesionales de clase mundial, todo en un solo lugar"
+        "line3": "Un viaje guiado por profesionales de clase mundial en un solo lugar."
       },
       "modalTitle": "Ecosistema Integral de Bienestar",
-      "modalDescription": "Nuestro enfoque holístico integra nueve pilares interdependientes concebidos para optimizar cada dimensión de tu salud y rendimiento vital. Desde diagnósticos de alta precisión y terapias regenerativas de vanguardia hasta nutrición personalizada, movimiento consciente y potenciación cognitiva—cada pilar opera sinérgicamente para sustentar tu transformación. Descubre nuestra oferta completa de servicios, meticulosamente adaptados a tu singularidad biológica y objetivos de bienestar.",
+      "modalDescription": "Nueve pilares interdependientes que optimizan cada dimensión de tu salud. Desde diagnósticos de precisión y terapias regenerativas hasta nutrición personalizada y optimización cognitiva—cada elemento trabaja en sinergia para tu transformación.",
       "items": [
         {
           "title": "Estética",
-          "description": "Tratamientos faciales y corporales de vanguardia mediante Sofwave, microcorrientes, fototerapia LED y protocolos regenerativos para un rejuvenecimiento natural y sostenible.",
+          "description": "Tratamientos faciales y corporales avanzados: Sofwave, microcorrientes, LED y protocolos regenerativos para un rejuvenecimiento natural.",
           "direction": "top",
           "primary": true
         },
         {
           "title": "Longevidad",
-          "description": "Protocolos sustentados en evidencia científica que conjugan diagnósticos avanzados, terapias regenerativas y medicina de precisión para prolongar la esperanza de vida saludable y optimizar la función celular.",
+          "description": "Protocolos científicos que integran diagnósticos avanzados, terapias regenerativas y medicina de precisión para prolongar la vida saludable.",
           "direction": "right",
           "primary": true
         },
         {
           "title": "Rendimiento",
-          "description": "Enfoque integrado para la optimización física y mental mediante entrenamiento funcional, protocolos de recuperación avanzada y potenciación cognitiva orientados al máximo rendimiento vital.",
+          "description": "Optimización física y mental mediante entrenamiento funcional, recuperación avanzada y potenciación cognitiva para el máximo rendimiento.",
           "direction": "left",
           "primary": true
         },
         {
           "title": "Medicina Física y Regeneración",
-          "description": "HBOT, PEMF, fototerapia roja/NIR, crioterapia y entrenamiento IHHT para optimizar la recuperación tisular, movilidad articular y rendimiento físico integral.",
+          "description": "HBOT, PEMF, fototerapia NIR, crioterapia e IHHT para optimizar recuperación tisular, movilidad y rendimiento físico.",
           "direction": "top",
           "primary": false
         },
         {
-          "title": "Gestión del Estrés y Relajación Profunda",
-          "description": "Sauna de última generación, inmersión en hielo, masajes signature y terapia de flotación sensorial para una gestión óptima del estrés y relajación profunda del sistema nervioso.",
+          "title": "Gestión del Estrés",
+          "description": "Sauna, inmersión en hielo, masajes signature y flotación sensorial para gestión del estrés y relajación del sistema nervioso.",
           "direction": "right",
           "primary": false
         },
         {
           "title": "Medicina de Información",
-          "description": "Consultas médicas especializadas y paneles metabólicos exhaustivos para la optimización personalizada de tu salud integral.",
+          "description": "Consultas médicas especializadas y paneles metabólicos exhaustivos para optimización personalizada de tu salud.",
           "direction": "left",
           "primary": false
         },
         {
           "title": "Diagnósticos Avanzados",
-          "description": "Evaluación de edad epigenética, análisis hormonal de alta precisión, pruebas de VO₂ y monitorización continua de biomarcadores para una optimización personalizada y basada en datos.",
+          "description": "Edad epigenética, análisis hormonal, pruebas de VO₂ y monitorización de biomarcadores para optimización basada en datos.",
           "direction": "bottom",
           "primary": false
         },
         {
-          "title": "Detoxificación, Nutrición y Suplementación",
-          "description": "Protocolos nutricionales personalizados, terapia intravenosa, NAD+ y suplementación estratégica fundamentada en tu perfil biológico único.",
+          "title": "Nutrición y Suplementación",
+          "description": "Protocolos nutricionales personalizados, terapia IV, NAD+ y suplementación estratégica según tu perfil biológico.",
           "direction": "top",
           "primary": false
         },
         {
-          "title": "Movimiento Consciente",
-          "description": "Entrenamiento funcional personalizado, trabajo de movilidad articular y evaluación biomecánica para construir resiliencia física y ampliar tu capacidad de movimiento.",
+          "title": "Movimiento",
+          "description": "Entrenamiento funcional personalizado, movilidad articular y evaluación biomecánica para construir resiliencia física.",
           "direction": "right",
           "primary": false
         },
         {
-          "title": "Psique y Optimización Cognitiva",
-          "description": "Prácticas de mindfulness avanzado, protocolos de potenciación cognitiva y programas personalizados para la optimización del rendimiento mental y emocional.",
+          "title": "Psique y Cognición",
+          "description": "Mindfulness avanzado, protocolos cognitivos y programas personalizados para optimizar rendimiento mental y emocional.",
           "direction": "left",
           "primary": false
         },
         {
-          "title": "Sueño y Sincronización Circadiana",
-          "description": "Protocolos de optimización del sueño profundo, equilibrio hormonal y sincronización del ritmo circadiano para una recuperación óptima y energía vital sostenible.",
+          "title": "Sueño y Ritmo Circadiano",
+          "description": "Optimización del sueño profundo, equilibrio hormonal y sincronización circadiana para recuperación óptima y energía sostenible.",
           "direction": "bottom",
           "primary": false
         }

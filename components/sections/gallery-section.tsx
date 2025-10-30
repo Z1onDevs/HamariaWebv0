@@ -91,7 +91,7 @@ export function GallerySection() {
           "Sauna.png",
           "Red Light Bed.png",
           "HBOT.jpg",
-          "Red Light Face.jpg",
+          "Flotation Tank.jpg",
         ]
         
         // Separate: originals first, then new images in specific order
