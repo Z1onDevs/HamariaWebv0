@@ -42,7 +42,7 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
       {/* Hamburger Button - Only visible on mobile/tablet */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`flex items-center justify-center rounded-lg border border-primary/20 bg-background/80 p-2 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background/90 lg:hidden ${
+        className={`flex items-center justify-center rounded-lg border border-primary/20 bg-background/80 p-2 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background/90 xl:hidden ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
         aria-label="Open menu"
@@ -55,7 +55,7 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-[9998] animate-in fade-in duration-300 lg:hidden"
+            className="fixed inset-0 z-[9998] animate-in fade-in duration-300 xl:hidden"
             onClick={() => setIsOpen(false)}
             style={{
               background: 'rgba(var(--color-background), 0.4)',
@@ -64,7 +64,7 @@ export function MobileNav({ currentSection, onNavigate, isLoaded }: MobileNavPro
           />
 
           {/* Drawer */}
-          <div className="fixed right-0 top-0 z-[9999] h-full w-[280px] animate-in slide-in-from-right duration-300 lg:hidden sm:w-[320px]">
+          <div className="fixed right-0 top-0 z-[9999] h-full w-[280px] animate-in slide-in-from-right duration-300 xl:hidden sm:w-[320px]">
             <div 
               className="flex h-full flex-col border-l border-primary/10 shadow-2xl"
               style={{

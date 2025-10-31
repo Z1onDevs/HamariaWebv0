@@ -17,7 +17,7 @@ export function StickyCTA({ currentSection, onApply, isLoaded }: StickyCTAProps)
 
   return (
     <div
-      className={`fixed bottom-6 left-1/2 z-40 -translate-x-1/2 transition-all duration-500 sm:bottom-8 lg:hidden ${
+      className={`fixed bottom-6 left-1/2 z-40 -translate-x-1/2 transition-all duration-500 sm:bottom-8 xl:hidden ${
         isLoaded && shouldShow 
           ? "translate-y-0 opacity-100 animate-float-subtle" 
           : "translate-y-16 opacity-0 pointer-events-none"

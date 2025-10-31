@@ -38,8 +38,9 @@ export default function Home() {
   const { isLowEnd, prefersReducedMotion } = useDeviceCapabilities()
   const shouldRenderShader = !isLowEnd && !prefersReducedMotion
   
-  // Media query for mobile vs desktop behavior
-  const isMobile = useMediaQuery('(max-width: 1023px)')
+  // Media query for mobile/tablet vs desktop behavior
+  // Mobile + iPad (vertical scroll) vs Desktop (horizontal scroll)
+  const isMobile = useMediaQuery('(max-width: 1279px)') // xl breakpoint
   
   // Scroll-based animations for mobile
   const [scrollY, setScrollY] = useState(0)
@@ -299,11 +300,11 @@ export default function Home() {
           <span className="font-sans text-lg font-light tracking-wide text-foreground sm:text-xl md:text-2xl">{t.siteName}</span>
         </button>
 
-        <div className="hidden items-center gap-4 lg:flex lg:gap-6 xl:gap-8">
+        <div className="hidden items-center gap-4 xl:flex xl:gap-6 2xl:gap-8">
           {t.nav.map((item: string, index: number) => {
             let sectionIndex = index
-            if (item === "Membership") sectionIndex = 4
-            if (item === "Contact") sectionIndex = 5
+            if (item === "Membership" || item === "Membresía") sectionIndex = 4
+            if (item === "Contact" || item === "Contacto") sectionIndex = 5
             return (
               <button
                 key={item}
@@ -346,7 +347,7 @@ export default function Home() {
           </div>
           
           {/* Desktop Apply Button */}
-          <MagneticButton variant="primary" className="hidden text-xs sm:text-sm lg:flex" onClick={() => scrollToSection(4)}>
+          <MagneticButton variant="primary" className="hidden text-xs sm:text-sm xl:flex" onClick={() => scrollToSection(4)}>
             {t.applyButton}
           </MagneticButton>
 
@@ -381,9 +382,9 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
-          {/* DNA Helix - Horizontal on mobile, top of viewport */}
+          {/* DNA Helix - Horizontal on mobile/tablet, top of viewport */}
           <div 
-            className="absolute left-1/2 top-2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 sm:hidden"
+            className="absolute left-1/2 top-2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 xl:hidden"
             style={isMobile ? {
               transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
               opacity: Math.max(0, 1 - (scrollY * 0.003)),
@@ -451,13 +452,13 @@ export default function Home() {
 
             {/* DNA Helix with Vertical Text - Only on desktop with good performance */}
             {shouldRenderShader && (
-              <div className="hidden lg:flex lg:items-center lg:gap-4 lg:-ml-12">
+              <div className="hidden xl:flex xl:items-center xl:gap-4 xl:-ml-12">
                 {/* DNA Helix */}
                 <DNAHelix scrollProgress={heroScrollProgress} />
                 {/* Vertical Text */}
                 <div className="flex items-center">
                   <p 
-                    className="animate-in fade-in slide-in-from-right-8 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 lg:text-base xl:text-lg"
+                    className="animate-in fade-in slide-in-from-right-8 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 xl:text-base 2xl:text-lg"
                     style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
                   >
                     {t.verticalText}
@@ -467,7 +468,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="absolute bottom-20 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 lg:bottom-8 lg:block">
+          <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 xl:block">
             <div className="flex items-center gap-2 sm:gap-3">
               <p className="font-sans text-xs uppercase tracking-widest text-foreground/70 sm:text-xs">{t.scrollText}</p>
               <div className="flex h-6 w-12 items-center justify-center rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md sm:h-6 sm:w-12">
