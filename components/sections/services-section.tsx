@@ -8,6 +8,7 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
 import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
+import { ServicesCarousel } from "@/components/services-carousel"
 
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -181,29 +182,8 @@ export function ServicesSection() {
                 </div>
               )}
 
-              {/* All Services Grid */}
-              <div className="grid gap-3 sm:gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-5 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-6">
-                {services.items.map((service: any, i: number) => (
-                  <div
-                    key={i}
-                    className="group flex min-h-[100px] flex-col items-start justify-start rounded-lg border border-primary/10 bg-background/20 p-3 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-primary/20 hover:bg-background/40 hover:shadow-md animate-in fade-in slide-in-from-bottom-4 active:scale-105 active:border-primary/20 active:bg-background/40 sm:min-h-[110px] sm:rounded-xl sm:p-4 md:p-5"
-                    style={{
-                      animationDelay: `${i * 80}ms`,
-                      animationFillMode: "backwards",
-                    }}
-                  >
-                    {/* Title - always visible */}
-                    <h3 className="mb-2 font-sans text-base font-medium text-foreground transition-all duration-300 sm:text-base md:mb-0 md:text-lg md:group-hover:mb-2">
-                      {service.title}
-                    </h3>
-                    
-                    {/* Description - visible on mobile, hidden on desktop until hover */}
-                    <p className="max-h-40 overflow-hidden text-xs leading-relaxed text-foreground/70 opacity-100 transition-all duration-300 sm:text-xs md:max-h-0 md:text-sm md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100">
-                      {service.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {/* Services Carousel */}
+              <ServicesCarousel services={services.items} />
             </div>
           </div>
         </div>,
