@@ -140,6 +140,18 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const [mounted, setMounted] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>("")
   const [expandedCard, setExpandedCard] = useState<number | null>(null)
+  
+  // Check if screen is large (for multi-card expansion)
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
+  
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsLargeScreen(window.innerWidth >= 1280) // xl breakpoint
+    }
+    checkScreen()
+    window.addEventListener('resize', checkScreen)
+    return () => window.removeEventListener('resize', checkScreen)
+  }, [])
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -434,10 +446,18 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 </p>
               </div>
 
-              {/* Toggle button for therapy details */}
+              {/* Toggle button for therapy details - Hidden on large screens (always expanded) */}
               <button
-                onClick={() => setExpandedCard(expandedCard === i ? null : i)}
-                className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all duration-300 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-md hover:shadow-primary/10 active:bg-background/50 active:scale-95"
+                onClick={() => {
+                  // On large screens, don't collapse other cards
+                  // On small screens, use accordion behavior
+                  if (isLargeScreen) {
+                    setExpandedCard(expandedCard === i ? null : i)
+                  } else {
+                    setExpandedCard(expandedCard === i ? null : i)
+                  }
+                }}
+                className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all duration-300 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-md hover:shadow-primary/10 active:bg-background/50 active:scale-95 xl:hidden"
                 style={{
                   transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
@@ -462,10 +482,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 </div>
               </button>
 
-              {/* Collapsible therapy list */}
+              {/* Collapsible therapy list - Always expanded on large screens */}
               <div
                 className={`overflow-hidden transition-all ${
-                  expandedCard === i ? "mb-4 max-h-[600px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95"
+                  isLargeScreen 
+                    ? "mb-4 max-h-[600px] opacity-100 scale-100" 
+                    : expandedCard === i 
+                      ? "mb-4 max-h-[600px] opacity-100 scale-100" 
+                      : "max-h-0 opacity-0 scale-95"
                 }`}
                 style={{
                   transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
