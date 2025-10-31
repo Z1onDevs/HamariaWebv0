@@ -111,7 +111,7 @@ export function ServicesSection() {
             </h2>
           </div>
 
-          <div className="grid gap-5 sm:gap-6 md:grid-cols-3 md:gap-x-10 md:gap-y-8 lg:gap-x-12 lg:gap-y-10">
+          <div className="grid gap-5 sm:gap-6 md:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:gap-x-16 lg:gap-y-10">
             {primaryServices.map((service: any, i: number) => (
               <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
             ))}

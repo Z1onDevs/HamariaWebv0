@@ -75,21 +75,15 @@
       "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
     "items": [
       {
-        "title": "Aesthetics",
-        "description": "Advanced facial and body treatments using Sofwave, microcurrent, LED therapy, and regenerative protocols for natural rejuvenation.",
-          "direction": "top",
-          "primary": true
-        },
-        {
-          "title": "Longevity",
-          "description": "Evidence-based protocols combining advanced diagnostics, regenerative therapies, and precision medicine to extend healthspan and optimize cellular function.",
-          "direction": "right",
-          "primary": true
-        },
-        {
-          "title": "Performance",
-          "description": "Integrated approach to physical and mental optimization through functional training, recovery protocols, and cognitive enhancement for peak performance.",
+        "title": "Biomarkers Tracking & Data-Led Protocols",
+        "description": "Comprehensive diagnostics, continuous biomarker monitoring, and personalized protocols driven by your unique data for precision optimization.",
           "direction": "left",
+          "primary": true
+        },
+        {
+          "title": "High-Frequency Integrative Biohacking",
+          "description": "Advanced regenerative therapies, recovery optimization, and cutting-edge modalities working synergistically for holistic transformation.",
+          "direction": "right",
           "primary": true
         },
         {
@@ -235,21 +229,15 @@
       "modalDescription": "Nueve pilares interdependientes que optimizan cada dimensión de tu salud. Desde diagnósticos de precisión y terapias regenerativas hasta nutrición personalizada y optimización cognitiva—cada elemento trabaja en sinergia para tu transformación.",
       "items": [
         {
-          "title": "Estética",
-          "description": "Tratamientos faciales y corporales avanzados: Sofwave, microcorrientes, LED y protocolos regenerativos para un rejuvenecimiento natural.",
-          "direction": "top",
-          "primary": true
-        },
-        {
-          "title": "Longevidad",
-          "description": "Protocolos científicos que integran diagnósticos avanzados, terapias regenerativas y medicina de precisión para prolongar la vida saludable.",
-          "direction": "right",
-          "primary": true
-        },
-        {
-          "title": "Rendimiento",
-          "description": "Optimización física y mental mediante entrenamiento funcional, recuperación avanzada y potenciación cognitiva para el máximo rendimiento.",
+          "title": "Seguimiento de Biomarcadores y Protocolos Basados en Datos",
+          "description": "Diagnósticos exhaustivos, monitorización continua de biomarcadores y protocolos personalizados guiados por tus datos únicos para optimización de precisión.",
           "direction": "left",
+          "primary": true
+        },
+        {
+          "title": "Biohacking Integrativo de Alta Frecuencia",
+          "description": "Terapias regenerativas avanzadas, optimización de recuperación y modalidades de vanguardia trabajando sinérgicamente para transformación holística.",
+          "direction": "right",
           "primary": true
         },
         {
