@@ -14,6 +14,10 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { to, subject, name, email, phone, plan, inviteCode, discount } = body
 
+    console.log("Sending email to:", to)
+    console.log("From applicant:", email)
+    console.log("Selected plan:", plan)
+
     // Membership Application Email
     const emailHtml = `
         <!DOCTYPE html>
@@ -81,8 +85,11 @@ export async function POST(request: Request) {
       `
 
     // Send email using Resend
+    // Try with custom domain first, fallback to resend.dev if domain not verified
+    let fromAddress = "Hamaria Club <memberships@hamaria.com>"
+    
     const { data, error } = await resend.emails.send({
-      from: "Hamaria Club <onboarding@resend.dev>",
+      from: fromAddress,
       to: to,
       subject: subject,
       replyTo: email,
@@ -91,6 +98,28 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Resend error:", error)
+      console.error("Error details:", JSON.stringify(error, null, 2))
+      
+      // If domain not verified, try with resend.dev domain
+      if (error.message?.includes('domain') || error.message?.includes('verified')) {
+        console.log("Retrying with resend.dev domain...")
+        const retryResult = await resend.emails.send({
+          from: "Hamaria Club <onboarding@resend.dev>",
+          to: to,
+          subject: subject,
+          replyTo: email,
+          html: emailHtml,
+        })
+        
+        if (retryResult.error) {
+          console.error("Retry failed:", retryResult.error)
+          return NextResponse.json({ success: false, error: retryResult.error.message }, { status: 500 })
+        }
+        
+        console.log("Email sent successfully with resend.dev:", retryResult.data)
+        return NextResponse.json({ success: true, message: "Application submitted successfully", data: retryResult.data })
+      }
+      
       return NextResponse.json({ success: false, error: error.message }, { status: 500 })
     }
 
