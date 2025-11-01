@@ -170,7 +170,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
 
   // Check if special code is entered
   const isSpecialCode = formData.inviteCode.toUpperCase() === "HAMARIA&FRIENDS"
-  const discount = isSpecialCode ? 40 : 30
+  const freeMonths = isSpecialCode ? 4 : 3
   const form = t.membershipForm
 
   // Swipe to close modal
@@ -243,7 +243,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           phone: formData.phone,
           plan: selectedPlan,
           inviteCode: formData.inviteCode,
-          discount: discount,
+          freeMonths: freeMonths,
         }),
       })
 
@@ -578,7 +578,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
 
             {/* Modal Content */}
             <div className="relative h-full overflow-y-auto border-primary/20 bg-background p-5 shadow-2xl sm:max-h-[85vh] sm:rounded-2xl sm:border sm:p-6 md:p-8">
-              {/* Early Bird Offer Banner */}
+              {/* Founders Offer Banner */}
               <div className={`mb-5 animate-in fade-in slide-in-from-top-4 rounded-lg border p-3 text-center transition-all duration-300 sm:mb-6 sm:p-4 ${
                 isSpecialCode 
                   ? "border-primary/50 bg-primary/20 shadow-lg shadow-primary/20" 
@@ -590,7 +590,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 <p className={`font-mono text-[10px] leading-relaxed transition-all duration-300 sm:text-xs ${
                   isSpecialCode ? "text-foreground font-semibold" : "text-foreground/80"
                 }`}>
-                  {form.earlyBirdText} • <span className={isSpecialCode ? "text-primary" : ""}>{discount}% {form.discount}</span>
+                  {form.earlyBirdText} • <span className={isSpecialCode ? "text-primary font-bold" : "font-semibold"}>{freeMonths} {form.freeMonths}</span>
                 </p>
               </div>
 

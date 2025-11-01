@@ -12,11 +12,12 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey)
 
     const body = await request.json()
-    const { to, subject, name, email, phone, plan, inviteCode, discount } = body
+    const { to, subject, name, email, phone, plan, inviteCode, freeMonths } = body
 
     console.log("Sending email to:", to)
     console.log("From applicant:", email)
     console.log("Selected plan:", plan)
+    console.log("Free months offer:", freeMonths)
 
     // Membership Application Email
     const emailHtml = `
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
                 <h1 style="margin: 0; font-size: 28px; font-weight: 300;">New Membership Application</h1>
               </div>
               <div class="content">
-                ${inviteCode ? `<div class="badge ${inviteCode.toUpperCase() === 'HAMARIA&FRIENDS' ? 'special-badge' : ''}">🎉 Early Bird Offer: ${discount}% Discount</div>` : ''}
+                ${inviteCode ? `<div class="badge ${inviteCode.toUpperCase() === 'HAMARIA&FRIENDS' ? 'special-badge' : ''}">🎉 Founders Offer: ${freeMonths} Months Free</div>` : ''}
                 
                 <div class="field">
                   <div class="label">Selected Plan</div>
@@ -76,7 +77,7 @@ export async function POST(request: Request) {
                 <hr />
 
                 <p style="font-size: 14px; color: #666;">
-                  This applicant is eligible for the Early Bird offer with <strong>${discount}% discount</strong> (limited to first 42 members).
+                  This applicant is eligible for the Founders offer with <strong>${freeMonths} months free</strong> (limited to first 42 members).
                 </p>
               </div>
             </div>

@@ -9,9 +9,9 @@
     "applyButtonShort": "Join",
     "moreLink": "More",
     "membershipForm": {
-      "earlyBirdTitle": "Early Bird Offer",
-      "earlyBirdText": "Limited to first 42 admitted applicants",
-      "discount": "discount",
+      "earlyBirdTitle": "Founders Offer",
+      "earlyBirdText": "Limited to first 42 members",
+      "freeMonths": "months free",
       "applyFor": "Apply for",
       "subtitle": "Complete the form below to begin your wellness journey",
       "nameLabel": "Full Name",
@@ -169,7 +169,7 @@
     "membershipForm": {
       "earlyBirdTitle": "Oferta Fundadores",
       "earlyBirdText": "Limitada a los primeros 42 miembros",
-      "discount": "descuento",
+      "freeMonths": "meses gratis",
       "applyFor": "Solicitar",
       "subtitle": "Completa el formulario para iniciar tu transformación",
       "nameLabel": "Nombre Completo",
@@ -209,7 +209,7 @@
       "methodology": "Metodología",
       "paragraph1": "Redefinimos longevidad y bienestar. Mediante biohacking científico, terapias regenerativas y diagnósticos de precisión, optimizamos tu salud de forma integral—desde la función celular hasta el rendimiento mental.",
       "paragraph2": "En el corazón del Retiro, fusionamos tecnología avanzada y atención personalizada. Cada protocolo se diseña exclusivamente para tu biología, estilo de vida y objetivos.",
-      "paragraph3": "Nuestro equipo de médicos y especialistas internacionales aporta décadas de experiencia en medicina funcional, rendimiento deportivo y terapias regenerativas.",
+      "paragraph3": "Nuestro equipo de médicos y especialistas aporta décadas de experiencia en medicina integrativa, rendimiento personal y terapias regenerativas.",
       "features": [
         {
           "title": "Diagnósticos de Precisión",
