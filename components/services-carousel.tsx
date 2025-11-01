@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface Service {
   title: string
@@ -15,6 +16,8 @@ export function ServicesCarousel({ services }: ServicesCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
 
   const totalSlides = Math.ceil(services.length / 3)
 
@@ -28,6 +31,39 @@ export function ServicesCarousel({ services }: ServicesCarouselProps) {
     return () => clearInterval(interval)
   }, [isPaused, hoveredCard, totalSlides])
 
+  const goToNext = () => {
+    if (currentIndex < totalSlides - 1) {
+      setCurrentIndex(currentIndex + 1)
+    }
+  }
+
+  const goToPrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1)
+    }
+  }
+
+  // Touch swipe handling for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      // Swipe left
+      goToNext()
+    }
+
+    if (touchStart - touchEnd < -75) {
+      // Swipe right
+      goToPrev()
+    }
+  }
+
   const getVisibleServices = () => {
     const startIdx = currentIndex * 3
     return services.slice(startIdx, startIdx + 3)
@@ -40,7 +76,31 @@ export function ServicesCarousel({ services }: ServicesCarouselProps) {
       className="relative"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
+      {/* Navigation Arrows - Tablet/Desktop */}
+      {currentIndex > 0 && (
+        <button
+          onClick={goToPrev}
+          className="absolute -left-4 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-primary/20 bg-background/80 p-3 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background hover:scale-110 sm:flex"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="h-5 w-5 text-foreground" />
+        </button>
+      )}
+
+      {currentIndex < totalSlides - 1 && (
+        <button
+          onClick={goToNext}
+          className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-primary/20 bg-background/80 p-3 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background hover:scale-110 sm:flex"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="h-5 w-5 text-foreground" />
+        </button>
+      )}
+
       {/* Cards Container */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:gap-6">
         {visibleServices.map((service, idx) => {
@@ -50,70 +110,82 @@ export function ServicesCarousel({ services }: ServicesCarouselProps) {
               key={globalIdx}
               onMouseEnter={() => setHoveredCard(globalIdx)}
               onMouseLeave={() => setHoveredCard(null)}
-              className="group relative min-h-[200px] overflow-hidden rounded-xl border border-primary/10 bg-background/20 p-5 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 sm:min-h-[220px] md:p-6"
+              className="group relative min-h-[180px] overflow-visible rounded-xl border border-primary/10 bg-background/20 p-5 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 active:scale-95 sm:min-h-[200px] md:p-6"
               style={{
                 transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
                 animationDelay: `${idx * 100}ms`,
               }}
             >
               {/* Title - Always visible */}
-              <h3 className="mb-3 font-sans text-base font-medium text-foreground transition-all duration-300 group-hover:text-primary sm:text-lg md:text-xl">
+              <h3 className="mb-3 font-sans text-base font-medium text-foreground transition-all duration-300 group-hover:text-primary sm:text-lg md:mb-4 md:text-xl">
                 {service.title}
               </h3>
 
-              {/* Description - Hidden by default, shown on hover */}
-              <div className={`transition-all duration-500 ${
-                hoveredCard === globalIdx 
-                  ? "max-h-96 opacity-100" 
-                  : "max-h-0 opacity-0 overflow-hidden"
-              }`}>
+              {/* Description - Always visible on mobile, hover on desktop */}
+              <div className="transition-all duration-500 md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-96 md:group-hover:opacity-100">
                 <p className="font-sans text-sm leading-relaxed text-foreground/70 sm:text-base">
                   {service.description}
                 </p>
               </div>
 
-              {/* Decorative element */}
-              <div className={`absolute bottom-0 left-0 h-1 bg-primary transition-all duration-500 ${
+              {/* Decorative element - Desktop only */}
+              <div className={`absolute bottom-0 left-0 hidden h-1 bg-primary transition-all duration-500 md:block ${
                 hoveredCard === globalIdx ? "w-full" : "w-0"
               }`} />
-
-              {/* Hover indicator */}
-              {hoveredCard !== globalIdx && (
-                <div className="absolute bottom-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
-                    <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </div>
-                </div>
-              )}
             </div>
           )
         })}
       </div>
 
-      {/* Carousel Indicators */}
-      <div className="mt-6 flex items-center justify-center gap-2 sm:mt-8">
+      {/* Manual Navigation Buttons - Mobile */}
+      <div className="mt-6 flex items-center justify-center gap-4 sm:hidden">
+        <button
+          onClick={goToPrev}
+          disabled={currentIndex === 0}
+          className="rounded-full border border-primary/20 bg-background/60 p-3 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background/80 disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="h-5 w-5 text-foreground" />
+        </button>
+        
+        <div className="font-mono text-sm text-foreground/70">
+          {currentIndex + 1} / {totalSlides}
+        </div>
+
+        <button
+          onClick={goToNext}
+          disabled={currentIndex === totalSlides - 1}
+          className="rounded-full border border-primary/20 bg-background/60 p-3 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background/80 disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="h-5 w-5 text-foreground" />
+        </button>
+      </div>
+
+      {/* Carousel Indicators - Tablet/Desktop */}
+      <div className="mt-6 hidden items-center justify-center gap-2 sm:flex sm:mt-8">
         {Array.from({ length: totalSlides }).map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`h-2 rounded-full transition-all duration-300 ${
+            className={`h-2.5 rounded-full transition-all duration-300 ${
               idx === currentIndex 
-                ? "w-8 bg-primary" 
-                : "w-2 bg-foreground/20 hover:bg-foreground/40"
+                ? "w-10 bg-primary shadow-sm shadow-primary/30" 
+                : "w-2.5 bg-foreground/20 hover:bg-foreground/40 hover:w-4"
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}
       </div>
 
-      {/* Slide Counter */}
-      <div className="mt-4 text-center">
-        <p className="font-mono text-xs text-foreground/50">
-          {currentIndex + 1} / {totalSlides}
-        </p>
-      </div>
+      {/* Swipe Hint - Mobile Only, First Slide */}
+      {currentIndex === 0 && (
+        <div className="mt-4 flex items-center justify-center gap-2 animate-pulse sm:hidden">
+          <ChevronLeft className="h-4 w-4 text-foreground/30" />
+          <p className="font-mono text-xs text-foreground/40">Swipe to navigate</p>
+          <ChevronRight className="h-4 w-4 text-foreground/30" />
+        </div>
+      )}
     </div>
   )
 }

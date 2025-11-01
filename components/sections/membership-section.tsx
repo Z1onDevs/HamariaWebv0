@@ -105,28 +105,34 @@ const therapyMatrix = [
     allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
-    name: "Baseline assessment (per year)",
+    name: "Baseline assessment",
     allocations: { core: 1, performance: 1, aesthetics: 1 },
+    isYearly: true,
   },
   {
-    name: "VO2 max (per year)",
+    name: "VO2 max",
     allocations: { core: 0, performance: 4, aesthetics: 0 },
+    isYearly: true,
   },
   {
-    name: "Sofwave (ultrasound facelift) (per year)",
+    name: "Sofwave (ultrasound facelift)",
     allocations: { core: 1, performance: 1, aesthetics: 0 },
+    isYearly: true,
   },
   {
     name: "Sofwave (ultrasound facelift)",
     allocations: { core: 0, performance: 0, aesthetics: 2 },
+    isYearly: false,
   },
   {
-    name: "NAD+ IV (per year)",
+    name: "NAD+ IV",
     allocations: { core: 1, performance: 1, aesthetics: 2 },
+    isYearly: true,
   },
 ] satisfies Array<{
   name: string
   allocations: Record<MembershipKey, number | string>
+  isYearly?: boolean
 }>
 
 interface MembershipSectionProps {
@@ -139,7 +145,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>("")
-  const [expandedCard, setExpandedCard] = useState<number | null>(null)
+  const [expandedCards, setExpandedCards] = useState<number[]>([])
   
   // Check if screen is large (for multi-card expansion)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
@@ -262,18 +268,15 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     }
   }
 
-  const formatAllocation = (value: number | string, therapyName: string = "") => {
+  const formatAllocation = (value: number | string, isYearly: boolean = false) => {
     if (value === "Unlimited") return "Unlimited"
     if (!value || value === 0) return null
-    
-    // Check if therapy is yearly
-    const isYearly = therapyName.includes("(per year)")
     
     if (typeof value === "number") {
     if (value >= 1) {
       const rounded = Number.isInteger(value) ? value.toFixed(0) : value.toFixed(1)
-      // Don't add /month suffix for yearly therapies
-      if (isYearly) return `${rounded.replace(/\.0$/, "")}`
+      // Add "per year" for yearly therapies, "/month" for monthly
+      if (isYearly) return `${rounded.replace(/\.0$/, "")} per year`
       return `${rounded.replace(/\.0$/, "")}/month`
     }
     const months = Math.round(1 / value)
@@ -282,18 +285,15 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     return value
   }
 
-  const formatExtraAllocation = (currentValue: number | string, baseValue: number | string, therapyName: string = "") => {
+  const formatExtraAllocation = (currentValue: number | string, baseValue: number | string, isYearly: boolean = false) => {
     // If base is Unlimited and current is Unlimited, no difference
     if (baseValue === "Unlimited" && currentValue === "Unlimited") return null
     
     // If base is 0 or doesn't exist, show the full value as new
-    if (!baseValue || baseValue === 0) return formatAllocation(currentValue, therapyName)
+    if (!baseValue || baseValue === 0) return formatAllocation(currentValue, isYearly)
     
     // If current is Unlimited but base isn't
     if (currentValue === "Unlimited" && baseValue !== "Unlimited") return "Unlimited"
-    
-    // Check if therapy is yearly
-    const isYearly = therapyName.includes("(per year)")
     
     // Calculate numeric difference
     if (typeof currentValue === 'number' && typeof baseValue === 'number') {
@@ -302,8 +302,8 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       
       if (diff >= 1) {
         const rounded = Number.isInteger(diff) ? diff.toFixed(0) : diff.toFixed(1)
-        // Don't add /month suffix for yearly therapies
-        if (isYearly) return `+${rounded.replace(/\.0$/, "")} extra`
+        // Add appropriate suffix
+        if (isYearly) return `+${rounded.replace(/\.0$/, "")} extra per year`
         return `+${rounded.replace(/\.0$/, "")} extra/month`
       }
       
@@ -311,7 +311,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       return `+${months <= 1 ? "1 extra" : `1 extra per ${months} months`}`
     }
     
-    return formatAllocation(currentValue, therapyName)
+    return formatAllocation(currentValue, isYearly)
   }
 
   const formatMinutes = (value: number) =>
@@ -327,7 +327,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           features = therapyMatrix
             .map((therapy) => {
               const allocation = therapy.allocations.core
-              const schedule = formatAllocation(allocation, therapy.name)
+              const schedule = formatAllocation(allocation, therapy.isYearly || false)
               if (!schedule) return null
               
               return {
@@ -358,7 +358,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               const isIncreased = typeof coreAllocation === 'number' && typeof perfAllocation === 'number' && perfAllocation > coreAllocation
               
               if (isNew || isIncreased) {
-                const schedule = formatExtraAllocation(perfAllocation, coreAllocation, therapy.name)
+                const schedule = formatExtraAllocation(perfAllocation, coreAllocation, therapy.isYearly || false)
                 if (!schedule) return null
                 
                 return {
@@ -385,7 +385,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               const isIncreased = typeof coreAllocation === 'number' && typeof aesAllocation === 'number' && aesAllocation > coreAllocation
               
               if (isNew || isIncreased) {
-                const schedule = formatExtraAllocation(aesAllocation, coreAllocation, therapy.name)
+                const schedule = formatExtraAllocation(aesAllocation, coreAllocation, therapy.isYearly || false)
                 if (!schedule) return null
                 
                 return {
@@ -413,6 +413,16 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
       <div className="mx-auto w-full max-w-7xl">
+        {/* Section Title - Mobile/Tablet only */}
+        <div className={`mb-10 text-center transition-all duration-700 xl:hidden ${
+          isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
+        }`}>
+          <h2 className="mb-2 font-sans text-2xl font-light tracking-tight text-foreground sm:text-3xl md:text-4xl">
+            {t.nav[4]}
+          </h2>
+          <div className="mx-auto h-px w-16 bg-primary/40 sm:w-20 md:w-24" />
+        </div>
+
         <div className="grid gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:gap-6">
           {memberships.map((membership, i) => (
             <div
@@ -442,20 +452,19 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               {/* Therapy count summary */}
               <div className="mb-3">
                 <p className="font-mono text-xs text-foreground/60">
-                  {membership.features.length} therapies included
+                  {membership.features.length} {form.therapiesIncluded}
                 </p>
               </div>
 
               {/* Toggle button for therapy details - Hidden on large screens (always expanded) */}
               <button
                 onClick={() => {
-                  // On large screens, don't collapse other cards
-                  // On small screens, use accordion behavior
-                  if (isLargeScreen) {
-                    setExpandedCard(expandedCard === i ? null : i)
-                  } else {
-                    setExpandedCard(expandedCard === i ? null : i)
-                  }
+                  // Toggle this card in the array - allows multiple cards to be open
+                  setExpandedCards(prev => 
+                    prev.includes(i) 
+                      ? prev.filter(idx => idx !== i) 
+                      : [...prev, i]
+                  )
                 }}
                 className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all duration-300 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-md hover:shadow-primary/10 active:bg-background/50 active:scale-95 xl:hidden"
                 style={{
@@ -464,11 +473,11 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               >
                 <div className="flex items-center justify-between">
                   <span className="font-sans text-sm font-medium text-foreground transition-all duration-200">
-                    {expandedCard === i ? "Hide Details" : "View Details"}
+                    {expandedCards.includes(i) ? form.hideDetails : form.viewDetails}
                   </span>
                   <svg
                     className={`h-5 w-5 text-foreground/60 transition-all duration-500 ${
-                      expandedCard === i ? "rotate-180 scale-110" : "scale-100"
+                      expandedCards.includes(i) ? "rotate-180 scale-110" : "scale-100"
                     }`}
                     style={{
                       transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -487,7 +496,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 className={`overflow-hidden transition-all ${
                   isLargeScreen 
                     ? "mb-4 max-h-[600px] opacity-100 scale-100" 
-                    : expandedCard === i 
+                    : expandedCards.includes(i)
                       ? "mb-4 max-h-[600px] opacity-100 scale-100" 
                       : "max-h-0 opacity-0 scale-95"
                 }`}
@@ -534,7 +543,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 className="w-full text-xs sm:text-sm"
                 onClick={() => handleApply(membership.name)}
               >
-                Apply Now
+                {form.applyNow}
               </MagneticButton>
             </div>
           ))}

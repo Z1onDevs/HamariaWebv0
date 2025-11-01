@@ -27,7 +27,11 @@
       "submitting": "Submitting...",
       "success": "Application Sent!",
       "successMessage": "Thank you! We'll be in touch soon.",
-      "includesAll": "Includes all Longevity + therapies plus:"
+      "includesAll": "Includes all Longevity + therapies plus:",
+      "therapiesIncluded": "therapies included",
+      "viewDetails": "View Details",
+      "hideDetails": "Hide Details",
+      "applyNow": "Apply Now"
     },
     "hero": {
     "titleLines": ["Where wellness", "meets luxury"],
@@ -181,7 +185,11 @@
       "submitting": "Enviando...",
       "success": "¡Solicitud Enviada!",
       "successMessage": "¡Gracias! Te contactaremos pronto.",
-      "includesAll": "Incluye todas las terapias Longevity más:"
+      "includesAll": "Incluye todas las terapias Longevity más:",
+      "therapiesIncluded": "terapias incluidas",
+      "viewDetails": "Ver Detalles",
+      "hideDetails": "Ocultar Detalles",
+      "applyNow": "Solicitar Ahora"
     },
     "hero": {
       "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
