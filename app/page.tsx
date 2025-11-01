@@ -382,16 +382,16 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
-          {/* DNA Helix - Horizontal on tablet only (hidden on small mobile to prevent overlap) */}
+          {/* DNA Helix - Horizontal on mobile/tablet, vertical on desktop */}
           <div 
-            className="absolute left-1/2 top-2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 hidden sm:block xl:hidden"
+            className="absolute left-1/2 top-4 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 xl:hidden"
             style={isMobile ? {
               transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
               opacity: Math.max(0, 1 - (scrollY * 0.003)),
               transition: 'transform 0.4s ease-out, opacity 0.3s ease-out',
             } : {}}
           >
-            <div className="rotate-90 scale-50">
+            <div className="rotate-90 scale-[0.35] sm:scale-50">
               <DNAHelix scrollProgress={heroScrollProgress} />
             </div>
           </div>
