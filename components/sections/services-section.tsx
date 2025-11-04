@@ -16,8 +16,7 @@ export function ServicesSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   
-  const primaryServices = services.items.filter((item: any) => item.primary === true)
-  const hasMoreServices = services.items.some((item: any) => item.primary === false)
+  const hasMoreServices = services.items.length > 0
 
   // Note: Swipe to close disabled for services modal to allow scrolling through filtered services
 
@@ -61,24 +60,50 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl">
-          {/* Sleek Three-Word Header */}
+          {/* Header with Subheading */}
+          <div className="mb-12 text-center sm:mb-16 md:mb-20 lg:mb-24">
+            <div
+              className={`mb-6 transition-all duration-700 sm:mb-8 md:mb-10 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+              }`}
+            >
+              <h2 className="font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                {services.heading}
+              </h2>
+            </div>
+            
+            {/* Subheading */}
+            {services.subheading && (
+              <div
+                className={`mx-auto max-w-4xl transition-all duration-700 delay-100 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                }`}
+              >
+                <p className="font-sans text-sm font-light leading-relaxed text-foreground/70 sm:text-base md:text-lg lg:text-xl">
+                  {services.subheading}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Dune Image */}
           <div
-            className={`mb-12 text-center transition-all duration-700 sm:mb-16 md:mb-20 lg:mb-24 ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+            className={`mb-12 transition-all duration-700 delay-200 sm:mb-16 md:mb-20 ${
+              isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-95"
             }`}
           >
-            <h2 className="font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-              {services.heading}
-            </h2>
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border/30 bg-card/20 shadow-xl sm:aspect-[21/9] md:aspect-[2.5/1]">
+              <img
+                src="/dune.jpg"
+                alt="Hamaria Wellness Sanctuary"
+                className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+            </div>
           </div>
 
-          <div className="grid gap-5 sm:gap-6 md:grid-cols-2 md:gap-x-10 md:gap-y-8 lg:gap-x-16 lg:gap-y-10">
-            {primaryServices.map((service: any, i: number) => (
-              <ServiceCard key={i} service={service} index={i} isVisible={isVisible} />
-            ))}
-          </div>
-
-          {/* More Link */}
+          {/* All Services Button */}
           {hasMoreServices && (
             <div
               className={`mt-6 flex justify-center transition-all duration-700 sm:mt-8 ${
@@ -150,53 +175,5 @@ export function ServicesSection() {
         document.body
       )}
     </>
-  )
-}
-
-function ServiceCard({
-  service,
-  index,
-  isVisible,
-}: {
-  service: { title: string; description: string; direction: string }
-  index: number
-  isVisible: boolean
-}) {
-  const getRevealClass = () => {
-    if (!isVisible) {
-      switch (service.direction) {
-        case "left":
-          return "-translate-x-16 opacity-0 scale-95"
-        case "right":
-          return "translate-x-16 opacity-0 scale-95"
-        case "top":
-          return "-translate-y-16 opacity-0 scale-95"
-        case "bottom":
-          return "translate-y-16 opacity-0 scale-95"
-        default:
-          return "translate-y-12 opacity-0 scale-95"
-      }
-    }
-    return "translate-x-0 translate-y-0 opacity-100 scale-100"
-  }
-
-  return (
-    <div
-      className={`group flex flex-col items-center justify-center rounded-lg border border-border/50 bg-card/20 p-5 backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:bg-card/40 hover:scale-105 hover:shadow-xl hover:shadow-primary/10 active:scale-95 sm:rounded-xl sm:p-6 md:p-8 ${getRevealClass()}`}
-      style={{
-        transitionDelay: `${index * 80}ms`,
-        transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
-      }}
-    >
-      {/* Title */}
-      <h3 className="mb-3 text-center font-sans text-base font-medium text-foreground sm:mb-4 sm:text-lg md:text-xl lg:text-2xl">
-        {service.title}
-      </h3>
-      
-      {/* Description - always visible */}
-      <p className="text-center text-xs leading-relaxed text-foreground/70 sm:text-sm md:text-base">
-        {service.description}
-      </p>
-    </div>
   )
 }
