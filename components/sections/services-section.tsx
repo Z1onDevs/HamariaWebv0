@@ -67,48 +67,13 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl">
-          {/* Hero Text */}
-          {services.heroText && (
-            <div className="mb-12 mt-8 space-y-3 sm:mb-16 sm:mt-10 sm:space-y-4 md:mb-20 md:mt-12 md:space-y-5 lg:mb-24 lg:mt-16">
-              <div
-                className={`transition-all duration-700 delay-100 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              >
-                <p className="font-sans text-xl font-normal leading-tight tracking-tight text-foreground/90 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                  {services.heroText.line1}
-                </p>
-              </div>
-              <div
-                className={`transition-all duration-700 delay-200 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              >
-                <p className="font-sans text-lg font-light leading-snug text-foreground/80 sm:text-xl md:text-2xl lg:text-3xl">
-                  <span className="text-foreground/90">{services.heroText.line2.split(',')[0]}</span>
-                  <span className="text-foreground/70">,</span>
-                  <span className="ml-2 text-foreground/80">{services.heroText.line2.split(',')[1]}</span>
-                </p>
-              </div>
-              <div
-                className={`transition-all duration-700 delay-300 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
-              >
-                <p className="font-sans text-base font-light leading-relaxed text-foreground/60 sm:text-lg md:text-xl lg:text-2xl">
-                  {services.heroText.line3}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Heading - moved below hero */}
+          {/* Sleek Three-Word Header */}
           <div
-            className={`mb-8 text-center transition-all duration-700 sm:mb-10 md:mb-12 lg:mb-14 ${
+            className={`mb-12 text-center transition-all duration-700 sm:mb-16 md:mb-20 lg:mb-24 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
             }`}
           >
-            <h2 className="font-sans text-sm font-light tracking-tight text-foreground sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+            <h2 className="font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
               {services.heading}
             </h2>
           </div>

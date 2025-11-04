@@ -144,14 +144,8 @@
     ]
   },
   "services": {
-    "heading": "Our Pillars",
-    "subheading": "/ Comprehensive wellness optimization",
-    "heroText": {
-      "line1": "Join us in the most exclusive urban longevity facility in Europe.",
-      "line2": "Designed for consistency, optimized for results.",
-      "line3": "A pleasant journey made easy by world class professionals, all in one place."
-    },
-      "modalTitle": "Complete Wellness Ecosystem",
+    "heading": "Longevity · Wellness · Aesthetics",
+    "modalTitle": "Complete Wellness Ecosystem",
       "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
     "items": [
       {
@@ -1058,13 +1052,7 @@
       ]
     },
     "services": {
-      "heading": "Nuestros Pilares",
-      "subheading": "/ Optimización integral del bienestar",
-      "heroText": {
-        "line1": "El centro urbano de longevidad más exclusivo de Europa.",
-        "line2": "Diseñado para la consistencia, optimizado para resultados.",
-        "line3": "Un viaje guiado por profesionales de clase mundial en un solo lugar."
-      },
+      "heading": "Longevidad · Bienestar · Estética",
       "modalTitle": "Ecosistema Integral de Bienestar",
       "modalDescription": "Nueve pilares interdependientes que optimizan cada dimensión de tu salud. Desde diagnósticos de precisión y terapias regenerativas hasta nutrición personalizada y optimización cognitiva—cada elemento trabaja en sinergia para tu transformación.",
       "items": [
