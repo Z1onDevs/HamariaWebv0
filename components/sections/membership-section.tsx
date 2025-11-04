@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react"
 import { createPortal } from "react-dom"
+import { useRouter } from "next/navigation"
 
 import { useReveal } from "@/hooks/use-reveal"
 import { useTranslation } from "@/hooks/use-translation"
@@ -142,6 +143,7 @@ interface MembershipSectionProps {
 export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const { ref, isVisible } = useReveal(0.3)
   const { t } = useTranslation()
+  const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>("")
@@ -538,13 +540,21 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 </div>
               </div>
 
-              <MagneticButton
-                variant="secondary"
-                className="w-full text-xs sm:text-sm"
-                onClick={() => handleApply(membership.name)}
-              >
-                {form.applyNow}
-              </MagneticButton>
+              <div className="mt-auto space-y-2">
+                <button
+                  onClick={() => router.push(`/membership/${membership.key}`)}
+                  className="w-full rounded-full border border-primary/30 px-6 py-2.5 font-sans text-xs font-medium text-foreground transition-all hover:border-primary/50 hover:bg-card/40 sm:text-sm"
+                >
+                  {form.learnMore}
+                </button>
+                <MagneticButton
+                  variant="secondary"
+                  className="w-full text-xs sm:text-sm"
+                  onClick={() => handleApply(membership.name)}
+                >
+                  {form.applyNow}
+                </MagneticButton>
+              </div>
             </div>
           ))}
         </div>

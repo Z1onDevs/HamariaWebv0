@@ -31,11 +31,87 @@
       "therapiesIncluded": "therapies included",
       "viewDetails": "View Details",
       "hideDetails": "Hide Details",
-      "applyNow": "Apply Now"
+      "applyNow": "Apply Now",
+      "learnMore": "Learn More",
+      "comparePlans": "Compare Plans"
+    },
+    "memberships": {
+      "pageTitle": "Membership Details",
+      "backToHome": "Back to Home",
+      "monthlyPrice": "Monthly Price",
+      "yearlyPrice": "Yearly Price",
+      "weeklyMinutes": "Weekly Minutes Included",
+      "monthlyValue": "Monthly Perceived Value",
+      "savings": "You Save",
+      "foundersOffer": "Founders: 3 months free",
+      "includedTherapies": "Included Therapies",
+      "allTherapies": "All Therapies",
+      "monthlyTherapies": "Monthly Therapies",
+      "yearlyTherapies": "Yearly Therapies",
+      "unlimited": "Unlimited",
+      "perMonth": "per month",
+      "perYear": "per year",
+      "compareTitle": "Compare Memberships",
+      "viewFullDetails": "View Full Details",
+      "tiers": {
+        "longevity": {
+          "id": "longevity",
+          "name": "Longevity +",
+          "tagline": "Foundational Wellness",
+          "description": "Foundational therapies curated for holistic wellbeing. Perfect for those starting their longevity journey.",
+          "monthlyPrice": 950,
+          "yearlyPrice": 10450,
+          "weeklyMinutes": 240,
+          "monthlyPerceivedValue": 3200,
+          "color": "#8b5cf6",
+          "features": [
+            "Comprehensive baseline assessment",
+            "Unlimited access to recovery facilities",
+            "Monthly therapeutic sessions",
+            "Nutrition and lifestyle guidance"
+          ]
+        },
+        "performance": {
+          "id": "performance",
+          "name": "Performance +",
+          "tagline": "Optimize Your Peak",
+          "description": "Add performance and recovery optimization to your Longevity + program. Ideal for athletes and high performers.",
+          "monthlyPrice": 1450,
+          "yearlyPrice": 15950,
+          "weeklyMinutes": 360,
+          "monthlyPerceivedValue": 5400,
+          "color": "#10b981",
+          "features": [
+            "Everything in Longevity +",
+            "Advanced performance diagnostics",
+            "Increased recovery therapy sessions",
+            "VO₂ max testing quarterly",
+            "Personalized training protocols"
+          ]
+        },
+        "aesthetics": {
+          "id": "aesthetics",
+          "name": "Aesthetics +",
+          "tagline": "Regenerative Beauty",
+          "description": "Add aesthetic and regenerative treatments to your Longevity + program. Perfect for comprehensive anti-aging.",
+          "monthlyPrice": 1650,
+          "yearlyPrice": 18150,
+          "weeklyMinutes": 400,
+          "monthlyPerceivedValue": 6800,
+          "color": "#f59e0b",
+          "features": [
+            "Everything in Longevity +",
+            "Advanced aesthetic treatments",
+            "Increased regenerative therapies",
+            "Signature massage sessions",
+            "Comprehensive skin analysis"
+          ]
+        }
+      }
     },
     "hero": {
     "titleLines": ["Where wellness", "meets luxury"],
-    "description": "Experience holistic rejuvenation in the heart of Madrid. Hamaria Club offers bespoke wellness journeys that harmonize mind, body, and spirit through ancient wisdom and modern innovation.",
+    "description": "Experience holistic rejuvenation in the heart of Madrid. Hamaria Club offers bespoke wellness journeys that harmonize mind, body, and spirit combining ancient wisdom and the latest innovative technologies.",
     "primaryCta": "Explore Memberships",
     "secondaryCta": "Discover Our Philosophy"
   },
@@ -140,6 +216,686 @@
       }
     ]
   },
+  "therapies": {
+    "filterButton": "Filter Therapies",
+    "categoriesLabel": "Categories",
+    "subcategoriesLabel": "Specializations",
+    "clearFilters": "Clear All",
+    "showingResults": "Showing",
+    "therapySingular": "therapy",
+    "therapyPlural": "therapies",
+    "noResults": "No therapies match your filters",
+    "categories": [
+      {
+        "id": "diagnostics",
+        "name": "Diagnostics",
+        "color": "#3b82f6"
+      },
+      {
+        "id": "performance",
+        "name": "Performance",
+        "color": "#10b981"
+      },
+      {
+        "id": "wellness",
+        "name": "Wellness",
+        "color": "#8b5cf6"
+      },
+      {
+        "id": "aesthetics",
+        "name": "Aesthetics",
+        "color": "#f59e0b"
+      }
+    ],
+    "subcategories": [
+      {
+        "id": "metabolic",
+        "name": "Metabolic Analysis",
+        "parentCategories": ["diagnostics"]
+      },
+      {
+        "id": "hormonal",
+        "name": "Hormonal & Endocrine",
+        "parentCategories": ["diagnostics", "performance"]
+      },
+      {
+        "id": "inflammation",
+        "name": "Inflammation & Immunity",
+        "parentCategories": ["diagnostics", "wellness"]
+      },
+      {
+        "id": "genetics",
+        "name": "Genetics & Epigenetics",
+        "parentCategories": ["diagnostics"]
+      },
+      {
+        "id": "cardiovascular",
+        "name": "Cardiovascular Health",
+        "parentCategories": ["diagnostics", "performance"]
+      },
+      {
+        "id": "body-comp",
+        "name": "Body Composition",
+        "parentCategories": ["diagnostics", "performance", "aesthetics"]
+      },
+      {
+        "id": "regeneration",
+        "name": "Regeneration & Recovery",
+        "parentCategories": ["performance", "wellness"]
+      },
+      {
+        "id": "oxygenation",
+        "name": "Oxygenation Therapy",
+        "parentCategories": ["performance", "wellness"]
+      },
+      {
+        "id": "photobiomodulation",
+        "name": "Light Therapy",
+        "parentCategories": ["performance", "wellness", "aesthetics"]
+      },
+      {
+        "id": "cryotherapy",
+        "name": "Cryotherapy",
+        "parentCategories": ["performance", "wellness", "aesthetics"]
+      },
+      {
+        "id": "electromagnetic",
+        "name": "Electromagnetic Therapy",
+        "parentCategories": ["performance", "wellness"]
+      },
+      {
+        "id": "movement",
+        "name": "Movement & Training",
+        "parentCategories": ["performance"]
+      },
+      {
+        "id": "manual-therapy",
+        "name": "Manual Therapy",
+        "parentCategories": ["wellness", "performance"]
+      },
+      {
+        "id": "hydrotherapy",
+        "name": "Hydrotherapy",
+        "parentCategories": ["wellness"]
+      },
+      {
+        "id": "detox",
+        "name": "Detoxification",
+        "parentCategories": ["wellness"]
+      },
+      {
+        "id": "nutrition",
+        "name": "Nutrition & Supplementation",
+        "parentCategories": ["wellness", "performance"]
+      },
+      {
+        "id": "mental-wellness",
+        "name": "Mental Wellness",
+        "parentCategories": ["wellness"]
+      },
+      {
+        "id": "facial",
+        "name": "Facial Treatments",
+        "parentCategories": ["aesthetics"]
+      },
+      {
+        "id": "body-sculpting",
+        "name": "Body Sculpting",
+        "parentCategories": ["aesthetics"]
+      },
+      {
+        "id": "skin",
+        "name": "Skin Rejuvenation",
+        "parentCategories": ["aesthetics"]
+      },
+      {
+        "id": "hair",
+        "name": "Hair & Scalp",
+        "parentCategories": ["aesthetics"]
+      }
+    ],
+    "items": [
+      {
+        "id": "cbc",
+        "name": "Complete Blood Count (CBC)",
+        "description": "Comprehensive analysis of blood cells including red blood cells, white blood cells, and platelets to assess overall health and detect disorders.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation"]
+      },
+      {
+        "id": "metabolic-panel",
+        "name": "Metabolic Panel",
+        "description": "Fasting glucose, insulin, and HbA1c testing to evaluate metabolic health and diabetes risk.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "lipid-profile",
+        "name": "Advanced Lipid Profile",
+        "description": "Comprehensive analysis of HDL, LDL, triglycerides, and lipid subfractions for cardiovascular risk assessment.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular", "metabolic"]
+      },
+      {
+        "id": "inflammation-markers",
+        "name": "Inflammation Markers",
+        "description": "High-sensitivity CRP, homocysteine, and ferritin testing to assess systemic inflammation levels.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation"]
+      },
+      {
+        "id": "hormone-panel",
+        "name": "Comprehensive Hormone Panel",
+        "description": "TSH, T3, T4, cortisol, IGF-1, and sex hormones (testosterone, estradiol, progesterone, DHEA) analysis.",
+        "categories": ["diagnostics"],
+        "subcategories": ["hormonal"]
+      },
+      {
+        "id": "micronutrients",
+        "name": "Micronutrient Analysis",
+        "description": "Testing for Vitamin D, B12, folate, magnesium, calcium, zinc, selenium, copper, and iron levels.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "oxidative-stress",
+        "name": "Oxidative Stress Assessment",
+        "description": "Total antioxidant capacity and oxidative stress markers to evaluate cellular health.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation"]
+      },
+      {
+        "id": "coagulation",
+        "name": "Coagulation Panel",
+        "description": "Comprehensive coagulation testing to assess blood clotting function.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "cytokines",
+        "name": "Cytokine & Catecholamine Testing",
+        "description": "Interleukins (IL-6) and catecholamines (adrenaline, noradrenaline, dopamine) analysis.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation", "hormonal"]
+      },
+      {
+        "id": "microbiome",
+        "name": "Gut Microbiome Analysis",
+        "description": "Advanced stool analysis to assess intestinal microbiota composition and gut health.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "heavy-metals",
+        "name": "Heavy Metal Panel",
+        "description": "Testing for mercury, lead, arsenic, aluminum, cadmium, nickel, cobalt, and manganese exposure.",
+        "categories": ["diagnostics"],
+        "subcategories": ["detox"]
+      },
+      {
+        "id": "genetic-sequencing",
+        "name": "Genetic Sequencing",
+        "description": "Genome sequencing and genetic predisposition analysis for personalized health optimization.",
+        "categories": ["diagnostics"],
+        "subcategories": ["genetics"]
+      },
+      {
+        "id": "biological-age",
+        "name": "Biological Age Testing",
+        "description": "Epigenetic clocks (DNA methylation) and telomere length analysis to determine biological vs chronological age.",
+        "categories": ["diagnostics"],
+        "subcategories": ["genetics"]
+      },
+      {
+        "id": "cancer-screening",
+        "name": "Multi-Cancer Early Detection (MCED)",
+        "description": "Blood-based multi-marker oncological screening for early cancer detection.",
+        "categories": ["diagnostics"],
+        "subcategories": ["genetics"]
+      },
+      {
+        "id": "vo2-max",
+        "name": "VO₂ Max Testing",
+        "description": "Cardiopulmonary exercise testing to measure maximum oxygen uptake and cardiovascular fitness.",
+        "categories": ["diagnostics", "performance"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "ecg-holter",
+        "name": "24-Hour ECG & Blood Pressure Monitoring",
+        "description": "Continuous cardiac rhythm and blood pressure monitoring over 24 hours.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "abi-test",
+        "name": "Ankle-Brachial Index (ABI)",
+        "description": "Vascular health assessment to detect peripheral artery disease.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "skin-analysis",
+        "name": "Advanced Skin Analysis",
+        "description": "High-tech skin analysis to assess skin health, aging, and treatment needs.",
+        "categories": ["diagnostics", "aesthetics"],
+        "subcategories": ["skin"]
+      },
+      {
+        "id": "body-scan",
+        "name": "3D Body Composition Scan",
+        "description": "Comprehensive 3D body scanning for detailed composition and postural analysis.",
+        "categories": ["diagnostics", "performance"],
+        "subcategories": ["body-comp"]
+      },
+      {
+        "id": "mineral-analysis",
+        "name": "Tissue Mineral Analysis",
+        "description": "Analysis of mineral levels and heavy metal exposure through tissue sampling.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "hbot",
+        "name": "Hyperbaric Oxygen Therapy (HBOT)",
+        "description": "Pressurized oxygen chamber therapy to enhance cellular oxygenation and accelerate healing.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["oxygenation", "regeneration"]
+      },
+      {
+        "id": "oxyven",
+        "name": "Oxyven® IV Oxygen Therapy",
+        "description": "Intravenous oxygen therapy for enhanced cellular oxygenation and energy production.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["oxygenation"]
+      },
+      {
+        "id": "iv-therapy",
+        "name": "IV Vitamin & Antioxidant Therapy",
+        "description": "Intravenous infusion of vitamins (C, B-complex), minerals (Mg), and antioxidants for rapid nutrient replenishment.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "nad-iv",
+        "name": "NAD+ IV Therapy",
+        "description": "Intravenous NAD+ infusion to boost cellular energy, enhance cognition, and support anti-aging.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["nutrition", "regeneration"]
+      },
+      {
+        "id": "cryo-whole-body",
+        "name": "Whole Body Cryotherapy",
+        "description": "Extreme cold exposure therapy to reduce inflammation, boost recovery, and enhance metabolism.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["cryotherapy", "regeneration"]
+      },
+      {
+        "id": "cryo-local",
+        "name": "Localized Cryotherapy (CRYO Slim)",
+        "description": "Targeted cryotherapy for fat reduction and body contouring.",
+        "categories": ["aesthetics", "wellness"],
+        "subcategories": ["cryotherapy", "body-sculpting"]
+      },
+      {
+        "id": "red-light",
+        "name": "Red & Near-Infrared Light Therapy (PBM)",
+        "description": "Photobiomodulation using red and NIR light to enhance cellular function, reduce inflammation, and accelerate recovery.",
+        "categories": ["performance", "wellness", "aesthetics"],
+        "subcategories": ["photobiomodulation", "regeneration"]
+      },
+      {
+        "id": "infrared-sauna",
+        "name": "Infrared Sauna",
+        "description": "Far-infrared sauna therapy for deep tissue heating, detoxification, and relaxation.",
+        "categories": ["wellness"],
+        "subcategories": ["detox", "hydrotherapy"]
+      },
+      {
+        "id": "pemf",
+        "name": "Pulsed Electromagnetic Field Therapy (PEMF)",
+        "description": "Electromagnetic field therapy to enhance cellular repair, reduce pain, and improve circulation.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["electromagnetic", "regeneration"]
+      },
+      {
+        "id": "emsculpt",
+        "name": "Emsculpt NEO",
+        "description": "High-intensity electromagnetic stimulation combined with radiofrequency for muscle building and fat reduction.",
+        "categories": ["aesthetics", "performance"],
+        "subcategories": ["electromagnetic", "body-sculpting"]
+      },
+      {
+        "id": "shockwave",
+        "name": "Shockwave Therapy",
+        "description": "Acoustic wave therapy to treat pain, enhance tissue regeneration, and improve mobility.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["regeneration", "manual-therapy"]
+      },
+      {
+        "id": "ultrasound",
+        "name": "Therapeutic Ultrasound",
+        "description": "High-frequency sound waves to promote tissue healing and reduce inflammation.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["regeneration"]
+      },
+      {
+        "id": "hifu-face",
+        "name": "HIFU Non-Surgical Face Lift (Ultherapy®)",
+        "description": "High-intensity focused ultrasound for skin tightening and lifting without surgery.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "pressotherapy",
+        "name": "Pressotherapy Lymphatic Drainage",
+        "description": "Mechanical compression therapy to enhance lymphatic drainage and reduce fluid retention.",
+        "categories": ["wellness", "aesthetics"],
+        "subcategories": ["detox", "body-sculpting"]
+      },
+      {
+        "id": "ihht",
+        "name": "Intermittent Hypoxic-Hyperoxic Therapy (IHHT)",
+        "description": "Altitude training simulation alternating hypoxia and hyperoxia to boost mitochondrial function and endurance.",
+        "categories": ["performance"],
+        "subcategories": ["oxygenation"]
+      },
+      {
+        "id": "uv-therapy",
+        "name": "UV Light Therapy",
+        "description": "Controlled ultraviolet light exposure for vitamin D optimization and skin conditions.",
+        "categories": ["wellness"],
+        "subcategories": ["photobiomodulation"]
+      },
+      {
+        "id": "massage-revitalizing",
+        "name": "Revitalizing Massage",
+        "description": "Energizing massage to stimulate circulation and restore vitality.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-relaxing",
+        "name": "Relaxing Massage",
+        "description": "Gentle, soothing massage to reduce stress and promote deep relaxation.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-deep",
+        "name": "Deep Tissue Massage",
+        "description": "Intense pressure massage targeting deep muscle layers to release chronic tension.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-detox",
+        "name": "Detox Massage",
+        "description": "Specialized massage techniques to stimulate lymphatic drainage and eliminate toxins.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy", "detox"]
+      },
+      {
+        "id": "massage-slimming",
+        "name": "Slimming Massage",
+        "description": "Targeted massage to reduce cellulite and improve body contour.",
+        "categories": ["aesthetics", "wellness"],
+        "subcategories": ["manual-therapy", "body-sculpting"]
+      },
+      {
+        "id": "massage-bamboo",
+        "name": "Bamboo Pain & Stress Relief",
+        "description": "Therapeutic bamboo massage for pain relief and stress management.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-thai",
+        "name": "Traditional Thai Massage",
+        "description": "Ancient Thai bodywork combining acupressure, stretching, and assisted yoga postures.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-abhyanga",
+        "name": "Abhyanga Shirodhara",
+        "description": "Ayurvedic warm oil massage with continuous oil flow over the forehead for deep relaxation.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-chi-nei",
+        "name": "Chi Nei Tsang Abdominal Massage",
+        "description": "Taoist abdominal massage to release emotional and physical tension from internal organs.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy", "detox"]
+      },
+      {
+        "id": "reflexology",
+        "name": "Foot Reflexology",
+        "description": "Therapeutic foot massage based on pressure points corresponding to body organs and systems.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "alkaline-bath",
+        "name": "Alkaline & Salt Baths",
+        "description": "Therapeutic bathing in alkaline or mineral-rich salt water for detoxification and mineralization.",
+        "categories": ["wellness"],
+        "subcategories": ["hydrotherapy", "detox"]
+      },
+      {
+        "id": "body-wraps",
+        "name": "Detox Body Wraps",
+        "description": "Therapeutic wraps with detoxifying ingredients to eliminate toxins and nourish skin.",
+        "categories": ["wellness", "aesthetics"],
+        "subcategories": ["detox", "skin"]
+      },
+      {
+        "id": "moor-therapy",
+        "name": "Moor Mud & Clay Therapy",
+        "description": "Therapeutic application of mineral-rich moor mud and clay for detoxification and skin health.",
+        "categories": ["wellness", "aesthetics"],
+        "subcategories": ["detox", "skin"]
+      },
+      {
+        "id": "liver-cleanse",
+        "name": "Liver Detox Protocol",
+        "description": "Comprehensive liver cleansing program with herbal infusions and therapeutic support.",
+        "categories": ["wellness"],
+        "subcategories": ["detox"]
+      },
+      {
+        "id": "hydrafacial",
+        "name": "HydraFacial®",
+        "description": "Medical-grade facial combining cleansing, exfoliation, extraction, hydration, and antioxidant protection.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "laser-photo",
+        "name": "Photorejuvenation Laser",
+        "description": "IPL laser treatment to reduce pigmentation, redness, and improve skin texture.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "laser-vascular",
+        "name": "Vascular Laser Treatment",
+        "description": "Laser therapy targeting broken capillaries and vascular lesions.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "laser-q",
+        "name": "ALMA Q / Q-NRG Laser",
+        "description": "Advanced Q-switched laser for pigmentation, tattoo removal, and skin rejuvenation.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "chemical-peels",
+        "name": "Medical Chemical Peels",
+        "description": "Physician-grade chemical exfoliation to resurface skin and address aging, acne, and pigmentation.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "rf-facial",
+        "name": "High-Frequency Facial RF",
+        "description": "Radiofrequency cellular stimulation for face and neck to tighten skin and boost collagen.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "cooltech",
+        "name": "CoolTech® Cryolipolysis",
+        "description": "Non-invasive fat freezing technology for body contouring and fat reduction.",
+        "categories": ["aesthetics"],
+        "subcategories": ["body-sculpting", "cryotherapy"]
+      },
+      {
+        "id": "pressotherapy-body",
+        "name": "Body Pressotherapy",
+        "description": "Compression therapy for body sculpting, cellulite reduction, and lymphatic drainage.",
+        "categories": ["aesthetics", "wellness"],
+        "subcategories": ["body-sculpting", "detox"]
+      },
+      {
+        "id": "maderoterapia",
+        "name": "Maderoterapia Wood Therapy",
+        "description": "Colombian wood therapy massage for body sculpting, cellulite reduction, and lymphatic drainage.",
+        "categories": ["aesthetics"],
+        "subcategories": ["body-sculpting", "manual-therapy"]
+      },
+      {
+        "id": "red-light-hair",
+        "name": "Red Light Hair Therapy",
+        "description": "Low-level laser therapy to stimulate hair follicles and promote hair growth.",
+        "categories": ["aesthetics"],
+        "subcategories": ["hair", "photobiomodulation"]
+      },
+      {
+        "id": "movement-coaching",
+        "name": "Movement Coaching (CLP Protocol)",
+        "description": "Personalized movement coaching focusing on coordination, longevity, and performance.",
+        "categories": ["performance"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "personal-training",
+        "name": "Personal Training",
+        "description": "One-on-one training sessions tailored to your fitness goals and athletic aspirations.",
+        "categories": ["performance"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "pilates",
+        "name": "Pilates Reformer",
+        "description": "Equipment-based Pilates for core strength, flexibility, and body alignment.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "yoga",
+        "name": "Private Yoga",
+        "description": "Personalized yoga practice for flexibility, strength, balance, and mindfulness.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["movement", "mental-wellness"]
+      },
+      {
+        "id": "aerial-yoga",
+        "name": "Aerial Yoga",
+        "description": "Suspended yoga practice using hammocks for decompression, flexibility, and core strength.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "movement-lab",
+        "name": "Movement Lab (3D Biomechanical Analysis)",
+        "description": "Advanced 3D body scanning and sensorimotor assessment for movement optimization.",
+        "categories": ["performance", "diagnostics"],
+        "subcategories": ["movement", "body-comp"]
+      },
+      {
+        "id": "physiotherapy",
+        "name": "Physiotherapy & Manual Therapy",
+        "description": "Therapeutic interventions including physiotherapy, osteopathy, and manual techniques for pain relief and mobility.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "qol-questionnaire",
+        "name": "Quality of Life Assessment (SF-36, EQ-5D)",
+        "description": "Standardized questionnaires to evaluate overall health-related quality of life.",
+        "categories": ["diagnostics", "wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "cognition-test",
+        "name": "Cognitive Assessment (MoCA)",
+        "description": "Montreal Cognitive Assessment for screening cognitive function and mental clarity.",
+        "categories": ["diagnostics", "wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "wellbeing-test",
+        "name": "Well-Being Questionnaire (WAM)",
+        "description": "Comprehensive assessment of mental and emotional well-being.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "psych-assessment",
+        "name": "Psychological Assessment (HADS, Big Five)",
+        "description": "Screening for anxiety, depression, and personality traits for personalized wellness planning.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "fatigue-scale",
+        "name": "Need for Recovery Scale",
+        "description": "Assessment of work-related fatigue and recovery needs.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "nutrition-assessment",
+        "name": "Nutritional Assessment (PDQS)",
+        "description": "Prime Diet Quality Score evaluation of dietary habits and nutritional status.",
+        "categories": ["wellness"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "loneliness-scale",
+        "name": "Loneliness Assessment (UCLA Scale)",
+        "description": "Evaluation of social connection and loneliness for holistic wellness planning.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "nmn-supplement",
+        "name": "NMN Supplementation",
+        "description": "Nicotinamide mononucleotide supplementation to boost NAD+ levels and support longevity.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "nr-supplement",
+        "name": "Nicotinamide Riboside (NR)",
+        "description": "NAD+ precursor supplementation for cellular energy and anti-aging benefits.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "breathing-stretch",
+        "name": "Breathwork & Stretching",
+        "description": "Guided breathing techniques and stretching routines for stress relief and flexibility.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness", "movement"]
+      }
+    ]
+  },
   "contact": {
     "heading": "Let's talk",
     "subheading": "/ Get in touch",
@@ -189,7 +945,83 @@
       "therapiesIncluded": "terapias incluidas",
       "viewDetails": "Ver Detalles",
       "hideDetails": "Ocultar Detalles",
-      "applyNow": "Solicitar Ahora"
+      "applyNow": "Solicitar Ahora",
+      "learnMore": "Saber Más",
+      "comparePlans": "Comparar Planes"
+    },
+    "memberships": {
+      "pageTitle": "Detalles de Membresía",
+      "backToHome": "Volver al Inicio",
+      "monthlyPrice": "Precio Mensual",
+      "yearlyPrice": "Precio Anual",
+      "weeklyMinutes": "Minutos Semanales Incluidos",
+      "monthlyValue": "Valor Percibido Mensual",
+      "savings": "Ahorras",
+      "foundersOffer": "Fundadores: 3 meses gratis",
+      "includedTherapies": "Terapias Incluidas",
+      "allTherapies": "Todas las Terapias",
+      "monthlyTherapies": "Terapias Mensuales",
+      "yearlyTherapies": "Terapias Anuales",
+      "unlimited": "Ilimitado",
+      "perMonth": "al mes",
+      "perYear": "al año",
+      "compareTitle": "Comparar Membresías",
+      "viewFullDetails": "Ver Detalles Completos",
+      "tiers": {
+        "longevity": {
+          "id": "longevity",
+          "name": "Longevity +",
+          "tagline": "Bienestar Fundamental",
+          "description": "Terapias fundamentales diseñadas para bienestar holístico. Perfecto para quienes inician su viaje de longevidad.",
+          "monthlyPrice": 950,
+          "yearlyPrice": 10450,
+          "weeklyMinutes": 240,
+          "monthlyPerceivedValue": 3200,
+          "color": "#8b5cf6",
+          "features": [
+            "Evaluación integral de línea base",
+            "Acceso ilimitado a instalaciones de recuperación",
+            "Sesiones terapéuticas mensuales",
+            "Orientación nutricional y de estilo de vida"
+          ]
+        },
+        "performance": {
+          "id": "performance",
+          "name": "Performance +",
+          "tagline": "Optimiza tu Máximo",
+          "description": "Añade optimización de rendimiento y recuperación a tu programa Longevity +. Ideal para atletas y alto rendimiento.",
+          "monthlyPrice": 1450,
+          "yearlyPrice": 15950,
+          "weeklyMinutes": 360,
+          "monthlyPerceivedValue": 5400,
+          "color": "#10b981",
+          "features": [
+            "Todo lo de Longevity +",
+            "Diagnósticos avanzados de rendimiento",
+            "Sesiones aumentadas de terapia de recuperación",
+            "Prueba VO₂ máx trimestral",
+            "Protocolos de entrenamiento personalizados"
+          ]
+        },
+        "aesthetics": {
+          "id": "aesthetics",
+          "name": "Aesthetics +",
+          "tagline": "Belleza Regenerativa",
+          "description": "Añade tratamientos estéticos y regenerativos a tu programa Longevity +. Perfecto para anti-envejecimiento integral.",
+          "monthlyPrice": 1650,
+          "yearlyPrice": 18150,
+          "weeklyMinutes": 400,
+          "monthlyPerceivedValue": 6800,
+          "color": "#f59e0b",
+          "features": [
+            "Todo lo de Longevity +",
+            "Tratamientos estéticos avanzados",
+            "Terapias regenerativas aumentadas",
+            "Sesiones de masaje signature",
+            "Análisis cutáneo exhaustivo"
+          ]
+        }
+      }
     },
     "hero": {
       "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
@@ -295,11 +1127,691 @@
           "description": "Optimización del sueño profundo, equilibrio hormonal y sincronización circadiana para recuperación óptima y energía sostenible.",
           "direction": "bottom",
           "primary": false
-        }
-      ]
-    },
-    "contact": {
-      "heading": "Hablemos",
+      }
+    ]
+  },
+  "therapies": {
+    "filterButton": "Filtrar Terapias",
+    "categoriesLabel": "Categorías",
+    "subcategoriesLabel": "Especialidades",
+    "clearFilters": "Limpiar Todo",
+    "showingResults": "Mostrando",
+    "therapySingular": "terapia",
+    "therapyPlural": "terapias",
+    "noResults": "No hay terapias que coincidan con tus filtros",
+    "categories": [
+      {
+        "id": "diagnostics",
+        "name": "Diagnóstico",
+        "color": "#3b82f6"
+      },
+      {
+        "id": "performance",
+        "name": "Rendimiento",
+        "color": "#10b981"
+      },
+      {
+        "id": "wellness",
+        "name": "Bienestar",
+        "color": "#8b5cf6"
+      },
+      {
+        "id": "aesthetics",
+        "name": "Estética",
+        "color": "#f59e0b"
+      }
+    ],
+    "subcategories": [
+      {
+        "id": "metabolic",
+        "name": "Análisis Metabólico",
+        "parentCategories": ["diagnostics"]
+      },
+      {
+        "id": "hormonal",
+        "name": "Hormonal y Endocrino",
+        "parentCategories": ["diagnostics", "performance"]
+      },
+      {
+        "id": "inflammation",
+        "name": "Inflamación e Inmunidad",
+        "parentCategories": ["diagnostics", "wellness"]
+      },
+      {
+        "id": "genetics",
+        "name": "Genética y Epigenética",
+        "parentCategories": ["diagnostics"]
+      },
+      {
+        "id": "cardiovascular",
+        "name": "Salud Cardiovascular",
+        "parentCategories": ["diagnostics", "performance"]
+      },
+      {
+        "id": "body-comp",
+        "name": "Composición Corporal",
+        "parentCategories": ["diagnostics", "performance", "aesthetics"]
+      },
+      {
+        "id": "regeneration",
+        "name": "Regeneración y Recuperación",
+        "parentCategories": ["performance", "wellness"]
+      },
+      {
+        "id": "oxygenation",
+        "name": "Terapia de Oxigenación",
+        "parentCategories": ["performance", "wellness"]
+      },
+      {
+        "id": "photobiomodulation",
+        "name": "Terapia de Luz",
+        "parentCategories": ["performance", "wellness", "aesthetics"]
+      },
+      {
+        "id": "cryotherapy",
+        "name": "Crioterapia",
+        "parentCategories": ["performance", "wellness", "aesthetics"]
+      },
+      {
+        "id": "electromagnetic",
+        "name": "Terapia Electromagnética",
+        "parentCategories": ["performance", "wellness"]
+      },
+      {
+        "id": "movement",
+        "name": "Movimiento y Entrenamiento",
+        "parentCategories": ["performance"]
+      },
+      {
+        "id": "manual-therapy",
+        "name": "Terapia Manual",
+        "parentCategories": ["wellness", "performance"]
+      },
+      {
+        "id": "hydrotherapy",
+        "name": "Hidroterapia",
+        "parentCategories": ["wellness"]
+      },
+      {
+        "id": "detox",
+        "name": "Detoxificación",
+        "parentCategories": ["wellness"]
+      },
+      {
+        "id": "nutrition",
+        "name": "Nutrición y Suplementación",
+        "parentCategories": ["wellness", "performance"]
+      },
+      {
+        "id": "mental-wellness",
+        "name": "Bienestar Mental",
+        "parentCategories": ["wellness"]
+      },
+      {
+        "id": "facial",
+        "name": "Tratamientos Faciales",
+        "parentCategories": ["aesthetics"]
+      },
+      {
+        "id": "body-sculpting",
+        "name": "Escultura Corporal",
+        "parentCategories": ["aesthetics"]
+      },
+      {
+        "id": "skin",
+        "name": "Rejuvenecimiento Cutáneo",
+        "parentCategories": ["aesthetics"]
+      },
+      {
+        "id": "hair",
+        "name": "Cabello y Cuero Cabelludo",
+        "parentCategories": ["aesthetics"]
+      }
+    ],
+    "items": [
+      {
+        "id": "cbc",
+        "name": "Hemograma Completo (CBC)",
+        "description": "Análisis exhaustivo de células sanguíneas incluyendo glóbulos rojos, blancos y plaquetas para evaluar salud general y detectar trastornos.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation"]
+      },
+      {
+        "id": "metabolic-panel",
+        "name": "Panel Metabólico",
+        "description": "Pruebas de glucosa en ayunas, insulina y HbA1c para evaluar salud metabólica y riesgo de diabetes.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "lipid-profile",
+        "name": "Perfil Lipídico Avanzado",
+        "description": "Análisis exhaustivo de HDL, LDL, triglicéridos y subfracciones lipídicas para evaluación de riesgo cardiovascular.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular", "metabolic"]
+      },
+      {
+        "id": "inflammation-markers",
+        "name": "Marcadores de Inflamación",
+        "description": "PCR ultrasensible, homocisteína y ferritina para evaluar niveles de inflamación sistémica.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation"]
+      },
+      {
+        "id": "hormone-panel",
+        "name": "Panel Hormonal Completo",
+        "description": "Análisis de TSH, T3, T4, cortisol, IGF-1 y hormonas sexuales (testosterona, estradiol, progesterona, DHEA).",
+        "categories": ["diagnostics"],
+        "subcategories": ["hormonal"]
+      },
+      {
+        "id": "micronutrients",
+        "name": "Análisis de Micronutrientes",
+        "description": "Evaluación de niveles de Vitamina D, B12, folato, magnesio, calcio, zinc, selenio, cobre y hierro.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "oxidative-stress",
+        "name": "Evaluación de Estrés Oxidativo",
+        "description": "Capacidad antioxidante total y marcadores de estrés oxidativo para evaluar salud celular.",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation"]
+      },
+      {
+        "id": "coagulation",
+        "name": "Panel de Coagulación",
+        "description": "Pruebas exhaustivas de coagulación para evaluar función de coagulación sanguínea.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "cytokines",
+        "name": "Análisis de Citocinas y Catecolaminas",
+        "description": "Análisis de interleucinas (IL-6) y catecolaminas (adrenalina, noradrenalina, dopamina).",
+        "categories": ["diagnostics"],
+        "subcategories": ["inflammation", "hormonal"]
+      },
+      {
+        "id": "microbiome",
+        "name": "Análisis de Microbioma Intestinal",
+        "description": "Análisis avanzado de heces para evaluar composición de microbiota intestinal y salud digestiva.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "heavy-metals",
+        "name": "Panel de Metales Pesados",
+        "description": "Detección de mercurio, plomo, arsénico, aluminio, cadmio, níquel, cobalto y manganeso.",
+        "categories": ["diagnostics"],
+        "subcategories": ["detox"]
+      },
+      {
+        "id": "genetic-sequencing",
+        "name": "Secuenciación Genética",
+        "description": "Secuenciación del genoma y análisis de predisposición genética para optimización personalizada.",
+        "categories": ["diagnostics"],
+        "subcategories": ["genetics"]
+      },
+      {
+        "id": "biological-age",
+        "name": "Prueba de Edad Biológica",
+        "description": "Relojes epigenéticos (metilación de ADN) y análisis de longitud telomérica para determinar edad biológica vs cronológica.",
+        "categories": ["diagnostics"],
+        "subcategories": ["genetics"]
+      },
+      {
+        "id": "cancer-screening",
+        "name": "Detección Temprana de Cáncer (MCED)",
+        "description": "Cribado oncológico multimarcador basado en sangre para detección temprana de cáncer.",
+        "categories": ["diagnostics"],
+        "subcategories": ["genetics"]
+      },
+      {
+        "id": "vo2-max",
+        "name": "Prueba de VO₂ Máx",
+        "description": "Prueba de esfuerzo cardiopulmonar para medir captación máxima de oxígeno y condición cardiovascular.",
+        "categories": ["diagnostics", "performance"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "ecg-holter",
+        "name": "ECG y Monitorización de Presión 24h",
+        "description": "Monitorización continua de ritmo cardíaco y presión arterial durante 24 horas.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "abi-test",
+        "name": "Índice Tobillo-Brazo (ITB)",
+        "description": "Evaluación de salud vascular para detectar enfermedad arterial periférica.",
+        "categories": ["diagnostics"],
+        "subcategories": ["cardiovascular"]
+      },
+      {
+        "id": "skin-analysis",
+        "name": "Análisis Cutáneo Avanzado",
+        "description": "Análisis de piel de alta tecnología para evaluar salud, envejecimiento y necesidades de tratamiento.",
+        "categories": ["diagnostics", "aesthetics"],
+        "subcategories": ["skin"]
+      },
+      {
+        "id": "body-scan",
+        "name": "Escáner Corporal 3D",
+        "description": "Escaneo corporal 3D completo para análisis detallado de composición y postura.",
+        "categories": ["diagnostics", "performance"],
+        "subcategories": ["body-comp"]
+      },
+      {
+        "id": "mineral-analysis",
+        "name": "Análisis de Minerales Tisulares",
+        "description": "Análisis de niveles minerales y exposición a metales pesados mediante muestra tisular.",
+        "categories": ["diagnostics"],
+        "subcategories": ["metabolic"]
+      },
+      {
+        "id": "hbot",
+        "name": "Cámara Hiperbárica (HBOT)",
+        "description": "Terapia de oxígeno presurizado para mejorar oxigenación celular y acelerar curación.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["oxygenation", "regeneration"]
+      },
+      {
+        "id": "oxyven",
+        "name": "Oxyven® Terapia IV de Oxígeno",
+        "description": "Terapia intravenosa de oxígeno para mejorar oxigenación celular y producción de energía.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["oxygenation"]
+      },
+      {
+        "id": "iv-therapy",
+        "name": "Terapia IV de Vitaminas y Antioxidantes",
+        "description": "Infusión intravenosa de vitaminas (C, complejo B), minerales (Mg) y antioxidantes para reposición rápida.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "nad-iv",
+        "name": "Terapia IV NAD+",
+        "description": "Infusión intravenosa de NAD+ para aumentar energía celular, mejorar cognición y apoyar anti-envejecimiento.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["nutrition", "regeneration"]
+      },
+      {
+        "id": "cryo-whole-body",
+        "name": "Crioterapia de Cuerpo Entero",
+        "description": "Terapia de exposición al frío extremo para reducir inflamación, mejorar recuperación y metabolismo.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["cryotherapy", "regeneration"]
+      },
+      {
+        "id": "cryo-local",
+        "name": "Crioterapia Localizada (CRYO Slim)",
+        "description": "Crioterapia focalizada para reducción de grasa y contorno corporal.",
+        "categories": ["aesthetics", "wellness"],
+        "subcategories": ["cryotherapy", "body-sculpting"]
+      },
+      {
+        "id": "red-light",
+        "name": "Terapia de Luz Roja e Infrarroja (PBM)",
+        "description": "Fotobiomodulación con luz roja y NIR para mejorar función celular, reducir inflamación y acelerar recuperación.",
+        "categories": ["performance", "wellness", "aesthetics"],
+        "subcategories": ["photobiomodulation", "regeneration"]
+      },
+      {
+        "id": "infrared-sauna",
+        "name": "Sauna Infrarroja",
+        "description": "Terapia de sauna infrarroja para calentamiento profundo, detoxificación y relajación.",
+        "categories": ["wellness"],
+        "subcategories": ["detox", "hydrotherapy"]
+      },
+      {
+        "id": "pemf",
+        "name": "Campos Electromagnéticos Pulsados (PEMF)",
+        "description": "Terapia de campo electromagnético para mejorar reparación celular, reducir dolor y mejorar circulación.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["electromagnetic", "regeneration"]
+      },
+      {
+        "id": "emsculpt",
+        "name": "Emsculpt NEO",
+        "description": "Estimulación electromagnética de alta intensidad con radiofrecuencia para construcción muscular y reducción de grasa.",
+        "categories": ["aesthetics", "performance"],
+        "subcategories": ["electromagnetic", "body-sculpting"]
+      },
+      {
+        "id": "shockwave",
+        "name": "Terapia de Ondas de Choque",
+        "description": "Terapia de ondas acústicas para tratar dolor, mejorar regeneración tisular y movilidad.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["regeneration", "manual-therapy"]
+      },
+      {
+        "id": "ultrasound",
+        "name": "Ultrasonidos Terapéuticos",
+        "description": "Ondas sonoras de alta frecuencia para promover curación tisular y reducir inflamación.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["regeneration"]
+      },
+      {
+        "id": "hifu-face",
+        "name": "Lifting Facial HIFU (Ultherapy®)",
+        "description": "Ultrasonido focalizado de alta intensidad para tensado y lifting cutáneo sin cirugía.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "pressotherapy",
+        "name": "Presoterapia Drenaje Linfático",
+        "description": "Terapia de compresión mecánica para mejorar drenaje linfático y reducir retención de líquidos.",
+        "categories": ["wellness", "aesthetics"],
+        "subcategories": ["detox", "body-sculpting"]
+      },
+      {
+        "id": "ihht",
+        "name": "Hipoxia-Hiperoxia Intermitente (IHHT)",
+        "description": "Simulación de entrenamiento en altitud alternando hipoxia e hiperoxia para mejorar función mitocondrial.",
+        "categories": ["performance"],
+        "subcategories": ["oxygenation"]
+      },
+      {
+        "id": "uv-therapy",
+        "name": "Terapia de Luz UV",
+        "description": "Exposición controlada a luz ultravioleta para optimización de vitamina D y afecciones cutáneas.",
+        "categories": ["wellness"],
+        "subcategories": ["photobiomodulation"]
+      },
+      {
+        "id": "massage-revitalizing",
+        "name": "Masaje Revitalizante",
+        "description": "Masaje energizante para estimular circulación y restaurar vitalidad.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-relaxing",
+        "name": "Masaje Relajante",
+        "description": "Masaje suave y relajante para reducir estrés y promover relajación profunda.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-deep",
+        "name": "Masaje de Tejido Profundo",
+        "description": "Masaje de presión intensa dirigido a capas musculares profundas para liberar tensión crónica.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-detox",
+        "name": "Masaje Detox",
+        "description": "Técnicas especializadas de masaje para estimular drenaje linfático y eliminar toxinas.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy", "detox"]
+      },
+      {
+        "id": "massage-slimming",
+        "name": "Masaje Adelgazante",
+        "description": "Masaje focalizado para reducir celulitis y mejorar contorno corporal.",
+        "categories": ["aesthetics", "wellness"],
+        "subcategories": ["manual-therapy", "body-sculpting"]
+      },
+      {
+        "id": "massage-bamboo",
+        "name": "Masaje de Bambú Antiestrés",
+        "description": "Masaje terapéutico con bambú para alivio de dolor y gestión de estrés.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-thai",
+        "name": "Masaje Tailandés Tradicional",
+        "description": "Trabajo corporal tailandés ancestral combinando acupresión, estiramientos y posturas de yoga asistido.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-abhyanga",
+        "name": "Abhyanga Shirodhara",
+        "description": "Masaje ayurvédico con aceite caliente y flujo continuo de aceite sobre la frente para relajación profunda.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "massage-chi-nei",
+        "name": "Masaje Abdominal Chi Nei Tsang",
+        "description": "Masaje abdominal taoísta para liberar tensión emocional y física de órganos internos.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy", "detox"]
+      },
+      {
+        "id": "reflexology",
+        "name": "Reflexología Podal",
+        "description": "Masaje terapéutico de pies basado en puntos de presión correspondientes a órganos y sistemas corporales.",
+        "categories": ["wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "alkaline-bath",
+        "name": "Baños Alcalinos y Salinos",
+        "description": "Baños terapéuticos en agua alcalina o rica en sales minerales para detoxificación y mineralización.",
+        "categories": ["wellness"],
+        "subcategories": ["hydrotherapy", "detox"]
+      },
+      {
+        "id": "body-wraps",
+        "name": "Envolturas Detox Corporales",
+        "description": "Envolturas terapéuticas con ingredientes detoxificantes para eliminar toxinas y nutrir la piel.",
+        "categories": ["wellness", "aesthetics"],
+        "subcategories": ["detox", "skin"]
+      },
+      {
+        "id": "moor-therapy",
+        "name": "Terapia de Arcilla y Turba",
+        "description": "Aplicación terapéutica de turba y arcilla rica en minerales para detoxificación y salud cutánea.",
+        "categories": ["wellness", "aesthetics"],
+        "subcategories": ["detox", "skin"]
+      },
+      {
+        "id": "liver-cleanse",
+        "name": "Protocolo de Detox Hepático",
+        "description": "Programa exhaustivo de limpieza hepática con infusiones herbales y apoyo terapéutico.",
+        "categories": ["wellness"],
+        "subcategories": ["detox"]
+      },
+      {
+        "id": "hydrafacial",
+        "name": "HydraFacial®",
+        "description": "Facial de grado médico combinando limpieza, exfoliación, extracción, hidratación y protección antioxidante.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "laser-photo",
+        "name": "Láser Fotorejuvenecedor",
+        "description": "Tratamiento láser IPL para reducir pigmentación, rojeces y mejorar textura cutánea.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "laser-vascular",
+        "name": "Tratamiento Láser Vascular",
+        "description": "Terapia láser dirigida a capilares rotos y lesiones vasculares.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "laser-q",
+        "name": "Láser ALMA Q / Q-NRG",
+        "description": "Láser Q-switched avanzado para pigmentación, eliminación de tatuajes y rejuvenecimiento cutáneo.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "chemical-peels",
+        "name": "Peelings Químicos Médicos",
+        "description": "Exfoliación química de grado médico para renovar piel y tratar envejecimiento, acné y pigmentación.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "rf-facial",
+        "name": "Radiofrecuencia Facial de Alta Frecuencia",
+        "description": "Estimulación celular por radiofrecuencia para rostro y cuello para tensar piel y estimular colágeno.",
+        "categories": ["aesthetics"],
+        "subcategories": ["facial", "skin"]
+      },
+      {
+        "id": "cooltech",
+        "name": "CoolTech® Criolipólisis",
+        "description": "Tecnología no invasiva de congelación de grasa para contorno corporal y reducción adiposa.",
+        "categories": ["aesthetics"],
+        "subcategories": ["body-sculpting", "cryotherapy"]
+      },
+      {
+        "id": "pressotherapy-body",
+        "name": "Presoterapia Corporal",
+        "description": "Terapia de compresión para escultura corporal, reducción de celulitis y drenaje linfático.",
+        "categories": ["aesthetics", "wellness"],
+        "subcategories": ["body-sculpting", "detox"]
+      },
+      {
+        "id": "maderoterapia",
+        "name": "Maderoterapia",
+        "description": "Terapia con maderas colombiana para escultura corporal, reducción de celulitis y drenaje linfático.",
+        "categories": ["aesthetics"],
+        "subcategories": ["body-sculpting", "manual-therapy"]
+      },
+      {
+        "id": "red-light-hair",
+        "name": "Terapia de Luz Roja Capilar",
+        "description": "Terapia láser de baja intensidad para estimular folículos capilares y promover crecimiento capilar.",
+        "categories": ["aesthetics"],
+        "subcategories": ["hair", "photobiomodulation"]
+      },
+      {
+        "id": "movement-coaching",
+        "name": "Coaching de Movimiento (Protocolo CLP)",
+        "description": "Entrenamiento personalizado de movimiento enfocado en coordinación, longevidad y rendimiento.",
+        "categories": ["performance"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "personal-training",
+        "name": "Entrenamiento Personal",
+        "description": "Sesiones de entrenamiento individuales adaptadas a tus objetivos de fitness y aspiraciones atléticas.",
+        "categories": ["performance"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "pilates",
+        "name": "Pilates Reformer",
+        "description": "Pilates con equipamiento para fuerza del core, flexibilidad y alineación corporal.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "yoga",
+        "name": "Yoga Privado",
+        "description": "Práctica de yoga personalizada para flexibilidad, fuerza, equilibrio y mindfulness.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["movement", "mental-wellness"]
+      },
+      {
+        "id": "aerial-yoga",
+        "name": "Yoga Aéreo",
+        "description": "Práctica de yoga suspendida con hamacas para descompresión, flexibilidad y fuerza del core.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["movement"]
+      },
+      {
+        "id": "movement-lab",
+        "name": "Laboratorio de Movimiento (Análisis Biomecánico 3D)",
+        "description": "Escaneo corporal 3D avanzado y evaluación sensoriomotora para optimización de movimiento.",
+        "categories": ["performance", "diagnostics"],
+        "subcategories": ["movement", "body-comp"]
+      },
+      {
+        "id": "physiotherapy",
+        "name": "Fisioterapia y Terapia Manual",
+        "description": "Intervenciones terapéuticas incluyendo fisioterapia, osteopatía y técnicas manuales para alivio del dolor y movilidad.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["manual-therapy"]
+      },
+      {
+        "id": "qol-questionnaire",
+        "name": "Evaluación de Calidad de Vida (SF-36, EQ-5D)",
+        "description": "Cuestionarios estandarizados para evaluar calidad de vida relacionada con la salud.",
+        "categories": ["diagnostics", "wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "cognition-test",
+        "name": "Evaluación Cognitiva (MoCA)",
+        "description": "Evaluación Cognitiva de Montreal para screening de función cognitiva y claridad mental.",
+        "categories": ["diagnostics", "wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "wellbeing-test",
+        "name": "Cuestionario de Bienestar (WAM)",
+        "description": "Evaluación exhaustiva de bienestar mental y emocional.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "psych-assessment",
+        "name": "Evaluación Psicológica (HADS, Big Five)",
+        "description": "Screening de ansiedad, depresión y rasgos de personalidad para planificación personalizada de bienestar.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "fatigue-scale",
+        "name": "Escala de Necesidad de Recuperación",
+        "description": "Evaluación de fatiga relacionada con el trabajo y necesidades de recuperación.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "nutrition-assessment",
+        "name": "Evaluación Nutricional (PDQS)",
+        "description": "Evaluación Prime Diet Quality Score de hábitos dietéticos y estado nutricional.",
+        "categories": ["wellness"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "loneliness-scale",
+        "name": "Evaluación de Soledad (Escala UCLA)",
+        "description": "Evaluación de conexión social y soledad para planificación holística de bienestar.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness"]
+      },
+      {
+        "id": "nmn-supplement",
+        "name": "Suplementación NMN",
+        "description": "Suplementación con mononucleótido de nicotinamida para aumentar niveles de NAD+ y apoyar longevidad.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "nr-supplement",
+        "name": "Ribósido de Nicotinamida (NR)",
+        "description": "Suplementación con precursor de NAD+ para energía celular y beneficios anti-envejecimiento.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["nutrition"]
+      },
+      {
+        "id": "breathing-stretch",
+        "name": "Respiración y Estiramientos",
+        "description": "Técnicas de respiración guiadas y rutinas de estiramiento para alivio del estrés y flexibilidad.",
+        "categories": ["wellness"],
+        "subcategories": ["mental-wellness", "movement"]
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Hablemos",
       "subheading": "/ Ponte en contacto",
       "email": "hola@hamaria.com",
       "location": "Puerta de Alcalá, 28014, Madrid, España",

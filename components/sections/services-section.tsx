@@ -9,6 +9,7 @@ import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
 import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
 import { ServicesCarousel } from "@/components/services-carousel"
+import { FilteredServices } from "@/components/filtered-services"
 
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -182,8 +183,8 @@ export function ServicesSection() {
                 </div>
               )}
 
-              {/* Services Carousel */}
-              <ServicesCarousel services={services.items} />
+              {/* Filtered Services Component */}
+              <FilteredServices />
             </div>
           </div>
         </div>,
