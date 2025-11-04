@@ -72,8 +72,17 @@ export function ServicesSection() {
               <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/80" />
             </div>
             
-            {/* Red Spotlight Overlay */}
-            <div className="pointer-events-none absolute inset-0 z-[1]">
+            {/* Red Spotlight Overlay - Mobile (Top emphasis) */}
+            <div className="pointer-events-none absolute left-1/2 top-0 z-[1] h-48 w-full -translate-x-1/2 md:hidden">
+              <img
+                src="/Red Spotlight.jpeg"
+                alt=""
+                className="h-full w-full object-cover object-top opacity-50 blur-2xl"
+              />
+            </div>
+            
+            {/* Red Spotlight Overlay - Desktop (Centered) */}
+            <div className="pointer-events-none absolute inset-0 z-[1] hidden md:block">
               <div className="absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 opacity-20 blur-3xl">
                 <div className="h-full w-full rounded-full bg-gradient-radial from-red-500/60 via-red-600/30 to-transparent" />
               </div>

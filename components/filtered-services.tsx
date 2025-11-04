@@ -72,6 +72,9 @@ export function FilteredServices() {
       })
     }
 
+    // Sort alphabetically by name
+    result.sort((a, b) => a.name.localeCompare(b.name))
+
     return result
   }, [therapies, selectedCategories, selectedSubcategories, searchQuery])
 
