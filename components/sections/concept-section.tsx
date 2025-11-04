@@ -74,17 +74,27 @@ export function ConceptSection() {
               {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
-                className="group rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-400 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
+                className="group inline-block w-auto rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-500 hover:w-full hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:w-auto md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
                 style={{
-                  transitionTimingFunction: 'ease-out',
+                  transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
               >
-                <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:mb-2 sm:text-base md:text-lg">
+                <h3 className="mb-1.5 whitespace-nowrap font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:mb-2 sm:text-base md:text-lg">
                   {feature.title}
                 </h3>
-                <p className="max-h-40 overflow-hidden font-sans text-xs leading-relaxed text-foreground/60 opacity-100 transition-all duration-400 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 sm:text-sm">
-                  {feature.description}
-                </p>
+                <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr] md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]"
+                  style={{
+                    transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                >
+                  <p className="overflow-hidden font-sans text-xs leading-relaxed text-foreground/60 transition-all duration-500 sm:text-sm"
+                    style={{
+                      transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    }}
+                  >
+                    <span className="block pt-1.5 sm:pt-2">{feature.description}</span>
+                  </p>
+                </div>
               </div>
             ))}
             </div>
