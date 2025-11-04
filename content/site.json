@@ -7,7 +7,7 @@
     "scrollText": "Scroll to explore",
     "applyButton": "Apply for Membership",
     "applyButtonShort": "Join",
-    "moreLink": "More",
+    "moreLink": "All Services",
     "membershipForm": {
       "earlyBirdTitle": "Founders Offer",
       "earlyBirdText": "Limited to first 42 members",
@@ -915,7 +915,7 @@
     "scrollText": "Desliza para explorar",
     "applyButton": "Solicitar Membresía",
     "applyButtonShort": "Unirse",
-    "moreLink": "Más",
+    "moreLink": "Todos los Servicios",
     "membershipForm": {
       "earlyBirdTitle": "Oferta Fundadores",
       "earlyBirdText": "Limitada a los primeros 42 miembros",

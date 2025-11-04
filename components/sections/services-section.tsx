@@ -7,8 +7,6 @@ import { X } from "lucide-react"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
-import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
-import { ServicesCarousel } from "@/components/services-carousel"
 import { FilteredServices } from "@/components/filtered-services"
 
 export function ServicesSection() {
@@ -21,11 +19,7 @@ export function ServicesSection() {
   const primaryServices = services.items.filter((item: any) => item.primary === true)
   const hasMoreServices = services.items.some((item: any) => item.primary === false)
 
-  // Swipe to close modal
-  useSwipeToClose({ 
-    onClose: () => setIsModalOpen(false), 
-    enabled: isModalOpen 
-  })
+  // Note: Swipe to close disabled for services modal to allow scrolling through filtered services
 
   useEffect(() => {
     setMounted(true)
