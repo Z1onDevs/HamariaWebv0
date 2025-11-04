@@ -58,13 +58,13 @@ export function ConceptSection() {
 
           {/* Right Column - Features with Round Texture Background */}
           <div className="relative space-y-5 sm:space-y-6 md:space-y-7">
-            {/* Round Texture Background - Desktop only */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block">
-              <div className="relative h-[500px] w-[500px] opacity-10">
-                <div className="absolute inset-0 rounded-full border-4 border-primary/20" style={{ 
-                  backgroundImage: 'repeating-radial-gradient(circle at center, transparent 0, transparent 20px, rgba(139, 92, 246, 0.05) 20px, rgba(139, 92, 246, 0.05) 40px)',
-                }} />
-              </div>
+            {/* Round Texture Background Image - Desktop only */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 md:block">
+              <img
+                src="/Round shape background.jpeg"
+                alt=""
+                className="h-full w-full object-contain opacity-15 blur-sm"
+              />
             </div>
 
             <div className="relative z-10 inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">

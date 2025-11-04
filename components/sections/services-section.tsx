@@ -62,16 +62,22 @@ export function ServicesSection() {
         <div className="mx-auto w-full max-w-7xl">
           {/* Header with Subheading and Red Spotlight Background */}
           <div className="relative mb-12 text-center sm:mb-16 md:mb-20 lg:mb-24">
-            {/* Red Spotlight Background - Desktop */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block">
-              <div className="relative h-[400px] w-[800px] opacity-20 blur-3xl">
-                <div className="absolute inset-0 rounded-full bg-gradient-radial from-red-500/40 via-red-600/20 to-transparent" />
-              </div>
+            {/* Red Spotlight Background Image - Desktop */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[600px] w-[1000px] -translate-x-1/2 -translate-y-1/2 md:block">
+              <img
+                src="/Red Spotlight.jpeg"
+                alt=""
+                className="h-full w-full object-contain opacity-30 blur-2xl"
+              />
             </div>
             
-            {/* Red Spotlight Background - Mobile (bottom emphasis) */}
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 md:hidden">
-              <div className="h-full w-full bg-gradient-to-t from-red-500/20 via-red-600/10 to-transparent blur-2xl" />
+            {/* Red Spotlight Background - Mobile (bottom emphasis with image) */}
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 md:hidden">
+              <img
+                src="/Red Spotlight.jpeg"
+                alt=""
+                className="h-full w-full object-cover object-bottom opacity-40 blur-xl"
+              />
             </div>
 
             <div
@@ -98,23 +104,18 @@ export function ServicesSection() {
             )}
           </div>
 
-          {/* Dune Image - Only show if file exists */}
+          {/* Dune Image */}
           <div
             className={`mb-12 transition-all duration-700 delay-200 sm:mb-16 md:mb-20 ${
               isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-95"
             }`}
           >
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border/30 bg-card/20 shadow-xl sm:aspect-[16/9] md:aspect-[21/9]">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/30 bg-card/20 shadow-xl sm:aspect-[16/9] md:aspect-[2/1] lg:aspect-[5/2]">
               <img
-                src="/dune.jpg"
+                src="/dune.jpeg"
                 alt="Hamaria Wellness Sanctuary"
                 className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 loading="lazy"
-                onError={(e) => {
-                  // Hide image container if image doesn't exist
-                  const container = e.currentTarget.parentElement
-                  if (container) container.style.display = 'none'
-                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
