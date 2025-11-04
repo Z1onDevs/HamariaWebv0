@@ -60,10 +60,22 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl">
-          {/* Header with Subheading */}
-          <div className="mb-12 text-center sm:mb-16 md:mb-20 lg:mb-24">
+          {/* Header with Subheading and Red Spotlight Background */}
+          <div className="relative mb-12 text-center sm:mb-16 md:mb-20 lg:mb-24">
+            {/* Red Spotlight Background - Desktop */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block">
+              <div className="relative h-[400px] w-[800px] opacity-20 blur-3xl">
+                <div className="absolute inset-0 rounded-full bg-gradient-radial from-red-500/40 via-red-600/20 to-transparent" />
+              </div>
+            </div>
+            
+            {/* Red Spotlight Background - Mobile (bottom emphasis) */}
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 md:hidden">
+              <div className="h-full w-full bg-gradient-to-t from-red-500/20 via-red-600/10 to-transparent blur-2xl" />
+            </div>
+
             <div
-              className={`mb-6 transition-all duration-700 sm:mb-8 md:mb-10 ${
+              className={`relative z-10 mb-6 transition-all duration-700 sm:mb-8 md:mb-10 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
             >
@@ -75,7 +87,7 @@ export function ServicesSection() {
             {/* Subheading */}
             {services.subheading && (
               <div
-                className={`mx-auto max-w-4xl transition-all duration-700 delay-100 ${
+                className={`relative z-10 mx-auto max-w-4xl transition-all duration-700 delay-100 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
               >
@@ -86,18 +98,23 @@ export function ServicesSection() {
             )}
           </div>
 
-          {/* Dune Image */}
+          {/* Dune Image - Only show if file exists */}
           <div
             className={`mb-12 transition-all duration-700 delay-200 sm:mb-16 md:mb-20 ${
               isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-95"
             }`}
           >
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border/30 bg-card/20 shadow-xl sm:aspect-[21/9] md:aspect-[2.5/1]">
+            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border/30 bg-card/20 shadow-xl sm:aspect-[16/9] md:aspect-[21/9]">
               <img
                 src="/dune.jpg"
                 alt="Hamaria Wellness Sanctuary"
                 className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 loading="lazy"
+                onError={(e) => {
+                  // Hide image container if image doesn't exist
+                  const container = e.currentTarget.parentElement
+                  if (container) container.style.display = 'none'
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
