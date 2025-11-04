@@ -493,13 +493,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 </div>
               </button>
 
-              {/* Collapsible therapy list - Always expanded on large screens */}
+              {/* Collapsible therapy list with scroll - Always expanded on large screens */}
               <div
                 className={`overflow-hidden transition-all ${
                   isLargeScreen 
-                    ? "mb-4 max-h-[600px] opacity-100 scale-100" 
+                    ? "mb-4 max-h-[400px] opacity-100 scale-100" 
                     : expandedCards.includes(i)
-                      ? "mb-4 max-h-[600px] opacity-100 scale-100" 
+                      ? "mb-4 max-h-[400px] opacity-100 scale-100" 
                       : "max-h-0 opacity-0 scale-95"
                 }`}
                 style={{
@@ -507,15 +507,16 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                   transformOrigin: 'top',
                 }}
               >
-                <div className="overflow-x-auto">
+                {/* Scrollable container with custom scrollbar */}
+                <div className="max-h-[350px] overflow-y-auto overflow-x-auto custom-scrollbar rounded-lg border border-border/30 bg-background/20">
                   <div className="min-w-full">
                     <table className="w-full">
-                      <thead>
+                      <thead className="sticky top-0 z-10 bg-card/90 backdrop-blur-sm">
                         <tr className="border-b border-foreground/10">
-                          <th className="pb-2 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
+                          <th className="pb-2 pt-3 px-3 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
                             Therapy
                           </th>
-                          <th className="pb-2 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
+                          <th className="pb-2 pt-3 px-3 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:pb-2 sm:text-xs">
                             Sessions
                           </th>
                         </tr>
@@ -526,10 +527,10 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                             key={j}
                             className="border-b border-foreground/5 transition-colors active:bg-foreground/10 sm:hover:bg-foreground/5"
                           >
-                            <td className="py-2.5 pr-3 text-xs leading-relaxed text-foreground/80 sm:py-2 sm:pr-2 sm:text-xs">
+                            <td className="py-2.5 px-3 pr-3 text-xs leading-relaxed text-foreground/80 sm:py-2 sm:pr-2 sm:text-xs">
                               {feature.name}
                             </td>
-                            <td className="py-2.5 text-right font-mono text-xs tracking-wide text-foreground/60 sm:py-2 sm:text-xs">
+                            <td className="py-2.5 px-3 text-right font-mono text-xs tracking-wide text-foreground/60 sm:py-2 sm:text-xs">
                               {feature.schedule}
                             </td>
                           </tr>
@@ -537,6 +538,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                       </tbody>
                     </table>
                   </div>
+                </div>
+                
+                {/* Scroll indicator hint */}
+                <div className="mt-2 text-center">
+                  <p className="text-[10px] text-foreground/40 sm:text-xs">
+                    ↓ Scroll for more therapies
+                  </p>
                 </div>
               </div>
 
