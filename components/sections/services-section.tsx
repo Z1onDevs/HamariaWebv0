@@ -60,64 +60,49 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl">
-          {/* Header with Subheading and Red Spotlight Background */}
-          <div className="relative mb-12 text-center sm:mb-16 md:mb-20 lg:mb-24">
-            {/* Red Spotlight Background Image - Desktop */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[600px] w-[1000px] -translate-x-1/2 -translate-y-1/2 md:block">
+          {/* Header with Water Texture Background */}
+          <div className="relative mb-12 overflow-hidden rounded-3xl sm:mb-16 md:mb-20 lg:mb-24">
+            {/* Water Texture Background Image */}
+            <div className="absolute inset-0 z-0">
               <img
-                src="/Red Spotlight.jpeg"
+                src="/Water texture.jpeg"
                 alt=""
-                className="h-full w-full object-contain opacity-30 blur-2xl"
+                className="h-full w-full object-cover object-center opacity-40"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/80" />
             </div>
             
-            {/* Red Spotlight Background - Mobile (bottom emphasis with image) */}
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 md:hidden">
-              <img
-                src="/Red Spotlight.jpeg"
-                alt=""
-                className="h-full w-full object-cover object-bottom opacity-40 blur-xl"
-              />
+            {/* Red Spotlight Overlay */}
+            <div className="pointer-events-none absolute inset-0 z-[1]">
+              <div className="absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 opacity-20 blur-3xl">
+                <div className="h-full w-full rounded-full bg-gradient-radial from-red-500/60 via-red-600/30 to-transparent" />
+              </div>
             </div>
 
-            <div
-              className={`relative z-10 mb-6 transition-all duration-700 sm:mb-8 md:mb-10 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-              }`}
-            >
-              <h2 className="font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                {services.heading}
-              </h2>
-            </div>
-            
-            {/* Subheading */}
-            {services.subheading && (
+            {/* Content */}
+            <div className="relative z-10 px-5 py-12 text-center sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
               <div
-                className={`relative z-10 mx-auto max-w-4xl transition-all duration-700 delay-100 ${
+                className={`mb-6 transition-all duration-700 sm:mb-8 md:mb-10 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
               >
-                <p className="font-sans text-sm font-light leading-relaxed text-foreground/70 sm:text-base md:text-lg lg:text-xl">
-                  {services.subheading}
-                </p>
+                <h2 className="font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                  {services.heading}
+                </h2>
               </div>
-            )}
-          </div>
-
-          {/* Dune Image */}
-          <div
-            className={`mb-12 transition-all duration-700 delay-200 sm:mb-16 md:mb-20 ${
-              isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-95"
-            }`}
-          >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/30 bg-card/20 shadow-xl sm:aspect-[16/9] md:aspect-[2/1] lg:aspect-[5/2]">
-              <img
-                src="/dune.jpeg"
-                alt="Hamaria Wellness Sanctuary"
-                className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+              
+              {/* Subheading */}
+              {services.subheading && (
+                <div
+                  className={`mx-auto max-w-4xl transition-all duration-700 delay-100 ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                  }`}
+                >
+                  <p className="font-sans text-sm font-light leading-relaxed text-foreground/70 sm:text-base md:text-lg lg:text-xl">
+                    {services.subheading}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 

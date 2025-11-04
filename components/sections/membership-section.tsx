@@ -429,7 +429,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           {memberships.map((membership, i) => (
             <div
               key={i}
-              className={`group relative flex flex-col rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 hover:-translate-y-2 active:scale-95 sm:rounded-xl sm:p-4 md:p-5 ${
+              className={`group relative flex flex-col rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 xl:hover:scale-100 xl:hover:translate-y-0 hover:scale-105 hover:-translate-y-2 active:scale-95 sm:rounded-xl sm:p-4 md:p-5 ${
                 isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-90"
               }`}
               style={{
@@ -507,6 +507,10 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     style={{
                       WebkitOverflowScrolling: 'touch',
                       overscrollBehavior: 'contain',
+                    }}
+                    onMouseEnter={(e) => {
+                      // Stop event propagation to prevent card hover effects while scrolling
+                      e.stopPropagation()
                     }}
                   >
                     <table className="w-full">

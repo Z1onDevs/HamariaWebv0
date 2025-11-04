@@ -56,14 +56,23 @@ export function ConceptSection() {
             )}
           </div>
 
-          {/* Right Column - Features with Round Texture Background */}
+          {/* Right Column - Features with Window Frame Background */}
           <div className="relative space-y-5 sm:space-y-6 md:space-y-7">
-            {/* Round Texture Background Image - Desktop only */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 md:block">
+            {/* Round Texture Background Image - Desktop only, behind window */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[550px] w-[550px] -translate-x-1/2 -translate-y-1/2 md:block">
               <img
                 src="/Round shape background.jpeg"
                 alt=""
-                className="h-full w-full object-contain opacity-15 blur-sm"
+                className="h-full w-full object-contain opacity-10 blur-sm"
+              />
+            </div>
+
+            {/* Window Frame Background - In front of round texture */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 md:block">
+              <img
+                src="/Window frame.jpeg"
+                alt=""
+                className="h-full w-full object-contain opacity-20"
               />
             </div>
 
@@ -74,12 +83,12 @@ export function ConceptSection() {
               {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
-                className="group inline-block w-auto rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-500 hover:w-full hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:w-auto md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
+                className="group w-full rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
                 style={{
                   transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
               >
-                <h3 className="mb-1.5 whitespace-nowrap font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:mb-2 sm:text-base md:text-lg">
+                <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:mb-2 sm:text-base md:text-lg">
                   {feature.title}
                 </h3>
                 <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr] md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]"
