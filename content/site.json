@@ -698,21 +698,21 @@
         "name": "CoolTech® Cryolipolysis",
         "description": "Non-invasive fat freezing technology for body contouring and fat reduction.",
         "categories": ["aesthetics"],
-        "subcategories": ["body-sculpting", "cryotherapy"]
+        "subcategories": ["aesthetics-sub", "regeneration"]
       },
       {
         "id": "pressotherapy-body",
         "name": "Body Pressotherapy",
         "description": "Compression therapy for body sculpting, cellulite reduction, and lymphatic drainage.",
         "categories": ["aesthetics", "wellness"],
-        "subcategories": ["body-sculpting", "detox"]
+        "subcategories": ["aesthetics-sub", "detox"]
       },
       {
         "id": "maderoterapia",
         "name": "Maderoterapia Wood Therapy",
         "description": "Colombian wood therapy massage for body sculpting, cellulite reduction, and lymphatic drainage.",
         "categories": ["aesthetics"],
-        "subcategories": ["body-sculpting", "manual-therapy"]
+        "subcategories": ["aesthetics-sub", "physical-medicine"]
       },
       {
         "id": "red-light-hair",
@@ -1558,21 +1558,21 @@
         "name": "CoolTech® Criolipólisis",
         "description": "Tecnología no invasiva de congelación de grasa para contorno corporal y reducción adiposa.",
         "categories": ["aesthetics"],
-        "subcategories": ["body-sculpting", "cryotherapy"]
+        "subcategories": ["aesthetics-sub", "regeneration"]
       },
       {
         "id": "pressotherapy-body",
         "name": "Presoterapia Corporal",
         "description": "Terapia de compresión para escultura corporal, reducción de celulitis y drenaje linfático.",
         "categories": ["aesthetics", "wellness"],
-        "subcategories": ["body-sculpting", "detox"]
+        "subcategories": ["aesthetics-sub", "detox"]
       },
       {
         "id": "maderoterapia",
         "name": "Maderoterapia",
         "description": "Terapia con maderas colombiana para escultura corporal, reducción de celulitis y drenaje linfático.",
         "categories": ["aesthetics"],
-        "subcategories": ["body-sculpting", "manual-therapy"]
+        "subcategories": ["aesthetics-sub", "physical-medicine"]
       },
       {
         "id": "red-light-hair",
