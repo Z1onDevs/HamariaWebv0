@@ -69,7 +69,8 @@ export function ServicesSection() {
                 <img
                   src="/red-spotlight--vector.png"
                   alt=""
-                  className="h-[300px] w-[800px] object-contain opacity-40 blur-3xl sm:h-[400px] sm:w-[1000px] md:opacity-30"
+                  className="h-[400px] w-[900px] object-contain opacity-60 blur-2xl sm:h-[500px] sm:w-[1100px] md:opacity-50"
+                  style={{ mixBlendMode: 'screen' }}
                 />
               </div>
               

@@ -59,11 +59,12 @@ export function ConceptSection() {
           {/* Right Column - Features */}
           <div className="relative space-y-5 sm:space-y-6 md:space-y-7">
             {/* Red Spotlight Vector - Behind cards, rotated to match card position */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 z-[1] hidden h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 md:block">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-[1] hidden h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 md:block">
               <img
                 src="/red-spotlight--vector.png"
                 alt=""
-                className="h-full w-full rotate-12 object-contain opacity-30 blur-2xl"
+                className="h-full w-full rotate-12 object-contain opacity-50 blur-2xl"
+                style={{ mixBlendMode: 'screen' }}
               />
             </div>
 
