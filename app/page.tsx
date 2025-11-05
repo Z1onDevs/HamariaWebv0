@@ -346,8 +346,14 @@ export default function Home() {
             </button>
           </div>
           
-          {/* Desktop Apply Button */}
-          <MagneticButton variant="primary" className="hidden text-xs sm:text-sm xl:flex" onClick={() => scrollToSection(4)}>
+          {/* Desktop Apply Button - Fades out on membership section */}
+          <MagneticButton 
+            variant="primary" 
+            className={`hidden text-xs transition-opacity duration-500 sm:text-sm xl:flex ${
+              currentSection === 4 ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
+            onClick={() => scrollToSection(4)}
+          >
             {t.applyButton}
           </MagneticButton>
 
