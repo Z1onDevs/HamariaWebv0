@@ -107,9 +107,9 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
             const depthOpacity = (point.z1 + helixRadius) / (helixRadius * 2)
             const radius = 25 * glowIntensity
             const gradient = ctx.createRadialGradient(point.x1, point.y1, 0, point.x1, point.y1, radius)
-            gradient.addColorStop(0, `rgba(30, 58, 95, ${depthOpacity * glowIntensity * 0.4})`)
-            gradient.addColorStop(0.5, `rgba(30, 58, 95, ${depthOpacity * glowIntensity * 0.15})`)
-            gradient.addColorStop(1, "rgba(30, 58, 95, 0)")
+            gradient.addColorStop(0, `rgba(95, 105, 65, ${depthOpacity * glowIntensity * 0.4})`)
+            gradient.addColorStop(0.5, `rgba(95, 105, 65, ${depthOpacity * glowIntensity * 0.15})`)
+            gradient.addColorStop(1, "rgba(95, 105, 65, 0)")
             ctx.fillStyle = gradient
             ctx.beginPath()
             ctx.arc(point.x1, point.y1, radius, 0, Math.PI * 2)
@@ -127,14 +127,14 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         ctx.beginPath()
         ctx.moveTo(point.x1, point.y1)
         ctx.lineTo(point.x2, point.y2)
-        ctx.strokeStyle = `rgba(30, 58, 95, ${opacity * baseOpacity})`
+        ctx.strokeStyle = `rgba(95, 105, 65, ${opacity * baseOpacity})`
         ctx.lineWidth = 1 + intensity * 1.5
         ctx.stroke()
 
         // Glow on connections when scrolling
         if (scrollProgress > 0.3 && i % 2 === 0) {
           ctx.shadowBlur = 10 * scrollProgress
-          ctx.shadowColor = `rgba(30, 58, 95, ${scrollProgress * 0.6})`
+          ctx.shadowColor = `rgba(95, 105, 65, ${scrollProgress * 0.6})`
           ctx.stroke()
           ctx.shadowBlur = 0
         }
@@ -145,7 +145,7 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         // Draw glow layer first
         if (scrollProgress > 0.2) {
           ctx.shadowBlur = 15 * scrollProgress
-          ctx.shadowColor = `rgba(30, 58, 95, ${scrollProgress * 0.8})`
+          ctx.shadowColor = `rgba(95, 105, 65, ${scrollProgress * 0.8})`
         }
 
         ctx.beginPath()
@@ -165,14 +165,14 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
           // Draw nodes with enhanced size and glow
           const nodeSize = 3 + intensity * 2
           const nodeOpacity = 0.6 + intensity * 0.4
-          ctx.fillStyle = `rgba(30, 58, 95, ${opacity * nodeOpacity})`
+          ctx.fillStyle = `rgba(95, 105, 65, ${opacity * nodeOpacity})`
           ctx.beginPath()
           ctx.arc(x, y, nodeSize, 0, Math.PI * 2)
           ctx.fill()
 
           // Add bright core to nodes when scrolling
           if (scrollProgress > 0.4) {
-            ctx.fillStyle = `rgba(100, 150, 200, ${opacity * scrollProgress * 0.6})`
+            ctx.fillStyle = `rgba(130, 145, 90, ${opacity * scrollProgress * 0.6})`
             ctx.beginPath()
             ctx.arc(x, y, nodeSize * 0.5, 0, Math.PI * 2)
             ctx.fill()
@@ -180,7 +180,7 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         })
 
         const strandOpacity = 0.5 + intensity * 0.4
-        ctx.strokeStyle = `rgba(30, 58, 95, ${strandOpacity})`
+        ctx.strokeStyle = `rgba(95, 105, 65, ${strandOpacity})`
         ctx.lineWidth = 2 + intensity * 2
         ctx.stroke()
         ctx.shadowBlur = 0
@@ -206,9 +206,9 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         // Draw particle with glow
         const particleSize = 4 + scrollProgress * 3
         const gradient = ctx.createRadialGradient(x, yPos, 0, x, yPos, particleSize * 3)
-        gradient.addColorStop(0, `rgba(100, 150, 200, ${depthOpacity * particle.life * 0.9})`)
-        gradient.addColorStop(0.4, `rgba(30, 58, 95, ${depthOpacity * particle.life * 0.5})`)
-        gradient.addColorStop(1, "rgba(30, 58, 95, 0)")
+        gradient.addColorStop(0, `rgba(130, 145, 90, ${depthOpacity * particle.life * 0.9})`)
+        gradient.addColorStop(0.4, `rgba(95, 105, 65, ${depthOpacity * particle.life * 0.5})`)
+        gradient.addColorStop(1, "rgba(95, 105, 65, 0)")
         
         ctx.fillStyle = gradient
         ctx.beginPath()
@@ -216,7 +216,7 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         ctx.fill()
 
         // Bright core
-        ctx.fillStyle = `rgba(135, 185, 230, ${depthOpacity * particle.life * 0.8})`
+        ctx.fillStyle = `rgba(150, 165, 105, ${depthOpacity * particle.life * 0.8})`
         ctx.beginPath()
         ctx.arc(x, yPos, particleSize * 0.6, 0, Math.PI * 2)
         ctx.fill()
