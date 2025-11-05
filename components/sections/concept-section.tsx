@@ -58,6 +58,15 @@ export function ConceptSection() {
 
           {/* Right Column - Features */}
           <div className="relative space-y-5 sm:space-y-6 md:space-y-7">
+            {/* Red Spotlight Vector - Behind cards, rotated to match card position */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-[1] hidden h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 md:block">
+              <img
+                src="/red-spotlight--vector.png"
+                alt=""
+                className="h-full w-full rotate-12 object-contain opacity-30 blur-2xl"
+              />
+            </div>
+
             <div className="relative z-10 inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
               <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
             </div>
