@@ -388,6 +388,15 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
+          {/* Yoga SVG - Right side background decoration */}
+          <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[55vh] w-[40vw] animate-in fade-in slide-in-from-right-12 duration-1200 delay-700 xl:block 2xl:h-[60vh] 2xl:w-[35vw]">
+            <img
+              src="/yoga-transparent.svg"
+              alt=""
+              className="h-full w-full object-contain object-bottom opacity-25"
+            />
+          </div>
+
           {/* DNA Helix - Horizontal on mobile/tablet, vertical on desktop */}
           <div 
             className="absolute left-1/2 top-4 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 xl:hidden"
