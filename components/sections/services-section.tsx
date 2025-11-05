@@ -65,11 +65,11 @@ export function ServicesSection() {
             {/* Main Heading with Red Spotlight */}
             <div className="relative inline-block">
               {/* Red Spotlight - Focused on Text */}
-              <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="pointer-events-none absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2">
                 <img
                   src="/red-spotlight--vector.png"
                   alt=""
-                  className="h-[400px] w-[900px] object-contain opacity-60 blur-2xl sm:h-[500px] sm:w-[1100px] md:opacity-50"
+                  className="h-[450px] w-[1000px] object-contain opacity-80 blur-xl sm:h-[550px] sm:w-[1200px] md:opacity-70"
                   style={{ mixBlendMode: 'screen' }}
                 />
               </div>
