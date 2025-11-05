@@ -207,6 +207,16 @@ export default function MembershipDetailPage() {
         <div className="absolute inset-0 bg-background/60" />
       </div>
       <GrainOverlay />
+      
+      {/* Add cursor styles for membership pages */}
+      <style jsx global>{`
+        main * {
+          cursor: auto !important;
+        }
+        main button, main a {
+          cursor: pointer !important;
+        }
+      `}</style>
 
       {/* Content */}
       <div className="relative z-10 px-5 py-12 sm:px-6 md:px-8 lg:px-12">
@@ -242,59 +252,22 @@ export default function MembershipDetailPage() {
             </p>
           </div>
 
-          {/* Pricing Cards */}
-          <div className="mb-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {/* Monthly Price */}
-            <div className="rounded-xl border border-primary/20 bg-card/60 p-6 backdrop-blur-sm">
-              <p className="mb-2 text-sm font-medium text-foreground/60">
-                {memberships.monthlyPrice}
-              </p>
-              <p className="mb-1 font-sans text-3xl font-light text-foreground">
-                €{tier.monthlyPrice}
-              </p>
-              <p className="text-xs text-foreground/50">{memberships.perMonth}</p>
-            </div>
-
-            {/* Yearly Price */}
-            <div className="rounded-xl border border-primary/20 bg-card/60 p-6 backdrop-blur-sm">
-              <p className="mb-2 text-sm font-medium text-foreground/60">
-                {memberships.yearlyPrice}
-              </p>
-              <p className="mb-1 font-sans text-3xl font-light text-foreground">
-                €{tier.yearlyPrice}
-              </p>
-              <p className="text-xs text-foreground/50">{memberships.perYear}</p>
-            </div>
-
-            {/* Weekly Minutes */}
-            <div className="rounded-xl border border-primary/20 bg-card/60 p-6 backdrop-blur-sm">
-              <p className="mb-2 text-sm font-medium text-foreground/60">
-                {memberships.weeklyMinutes}
-              </p>
-              <p className="mb-1 font-sans text-3xl font-light text-foreground">
-                {tier.weeklyMinutes}
-              </p>
-              <p className="text-xs text-foreground/50">min/week</p>
-            </div>
-
-            {/* Perceived Value */}
-            <div
-              className="rounded-xl border p-6 backdrop-blur-sm"
+          {/* Pricing Card - Simplified */}
+          <div className="mb-16">
+            <div 
+              className="inline-block rounded-2xl border p-8 backdrop-blur-sm shadow-xl"
               style={{
-                backgroundColor: `${tier.color}10`,
-                borderColor: `${tier.color}40`,
+                backgroundColor: `${tier.color}08`,
+                borderColor: `${tier.color}30`,
               }}
             >
-              <p className="mb-2 text-sm font-medium text-foreground/60">
-                {memberships.monthlyValue}
+              <p className="mb-2 text-sm font-medium uppercase tracking-wide text-foreground/50">
+                {memberships.monthlyPrice}
               </p>
-              <p className="mb-1 font-sans text-3xl font-light text-foreground">
-                €{tier.monthlyPerceivedValue}
+              <p className="font-sans text-5xl font-light text-foreground md:text-6xl">
+                €{tier.monthlyPrice}
               </p>
-              <div className="flex items-center gap-1 text-xs" style={{ color: tier.color }}>
-                <TrendingUp className="h-3 w-3" />
-                {savingsPercentage}% {memberships.savings}
-              </div>
+              <p className="mt-1 text-sm text-foreground/60">{memberships.perMonth}</p>
             </div>
           </div>
 
@@ -365,9 +338,6 @@ export default function MembershipDetailPage() {
                             <th className="px-6 py-3 text-left text-sm font-medium text-foreground/70">
                               Therapy
                             </th>
-                            <th className="px-6 py-3 text-center text-sm font-medium text-foreground/70">
-                              Duration
-                            </th>
                             <th className="px-6 py-3 text-right text-sm font-medium text-foreground/70">
                               Sessions
                             </th>
@@ -385,9 +355,6 @@ export default function MembershipDetailPage() {
                               >
                                 <td className="px-6 py-4 text-sm text-foreground/80">
                                   {language === "es" ? therapy.nameES : therapy.name}
-                                </td>
-                                <td className="px-6 py-4 text-center font-mono text-xs text-foreground/60">
-                                  {therapy.duration} min
                                 </td>
                                 <td className="px-6 py-4 text-right font-mono text-sm text-foreground/70">
                                   {allocation === "Unlimited" ? memberships.unlimited : `${allocation}/month`}
@@ -414,9 +381,6 @@ export default function MembershipDetailPage() {
                             <th className="px-6 py-3 text-left text-sm font-medium text-foreground/70">
                               Therapy
                             </th>
-                            <th className="px-6 py-3 text-center text-sm font-medium text-foreground/70">
-                              Duration
-                            </th>
                             <th className="px-6 py-3 text-right text-sm font-medium text-foreground/70">
                               Sessions
                             </th>
@@ -434,9 +398,6 @@ export default function MembershipDetailPage() {
                               >
                                 <td className="px-6 py-4 text-sm text-foreground/80">
                                   {language === "es" ? therapy.nameES : therapy.name}
-                                </td>
-                                <td className="px-6 py-4 text-center font-mono text-xs text-foreground/60">
-                                  {therapy.duration} min
                                 </td>
                                 <td className="px-6 py-4 text-right font-mono text-sm text-foreground/70">
                                   {allocation}/year
