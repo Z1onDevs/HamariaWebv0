@@ -56,34 +56,16 @@ export function ConceptSection() {
             )}
           </div>
 
-          {/* Right Column - Features with Window Frame Background */}
+          {/* Right Column - Features */}
           <div className="relative space-y-5 sm:space-y-6 md:space-y-7">
-            {/* Round Texture Background Image - Desktop only, behind window */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[550px] w-[550px] -translate-x-1/2 -translate-y-1/2 md:block">
-              <img
-                src="/Round shape background.jpeg"
-                alt=""
-                className="h-full w-full object-contain opacity-10 blur-sm"
-              />
-            </div>
-
-            {/* Window Frame Background - In front of round texture */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 md:block">
-              <img
-                src="/Window frame.jpeg"
-                alt=""
-                className="h-full w-full object-contain opacity-20"
-              />
-            </div>
-
             <div className="relative z-10 inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
               <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
             </div>
-            <div className="relative z-10 flex flex-col items-center space-y-3 sm:space-y-4 md:items-start md:space-y-5">
+            <div className="relative z-10 flex flex-col items-center space-y-3 sm:space-y-4 md:space-y-5">
               {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
-                className="group w-full max-w-sm rounded-lg border border-border/50 bg-card/30 p-4 text-center backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:max-w-none md:p-6 md:text-left md:hover:scale-102 active:border-primary/30 active:bg-card/50"
+                className="group w-full max-w-sm rounded-lg border border-border/50 bg-card/30 p-4 text-center backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:max-w-none md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
                 style={{
                   transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 }}

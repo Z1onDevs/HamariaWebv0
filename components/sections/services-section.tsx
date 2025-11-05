@@ -106,30 +106,21 @@ export function ServicesSection() {
             )}
           </div>
 
-          {/* Water Texture Hero Image */}
+          {/* Water Texture Hero Image - Mobile Only */}
           <div
-            className={`relative mb-12 overflow-hidden rounded-2xl transition-all duration-700 delay-300 sm:mb-16 md:mb-20 lg:rounded-3xl ${
+            className={`relative mb-12 overflow-hidden rounded-2xl transition-all duration-700 delay-300 sm:mb-16 md:hidden ${
               isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-12 opacity-0 scale-95"
             }`}
           >
-            <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] md:aspect-[21/9] lg:aspect-[5/2]">
+            <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
               <img
                 src="/Water texture.jpeg"
                 alt="Hamaria Wellness Experience"
-                className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                className="h-full w-full object-cover object-center transition-transform duration-700 active:scale-105"
                 loading="lazy"
               />
               {/* Subtle overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-background/20" />
-              
-              {/* Optional: Floating text overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="font-sans text-xs font-light tracking-widest text-foreground/80 opacity-0 transition-opacity duration-500 hover:opacity-100 sm:text-sm md:text-base">
-                    DISCOVER OUR SANCTUARY
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
 
