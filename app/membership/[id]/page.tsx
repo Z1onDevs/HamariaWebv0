@@ -418,10 +418,20 @@ export default function MembershipDetailPage() {
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <MagneticButton
               variant="primary"
-              className="w-full sm:w-auto"
+              className="w-full shadow-lg shadow-primary/30 transition-shadow hover:shadow-xl hover:shadow-primary/40 sm:w-auto"
               onClick={() => {
                 trackPricingClick("apply_now")
-                router.push("/#membership")
+                // Go back to homepage and scroll to membership section
+                router.push("/")
+                setTimeout(() => {
+                  const membershipSection = document.getElementById("membership")
+                  if (membershipSection) {
+                    membershipSection.scrollIntoView({ behavior: "smooth" })
+                  } else {
+                    // Fallback: use section index if ID not found
+                    window.location.hash = "membership"
+                  }
+                }, 100)
               }}
             >
               {t.applyButton}

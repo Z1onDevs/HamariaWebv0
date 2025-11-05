@@ -8,6 +8,7 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
 import { FilteredServices } from "@/components/filtered-services"
+import { HeartbeatTriangle } from "@/components/heartbeat-triangle"
 
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -60,81 +61,94 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl">
-          {/* World-Class Services Header */}
-          <div className="relative mb-16 text-center sm:mb-20 md:mb-24 lg:mb-28">
-            {/* Main Heading with Red Spotlight */}
-            <div className="relative inline-block">
-              {/* Red Spotlight - Focused on Text */}
-              <div className="pointer-events-none absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2">
-                <img
-                  src="/red-spotlight--vector.png"
-                  alt=""
-                  className="h-[450px] w-[1000px] object-contain opacity-80 blur-xl sm:h-[550px] sm:w-[1200px] md:opacity-70"
-                  style={{ mixBlendMode: 'screen' }}
-                />
+          {/* Enhanced Triangle Layout with Cards */}
+          <div className="relative">
+            {/* Triangle Layout with Compact Cards */}
+            <div className="relative z-[1] grid grid-cols-1 gap-4 py-6 sm:gap-5 sm:py-8 md:grid-cols-3 md:gap-6 md:py-10 lg:gap-8">
+              {/* Top Center: Longevity */}
+              <div className="md:col-span-3 md:flex md:justify-center">
+                <div
+                  className={`group max-w-xs rounded-xl border border-border/20 bg-card/10 p-5 text-center backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:bg-card/20 hover:shadow-lg hover:shadow-primary/10 md:max-w-sm ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                  }`}
+                >
+                  <h2 className="mb-2 font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+                    Longevity
+                  </h2>
+                  <p className="text-xs font-light leading-relaxed text-foreground/50 sm:text-sm md:text-base">
+                    Data-driven protocols for optimal healthspan
+                  </p>
+                </div>
               </div>
-              
-              {/* Heading */}
-              <div
-                className={`relative z-10 transition-all duration-700 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-                }`}
-              >
-                <h2 className="font-sans text-3xl font-light tracking-wide text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-                  {services.heading}
-                </h2>
+
+              {/* Bottom Row: Wellness & Aesthetics */}
+              <div className="md:col-span-3 md:grid md:grid-cols-2 md:gap-6 md:px-8 lg:gap-8 lg:px-12">
+                {/* Bottom Left: Wellness */}
+                <div
+                  className={`group mb-4 max-w-xs rounded-xl border border-border/20 bg-card/10 p-5 text-center backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:bg-card/20 hover:shadow-lg hover:shadow-primary/10 sm:mb-5 md:mb-0 md:max-w-none ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "100ms" }}
+                >
+                  <h2 className="mb-2 font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+                    Wellness
+                  </h2>
+                  <p className="text-xs font-light leading-relaxed text-foreground/50 sm:text-sm md:text-base">
+                    Holistic balance for mind and body
+                  </p>
+                </div>
+
+                {/* Bottom Right: Aesthetics */}
+                <div
+                  className={`group max-w-xs rounded-xl border border-border/20 bg-card/10 p-5 text-center backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:bg-card/20 hover:shadow-lg hover:shadow-primary/10 md:max-w-none ${
+                    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "200ms" }}
+                >
+                  <h2 className="mb-2 font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+                    Aesthetics
+                  </h2>
+                  <p className="text-xs font-light leading-relaxed text-foreground/50 sm:text-sm md:text-base">
+                    Regenerative beauty and excellence
+                  </p>
+                </div>
               </div>
             </div>
-            
-            {/* Elegant Divider */}
-            <div
-              className={`mx-auto my-8 h-px w-24 bg-gradient-to-r from-transparent via-primary/40 to-transparent transition-all duration-700 delay-100 sm:my-10 sm:w-32 md:my-12 md:w-40 ${
-                isVisible ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
-              }`}
-            />
-            
-            {/* Subheading */}
+
+            {/* Heartbeat Triangle - On top of cards, fits between them */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2 sm:h-[220px] sm:w-[220px] md:h-[280px] md:w-[280px] lg:h-[300px] lg:w-[300px]">
+              <HeartbeatTriangle />
+            </div>
+
+            {/* Subheading - Below Cards */}
             {services.subheading && (
               <div
-                className={`mx-auto max-w-3xl transition-all duration-700 delay-200 ${
+                className={`mx-auto mt-12 max-w-3xl text-center transition-all duration-700 delay-300 sm:mt-16 md:mt-20 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
               >
-                <p className="font-sans text-sm font-light leading-relaxed text-foreground/60 sm:text-base md:text-lg lg:text-xl">
+                <div className="mb-4 flex items-center justify-center gap-2">
+                  <div className="h-px w-8 bg-gradient-to-r from-transparent to-primary/40" />
+                  <span className="font-mono text-xs uppercase tracking-widest text-primary">70+ Services</span>
+                  <div className="h-px w-8 bg-gradient-to-l from-transparent to-primary/40" />
+                </div>
+                <p className="font-sans text-sm font-light leading-relaxed text-foreground/60 sm:text-base md:text-lg">
                   {services.subheading}
                 </p>
               </div>
             )}
           </div>
 
-          {/* Water Texture Hero Image - Mobile Only */}
-          <div
-            className={`relative mb-12 overflow-hidden rounded-2xl transition-all duration-700 delay-300 sm:mb-16 md:hidden ${
-              isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-12 opacity-0 scale-95"
-            }`}
-          >
-            <div className="relative aspect-[4/3] w-full sm:aspect-[16/9]">
-              <img
-                src="/Water texture.jpeg"
-                alt="Hamaria Wellness Experience"
-                className="h-full w-full object-cover object-center transition-transform duration-700 active:scale-105"
-                loading="lazy"
-              />
-              {/* Subtle overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-background/20" />
-            </div>
-          </div>
-
-          {/* All Services Button */}
+          {/* All Services Button - Enhanced */}
           {hasMoreServices && (
             <div
-              className={`flex justify-center transition-all duration-700 delay-400 ${
+              className={`mt-12 flex justify-center transition-all duration-700 delay-500 sm:mt-16 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group relative overflow-hidden rounded-full border border-primary/30 bg-background/40 px-8 py-3 font-sans text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card/60 hover:shadow-lg hover:shadow-primary/10 active:scale-95 sm:px-10 sm:py-3.5 sm:text-base"
+                className="group relative overflow-hidden rounded-full border border-primary/30 bg-background/40 px-10 py-4 font-sans text-base font-medium text-foreground shadow-lg shadow-primary/20 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card/60 hover:shadow-xl hover:shadow-primary/30 active:scale-95 sm:px-12 sm:py-4 md:text-lg"
               >
                 <span className="relative z-10">{t.moreLink}</span>
                 {/* Shine effect on hover */}

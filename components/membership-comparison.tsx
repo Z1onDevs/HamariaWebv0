@@ -179,55 +179,8 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
           </tr>
         </thead>
 
-        {/* Pricing Summary */}
+        {/* Therapies */}
         <tbody>
-          <tr className="border-b border-border/20 bg-foreground/5">
-            <td className="sticky left-0 z-10 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground/70">
-              {memberships.weeklyMinutes}
-            </td>
-            {tiers.map((tierId) => {
-              const tier = memberships.tiers[tierId]
-              const isCurrentTier = tierId === currentTier
-              
-              return (
-                <td
-                  key={tierId}
-                  className={`px-6 py-3 text-center ${
-                    isCurrentTier ? "bg-primary/10" : ""
-                  }`}
-                >
-                  <span className="font-mono text-sm text-foreground/70">
-                    {tier.weeklyMinutes} min
-                  </span>
-                </td>
-              )
-            })}
-          </tr>
-
-          <tr className="border-b border-border/20 bg-foreground/5">
-            <td className="sticky left-0 z-10 bg-foreground/5 px-6 py-3 text-sm font-medium text-foreground/70">
-              {memberships.monthlyValue}
-            </td>
-            {tiers.map((tierId) => {
-              const tier = memberships.tiers[tierId]
-              const isCurrentTier = tierId === currentTier
-              
-              return (
-                <td
-                  key={tierId}
-                  className={`px-6 py-3 text-center ${
-                    isCurrentTier ? "bg-primary/10" : ""
-                  }`}
-                >
-                  <span className="font-mono text-sm text-foreground/70">
-                    €{tier.monthlyPerceivedValue}
-                  </span>
-                </td>
-              )
-            })}
-          </tr>
-
-          {/* Therapies */}
           <tr className="border-b border-border/30">
             <td colSpan={4} className="bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60">
               {memberships.monthlyTherapies}
