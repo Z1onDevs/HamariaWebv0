@@ -1105,74 +1105,19 @@
     ],
     "subcategories": [
       {
-        "id": "metabolic",
-        "name": "Análisis Metabólico",
-        "parentCategories": ["diagnostics"]
+        "id": "aesthetics-sub",
+        "name": "Estética",
+        "parentCategories": ["aesthetics"]
       },
       {
-        "id": "hormonal",
-        "name": "Hormonal y Endocrino",
-        "parentCategories": ["diagnostics", "performance"]
-      },
-      {
-        "id": "inflammation",
-        "name": "Inflamación e Inmunidad",
-        "parentCategories": ["diagnostics", "wellness"]
-      },
-      {
-        "id": "genetics",
-        "name": "Genética y Epigenética",
-        "parentCategories": ["diagnostics"]
-      },
-      {
-        "id": "cardiovascular",
-        "name": "Salud Cardiovascular",
-        "parentCategories": ["diagnostics", "performance"]
-      },
-      {
-        "id": "body-comp",
-        "name": "Composición Corporal",
-        "parentCategories": ["diagnostics", "performance", "aesthetics"]
-      },
-      {
-        "id": "regeneration",
-        "name": "Regeneración y Recuperación",
+        "id": "energy",
+        "name": "Energía",
         "parentCategories": ["performance", "wellness"]
       },
       {
-        "id": "oxygenation",
-        "name": "Terapia de Oxigenación",
-        "parentCategories": ["performance", "wellness"]
-      },
-      {
-        "id": "photobiomodulation",
-        "name": "Terapia de Luz",
-        "parentCategories": ["performance", "wellness", "aesthetics"]
-      },
-      {
-        "id": "cryotherapy",
-        "name": "Crioterapia",
-        "parentCategories": ["performance", "wellness", "aesthetics"]
-      },
-      {
-        "id": "electromagnetic",
-        "name": "Terapia Electromagnética",
-        "parentCategories": ["performance", "wellness"]
-      },
-      {
-        "id": "movement",
-        "name": "Movimiento y Entrenamiento",
-        "parentCategories": ["performance"]
-      },
-      {
-        "id": "manual-therapy",
-        "name": "Terapia Manual",
-        "parentCategories": ["wellness", "performance"]
-      },
-      {
-        "id": "hydrotherapy",
-        "name": "Hidroterapia",
-        "parentCategories": ["wellness"]
+        "id": "information-medicine",
+        "name": "Medicina de Información",
+        "parentCategories": ["diagnostics", "wellness", "performance"]
       },
       {
         "id": "detox",
@@ -1180,34 +1125,39 @@
         "parentCategories": ["wellness"]
       },
       {
-        "id": "nutrition",
-        "name": "Nutrición y Suplementación",
-        "parentCategories": ["wellness", "performance"]
+        "id": "regeneration",
+        "name": "Regeneración",
+        "parentCategories": ["performance", "wellness", "aesthetics"]
       },
       {
-        "id": "mental-wellness",
-        "name": "Bienestar Mental",
+        "id": "sleep",
+        "name": "Sueño",
         "parentCategories": ["wellness"]
       },
       {
-        "id": "facial",
-        "name": "Tratamientos Faciales",
-        "parentCategories": ["aesthetics"]
+        "id": "biorhythms",
+        "name": "Biorritmos",
+        "parentCategories": ["wellness", "performance"]
       },
       {
-        "id": "body-sculpting",
-        "name": "Escultura Corporal",
-        "parentCategories": ["aesthetics"]
+        "id": "stress",
+        "name": "Gestión del Estrés",
+        "parentCategories": ["wellness"]
       },
       {
-        "id": "skin",
-        "name": "Rejuvenecimiento Cutáneo",
-        "parentCategories": ["aesthetics"]
+        "id": "physical-medicine",
+        "name": "Medicina Física",
+        "parentCategories": ["performance", "wellness"]
       },
       {
-        "id": "hair",
-        "name": "Cabello y Cuero Cabelludo",
-        "parentCategories": ["aesthetics"]
+        "id": "movement",
+        "name": "Movimiento",
+        "parentCategories": ["performance"]
+      },
+      {
+        "id": "psyche",
+        "name": "Psique y Cognición",
+        "parentCategories": ["wellness"]
       }
     ],
     "items": [
