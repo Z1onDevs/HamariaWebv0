@@ -116,7 +116,7 @@ export function ServicesSection() {
             </div>
 
             {/* Heartbeat Triangle - On top of cards, fits between them */}
-            <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2 sm:h-[220px] sm:w-[220px] md:h-[280px] md:w-[280px] lg:h-[300px] lg:w-[300px]">
+            <div className="pointer-events-none absolute left-1/2 top-[35%] z-10 h-[180px] w-[180px] -translate-x-1/2 -translate-y-1/2 sm:top-[40%] sm:h-[220px] sm:w-[220px] md:top-1/2 md:h-[280px] md:w-[280px] lg:h-[300px] lg:w-[300px]">
               <HeartbeatTriangle />
             </div>
 
