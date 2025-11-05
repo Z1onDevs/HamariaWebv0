@@ -50,13 +50,22 @@ export function FilteredServices() {
   const filteredTherapies = useMemo(() => {
     let result = therapies
 
-    // Apply search filter
+    // Apply search filter (enhanced to include subcategories)
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
-      result = result.filter(therapy =>
-        therapy.name.toLowerCase().includes(query) ||
-        therapy.description.toLowerCase().includes(query)
-      )
+      result = result.filter(therapy => {
+        // Search in name and description
+        const nameMatch = therapy.name.toLowerCase().includes(query)
+        const descriptionMatch = therapy.description.toLowerCase().includes(query)
+        
+        // Search in subcategory names
+        const subcategoryMatch = therapy.subcategories.some(subId => {
+          const subcategory = subcategories.find(s => s.id === subId)
+          return subcategory?.name.toLowerCase().includes(query)
+        })
+        
+        return nameMatch || descriptionMatch || subcategoryMatch
+      })
     }
 
     // Apply category/subcategory filters (ANY logic - OR)
@@ -76,7 +85,7 @@ export function FilteredServices() {
     result.sort((a, b) => a.name.localeCompare(b.name))
 
     return result
-  }, [therapies, selectedCategories, selectedSubcategories, searchQuery])
+  }, [therapies, selectedCategories, selectedSubcategories, searchQuery, subcategories])
 
   // Count therapies per category for badges
   const getCategoryCount = (categoryId: string) => {
@@ -351,6 +360,21 @@ export function FilteredServices() {
                     <p className="text-xs leading-relaxed text-foreground/60">
                       {therapy.description}
                     </p>
+                    {/* Subcategory tags */}
+                    <div className="flex flex-wrap gap-1">
+                      {therapy.subcategories.map((subId) => {
+                        const subcategory = subcategories.find(s => s.id === subId)
+                        if (!subcategory) return null
+                        return (
+                          <span
+                            key={subId}
+                            className="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-foreground/60"
+                          >
+                            {subcategory.name}
+                          </span>
+                        )
+                      })}
+                    </div>
                   </div>
 
                   {/* Mobile: Click to expand description */}
@@ -374,11 +398,11 @@ export function FilteredServices() {
                     </button>
                     {expandedTherapy === therapy.id && (
                       <div className="animate-in slide-in-from-top-2 border-t border-border/30 px-3 pb-3 pt-2 duration-200">
-                        <p className="text-xs leading-relaxed text-foreground/60">
+                        <p className="mb-2 text-xs leading-relaxed text-foreground/60">
                           {therapy.description}
                         </p>
                         {/* Category tags on mobile */}
-                        <div className="mt-2 flex flex-wrap gap-1">
+                        <div className="mb-2 flex flex-wrap gap-1">
                           {therapy.categories.map((catId) => {
                             const cat = categories.find(c => c.id === catId)
                             if (!cat) return null
@@ -392,6 +416,21 @@ export function FilteredServices() {
                                 }}
                               >
                                 {cat.name}
+                              </span>
+                            )
+                          })}
+                        </div>
+                        {/* Subcategory tags on mobile */}
+                        <div className="flex flex-wrap gap-1">
+                          {therapy.subcategories.map((subId) => {
+                            const subcategory = subcategories.find(s => s.id === subId)
+                            if (!subcategory) return null
+                            return (
+                              <span
+                                key={subId}
+                                className="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-foreground/60"
+                              >
+                                {subcategory.name}
                               </span>
                             )
                           })}
