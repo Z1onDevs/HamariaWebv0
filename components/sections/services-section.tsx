@@ -67,7 +67,7 @@ export function ServicesSection() {
               {/* Red Spotlight - Focused on Text */}
               <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <img
-                  src="/Red Spotlight.jpeg"
+                  src="/red-spotlight--vector.png"
                   alt=""
                   className="h-[300px] w-[800px] object-contain opacity-40 blur-3xl sm:h-[400px] sm:w-[1000px] md:opacity-30"
                 />
