@@ -444,7 +444,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      className="membership-section-wrapper flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section Title - Mobile/Tablet only */}
@@ -461,15 +461,19 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           {memberships.map((membership, i) => (
             <div
               key={i}
-              className={`group relative flex flex-col overflow-hidden rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 xl:hover:scale-100 xl:hover:translate-y-0 hover:scale-105 hover:-translate-y-2 active:scale-95 sm:rounded-xl sm:p-4 md:p-5 ${
+              className={`membership-card group relative flex flex-col overflow-hidden rounded-xl border border-primary/20 bg-card/60 p-5 shadow-sm backdrop-blur-sm transition-all duration-700 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 xl:hover:scale-100 xl:hover:translate-y-0 hover:scale-105 hover:-translate-y-2 active:scale-95 sm:rounded-xl sm:p-4 md:p-5 ${
                 isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-90"
               }`}
               style={{
                 transitionDelay: `${i * 150}ms`,
                 transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
-              onMouseEnter={() => setIsHoveringCard(true)}
-              onMouseLeave={() => setIsHoveringCard(false)}
+              onMouseEnter={() => {
+                if (isLargeScreen) setIsHoveringCard(true)
+              }}
+              onMouseLeave={() => {
+                if (isLargeScreen) setIsHoveringCard(false)
+              }}
             >
               <div className="mb-3 sm:mb-3">
                 <h3 className="mb-1 font-sans text-lg font-light text-foreground sm:mb-1 sm:text-lg md:text-xl">{membership.name}</h3>

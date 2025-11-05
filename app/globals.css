@@ -315,6 +315,16 @@
     .group:has(.membership-scroll-container:hover) {
       transform: scale(1) translateY(0) !important;
     }
+    
+    /* Prevent horizontal page scroll when hovering membership cards */
+    .membership-section-wrapper:has(.membership-card:hover) {
+      scroll-snap-type: none !important;
+    }
+  }
+  
+  /* Ensure internal scrolling takes precedence */
+  .membership-scroll-container {
+    scroll-behavior: smooth;
   }
 
   /* Radial gradient utility */
