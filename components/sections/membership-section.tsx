@@ -43,95 +43,111 @@ const membershipDefinitions = [
 const therapyMatrix = [
   {
     name: "Cryotherapy (electric chamber)",
+    nameES: "Crioterapia (cámara eléctrica)",
     allocations: { longevity: 2, performance: 4, aesthetics: 4 },
   },
   {
     name: "Cold plunge",
+    nameES: "Inmersión en frío",
     allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "IHHT (intermittent hypoxic-hyperoxic)",
+    nameES: "IHHT (hipoxia-hiperoxia intermitente)",
     allocations: { longevity: 0, performance: 4, aesthetics: 0 },
   },
   {
     name: "Hyperbaric oxygen therapy (HBOT)",
+    nameES: "Cámara hiperbárica (HBOT)",
     allocations: { longevity: 1, performance: 4, aesthetics: 4 },
   },
   {
     name: "Red light therapy (full body)",
+    nameES: "Terapia de luz roja (cuerpo completo)",
     allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Microcurrent & LED facial",
+    nameES: "Microcorriente y LED facial",
     allocations: { longevity: 0, performance: 0, aesthetics: 4 },
   },
   {
     name: "Indiba (RF/Tecar)",
+    nameES: "Indiba (RF/Tecar)",
     allocations: { longevity: 0, performance: 0, aesthetics: 2 },
   },
   {
     name: "Pressotherapy",
+    nameES: "Presoterapia",
     allocations: { longevity: 4, performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Pilates (class/session)",
+    nameES: "Pilates (clase/sesión)",
     allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Floatation (sensory tank)",
+    nameES: "Flotación (tanque sensorial)",
     allocations: { longevity: 1, performance: 2, aesthetics: 3 },
   },
   {
     name: "Sauna session",
+    nameES: "Sesión de sauna",
     allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
-    name: "Masaje linfático",
+    name: "Lymphatic massage",
+    nameES: "Masaje linfático",
     allocations: { longevity: 0, performance: 1, aesthetics: 2 },
   },
   {
-    name: "Masaje terapéutico",
+    name: "Therapeutic massage",
+    nameES: "Masaje terapéutico",
     allocations: { longevity: 1, performance: 4, aesthetics: 4 },
   },
   {
     name: "Signature massage",
+    nameES: "Masaje signature",
     allocations: { longevity: 0, performance: 0, aesthetics: 1 },
   },
   {
     name: "Swim",
+    nameES: "Natación",
     allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Personal trainer",
+    nameES: "Entrenador personal",
     allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Baseline assessment",
+    nameES: "Evaluación de línea base",
     allocations: { longevity: 1, performance: 1, aesthetics: 1 },
     isYearly: true,
   },
   {
     name: "VO2 max",
+    nameES: "VO₂ máx",
     allocations: { longevity: 0, performance: 4, aesthetics: 0 },
     isYearly: true,
   },
   {
     name: "Sofwave (ultrasound facelift)",
-    allocations: { longevity: 1, performance: 1, aesthetics: 0 },
+    nameES: "Sofwave (lifting ultrasónico)",
+    allocations: { longevity: 1, performance: 1, aesthetics: 2 },
     isYearly: true,
   },
   {
-    name: "Sofwave (ultrasound facelift)",
-    allocations: { longevity: 0, performance: 0, aesthetics: 2 },
-    isYearly: false,
-  },
-  {
     name: "NAD+ IV",
+    nameES: "NAD+ IV",
     allocations: { longevity: 1, performance: 1, aesthetics: 2 },
     isYearly: true,
   },
 ] satisfies Array<{
   name: string
+  nameES: string
   allocations: Record<MembershipKey, number | string>
   isYearly?: boolean
 }>
@@ -142,7 +158,7 @@ interface MembershipSectionProps {
 
 export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const { ref, isVisible } = useReveal(0.3)
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -322,7 +338,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const memberships = useMemo(
     () =>
       membershipDefinitions.map((membership) => {
-        let features: Array<{ name: string; schedule: string; isExtra?: boolean }> = []
+        let features: Array<{ name: string; nameES: string; schedule: string; isExtra?: boolean }> = []
         
         if (membership.key === "longevity") {
           // Longevity: Show all Longevity therapies, unlimited first
@@ -334,10 +350,11 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               
               return {
                 name: therapy.name,
+                nameES: therapy.nameES,
                 schedule,
               }
             })
-            .filter(Boolean) as Array<{ name: string; schedule: string }>
+            .filter(Boolean) as Array<{ name: string; nameES: string; schedule: string }>
           
           // Sort: Unlimited first, then by name
           features.sort((a, b) => {
@@ -365,13 +382,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 
                 return {
                   name: therapy.name,
+                  nameES: therapy.nameES,
                   schedule,
                   isExtra: true,
                 }
               }
               return null
             })
-            .filter(Boolean) as Array<{ name: string; schedule: string; isExtra?: boolean }>
+            .filter(Boolean) as Array<{ name: string; nameES: string; schedule: string; isExtra?: boolean }>
         } else if (membership.key === "aesthetics") {
           // Aesthetics: Show only Aesthetics-specific add-ons showing EXTRA sessions beyond Longevity
           features = therapyMatrix
@@ -392,13 +410,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 
                 return {
                   name: therapy.name,
+                  nameES: therapy.nameES,
                   schedule,
                   isExtra: true,
                 }
               }
               return null
             })
-            .filter(Boolean) as Array<{ name: string; schedule: string; isExtra?: boolean }>
+            .filter(Boolean) as Array<{ name: string; nameES: string; schedule: string; isExtra?: boolean }>
         }
         
         return {
@@ -527,7 +546,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                             className="border-b border-foreground/5 last:border-0 transition-colors hover:bg-foreground/5 active:bg-foreground/10"
                           >
                             <td className="px-4 py-3 text-xs leading-relaxed text-foreground/80 sm:text-xs">
-                              {feature.name}
+                              {language === "es" ? feature.nameES : feature.name}
                             </td>
                             <td className="px-4 py-3 text-right font-mono text-xs tracking-wide text-foreground/60 sm:text-xs">
                               {feature.schedule}
