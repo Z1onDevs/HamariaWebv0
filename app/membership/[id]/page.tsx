@@ -151,6 +151,9 @@ export default function MembershipDetailPage() {
   useEffect(() => {
     setMounted(true)
     
+    // Scroll to top on page load
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    
     // Track page view for analytics
     if (typeof window !== "undefined" && (window as any).clarity) {
       ;(window as any).clarity("set", "membership_page_view", membershipId)

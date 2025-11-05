@@ -60,74 +60,93 @@ export function ServicesSection() {
         className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-7xl">
-          {/* Header with Water Texture Background */}
-          <div className="relative mb-12 overflow-hidden rounded-3xl sm:mb-16 md:mb-20 lg:mb-24">
-            {/* Water Texture Background Image */}
-            <div className="absolute inset-0 z-0">
-              <img
-                src="/Water texture.jpeg"
-                alt=""
-                className="h-full w-full object-cover object-center opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background/80" />
-            </div>
-            
-            {/* Red Spotlight Overlay - Mobile (Top emphasis) */}
-            <div className="pointer-events-none absolute left-1/2 top-0 z-[1] h-48 w-full -translate-x-1/2 md:hidden">
-              <img
-                src="/Red Spotlight.jpeg"
-                alt=""
-                className="h-full w-full object-cover object-top opacity-50 blur-2xl"
-              />
-            </div>
-            
-            {/* Red Spotlight Overlay - Desktop (Centered) */}
-            <div className="pointer-events-none absolute inset-0 z-[1] hidden md:block">
-              <div className="absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 opacity-20 blur-3xl">
-                <div className="h-full w-full rounded-full bg-gradient-radial from-red-500/60 via-red-600/30 to-transparent" />
+          {/* World-Class Services Header */}
+          <div className="relative mb-16 text-center sm:mb-20 md:mb-24 lg:mb-28">
+            {/* Main Heading with Red Spotlight */}
+            <div className="relative inline-block">
+              {/* Red Spotlight - Focused on Text */}
+              <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <img
+                  src="/Red Spotlight.jpeg"
+                  alt=""
+                  className="h-[300px] w-[800px] object-contain opacity-40 blur-3xl sm:h-[400px] sm:w-[1000px] md:opacity-30"
+                />
               </div>
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 px-5 py-12 text-center sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+              
+              {/* Heading */}
               <div
-                className={`mb-6 transition-all duration-700 sm:mb-8 md:mb-10 ${
+                className={`relative z-10 transition-all duration-700 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
               >
-                <h2 className="font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                <h2 className="font-sans text-3xl font-light tracking-wide text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
                   {services.heading}
                 </h2>
               </div>
+            </div>
+            
+            {/* Elegant Divider */}
+            <div
+              className={`mx-auto my-8 h-px w-24 bg-gradient-to-r from-transparent via-primary/40 to-transparent transition-all duration-700 delay-100 sm:my-10 sm:w-32 md:my-12 md:w-40 ${
+                isVisible ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
+              }`}
+            />
+            
+            {/* Subheading */}
+            {services.subheading && (
+              <div
+                className={`mx-auto max-w-3xl transition-all duration-700 delay-200 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+                }`}
+              >
+                <p className="font-sans text-sm font-light leading-relaxed text-foreground/60 sm:text-base md:text-lg lg:text-xl">
+                  {services.subheading}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Water Texture Hero Image */}
+          <div
+            className={`relative mb-12 overflow-hidden rounded-2xl transition-all duration-700 delay-300 sm:mb-16 md:mb-20 lg:rounded-3xl ${
+              isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-12 opacity-0 scale-95"
+            }`}
+          >
+            <div className="relative aspect-[4/3] w-full sm:aspect-[16/9] md:aspect-[21/9] lg:aspect-[5/2]">
+              <img
+                src="/Water texture.jpeg"
+                alt="Hamaria Wellness Experience"
+                className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                loading="lazy"
+              />
+              {/* Subtle overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-background/20" />
               
-              {/* Subheading */}
-              {services.subheading && (
-                <div
-                  className={`mx-auto max-w-4xl transition-all duration-700 delay-100 ${
-                    isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-                  }`}
-                >
-                  <p className="font-sans text-sm font-light leading-relaxed text-foreground/70 sm:text-base md:text-lg lg:text-xl">
-                    {services.subheading}
+              {/* Optional: Floating text overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <p className="font-sans text-xs font-light tracking-widest text-foreground/80 opacity-0 transition-opacity duration-500 hover:opacity-100 sm:text-sm md:text-base">
+                    DISCOVER OUR SANCTUARY
                   </p>
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
           {/* All Services Button */}
           {hasMoreServices && (
             <div
-              className={`mt-6 flex justify-center transition-all duration-700 sm:mt-8 ${
+              className={`flex justify-center transition-all duration-700 delay-400 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
-              style={{ transitionDelay: "400ms" }}
             >
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group border-b border-transparent font-sans text-sm text-foreground/70 transition-all hover:border-foreground/70 hover:text-foreground sm:text-base"
+                className="group relative overflow-hidden rounded-full border border-primary/30 bg-background/40 px-8 py-3 font-sans text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card/60 hover:shadow-lg hover:shadow-primary/10 active:scale-95 sm:px-10 sm:py-3.5 sm:text-base"
               >
-                {t.moreLink}
+                <span className="relative z-10">{t.moreLink}</span>
+                {/* Shine effect on hover */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-primary/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </button>
             </div>
           )}

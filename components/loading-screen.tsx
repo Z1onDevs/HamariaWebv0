@@ -9,6 +9,12 @@ export function LoadingScreen() {
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
+    // Lock scrolling while loading
+    document.body.style.overflow = "hidden"
+    document.body.style.position = "fixed"
+    document.body.style.width = "100%"
+    document.body.style.height = "100%"
+
     // Minimum loading time for smooth experience
     const minLoadTime = 1500
     const startTime = Date.now()
@@ -22,6 +28,11 @@ export function LoadingScreen() {
         // Remove from DOM after fade out animation
         setTimeout(() => {
           setIsLoading(false)
+          // Unlock scrolling
+          document.body.style.overflow = ""
+          document.body.style.position = ""
+          document.body.style.width = ""
+          document.body.style.height = ""
         }, 800)
       }, remainingTime)
     }
@@ -55,17 +66,28 @@ export function LoadingScreen() {
 
       {/* Hamaria Text Animation */}
       <div className="relative z-10">
-        {/* Main Text */}
+        {/* Main Text with Individual Letter Animations */}
         <h1
-          className={`font-sans text-6xl font-light tracking-wider text-foreground sm:text-7xl md:text-8xl lg:text-9xl ${
-            fadeOut ? "" : "animate-fade-in-scale"
-          }`}
+          className="font-sans text-6xl font-light tracking-wider text-foreground sm:text-7xl md:text-8xl lg:text-9xl"
           style={{
             letterSpacing: "0.15em",
-            animation: fadeOut ? "none" : "fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
           }}
         >
-          HAMARIA
+          {["H", "A", "M", "A", "R", "I", "A"].map((letter, index) => (
+            <span
+              key={index}
+              className={`inline-block ${fadeOut ? "" : "animate-letter-charge"}`}
+              style={{
+                animation: fadeOut
+                  ? "none"
+                  : `letterCharge 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s forwards`,
+                opacity: 0,
+                transform: "translateY(20px)",
+              }}
+            >
+              {letter}
+            </span>
+          ))}
         </h1>
 
         {/* Animated Underline */}
@@ -97,14 +119,18 @@ export function LoadingScreen() {
 
       {/* CSS Animations */}
       <style jsx>{`
-        @keyframes fadeInScale {
+        @keyframes letterCharge {
           0% {
             opacity: 0;
-            transform: scale(0.9);
+            transform: translateY(20px) scale(0.8);
+          }
+          50% {
+            opacity: 1;
+            transform: translateY(-5px) scale(1.1);
           }
           100% {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0) scale(1);
           }
         }
 

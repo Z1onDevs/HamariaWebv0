@@ -12,11 +12,11 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { X } from "lucide-react"
 
-type MembershipKey = "core" | "performance" | "aesthetics"
+type MembershipKey = "longevity" | "performance" | "aesthetics"
 
 const membershipDefinitions = [
   {
-    key: "core" as const,
+    key: "longevity" as const,
     name: "Longevity +",
     description: "Foundational therapies curated for holistic wellbeing",
     highlighted: false,
@@ -43,91 +43,91 @@ const membershipDefinitions = [
 const therapyMatrix = [
   {
     name: "Cryotherapy (electric chamber)",
-    allocations: { core: 2, performance: 4, aesthetics: 4 },
+    allocations: { longevity: 2, performance: 4, aesthetics: 4 },
   },
   {
     name: "Cold plunge",
-    allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "IHHT (intermittent hypoxic-hyperoxic)",
-    allocations: { core: 0, performance: 4, aesthetics: 0 },
+    allocations: { longevity: 0, performance: 4, aesthetics: 0 },
   },
   {
     name: "Hyperbaric oxygen therapy (HBOT)",
-    allocations: { core: 1, performance: 4, aesthetics: 4 },
+    allocations: { longevity: 1, performance: 4, aesthetics: 4 },
   },
   {
     name: "Red light therapy (full body)",
-    allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Microcurrent & LED facial",
-    allocations: { core: 0, performance: 0, aesthetics: 4 },
+    allocations: { longevity: 0, performance: 0, aesthetics: 4 },
   },
   {
     name: "Indiba (RF/Tecar)",
-    allocations: { core: 0, performance: 0, aesthetics: 2 },
+    allocations: { longevity: 0, performance: 0, aesthetics: 2 },
   },
   {
     name: "Pressotherapy",
-    allocations: { core: 4, performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: 4, performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Pilates (class/session)",
-    allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Floatation (sensory tank)",
-    allocations: { core: 1, performance: 2, aesthetics: 3 },
+    allocations: { longevity: 1, performance: 2, aesthetics: 3 },
   },
   {
     name: "Sauna session",
-    allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Masaje linfático",
-    allocations: { core: 0, performance: 1, aesthetics: 2 },
+    allocations: { longevity: 0, performance: 1, aesthetics: 2 },
   },
   {
     name: "Masaje terapéutico",
-    allocations: { core: 1, performance: 4, aesthetics: 4 },
+    allocations: { longevity: 1, performance: 4, aesthetics: 4 },
   },
   {
     name: "Signature massage",
-    allocations: { core: 0, performance: 0, aesthetics: 1 },
+    allocations: { longevity: 0, performance: 0, aesthetics: 1 },
   },
   {
     name: "Swim",
-    allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Personal trainer",
-    allocations: { core: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
+    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
   },
   {
     name: "Baseline assessment",
-    allocations: { core: 1, performance: 1, aesthetics: 1 },
+    allocations: { longevity: 1, performance: 1, aesthetics: 1 },
     isYearly: true,
   },
   {
     name: "VO2 max",
-    allocations: { core: 0, performance: 4, aesthetics: 0 },
+    allocations: { longevity: 0, performance: 4, aesthetics: 0 },
     isYearly: true,
   },
   {
     name: "Sofwave (ultrasound facelift)",
-    allocations: { core: 1, performance: 1, aesthetics: 0 },
+    allocations: { longevity: 1, performance: 1, aesthetics: 0 },
     isYearly: true,
   },
   {
     name: "Sofwave (ultrasound facelift)",
-    allocations: { core: 0, performance: 0, aesthetics: 2 },
+    allocations: { longevity: 0, performance: 0, aesthetics: 2 },
     isYearly: false,
   },
   {
     name: "NAD+ IV",
-    allocations: { core: 1, performance: 1, aesthetics: 2 },
+    allocations: { longevity: 1, performance: 1, aesthetics: 2 },
     isYearly: true,
   },
 ] satisfies Array<{
@@ -324,11 +324,11 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       membershipDefinitions.map((membership) => {
         let features: Array<{ name: string; schedule: string; isExtra?: boolean }> = []
         
-        if (membership.key === "core") {
-          // Core: Show all Core therapies, unlimited first
+        if (membership.key === "longevity") {
+          // Longevity: Show all Longevity therapies, unlimited first
           features = therapyMatrix
             .map((therapy) => {
-              const allocation = therapy.allocations.core
+              const allocation = therapy.allocations.longevity
               const schedule = formatAllocation(allocation, therapy.isYearly || false)
               if (!schedule) return null
               
@@ -349,7 +349,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           // Performance: Show only Performance-specific add-ons showing EXTRA sessions beyond Longevity
           features = therapyMatrix
             .map((therapy) => {
-              const coreAllocation = therapy.allocations.core
+              const coreAllocation = therapy.allocations.longevity
               const perfAllocation = therapy.allocations.performance
               
               // Skip if Performance doesn't have this therapy
@@ -376,7 +376,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           // Aesthetics: Show only Aesthetics-specific add-ons showing EXTRA sessions beyond Longevity
           features = therapyMatrix
             .map((therapy) => {
-              const coreAllocation = therapy.allocations.core
+              const coreAllocation = therapy.allocations.longevity
               const aesAllocation = therapy.allocations.aesthetics
               
               // Skip if Aesthetics doesn't have this therapy
@@ -443,7 +443,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               </div>
 
               {/* Show inclusion note for higher tiers */}
-              {membership.key !== "core" && (
+              {membership.key !== "longevity" && (
                 <div className="mb-3 rounded-md bg-primary/10 px-3 py-2 sm:mb-3 sm:px-3 sm:py-2">
                   <p className="font-mono text-xs text-primary/80 sm:text-xs">
                     {form.includesAll}

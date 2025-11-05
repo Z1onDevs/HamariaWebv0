@@ -79,11 +79,11 @@ export function ConceptSection() {
             <div className="relative z-10 inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
               <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
             </div>
-            <div className="relative z-10 space-y-3 sm:space-y-4 md:space-y-5">
+            <div className="relative z-10 flex flex-col items-center space-y-3 sm:space-y-4 md:items-start md:space-y-5">
               {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
-                className="group w-full rounded-lg border border-border/50 bg-card/30 p-4 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
+                className="group w-full max-w-sm rounded-lg border border-border/50 bg-card/30 p-4 text-center backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:max-w-none md:p-6 md:text-left md:hover:scale-102 active:border-primary/30 active:bg-card/50"
                 style={{
                   transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 }}

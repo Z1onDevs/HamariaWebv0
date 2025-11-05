@@ -51,3 +51,4 @@ export function useVigorousReveal(options: VigorousRevealOptions = {}) {
   return { ref: elementRef, isVisible, scrollProgress }
 }
 
+

@@ -152,7 +152,7 @@ export function FilteredServices() {
         <div
           className={`${
             mobileFiltersOpen ? "flex" : "hidden"
-          } w-full flex-col gap-4 lg:flex lg:w-64 lg:flex-shrink-0 xl:w-72`}
+          } relative w-full flex-col gap-4 pb-20 lg:flex lg:w-64 lg:flex-shrink-0 lg:pb-0 xl:w-72`}
         >
           {/* Clear Filters Button */}
           {hasActiveFilters && (
@@ -239,10 +239,31 @@ export function FilteredServices() {
               </div>
             </div>
           )}
+
+          {/* Mobile Search Button - Sticky at bottom when filters active */}
+          {hasActiveFilters && (
+            <div className="fixed bottom-0 left-0 right-0 z-20 border-t border-border/30 bg-background/95 p-4 backdrop-blur-lg lg:hidden">
+              <button
+                onClick={() => {
+                  setMobileFiltersOpen(false)
+                  // Scroll to results
+                  setTimeout(() => {
+                    const resultsSection = document.querySelector('[data-results-section]')
+                    if (resultsSection) {
+                      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    }
+                  }, 100)
+                }}
+                className="w-full rounded-full bg-primary px-6 py-3.5 font-sans text-sm font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 active:scale-95"
+              >
+                View {filteredTherapies.length} {filteredTherapies.length === 1 ? 'Service' : 'Services'}
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Right Column - Services List */}
-        <div className="flex-1">
+        <div className="flex-1" data-results-section>
           {/* Results Count and Active Filters */}
           <div className="mb-4 flex flex-wrap items-center gap-2">
             <div className="text-xs text-foreground/50">
