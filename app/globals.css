@@ -304,6 +304,19 @@
     touch-action: pan-y;
   }
 
+  /* Membership card scroll container - prevent parent transform on hover */
+  .membership-scroll-container {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Desktop: Disable card transform when hovering scroll area */
+  @media (min-width: 1280px) {
+    .group:has(.membership-scroll-container:hover) {
+      transform: scale(1) translateY(0) !important;
+    }
+  }
+
   /* Radial gradient utility */
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));

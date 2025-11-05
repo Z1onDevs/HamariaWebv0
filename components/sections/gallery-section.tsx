@@ -184,7 +184,7 @@ export function GallerySection() {
                 onClick={() => setIsModalOpen(true)}
                 className="group border-b border-transparent font-sans text-sm text-foreground/70 transition-all hover:border-foreground/70 hover:text-foreground sm:text-base"
               >
-                {t.moreLink}
+                {gallery.moreLink || t.moreLink}
               </button>
             </div>
           )}

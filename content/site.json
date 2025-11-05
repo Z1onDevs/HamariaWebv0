@@ -118,6 +118,7 @@
   "gallery": {
     "folder": "/retiro render copia",
       "items": [],
+      "moreLink": "More",
       "modalTitle": "Our Spaces",
       "modalDescription": "Step into our meticulously designed sanctuary in Madrid's Retiro district. Every space has been crafted to create an immersive wellness experience—from our state-of-the-art gym equipped with cutting-edge training technology, to our serene spa entrance that sets the tone for transformation. Our facilities include dedicated rooms for therapeutic massage and recovery, advanced hydrotherapy zones with salt and magnesium baths, traditional and infrared saunas paired with ice plunge pools for contrast therapy, and specialized aquatic training areas featuring swimming treadmills. Each environment is intentionally designed to support your journey toward optimal health and longevity."
   },
@@ -1027,6 +1028,7 @@
     "gallery": {
       "folder": "/retiro render copia",
       "items": [],
+      "moreLink": "Más",
       "modalTitle": "Nuestros Espacios",
       "modalDescription": "Un santuario en el corazón del Retiro. Gimnasio de última generación, zonas de hidroterapia con baños de sal y magnesio, saunas e inmersión en hielo, áreas de entrenamiento acuático y espacios dedicados a terapias regenerativas. Cada ambiente diseñado para tu transformación hacia la salud óptima."
     },
