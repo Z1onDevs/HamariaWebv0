@@ -164,6 +164,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const [mounted, setMounted] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>("")
   const [expandedCards, setExpandedCards] = useState<number[]>([])
+  const [isHoveringCard, setIsHoveringCard] = useState(false)
   
   // Check if screen is large (for multi-card expansion)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
@@ -176,6 +177,18 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     window.addEventListener('resize', checkScreen)
     return () => window.removeEventListener('resize', checkScreen)
   }, [])
+
+  // Disable horizontal scroll when hovering card on desktop
+  useEffect(() => {
+    const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
+    if (scrollContainer && isLargeScreen) {
+      if (isHoveringCard) {
+        scrollContainer.style.overflowX = "hidden"
+      } else {
+        scrollContainer.style.overflowX = ""
+      }
+    }
+  }, [isHoveringCard, isLargeScreen])
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -455,6 +468,8 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 transitionDelay: `${i * 150}ms`,
                 transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
+              onMouseEnter={() => setIsHoveringCard(true)}
+              onMouseLeave={() => setIsHoveringCard(false)}
             >
               <div className="mb-3 sm:mb-3">
                 <h3 className="mb-1 font-sans text-lg font-light text-foreground sm:mb-1 sm:text-lg md:text-xl">{membership.name}</h3>
