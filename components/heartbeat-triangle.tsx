@@ -34,36 +34,47 @@ export function HeartbeatTriangle() {
         />
       </svg>
 
-      {/* Enhanced heartbeat animation */}
+      {/* Enhanced heartbeat animation with rotation */}
       <style jsx>{`
         .heartbeat-triangle {
-          animation: heartbeat 2.5s ease-in-out infinite;
+          animation: heartbeat 2.5s ease-in-out infinite, rotate 20s linear infinite;
         }
 
         @keyframes heartbeat {
           0%, 100% {
-            transform: scale(1);
+            transform: scale(1) rotate(var(--rotation));
             opacity: 0.5;
           }
           8% {
-            transform: scale(1.06);
+            transform: scale(1.06) rotate(var(--rotation));
             opacity: 0.7;
           }
           16% {
-            transform: scale(1);
+            transform: scale(1) rotate(var(--rotation));
             opacity: 0.5;
           }
           24% {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(var(--rotation));
             opacity: 0.8;
           }
           32% {
-            transform: scale(1);
+            transform: scale(1) rotate(var(--rotation));
             opacity: 0.5;
           }
           40%, 100% {
-            transform: scale(1);
+            transform: scale(1) rotate(var(--rotation));
             opacity: 0.5;
+          }
+        }
+
+        @keyframes rotate {
+          from {
+            --rotation: 0deg;
+            transform: rotate(0deg);
+          }
+          to {
+            --rotation: 360deg;
+            transform: rotate(360deg);
           }
         }
       `}</style>
