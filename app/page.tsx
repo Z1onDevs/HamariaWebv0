@@ -466,11 +466,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* DNA Helix with Vertical Text - Only on desktop with good performance */}
+            {/* Vertical Text Only - DNA Helix moved to concept section */}
             {shouldRenderShader && (
               <div className="hidden xl:flex xl:items-center xl:gap-4 xl:-ml-12">
-                {/* DNA Helix */}
-                <DNAHelix scrollProgress={heroScrollProgress} />
                 {/* Vertical Text */}
                 <div className="flex items-center">
                   <p 
