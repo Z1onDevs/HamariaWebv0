@@ -34,10 +34,10 @@ export function HeartbeatTriangle() {
         />
       </svg>
 
-      {/* Enhanced heartbeat animation with rotation */}
+      {/* Enhanced heartbeat animation with slow rotation */}
       <style jsx>{`
         .heartbeat-triangle {
-          animation: heartbeat 2.5s ease-in-out infinite, rotate 20s linear infinite;
+          animation: heartbeat 2.5s ease-in-out infinite, rotate 40s linear infinite;
         }
 
         @keyframes heartbeat {
