@@ -8,7 +8,6 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { useTranslation } from "@/hooks/use-translation"
 import { FilteredServices } from "@/components/filtered-services"
-import { HeartbeatTriangle } from "@/components/heartbeat-triangle"
 
 export function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -115,10 +114,6 @@ export function ServicesSection() {
               </div>
             </div>
 
-            {/* Heartbeat Triangle - On top of cards, fits between them */}
-            <div className="pointer-events-none absolute left-1/2 top-[35%] z-10 h-[144px] w-[144px] -translate-x-1/2 -translate-y-1/2 sm:top-[40%] sm:h-[176px] sm:w-[176px] md:top-1/2 md:h-[224px] md:w-[224px] lg:h-[240px] lg:w-[240px]">
-              <HeartbeatTriangle />
-            </div>
 
             {/* Subheading - Below Cards */}
             {services.subheading && (

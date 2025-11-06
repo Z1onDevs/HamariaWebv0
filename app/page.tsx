@@ -7,6 +7,7 @@ import { ServicesSection } from "@/components/sections/services-section"
 import { GallerySection } from "@/components/sections/gallery-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MembershipSection } from "@/components/sections/membership-section"
+import { TriangleDivider } from "@/components/triangle-divider"
 import { MagneticButton } from "@/components/magnetic-button"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { DNAHelix } from "@/components/dna-helix"
@@ -494,6 +495,7 @@ export default function Home() {
         </section>
 
         <ConceptSection />
+        <TriangleDivider />
         <ServicesSection />
         <GallerySection />
         <MembershipSection scrollToSection={scrollToSection} />

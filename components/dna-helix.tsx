@@ -245,7 +245,9 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         width={dimensions.width}
         height={dimensions.height}
         className="animate-in fade-in duration-1000 delay-700"
-        style={{ filter: `brightness(${1 + scrollProgress * 0.4}) saturate(${1 + scrollProgress * 0.5})` }}
+        style={{ 
+          filter: `brightness(${1 + scrollProgress * 0.4}) saturate(${1 + scrollProgress * 0.5}) contrast(${window.innerWidth < 1024 ? 1.5 : 1})` 
+        }}
       />
     </div>
   )
