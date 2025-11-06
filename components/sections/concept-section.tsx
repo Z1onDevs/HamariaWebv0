@@ -85,7 +85,7 @@ export function ConceptSection() {
           {/* Center Column - DNA Helix Divider */}
           <div 
             ref={dividerRef}
-            className="my-2 flex items-center justify-center md:order-2"
+            className="my-1 flex items-center justify-center md:order-2"
           >
             {/* Mobile: Horizontal (rotated 90°) */}
             <div className="rotate-90 scale-[0.35] md:hidden">

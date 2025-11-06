@@ -37,7 +37,7 @@
     },
     "memberships": {
       "pageTitle": "Membership Details",
-      "backToHome": "Back to Home",
+      "backToHome": "Back to Memberships",
       "monthlyPrice": "Monthly Price",
       "yearlyPrice": "Yearly Price",
       "weeklyMinutes": "Weekly Minutes Included",
@@ -736,7 +736,7 @@
     },
     "memberships": {
       "pageTitle": "Detalles de Membresía",
-      "backToHome": "Volver al Inicio",
+      "backToHome": "Volver a Membresías",
       "monthlyPrice": "Precio Mensual",
       "yearlyPrice": "Precio Anual",
       "weeklyMinutes": "Minutos Semanales Incluidos",
