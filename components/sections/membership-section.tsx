@@ -622,39 +622,37 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     </table>
                     </div>
                     
-                    {/* Enhanced scroll controls - Desktop only */}
+                    {/* Compact scroll controls - Desktop only */}
                     {isLargeScreen && membership.features.length > 5 && (
-                      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-3 bg-gradient-to-t from-background/90 via-background/70 to-transparent p-3">
+                      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-gradient-to-t from-background/90 via-background/70 to-transparent p-2">
                         <button
                           onClick={() => handleCardScroll(i, 'up')}
-                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
+                          className={`rounded-full p-2 transition-all ${
                             canScroll(i, 'up')
-                              ? 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-105 active:scale-95'
+                              ? 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-110 active:scale-95'
                               : 'bg-foreground/10 text-foreground/30 cursor-not-allowed'
                           }`}
                           disabled={!canScroll(i, 'up')}
+                          title="Scroll up"
                         >
-                          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                           </svg>
-                          Scroll Up
                         </button>
-                        
-                        <div className="h-4 w-px bg-border/30" />
                         
                         <button
                           onClick={() => handleCardScroll(i, 'down')}
-                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
+                          className={`rounded-full p-2 transition-all ${
                             canScroll(i, 'down')
-                              ? 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-105 active:scale-95'
+                              ? 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-110 active:scale-95'
                               : 'bg-foreground/10 text-foreground/30 cursor-not-allowed'
                           }`}
                           disabled={!canScroll(i, 'down')}
+                          title="Scroll down"
                         >
-                          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7 7" />
                           </svg>
-                          Scroll Down
                         </button>
                       </div>
                     )}
