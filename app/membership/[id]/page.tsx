@@ -176,10 +176,10 @@ export default function MembershipDetailPage() {
         <div className="text-center">
           <h1 className="text-2xl font-light text-foreground">Membership not found</h1>
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/?section=membership")}
             className="mt-4 text-primary hover:underline"
           >
-            Return home
+            Return to memberships
           </button>
         </div>
       </div>
@@ -222,7 +222,23 @@ export default function MembershipDetailPage() {
       <div className="relative z-10 px-5 py-12 sm:px-6 md:px-8 lg:px-12">
         {/* Back Button */}
         <button
-          onClick={() => router.push("/")}
+          onClick={() => {
+            // Navigate back to membership section
+            router.push("/?section=membership")
+            // Fallback scroll after navigation
+            setTimeout(() => {
+              if (window.location.pathname === "/") {
+                // Try to scroll to membership section
+                const scrollToMembership = () => {
+                  const membershipSection = document.querySelector('[data-section="membership"]')
+                  if (membershipSection) {
+                    membershipSection.scrollIntoView({ behavior: "smooth", block: "start" })
+                  }
+                }
+                scrollToMembership()
+              }
+            }, 100)
+          }}
           className="mb-8 flex items-center gap-2 text-sm text-foreground/70 transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />

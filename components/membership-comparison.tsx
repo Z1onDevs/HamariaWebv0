@@ -2,6 +2,7 @@
 
 import { useTranslation } from "@/hooks/use-translation"
 import { Check, X } from "lucide-react"
+import { useRef, useEffect, useState } from "react"
 
 interface MembershipComparisonProps {
   currentTier?: string
@@ -118,6 +119,52 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
   const { t, language } = useTranslation()
   const memberships = t.memberships
   const tiers = ["longevity", "performance", "aesthetics"]
+  const tableContainerRef = useRef<HTMLDivElement>(null)
+  const [hideTherapyNames, setHideTherapyNames] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768) // md breakpoint
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Detect horizontal scroll to hide/show therapy names on mobile
+  useEffect(() => {
+    if (!isMobile || !tableContainerRef.current) return
+
+    const container = tableContainerRef.current
+    let scrollTimeout: NodeJS.Timeout
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft
+      
+      // Clear existing timeout
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout)
+      }
+
+      // Hide therapy names when scrolled left (showing more plans)
+      if (scrollLeft > 50) {
+        setHideTherapyNames(true)
+      } else {
+        // Show therapy names when scrolled back to the right
+        scrollTimeout = setTimeout(() => {
+          setHideTherapyNames(false)
+        }, 150) // Small delay to prevent flickering
+      }
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      container.removeEventListener('scroll', handleScroll)
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+    }
+  }, [isMobile])
 
   const renderAllocation = (value: number | string) => {
     if (value === "Unlimited") {
@@ -138,13 +185,22 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-border/50 bg-card/20">
+    <div 
+      ref={tableContainerRef}
+      className="overflow-x-auto rounded-xl border border-border/50 bg-card/20"
+    >
       <table className="w-full min-w-[800px]">
         {/* Header */}
         <thead className="border-b border-border/30">
           <tr>
-            <th className="sticky left-0 z-10 bg-card/60 px-6 py-4 text-left text-sm font-medium text-foreground/70 backdrop-blur-sm">
-              Therapy
+            <th 
+              className={`sticky left-0 z-10 bg-card/60 px-6 py-4 text-left text-sm font-medium text-foreground/70 backdrop-blur-sm transition-all duration-300 ${
+                isMobile && hideTherapyNames 
+                  ? 'w-0 px-0 opacity-0 overflow-hidden' 
+                  : 'w-auto'
+              }`}
+            >
+              {(!isMobile || !hideTherapyNames) && "Therapy"}
             </th>
             {tiers.map((tierId) => {
               const tier = memberships.tiers[tierId]
@@ -179,11 +235,16 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
           </tr>
         </thead>
 
-        {/* Therapies */}
+          {/* Therapies */}
         <tbody>
           <tr className="border-b border-border/30">
-            <td colSpan={4} className="bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60">
-              {memberships.monthlyTherapies}
+            <td 
+              colSpan={4} 
+              className={`bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60 transition-all duration-300 ${
+                isMobile && hideTherapyNames ? 'px-0' : ''
+              }`}
+            >
+              {(!isMobile || !hideTherapyNames) && memberships.monthlyTherapies}
             </td>
           </tr>
 
@@ -200,8 +261,14 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
                   key={index}
                   className="border-b border-border/10 last:border-0 transition-colors hover:bg-foreground/5"
                 >
-                  <td className="sticky left-0 z-10 bg-card/60 px-6 py-3 text-sm text-foreground/80 backdrop-blur-sm">
-                    {language === "es" ? therapy.nameES : therapy.name}
+                  <td 
+                    className={`sticky left-0 z-10 bg-card/60 px-6 py-3 text-sm text-foreground/80 backdrop-blur-sm transition-all duration-300 ${
+                      isMobile && hideTherapyNames 
+                        ? 'w-0 px-0 opacity-0 overflow-hidden' 
+                        : 'w-auto'
+                    }`}
+                  >
+                    {(!isMobile || !hideTherapyNames) && (language === "es" ? therapy.nameES : therapy.name)}
                   </td>
                   {tiers.map((tierId) => {
                     const allocation = therapy.allocations[tierId as keyof typeof therapy.allocations]
@@ -224,8 +291,13 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
 
           {/* Yearly Therapies */}
           <tr className="border-b border-border/30">
-            <td colSpan={4} className="bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60">
-              {memberships.yearlyTherapies}
+            <td 
+              colSpan={4} 
+              className={`bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60 transition-all duration-300 ${
+                isMobile && hideTherapyNames ? 'px-0' : ''
+              }`}
+            >
+              {(!isMobile || !hideTherapyNames) && memberships.yearlyTherapies}
             </td>
           </tr>
 
@@ -242,8 +314,14 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
                   key={index}
                   className="border-b border-border/10 last:border-0 transition-colors hover:bg-foreground/5"
                 >
-                  <td className="sticky left-0 z-10 bg-card/60 px-6 py-3 text-sm text-foreground/80 backdrop-blur-sm">
-                    {language === "es" ? therapy.nameES : therapy.name}
+                  <td 
+                    className={`sticky left-0 z-10 bg-card/60 px-6 py-3 text-sm text-foreground/80 backdrop-blur-sm transition-all duration-300 ${
+                      isMobile && hideTherapyNames 
+                        ? 'w-0 px-0 opacity-0 overflow-hidden' 
+                        : 'w-auto'
+                    }`}
+                  >
+                    {(!isMobile || !hideTherapyNames) && (language === "es" ? therapy.nameES : therapy.name)}
                   </td>
                   {tiers.map((tierId) => {
                     const allocation = therapy.allocations[tierId as keyof typeof therapy.allocations]

@@ -129,7 +129,7 @@ export function GallerySection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-16 pt-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
       >
         <div className="mx-auto w-full max-w-5xl lg:max-w-6xl xl:max-w-7xl">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">

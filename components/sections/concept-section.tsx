@@ -37,13 +37,13 @@ export function ConceptSection() {
   }, [])
 
   return (
-    <section className="flex min-h-screen w-screen shrink-0 items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32">
+    <section className="flex min-h-screen w-screen shrink-0 items-center justify-center px-5 py-12 pt-16 sm:px-6 sm:py-20 md:px-8 md:py-28 lg:px-12 lg:py-32">
       <div className="mx-auto w-full max-w-7xl">
         {/* Header */}
-        <div className="mb-8 text-center sm:mb-10 md:mb-12 lg:mb-16">
+        <div className="mb-6 text-center sm:mb-8 md:mb-12 lg:mb-16">
           <h2
             ref={titleRef}
-            className={`mb-4 font-sans text-lg font-light leading-tight tracking-tight text-foreground transition-all duration-700 sm:mb-5 sm:text-xl md:mb-6 md:text-2xl lg:text-3xl xl:text-4xl ${
+            className={`mb-3 font-sans text-lg font-light leading-tight tracking-tight text-foreground transition-all duration-700 sm:mb-4 sm:text-xl md:mb-6 md:text-2xl lg:text-3xl xl:text-4xl ${
               titleVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
             }`}
           >
@@ -55,16 +55,16 @@ export function ConceptSection() {
         {/* Enhanced Content Grid with DNA Helix Divider */}
         <div
           ref={contentRef}
-          className={`grid gap-8 transition-all duration-700 sm:gap-10 md:grid-cols-3 md:gap-8 lg:gap-12 xl:gap-16 ${
+          className={`grid gap-6 transition-all duration-700 sm:gap-8 md:grid-cols-3 md:gap-8 lg:gap-12 xl:gap-16 ${
             contentVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
           {/* Left Column - Vision */}
-          <div className="space-y-5 sm:space-y-6 md:space-y-7">
+          <div className="space-y-4 sm:space-y-5 md:space-y-7">
             <div className="inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
               <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.vision}</p>
             </div>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
               <p className="font-sans text-base leading-relaxed text-foreground/90 sm:text-lg md:text-xl">
                 <span className="text-pretty font-medium">{concept.paragraph1.split(".")[0]}.</span>{" "}
                 <span className="text-pretty text-foreground/75">{concept.paragraph1.split(".").slice(1).join(".").trim()}</span>
@@ -87,17 +87,22 @@ export function ConceptSection() {
             ref={dividerRef}
             className="flex items-center justify-center md:order-2"
           >
-            <div className="scale-75 md:scale-90 lg:scale-100">
+            {/* Mobile: Horizontal (rotated 90°) */}
+            <div className="rotate-90 scale-[0.35] md:hidden">
+              <DNAHelix scrollProgress={scrollProgress} />
+            </div>
+            {/* Desktop: Vertical */}
+            <div className="hidden scale-75 md:block md:scale-90 lg:scale-100">
               <DNAHelix scrollProgress={scrollProgress} />
             </div>
           </div>
 
           {/* Right Column - Methodology */}
-          <div className="relative space-y-5 sm:space-y-6 md:order-3 md:space-y-7">
+          <div className="relative space-y-4 sm:space-y-5 md:order-3 md:space-y-7">
             <div className="relative z-10 inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
               <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
             </div>
-            <div className="relative z-10 flex flex-col items-center space-y-3 sm:space-y-4 md:space-y-5">
+            <div className="relative z-10 flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-5">
               {concept.features.map((feature: any, i: number) => (
               <div
                 key={i}
@@ -109,7 +114,8 @@ export function ConceptSection() {
                 <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:mb-2 sm:text-base md:text-lg">
                   {feature.title}
                 </h3>
-                <div className="grid grid-rows-[0fr] transition-all duration-500 group-hover:grid-rows-[1fr] md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]"
+                {/* Mobile: Always show text, Desktop: Show on hover */}
+                <div className="grid grid-rows-[1fr] transition-all duration-500 md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]"
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                   }}

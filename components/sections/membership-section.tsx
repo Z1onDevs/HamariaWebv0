@@ -481,7 +481,8 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   return (
     <section
       ref={ref}
-      className="membership-section-wrapper flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-24 pt-28 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      data-section="membership"
+      className="membership-section-wrapper flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-16 pt-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Section Title - Mobile/Tablet only */}

@@ -7,10 +7,10 @@ import { ServicesSection } from "@/components/sections/services-section"
 import { GallerySection } from "@/components/sections/gallery-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MembershipSection } from "@/components/sections/membership-section"
-import { TriangleDivider } from "@/components/triangle-divider"
 import { MagneticButton } from "@/components/magnetic-button"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { DNAHelix } from "@/components/dna-helix"
+import { HeartbeatTriangle } from "@/components/heartbeat-triangle"
 import { MobileNav } from "@/components/mobile-nav"
 import { SectionDots } from "@/components/section-dots"
 import { StickyCTA } from "@/components/sticky-cta"
@@ -388,7 +388,7 @@ export default function Home() {
         } ${isLoaded ? "opacity-100" : "opacity-0"}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-20 pt-28 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
+        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
           {/* Yoga SVG - Right side background decoration */}
           <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[55vh] w-[40vw] animate-in fade-in slide-in-from-right-12 duration-1200 delay-700 xl:block 2xl:h-[60vh] 2xl:w-[35vw]">
             <img
@@ -398,16 +398,14 @@ export default function Home() {
             />
           </div>
 
-          {/* DNA Helix - Horizontal on mobile/tablet, vertical on desktop */}
+          {/* DNA Helix - Hidden on mobile, visible on tablet/desktop only */}
           <div 
-            className="absolute left-1/2 top-4 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 xl:hidden"
-            style={isMobile ? {
-              transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
-              opacity: Math.max(0, 1 - (scrollY * 0.003)),
-              transition: 'transform 0.4s ease-out, opacity 0.3s ease-out',
-            } : {}}
+            className="absolute left-1/2 top-2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 hidden md:block xl:hidden"
+            style={{
+              transform: 'translateX(-50%) rotate(90deg)'
+            }}
           >
-            <div className="rotate-90 scale-[0.35] sm:scale-50">
+            <div className="scale-[0.42] md:scale-50">
               <DNAHelix scrollProgress={heroScrollProgress} />
             </div>
           </div>
@@ -493,7 +491,12 @@ export default function Home() {
         </section>
 
         <ConceptSection />
-        <TriangleDivider />
+        {/* DNA Helix - Mobile Only (between methodology and services) */}
+        <div className="flex w-screen shrink-0 snap-start items-center justify-center py-6 md:hidden">
+          <div className="rotate-90 scale-[0.35]">
+            <DNAHelix scrollProgress={0.5} />
+          </div>
+        </div>
         <ServicesSection />
         <GallerySection />
         <MembershipSection scrollToSection={scrollToSection} />

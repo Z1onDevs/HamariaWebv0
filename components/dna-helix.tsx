@@ -19,12 +19,16 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
   const rotationRef = useRef(0)
   const particlesRef = useRef<Particle[]>([])
   const [dimensions, setDimensions] = useState({ width: 200, height: 700 })
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
 
   useEffect(() => {
     const updateDimensions = () => {
-      if (window.innerWidth < 1024) {
+      const width = window.innerWidth
+      setIsSmallScreen(width < 1024)
+      
+      if (width < 1024) {
         setDimensions({ width: 160, height: 560 })
-      } else if (window.innerWidth < 1536) {
+      } else if (width < 1536) {
         setDimensions({ width: 180, height: 640 })
       } else {
         setDimensions({ width: 200, height: 700 })
@@ -246,7 +250,7 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
         height={dimensions.height}
         className="animate-in fade-in duration-1000 delay-700"
         style={{ 
-          filter: `brightness(${1 + scrollProgress * 0.4}) saturate(${1 + scrollProgress * 0.5}) contrast(${window.innerWidth < 1024 ? 1.5 : 1})` 
+          filter: `brightness(${1 + scrollProgress * 0.4}) saturate(${1 + scrollProgress * 0.5}) contrast(${isSmallScreen ? 1.5 : 1})` 
         }}
       />
     </div>
