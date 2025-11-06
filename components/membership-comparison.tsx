@@ -3,117 +3,11 @@
 import { useTranslation } from "@/hooks/use-translation"
 import { Check, X } from "lucide-react"
 import { useRef, useEffect, useState } from "react"
+import { therapyMatrix } from "@/lib/therapy-matrix"
 
 interface MembershipComparisonProps {
   currentTier?: string
 }
-
-// Therapy matrix
-const therapyMatrix = [
-  {
-    name: "Cryotherapy (electric chamber)",
-    nameES: "Crioterapia (cámara eléctrica)",
-    allocations: { longevity: 2, performance: 4, aesthetics: 4 },
-  },
-  {
-    name: "Cold plunge",
-    nameES: "Inmersión en frío",
-    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "IHHT (intermittent hypoxic-hyperoxic)",
-    nameES: "IHHT (hipoxia-hiperoxia intermitente)",
-    allocations: { longevity: 0, performance: 4, aesthetics: 0 },
-  },
-  {
-    name: "Hyperbaric oxygen therapy (HBOT)",
-    nameES: "Cámara hiperbárica (HBOT)",
-    allocations: { longevity: 1, performance: 4, aesthetics: 4 },
-  },
-  {
-    name: "Red light therapy (full body)",
-    nameES: "Terapia de luz roja (cuerpo completo)",
-    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "Microcurrent & LED facial",
-    nameES: "Microcorriente y LED facial",
-    allocations: { longevity: 0, performance: 0, aesthetics: 4 },
-  },
-  {
-    name: "Indiba (RF/Tecar)",
-    nameES: "Indiba (RF/Tecar)",
-    allocations: { longevity: 0, performance: 0, aesthetics: 2 },
-  },
-  {
-    name: "Pressotherapy",
-    nameES: "Presoterapia",
-    allocations: { longevity: 4, performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "Pilates (class/session)",
-    nameES: "Pilates (clase/sesión)",
-    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "Floatation (sensory tank)",
-    nameES: "Flotación (tanque sensorial)",
-    allocations: { longevity: 1, performance: 2, aesthetics: 3 },
-  },
-  {
-    name: "Sauna session",
-    nameES: "Sesión de sauna",
-    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "Lymphatic massage",
-    nameES: "Masaje linfático",
-    allocations: { longevity: 0, performance: 1, aesthetics: 2 },
-  },
-  {
-    name: "Therapeutic massage",
-    nameES: "Masaje terapéutico",
-    allocations: { longevity: 1, performance: 4, aesthetics: 4 },
-  },
-  {
-    name: "Signature massage",
-    nameES: "Masaje signature",
-    allocations: { longevity: 0, performance: 0, aesthetics: 1 },
-  },
-  {
-    name: "Swim",
-    nameES: "Natación",
-    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "Personal trainer",
-    nameES: "Entrenador personal",
-    allocations: { longevity: "Unlimited", performance: "Unlimited", aesthetics: "Unlimited" },
-  },
-  {
-    name: "Baseline assessment",
-    nameES: "Evaluación de línea base",
-    allocations: { longevity: 1, performance: 1, aesthetics: 1 },
-    isYearly: true,
-  },
-  {
-    name: "VO2 max",
-    nameES: "VO₂ máx",
-    allocations: { longevity: 0, performance: 4, aesthetics: 0 },
-    isYearly: true,
-  },
-  {
-    name: "Sofwave (ultrasound facelift)",
-    nameES: "Sofwave (lifting ultrasónico)",
-    allocations: { longevity: 1, performance: 1, aesthetics: 2 },
-  },
-  {
-    name: "NAD+ IV",
-    nameES: "NAD+ IV",
-    allocations: { longevity: 1, performance: 1, aesthetics: 2 },
-    isYearly: true,
-  },
-]
 
 export function MembershipComparison({ currentTier }: MembershipComparisonProps) {
   const { t, language } = useTranslation()
@@ -187,7 +81,7 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
   return (
     <div 
       ref={tableContainerRef}
-      className="overflow-x-auto rounded-xl border border-border/50 bg-card/20"
+      className="membership-comparison overflow-x-auto rounded-xl border border-border/50 bg-card/20"
     >
       <table className="w-full min-w-[800px]">
         {/* Header */}

@@ -15,7 +15,7 @@ interface Particle {
 
 export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationFrameRef = useRef<number>()
+  const animationFrameRef = useRef<number>(0)
   const rotationRef = useRef(0)
   const particlesRef = useRef<Particle[]>([])
   const [dimensions, setDimensions] = useState({ width: 200, height: 700 })

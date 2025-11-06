@@ -1037,14 +1037,14 @@
       },
       {
         "id": "mobility-coaching",
-        "name": "Mobility Coaching",
+        "name": "Coaching de movilidad",
         "description": "Entrenamiento especializado en movilidad articular, flexibilidad, principios de medicina física y prevención de lesiones.",
         "categories": ["performance", "wellness"],
         "subcategories": ["movement", "physical-medicine"]
       },
       {
         "id": "personal-training-new",
-        "name": "Personal Training",
+        "name": "Entrenamiento personal",
         "description": "Sesiones de entrenamiento personalizadas adaptadas a tus objetivos de fitness, rendimiento atlético y optimización del movimiento.",
         "categories": ["performance"],
         "subcategories": ["movement"]
@@ -1065,21 +1065,21 @@
       },
       {
         "id": "ice-plunge",
-        "name": "Ice Plunge",
+        "name": "Inmersión en hielo",
         "description": "Inmersión en agua fría para regeneración, recuperación física, gestión del estrés, mejora del sueño, optimización cognitiva y aumento de energía.",
         "categories": ["performance", "wellness"],
         "subcategories": ["regeneration", "physical-medicine", "stress", "sleep", "psyche", "energy"]
       },
       {
         "id": "steam-room",
-        "name": "Steam Room",
+        "name": "Sala de vapor",
         "description": "Terapia de vapor tradicional para detoxificación, regeneración tisular, alivio del estrés y beneficios estéticos para la piel.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "stress", "aesthetics-sub"]
       },
       {
         "id": "outdoor-training-retiro",
-        "name": "Outdoor Training (Retiro)",
+        "name": "Entrenamiento al aire libre (Retiro)",
         "description": "Sesiones de entrenamiento funcional al aire libre en el Parque del Retiro, combinando movimiento y optimización energética en la naturaleza.",
         "categories": ["performance"],
         "subcategories": ["movement", "energy"]
@@ -1093,7 +1093,7 @@
       },
       {
         "id": "breathing-stretching",
-        "name": "Breathing & Stretching",
+        "name": "Respiración y estiramientos",
         "description": "Técnicas de respiración guiadas y rutinas de estiramiento para calidad de movimiento, alivio del estrés y mejora de flexibilidad.",
         "categories": ["wellness", "performance"],
         "subcategories": ["movement", "stress"]
@@ -1149,14 +1149,14 @@
       },
       {
         "id": "therapeutic-massages",
-        "name": "Therapeutic Massages",
+        "name": "Masajes terapéuticos",
         "description": "Terapia de masaje basada en evidencia para gestión del estrés y aplicaciones de medicina física.",
         "categories": ["wellness", "performance"],
         "subcategories": ["stress", "physical-medicine"]
       },
       {
         "id": "oriental-massages",
-        "name": "Oriental Massages",
+        "name": "Masajes orientales",
         "description": "Técnicas de masaje oriental tradicional para detoxificación, regeneración, alivio del estrés, medicina física y beneficios psico-cognitivos.",
         "categories": ["wellness"],
         "subcategories": ["detox", "regeneration", "stress", "physical-medicine", "psyche"]
@@ -1191,7 +1191,7 @@
       },
       {
         "id": "hot-yoga",
-        "name": "Hot Yoga",
+        "name": "Yoga caliente",
         "description": "Práctica de yoga en ambiente caliente para optimización del movimiento, detoxificación y regeneración tisular.",
         "categories": ["performance", "wellness"],
         "subcategories": ["movement", "detox", "regeneration"]
@@ -1226,14 +1226,14 @@
       },
       {
         "id": "signature-massages",
-        "name": "Signature Massages",
+        "name": "Masajes signature",
         "description": "Experiencias de masaje personalizadas combinando detoxificación, regeneración, beneficios estéticos, medicina física y alivio del estrés.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "aesthetics-sub", "physical-medicine", "stress"]
       },
       {
         "id": "liver-cleanse-iv",
-        "name": "Liver Cleansing IV",
+        "name": "Limpieza hepática IV",
         "description": "Protocolo de detoxificación hepática intravenosa para regeneración celular y apoyo metabólico.",
         "categories": ["wellness"],
         "subcategories": ["detox", "regeneration"]
@@ -1254,14 +1254,14 @@
       },
       {
         "id": "nutrition-protocols",
-        "name": "Nutrition Protocols",
+        "name": "Protocolos de nutrición",
         "description": "Evaluación nutricional integral y protocolos dietéticos personalizados para medicina de información, detoxificación, regeneración y optimización psico-cognitiva.",
         "categories": ["diagnostics", "wellness"],
         "subcategories": ["information-medicine", "detox", "regeneration", "psyche"]
       },
       {
         "id": "supplementation-protocols",
-        "name": "Supplementation Protocols",
+        "name": "Protocolos de suplementación",
         "description": "Estrategias de suplementación dirigidas para optimización de energía, detoxificación y regeneración celular basadas en biomarcadores individuales.",
         "categories": ["wellness", "performance"],
         "subcategories": ["energy", "detox", "regeneration"]
