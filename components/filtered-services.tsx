@@ -25,7 +25,7 @@ interface Subcategory {
 }
 
 export function FilteredServices() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const therapiesData = t.therapies || {}
   
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -33,10 +33,64 @@ export function FilteredServices() {
   const [expandedTherapy, setExpandedTherapy] = useState<string | null>(null)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [sortBy, setSortBy] = useState<'alphabetical' | 'category'>('alphabetical')
+  const [filterMode, setFilterMode] = useState<'AND' | 'OR'>('AND')
 
   const categories: Category[] = therapiesData.categories || []
   const subcategories: Subcategory[] = therapiesData.subcategories || []
   const therapies: Therapy[] = therapiesData.items || []
+
+  // Quick filter presets
+  const filterPresets = [
+    {
+      id: 'recovery',
+      name: 'Recovery',
+      nameES: 'Recuperación',
+      icon: '🔄',
+      categories: ['performance', 'wellness'],
+      subcategories: ['regeneration', 'physical-medicine']
+    },
+    {
+      id: 'anti-aging',
+      name: 'Anti-Aging',
+      nameES: 'Anti-Envejecimiento',
+      icon: '✨',
+      categories: ['aesthetics', 'wellness'],
+      subcategories: ['aesthetics-sub', 'regeneration']
+    },
+    {
+      id: 'stress-relief',
+      name: 'Stress Relief',
+      nameES: 'Alivio del Estrés',
+      icon: '🧘',
+      categories: ['wellness'],
+      subcategories: ['stress', 'sleep']
+    },
+    {
+      id: 'energy-boost',
+      name: 'Energy',
+      nameES: 'Energía',
+      icon: '⚡',
+      categories: ['performance', 'wellness'],
+      subcategories: ['energy']
+    },
+    {
+      id: 'detox',
+      name: 'Detox',
+      nameES: 'Detox',
+      icon: '🌿',
+      categories: ['wellness'],
+      subcategories: ['detox']
+    },
+    {
+      id: 'fitness',
+      name: 'Fitness',
+      nameES: 'Fitness',
+      icon: '💪',
+      categories: ['performance'],
+      subcategories: ['movement']
+    }
+  ]
 
   // Get visible subcategories based on selected categories
   const visibleSubcategories = useMemo(() => {
@@ -68,28 +122,72 @@ export function FilteredServices() {
       })
     }
 
-    // Apply category/subcategory filters (ANY logic - OR)
-    if (selectedCategories.length > 0 || selectedSubcategories.length > 0) {
-      result = result.filter(therapy => {
-        const matchesCategory = selectedCategories.length === 0 ||
-          therapy.categories.some(cat => selectedCategories.includes(cat))
-        
-        const matchesSubcategory = selectedSubcategories.length === 0 ||
-          therapy.subcategories.some(sub => selectedSubcategories.includes(sub))
+    // Apply category/subcategory filters with configurable AND/OR logic
+    const hasCategoryFilters = selectedCategories.length > 0
+    const hasSubcategoryFilters = selectedSubcategories.length > 0
 
-        return matchesCategory || matchesSubcategory
+    if (hasCategoryFilters && hasSubcategoryFilters) {
+      // BOTH selected: Use filter mode to determine logic
+      result = result.filter(therapy => {
+        const matchesCategory = therapy.categories.some(cat => 
+          selectedCategories.includes(cat)
+        )
+        const matchesSubcategory = therapy.subcategories.some(sub => 
+          selectedSubcategories.includes(sub)
+        )
+        // AND mode: Must match BOTH | OR mode: Must match EITHER
+        return filterMode === 'AND' 
+          ? matchesCategory && matchesSubcategory 
+          : matchesCategory || matchesSubcategory
+      })
+    } else if (hasCategoryFilters) {
+      // Only categories: Match ANY selected category
+      result = result.filter(therapy =>
+        therapy.categories.some(cat => selectedCategories.includes(cat))
+      )
+    } else if (hasSubcategoryFilters) {
+      // Only subcategories: Match ANY selected subcategory
+      result = result.filter(therapy =>
+        therapy.subcategories.some(sub => selectedSubcategories.includes(sub))
+      )
+    }
+
+    // Apply sorting based on selected option
+    if (sortBy === 'alphabetical') {
+      result.sort((a, b) => a.name.localeCompare(b.name))
+    } else if (sortBy === 'category') {
+      result.sort((a, b) => {
+        // Sort by first category, then by name
+        const catA = a.categories[0] || ''
+        const catB = b.categories[0] || ''
+        if (catA !== catB) {
+          return catA.localeCompare(catB)
+        }
+        return a.name.localeCompare(b.name)
       })
     }
 
-    // Sort alphabetically by name
-    result.sort((a, b) => a.name.localeCompare(b.name))
-
     return result
-  }, [therapies, selectedCategories, selectedSubcategories, searchQuery, subcategories])
+  }, [therapies, selectedCategories, selectedSubcategories, searchQuery, subcategories, sortBy, filterMode])
 
   // Count therapies per category for badges
   const getCategoryCount = (categoryId: string) => {
     return therapies.filter(therapy => therapy.categories.includes(categoryId)).length
+  }
+
+  // Count therapies per subcategory (context-aware based on selected categories)
+  const getSubcategoryCount = (subcategoryId: string) => {
+    // If categories are selected, count only within those categories
+    if (selectedCategories.length > 0) {
+      return therapies.filter(therapy => 
+        therapy.subcategories.includes(subcategoryId) &&
+        therapy.categories.some(cat => selectedCategories.includes(cat))
+      ).length
+    }
+    // Otherwise count all therapies with this subcategory
+    return therapies.filter(therapy => 
+      therapy.subcategories.includes(subcategoryId)
+    ).length
   }
 
   const toggleCategory = (categoryId: string) => {
@@ -114,7 +212,28 @@ export function FilteredServices() {
     setSearchQuery("")
   }
 
+  const applyPreset = (preset: typeof filterPresets[0]) => {
+    setSelectedCategories(preset.categories)
+    setSelectedSubcategories(preset.subcategories)
+    setSearchQuery("")
+    // Close mobile filters to show results
+    if (window.innerWidth < 1024) {
+      setMobileFiltersOpen(false)
+    }
+  }
+
   const hasActiveFilters = selectedCategories.length > 0 || selectedSubcategories.length > 0 || searchQuery.trim().length > 0
+
+  // Calculate stats for filtered results
+  const stats = useMemo(() => {
+    const byCategory = {
+      diagnostics: filteredTherapies.filter(t => t.categories.includes('diagnostics')).length,
+      performance: filteredTherapies.filter(t => t.categories.includes('performance')).length,
+      wellness: filteredTherapies.filter(t => t.categories.includes('wellness')).length,
+      aesthetics: filteredTherapies.filter(t => t.categories.includes('aesthetics')).length,
+    }
+    return byCategory
+  }, [filteredTherapies])
 
   return (
     <div className="flex h-full flex-col">
@@ -163,6 +282,25 @@ export function FilteredServices() {
             mobileFiltersOpen ? "flex" : "hidden"
           } relative w-full flex-col gap-4 pb-20 lg:flex lg:w-64 lg:flex-shrink-0 lg:pb-0 xl:w-72`}
         >
+          {/* Quick Filter Presets */}
+          <div className="space-y-2">
+            <h3 className="text-xs font-medium uppercase tracking-wide text-foreground/50">Quick Filters</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {filterPresets.map((preset) => (
+                <button
+                  key={preset.id}
+                  onClick={() => applyPreset(preset)}
+                  className="group flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-card/20 px-3 py-2.5 text-center transition-all hover:border-primary/40 hover:bg-card/30 hover:shadow-sm active:scale-95"
+                >
+                  <span className="text-lg transition-transform group-hover:scale-110">{preset.icon}</span>
+                  <span className="text-xs font-medium text-foreground/80 group-hover:text-foreground">
+                    {language === 'es' ? preset.nameES : preset.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Clear Filters Button */}
           {hasActiveFilters && (
             <button
@@ -225,6 +363,37 @@ export function FilteredServices() {
             </div>
           </div>
 
+          {/* Filter Mode Toggle - Only show when both categories and subcategories are selected */}
+          {selectedCategories.length > 0 && selectedSubcategories.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="text-xs font-medium uppercase tracking-wide text-foreground/50">Filter Mode</h3>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setFilterMode('AND')}
+                  className={`flex-1 rounded-md border px-3 py-2 text-xs font-medium transition-all ${
+                    filterMode === 'AND'
+                      ? "border-primary/40 bg-primary/10 text-primary shadow-sm"
+                      : "border-border/50 bg-card/20 text-foreground/70 hover:border-primary/30 hover:bg-card/30"
+                  }`}
+                >
+                  AND
+                  <div className="mt-0.5 text-[9px] font-normal opacity-70">More specific</div>
+                </button>
+                <button
+                  onClick={() => setFilterMode('OR')}
+                  className={`flex-1 rounded-md border px-3 py-2 text-xs font-medium transition-all ${
+                    filterMode === 'OR'
+                      ? "border-primary/40 bg-primary/10 text-primary shadow-sm"
+                      : "border-border/50 bg-card/20 text-foreground/70 hover:border-primary/30 hover:bg-card/30"
+                  }`}
+                >
+                  OR
+                  <div className="mt-0.5 text-[9px] font-normal opacity-70">More results</div>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Subcategories */}
           {visibleSubcategories.length > 0 && (
             <div className="space-y-2">
@@ -232,19 +401,33 @@ export function FilteredServices() {
                 {therapiesData.subcategoriesLabel || "Subcategories"}
               </h3>
               <div className="space-y-1.5">
-                {visibleSubcategories.map((subcategory) => (
-                  <button
-                    key={subcategory.id}
-                    onClick={() => toggleSubcategory(subcategory.id)}
-                    className={`w-full rounded-md border px-3 py-2 text-left text-sm transition-all ${
-                      selectedSubcategories.includes(subcategory.id)
-                        ? "border-primary/40 bg-primary/10 text-foreground shadow-sm"
-                        : "border-border/50 bg-card/20 text-foreground/70 hover:border-primary/30 hover:bg-card/40"
-                    }`}
-                  >
-                    {subcategory.name}
-                  </button>
-                ))}
+                {visibleSubcategories.map((subcategory) => {
+                  const count = getSubcategoryCount(subcategory.id)
+                  return (
+                    <button
+                      key={subcategory.id}
+                      onClick={() => toggleSubcategory(subcategory.id)}
+                      className={`w-full rounded-md border px-3 py-2 text-left text-sm transition-all ${
+                        selectedSubcategories.includes(subcategory.id)
+                          ? "border-primary/40 bg-primary/10 text-foreground shadow-sm"
+                          : "border-border/50 bg-card/20 text-foreground/70 hover:border-primary/30 hover:bg-card/40"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium">{subcategory.name}</span>
+                        <span 
+                          className={`ml-2 rounded-full px-2 py-0.5 text-xs font-medium transition-colors ${
+                            selectedSubcategories.includes(subcategory.id)
+                              ? "bg-primary/20 text-primary"
+                              : "bg-foreground/10 text-foreground/50"
+                          }`}
+                        >
+                          {count}
+                        </span>
+                      </div>
+                    </button>
+                  )
+                })}
               </div>
             </div>
           )}
@@ -273,34 +456,92 @@ export function FilteredServices() {
 
         {/* Right Column - Services List */}
         <div className="flex-1" data-results-section>
-          {/* Results Count and Active Filters */}
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <div className="text-xs text-foreground/50">
-              {therapiesData.showingResults || "Showing"} <span className="font-medium text-foreground">{filteredTherapies.length}</span>{" "}
-              {filteredTherapies.length === 1
-                ? therapiesData.therapySingular || "therapy"
-                : therapiesData.therapyPlural || "therapies"}
+          {/* Results Count, Sort, and Active Filters */}
+          <div className="mb-4 space-y-3">
+            {/* Top row: Count and Sort */}
+            <div className="flex items-center justify-between gap-4">
+              <div className="text-xs text-foreground/50">
+                {therapiesData.showingResults || "Showing"} <span className="font-medium text-foreground">{filteredTherapies.length}</span>{" "}
+                {filteredTherapies.length === 1
+                  ? therapiesData.therapySingular || "therapy"
+                  : therapiesData.therapyPlural || "therapies"}
+              </div>
+              
+              {/* Sort Dropdown */}
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-foreground/40">Sort:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as 'alphabetical' | 'category')}
+                  className="rounded-md border border-primary/20 bg-background/60 px-2.5 py-1.5 text-xs text-foreground transition-all hover:border-primary/30 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                >
+                  <option value="alphabetical">A-Z</option>
+                  <option value="category">By Category</option>
+                </select>
+              </div>
             </div>
             
-            {/* Active filter chips */}
-            {selectedCategories.map((catId) => {
-              const cat = categories.find(c => c.id === catId)
-              if (!cat) return null
-              return (
-                <button
-                  key={catId}
-                  onClick={() => toggleCategory(catId)}
-                  className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-all hover:opacity-80"
-                  style={{
-                    backgroundColor: `${cat.color}20`,
-                    color: cat.color,
-                  }}
-                >
-                  {cat.name}
-                  <X className="h-3 w-3" />
-                </button>
-              )
-            })}
+            {/* Active filter chips row */}
+            {hasActiveFilters && (
+              <div className="flex flex-wrap items-center gap-2">
+                {/* Active category filter chips */}
+                {selectedCategories.map((catId) => {
+                  const cat = categories.find(c => c.id === catId)
+                  if (!cat) return null
+                  return (
+                    <button
+                      key={catId}
+                      onClick={() => toggleCategory(catId)}
+                      className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-all hover:opacity-80"
+                      style={{
+                        backgroundColor: `${cat.color}20`,
+                        color: cat.color,
+                      }}
+                    >
+                      {cat.name}
+                      <X className="h-3 w-3" />
+                    </button>
+                  )
+                })}
+                
+                {/* Active subcategory filter chips */}
+                {selectedSubcategories.map((subId) => {
+                  const sub = subcategories.find(s => s.id === subId)
+                  if (!sub) return null
+                  return (
+                    <button
+                      key={subId}
+                      onClick={() => toggleSubcategory(subId)}
+                      className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-all hover:opacity-80 bg-primary/10 text-primary border border-primary/30"
+                    >
+                      {sub.name}
+                      <X className="h-3 w-3" />
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+            
+            {/* Stats Panel - Only show when results exist and filters are active */}
+            {filteredTherapies.length > 0 && hasActiveFilters && (
+              <div className="grid grid-cols-4 gap-2 rounded-lg border border-border/20 bg-card/10 p-3">
+                {categories.map((cat) => {
+                  const count = stats[cat.id as keyof typeof stats]
+                  if (count === 0) return null
+                  return (
+                    <div key={cat.id} className="text-center">
+                      <div 
+                        className="text-lg font-semibold"
+                        style={{ color: cat.color }}
+                      >
+                        {count}
+                      </div>
+                      <div className="text-[10px] text-foreground/50">{cat.name}</div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
           </div>
 
           {/* Services List - Scrollable */}
