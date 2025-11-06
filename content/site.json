@@ -147,6 +147,20 @@
   "services": {
     "heading": "Longevity · Wellness · Aesthetics",
     "subheading": "A new standard in luxury longevity. More than 70 services. Featuring thoughtfully crafted protocols for maximum effectiveness and time efficiency.",
+    "pillars": {
+      "longevity": {
+        "title": "Longevity",
+        "description": "Data-driven protocols for optimal healthspan and vitality"
+      },
+      "wellness": {
+        "title": "Wellness", 
+        "description": "Holistic balance for mind, body, and spirit"
+      },
+      "aesthetics": {
+        "title": "Aesthetics",
+        "description": "Regenerative beauty and anti-aging excellence"
+      }
+    },
     "modalTitle": "Complete Wellness Ecosystem",
       "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
     "items": [
@@ -1007,6 +1021,20 @@
     "services": {
       "heading": "Longevidad · Bienestar · Estética",
       "subheading": "Un nuevo estándar en longevidad de lujo. Más de 70 servicios. Con protocolos cuidadosamente diseñados para máxima efectividad y eficiencia temporal.",
+      "pillars": {
+        "longevity": {
+          "title": "Longevidad",
+          "description": "Protocolos basados en datos para una vida saludable óptima"
+        },
+        "wellness": {
+          "title": "Bienestar",
+          "description": "Equilibrio holístico para mente, cuerpo y espíritu"
+        },
+        "aesthetics": {
+          "title": "Estética",
+          "description": "Belleza regenerativa y excelencia anti-envejecimiento"
+        }
+      },
       "modalTitle": "Ecosistema Integral de Bienestar",
       "modalDescription": "Nueve pilares interdependientes que optimizan cada dimensión de tu salud. Desde diagnósticos de precisión y terapias regenerativas hasta nutrición personalizada y optimización cognitiva—cada elemento trabaja en sinergia para tu transformación.",
       "items": [

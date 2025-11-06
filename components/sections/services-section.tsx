@@ -73,10 +73,10 @@ export function ServicesSection() {
                   }`}
                 >
                   <h2 className="mb-2 font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-                    Longevity
+                    {services.pillars?.longevity?.title || "Longevity"}
                   </h2>
                   <p className="text-xs font-light leading-relaxed text-foreground/50 sm:text-sm md:text-base">
-                    Data-driven protocols for optimal healthspan
+                    {services.pillars?.longevity?.description || "Data-driven protocols for optimal healthspan"}
                   </p>
                 </div>
               </div>
@@ -91,10 +91,10 @@ export function ServicesSection() {
                   style={{ transitionDelay: "100ms" }}
                 >
                   <h2 className="mb-2 font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-                    Wellness
+                    {services.pillars?.wellness?.title || "Wellness"}
                   </h2>
                   <p className="text-xs font-light leading-relaxed text-foreground/50 sm:text-sm md:text-base">
-                    Holistic balance for mind and body
+                    {services.pillars?.wellness?.description || "Holistic balance for mind and body"}
                   </p>
                 </div>
 
@@ -106,10 +106,10 @@ export function ServicesSection() {
                   style={{ transitionDelay: "200ms" }}
                 >
                   <h2 className="mb-2 font-sans text-2xl font-light tracking-wide text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-                    Aesthetics
+                    {services.pillars?.aesthetics?.title || "Aesthetics"}
                   </h2>
                   <p className="text-xs font-light leading-relaxed text-foreground/50 sm:text-sm md:text-base">
-                    Regenerative beauty and excellence
+                    {services.pillars?.aesthetics?.description || "Regenerative beauty and excellence"}
                   </p>
                 </div>
               </div>

@@ -69,11 +69,9 @@ export function HeartbeatTriangle() {
 
         @keyframes rotate {
           from {
-            --rotation: 0deg;
             transform: rotate(0deg);
           }
           to {
-            --rotation: 360deg;
             transform: rotate(360deg);
           }
         }
