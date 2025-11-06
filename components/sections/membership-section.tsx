@@ -191,26 +191,40 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     }
   }, [isHoveringCard, isLargeScreen])
 
-  // Click to scroll functionality
+  // Enhanced click to scroll functionality
   const handleCardScroll = (cardIndex: number, direction: 'up' | 'down') => {
     const scrollContainer = document.querySelector(`[data-card-scroll="${cardIndex}"]`) as HTMLElement
     if (scrollContainer) {
-      const scrollAmount = 120 // pixels to scroll
-      const currentScroll = scrollPositions[cardIndex] || 0
-      const newScroll = direction === 'down' 
-        ? Math.min(currentScroll + scrollAmount, scrollContainer.scrollHeight - scrollContainer.clientHeight)
-        : Math.max(currentScroll - scrollAmount, 0)
+      const rowHeight = 48 // approximate height of each therapy row
+      const scrollAmount = direction === 'down' ? rowHeight * 2 : -rowHeight * 2 // scroll 2 rows at a time
+      const currentScroll = scrollContainer.scrollTop
+      const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight
+      
+      let newScroll: number
+      if (direction === 'down') {
+        newScroll = Math.min(currentScroll + Math.abs(scrollAmount), maxScroll)
+      } else {
+        newScroll = Math.max(currentScroll + scrollAmount, 0)
+      }
       
       scrollContainer.scrollTo({
         top: newScroll,
         behavior: 'smooth'
       })
-      
-      setScrollPositions(prev => ({
-        ...prev,
-        [cardIndex]: newScroll
-      }))
     }
+  }
+
+  // Check if card can scroll in direction
+  const canScroll = (cardIndex: number, direction: 'up' | 'down') => {
+    const scrollContainer = document.querySelector(`[data-card-scroll="${cardIndex}"]`) as HTMLElement
+    if (!scrollContainer) return false
+    
+    const currentScroll = scrollContainer.scrollTop
+    const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight
+    
+    if (direction === 'up') return currentScroll > 0
+    if (direction === 'down') return currentScroll < maxScroll
+    return false
   }
   const [formData, setFormData] = useState({
     name: "",
@@ -608,26 +622,39 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     </table>
                     </div>
                     
-                    {/* Click to scroll controls - Desktop only */}
+                    {/* Enhanced scroll controls - Desktop only */}
                     {isLargeScreen && membership.features.length > 5 && (
-                      <div className="absolute right-2 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-1">
+                      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-3 bg-gradient-to-t from-background/90 via-background/70 to-transparent p-3">
                         <button
                           onClick={() => handleCardScroll(i, 'up')}
-                          className="rounded-full bg-primary/20 p-1.5 text-primary transition-all hover:bg-primary/30 hover:scale-110 active:scale-95"
-                          disabled={scrollPositions[i] <= 0}
+                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
+                            canScroll(i, 'up')
+                              ? 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-105 active:scale-95'
+                              : 'bg-foreground/10 text-foreground/30 cursor-not-allowed'
+                          }`}
+                          disabled={!canScroll(i, 'up')}
                         >
                           <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                           </svg>
+                          Scroll Up
                         </button>
+                        
+                        <div className="h-4 w-px bg-border/30" />
+                        
                         <button
                           onClick={() => handleCardScroll(i, 'down')}
-                          className="rounded-full bg-primary/20 p-1.5 text-primary transition-all hover:bg-primary/30 hover:scale-110 active:scale-95"
-                          disabled={scrollPositions[i] >= (document.querySelector(`[data-card-scroll="${i}"]`) as HTMLElement)?.scrollHeight - (document.querySelector(`[data-card-scroll="${i}"]`) as HTMLElement)?.clientHeight}
+                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-all ${
+                            canScroll(i, 'down')
+                              ? 'bg-primary/20 text-primary hover:bg-primary/30 hover:scale-105 active:scale-95'
+                              : 'bg-foreground/10 text-foreground/30 cursor-not-allowed'
+                          }`}
+                          disabled={!canScroll(i, 'down')}
                         >
                           <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7 7" />
                           </svg>
+                          Scroll Down
                         </button>
                       </div>
                     )}
