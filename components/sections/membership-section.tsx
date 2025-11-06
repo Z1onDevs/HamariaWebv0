@@ -165,6 +165,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const [selectedPlan, setSelectedPlan] = useState<string>("")
   const [expandedCards, setExpandedCards] = useState<number[]>([])
   const [isHoveringCard, setIsHoveringCard] = useState(false)
+  const [scrollPositions, setScrollPositions] = useState<{[key: number]: number}>({})
   
   // Check if screen is large (for multi-card expansion)
   const [isLargeScreen, setIsLargeScreen] = useState(false)
@@ -189,6 +190,28 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       }
     }
   }, [isHoveringCard, isLargeScreen])
+
+  // Click to scroll functionality
+  const handleCardScroll = (cardIndex: number, direction: 'up' | 'down') => {
+    const scrollContainer = document.querySelector(`[data-card-scroll="${cardIndex}"]`) as HTMLElement
+    if (scrollContainer) {
+      const scrollAmount = 120 // pixels to scroll
+      const currentScroll = scrollPositions[cardIndex] || 0
+      const newScroll = direction === 'down' 
+        ? Math.min(currentScroll + scrollAmount, scrollContainer.scrollHeight - scrollContainer.clientHeight)
+        : Math.max(currentScroll - scrollAmount, 0)
+      
+      scrollContainer.scrollTo({
+        top: newScroll,
+        behavior: 'smooth'
+      })
+      
+      setScrollPositions(prev => ({
+        ...prev,
+        [cardIndex]: newScroll
+      }))
+    }
+  }
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -539,14 +562,23 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
                 >
-                  {/* Scrollable container with custom scrollbar */}
-                  <div 
-                    className="membership-scroll-container relative max-h-[300px] overflow-y-auto overflow-x-auto custom-scrollbar rounded-lg border border-border/30 bg-background/20 shadow-inner"
-                    style={{
-                      WebkitOverflowScrolling: 'touch',
-                      overscrollBehavior: 'contain',
-                    }}
-                  >
+                  {/* Scrollable container with custom scrollbar and click controls */}
+                  <div className="relative">
+                    <div 
+                      className="membership-scroll-container relative max-h-[300px] overflow-y-auto overflow-x-auto custom-scrollbar rounded-lg border border-border/30 bg-background/20 shadow-inner"
+                      data-card-scroll={i}
+                      style={{
+                        WebkitOverflowScrolling: 'touch',
+                        overscrollBehavior: 'contain',
+                      }}
+                      onScroll={(e) => {
+                        const target = e.target as HTMLElement
+                        setScrollPositions(prev => ({
+                          ...prev,
+                          [i]: target.scrollTop
+                        }))
+                      }}
+                    >
                     <table className="w-full">
                       <thead className="sticky top-0 z-10 bg-card/95 backdrop-blur-md shadow-sm">
                         <tr className="border-b border-foreground/10">
@@ -574,10 +606,35 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                         ))}
                       </tbody>
                     </table>
+                    </div>
+                    
+                    {/* Click to scroll controls - Desktop only */}
+                    {isLargeScreen && membership.features.length > 5 && (
+                      <div className="absolute right-2 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-1">
+                        <button
+                          onClick={() => handleCardScroll(i, 'up')}
+                          className="rounded-full bg-primary/20 p-1.5 text-primary transition-all hover:bg-primary/30 hover:scale-110 active:scale-95"
+                          disabled={scrollPositions[i] <= 0}
+                        >
+                          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => handleCardScroll(i, 'down')}
+                          className="rounded-full bg-primary/20 p-1.5 text-primary transition-all hover:bg-primary/30 hover:scale-110 active:scale-95"
+                          disabled={scrollPositions[i] >= (document.querySelector(`[data-card-scroll="${i}"]`) as HTMLElement)?.scrollHeight - (document.querySelector(`[data-card-scroll="${i}"]`) as HTMLElement)?.clientHeight}
+                        >
+                          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7 7" />
+                          </svg>
+                        </button>
+                      </div>
+                    )}
                   </div>
                   
-                  {/* Scroll indicator hint - fades on scroll */}
-                  {membership.features.length > 5 && (
+                  {/* Scroll indicator hint - mobile only */}
+                  {!isLargeScreen && membership.features.length > 5 && (
                     <div className="mt-2 text-center">
                       <p className="text-[10px] text-foreground/40 sm:text-xs">
                         ↓ Scroll for more
