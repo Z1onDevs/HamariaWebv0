@@ -53,6 +53,16 @@
       "perYear": "per year",
       "compareTitle": "Compare Memberships",
       "viewFullDetails": "View Full Details",
+      "scrollToCompare": "Scroll to compare all plans",
+      "therapy": "Therapy",
+      "sessions": "Sessions",
+      "perMonthShort": "/mo",
+      "perMonthSuffix": "/month",
+      "perYearSuffix": "/year",
+      "membershipNotFound": "Membership not found",
+      "returnToMemberships": "Return to memberships",
+      "limitedMembers": "Limited to first 42 members",
+      "keyBenefits": "Key Benefits",
       "tiers": {
         "longevity": {
           "id": "longevity",
@@ -834,6 +844,16 @@
       "perYear": "al año",
       "compareTitle": "Comparar Membresías",
       "viewFullDetails": "Ver Detalles Completos",
+      "scrollToCompare": "Desliza para comparar todos los planes",
+      "therapy": "Terapia",
+      "sessions": "Sesiones",
+      "perMonthShort": "/mes",
+      "perMonthSuffix": "/mes",
+      "perYearSuffix": "/año",
+      "membershipNotFound": "Membresía no encontrada",
+      "returnToMemberships": "Volver a membresías",
+      "limitedMembers": "Limitada a los primeros 42 miembros",
+      "keyBenefits": "Beneficios Clave",
       "tiers": {
         "longevity": {
           "id": "longevity",

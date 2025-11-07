@@ -47,12 +47,12 @@ export default function MembershipDetailPage() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-light text-foreground">Membership not found</h1>
+          <h1 className="text-2xl font-light text-foreground">{memberships.membershipNotFound}</h1>
           <button
             onClick={() => router.push("/?section=membership")}
             className="mt-4 text-primary hover:underline"
           >
-            Return to memberships
+            {memberships.returnToMemberships}
           </button>
         </div>
       </div>
@@ -151,14 +151,14 @@ export default function MembershipDetailPage() {
               {memberships.foundersOffer}
             </p>
             <p className="mt-1 text-xs text-foreground/70">
-              Limited to first 42 members
+              {memberships.limitedMembers}
             </p>
           </div>
 
           {/* Features */}
           <div className="mb-10">
             <h2 className="mb-4 font-sans text-xl font-light text-foreground">
-              Key Benefits
+              {memberships.keyBenefits}
             </h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {tier.features.map((feature, index) => (
@@ -231,7 +231,7 @@ export default function MembershipDetailPage() {
                                   {language === "es" ? therapy.nameES : therapy.name}
                                 </td>
                                 <td className="px-4 py-2.5 text-right font-mono text-xs text-foreground/70">
-                                  {allocation === "Unlimited" ? memberships.unlimited : `${allocation}/month`}
+                                  {allocation === "Unlimited" ? memberships.unlimited : `${allocation}${memberships.perMonthSuffix}`}
                                 </td>
                               </tr>
                             )
@@ -253,10 +253,10 @@ export default function MembershipDetailPage() {
                         <thead className="border-b border-border/30">
                           <tr>
                             <th className="px-4 py-2 text-left text-xs font-medium text-foreground/70">
-                              Therapy
+                              {memberships.therapy}
                             </th>
                             <th className="px-4 py-2 text-right text-xs font-medium text-foreground/70">
-                              Sessions
+                              {memberships.sessions}
                             </th>
                           </tr>
                         </thead>
@@ -274,7 +274,7 @@ export default function MembershipDetailPage() {
                                   {language === "es" ? therapy.nameES : therapy.name}
                                 </td>
                                 <td className="px-4 py-2.5 text-right font-mono text-xs text-foreground/70">
-                                  {allocation}/year
+                                  {allocation}{memberships.perYearSuffix}
                                 </td>
                               </tr>
                             )
