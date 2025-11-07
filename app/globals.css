@@ -331,4 +331,166 @@
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
+
+  /* ========================================
+     ELEGANCE ENHANCEMENTS
+     ======================================== */
+
+  /* Hero Sketch Reveal Animation - Simplified for better visibility */
+  @keyframes hero-sketch-reveal {
+    0% {
+      opacity: 0;
+      transform: translateX(10px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  .hero-sketch-image {
+    animation: hero-sketch-reveal 1s ease-out 0.3s both;
+    contain: layout style paint;
+  }
+
+  /* Enhanced Hero Heading with Gradient */
+  .hero-heading {
+    letter-spacing: -0.03em;
+    background: linear-gradient(
+      135deg,
+      oklch(0.25 0.02 85) 0%,
+      oklch(0.25 0.02 85) 70%,
+      oklch(0.45 0.08 145) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+    
+    /* Fallback for browsers without background-clip */
+    @supports not (background-clip: text) {
+      color: oklch(0.25 0.02 85);
+      -webkit-text-fill-color: oklch(0.25 0.02 85);
+    }
+  }
+
+  /* Enhanced Primary Button */
+  .hero-primary-button {
+    position: relative;
+    box-shadow: 0 4px 20px oklch(0.45 0.08 145 / 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero-primary-button:hover {
+    box-shadow: 0 8px 30px oklch(0.45 0.08 145 / 0.3);
+    transform: scale(1.05);
+  }
+
+  .hero-primary-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 20px oklch(0.45 0.08 145 / 0.25);
+  }
+
+  /* Enhanced Secondary Button */
+  .hero-secondary-button {
+    border-width: 2px;
+    border-color: oklch(0.25 0.02 85 / 0.2);
+    background: oklch(0.96 0.01 85 / 0.4);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero-secondary-button:hover {
+    border-color: oklch(0.25 0.02 85 / 0.4);
+    background: oklch(0.96 0.01 85 / 0.6);
+    transform: scale(1.05);
+  }
+
+  .hero-secondary-button:active {
+    transform: scale(0.98);
+  }
+
+  /* Enhanced Navigation Backdrop - Applied via utility classes in component */
+  .enhanced-nav {
+    backdrop-filter: blur(12px);
+    background: oklch(0.96 0.01 85 / 0.85);
+    border-bottom: 1px solid oklch(0.25 0.02 85 / 0.05);
+    box-shadow: 0 1px 3px oklch(0.25 0.02 85 / 0.05);
+    transition: all 0.3s ease;
+  }
+
+  /* Scroll Progress Indicator */
+  .scroll-progress-indicator {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 40;
+    width: 4px;
+    height: 6rem;
+    background: oklch(0.25 0.02 85 / 0.1);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .scroll-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: oklch(0.45 0.08 145);
+    border-radius: 9999px;
+    transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Enhanced Grain Overlay */
+  .elegant-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 1px,
+        oklch(0.25 0.02 85 / 0.015) 1px,
+        oklch(0.25 0.02 85 / 0.015) 2px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        oklch(0.25 0.02 85 / 0.015) 1px,
+        oklch(0.25 0.02 85 / 0.015) 2px
+      );
+    background-size: 100px 100px;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-sketch-image {
+      animation: none !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    
+    .hero-primary-button,
+    .hero-secondary-button {
+      transition: none !important;
+    }
+    
+    .hero-primary-button:hover,
+    .hero-secondary-button:hover {
+      transform: none !important;
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 1279px) {
+    .scroll-progress-indicator {
+      display: none;
+    }
+  }
 }

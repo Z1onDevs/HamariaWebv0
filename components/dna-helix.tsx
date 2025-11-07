@@ -27,7 +27,8 @@ export function DNAHelix({ scrollProgress = 0 }: DNAHelixProps) {
       setIsSmallScreen(width < 1024)
       
       if (width < 1024) {
-        setDimensions({ width: 160, height: 560 })
+        // Reduced height for mobile to minimize space
+        setDimensions({ width: 120, height: 350 })
       } else if (width < 1536) {
         setDimensions({ width: 180, height: 640 })
       } else {

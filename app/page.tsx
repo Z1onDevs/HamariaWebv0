@@ -13,7 +13,6 @@ import { DNAHelix } from "@/components/dna-helix"
 import { HeartbeatTriangle } from "@/components/heartbeat-triangle"
 import { MobileNav } from "@/components/mobile-nav"
 import { SectionDots } from "@/components/section-dots"
-import { StickyCTA } from "@/components/sticky-cta"
 import { useLanguage } from "@/contexts/language-context"
 import { useTranslation } from "@/hooks/use-translation"
 import { useDeviceCapabilities } from "@/hooks/use-device-capabilities"
@@ -31,6 +30,7 @@ export default function Home() {
   const shaderContainerRef = useRef<HTMLDivElement>(null)
   const scrollThrottleRef = useRef<number>()
   const [heroScrollProgress, setHeroScrollProgress] = useState(0)
+  const [heroSketchOffset, setHeroSketchOffset] = useState(0)
   const { language, setLanguage } = useLanguage()
   const { t } = useTranslation()
   const hero = t.hero
@@ -242,7 +242,10 @@ export default function Home() {
 
         // Calculate hero scroll progress (0 to 1 in first section)
         if (scrollLeft < sectionWidth) {
-          setHeroScrollProgress(scrollLeft / sectionWidth)
+          const progress = scrollLeft / sectionWidth
+          setHeroScrollProgress(progress)
+          // Parallax effect: 50px max movement
+          setHeroSketchOffset(progress * 50)
         }
 
         if (newSection !== currentSection && newSection >= 0 && newSection <= 5) {
@@ -371,13 +374,6 @@ export default function Home() {
         isLoaded={isLoaded}
       />
 
-      {/* Sticky CTA Button - Mobile Only */}
-      <StickyCTA
-        currentSection={currentSection}
-        onApply={() => scrollToSection(4)}
-        isLoaded={isLoaded}
-      />
-
       <div
         ref={scrollContainerRef}
         data-scroll-container
@@ -388,32 +384,43 @@ export default function Home() {
         } ${isLoaded ? "opacity-100" : "opacity-0"}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-5 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
-          {/* Yoga SVG - Right side background decoration */}
-          <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[55vh] w-[40vw] animate-in fade-in slide-in-from-right-12 duration-1200 delay-700 xl:block 2xl:h-[60vh] 2xl:w-[35vw]">
-            <img
-              src="/yoga-transparent.svg"
-              alt=""
-              className="h-full w-full object-contain object-bottom opacity-25"
-            />
-          </div>
-
-          {/* DNA Helix - Hidden on mobile, visible on tablet/desktop only */}
-          <div 
-            className="absolute left-1/2 top-2 -translate-x-1/2 animate-in fade-in slide-in-from-top-4 duration-1000 hidden md:block xl:hidden"
-            style={{
-              transform: 'translateX(-50%) rotate(90deg)'
-            }}
-          >
-            <div className="scale-[0.42] md:scale-50">
-              <DNAHelix scrollProgress={heroScrollProgress} />
+        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-4 pb-12 pt-16 sm:px-6 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24 lg:px-12 lg:pb-24">
+          {/* Mobile/Tablet Hero Sketch - Highly Visible & Larger - Centered */}
+          <div className="lg:hidden absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute left-1/2 top-12 w-[65vw] h-[45vh] max-h-[450px] opacity-80 -translate-x-1/2 md:opacity-85 md:w-[70vw] md:h-[50vh] md:max-h-[500px]">
+              <img 
+                src="/hero-sketch.png" 
+                alt=""
+                className="w-full h-full object-contain object-center"
+                style={{ opacity: 0.9 }}
+              />
+              
+              {/* Corner frames - Mobile/Tablet */}
+              <div className="absolute -left-2 -top-2 h-10 w-10 border-l-2 border-t-2 border-primary/30 sm:h-12 sm:w-12 md:h-14 md:w-14" />
+              <div className="absolute -bottom-2 -right-2 h-10 w-10 border-b-2 border-r-2 border-primary/30 sm:h-12 sm:w-12 md:h-14 md:w-14" />
             </div>
           </div>
 
-          <div className="flex w-full items-end justify-between gap-8">
-            <div className="w-full max-w-4xl lg:flex-1">
+          {/* Desktop Hero Sketch - Highly Visible */}
+          <div className="pointer-events-none absolute top-28 right-0 hidden lg:block">
+            <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[48vw] 2xl:max-h-[850px]">
+              <img
+                src="/hero-sketch.png"
+                alt=""
+                className="h-full w-full object-contain object-center"
+                style={{ opacity: 0.95 }}
+              />
+              
+              {/* Corner frames - Larger */}
+              <div className="absolute -left-4 -top-4 h-16 w-16 border-l-2 border-t-2 border-primary/30 xl:h-20 xl:w-20" />
+              <div className="absolute -bottom-4 -right-4 h-16 w-16 border-b-2 border-r-2 border-primary/30 xl:h-20 xl:w-20" />
+            </div>
+          </div>
+
+          <div className="flex w-full items-end justify-between gap-6 lg:gap-8">
+            <div className="w-full max-w-3xl lg:max-w-4xl lg:flex-1">
               <p 
-                className="mb-4 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm"
+                className="mb-3 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm"
                 style={isMobile ? { 
                   transform: `translateY(${scrollY * 0.1}px)`,
                   transition: 'transform 0.3s ease-out'
@@ -422,7 +429,7 @@ export default function Home() {
                 {t.openingText}
               </p>
               <h1 
-                className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.15] tracking-tight text-foreground duration-1000 sm:mb-6 sm:text-5xl sm:leading-[1.1] md:mb-8 md:text-6xl lg:text-7xl xl:text-8xl"
+                className="hero-heading mb-4 animate-in fade-in slide-in-from-bottom-8 font-sans text-3xl font-light leading-[1.15] text-foreground duration-1000 sm:mb-5 sm:text-4xl sm:leading-[1.1] md:mb-6 md:text-5xl lg:text-6xl xl:text-7xl"
                 style={isMobile ? { 
                   transform: `translateY(${scrollY * 0.15}px) scale(${1 - (scrollY * 0.0002)})`,
                   transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
@@ -436,7 +443,7 @@ export default function Home() {
               </h1>
 
               <p 
-                className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 font-sans text-base leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl"
+                className="mb-5 max-w-xl animate-in fade-in slide-in-from-bottom-4 font-sans text-sm leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-6 sm:max-w-2xl sm:text-base md:mb-8 md:text-lg lg:text-xl"
                 style={isMobile ? { 
                   transform: `translateY(${scrollY * 0.2}px)`,
                   opacity: Math.max(0, 1 - (scrollY * 0.002)),
@@ -448,17 +455,18 @@ export default function Home() {
                 </span>
               </p>
               <div 
-                className="flex w-full animate-in fade-in slide-in-from-bottom-4 flex-col gap-3 duration-1000 delay-300 sm:w-auto sm:flex-row sm:items-center sm:gap-4"
+                className="flex w-full animate-in fade-in slide-in-from-bottom-4 flex-col gap-2.5 duration-1000 delay-300 sm:w-auto sm:flex-row sm:items-center sm:gap-3"
                 style={isMobile ? { 
                   transform: `translateY(${scrollY * 0.25}px) scale(${Math.max(0.9, 1 - (scrollY * 0.0003))})`,
                   opacity: Math.max(0, 1 - (scrollY * 0.0025)),
                   transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-out'
                 } : {}}
               >
-                <MagneticButton size="lg" variant="primary" className="w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(4)}>
-                  {hero.primaryCta}
+                <MagneticButton size="lg" variant="primary" className="hero-primary-button group relative overflow-hidden w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(4)}>
+                  <span className="relative z-10">{hero.primaryCta}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                 </MagneticButton>
-                <MagneticButton size="lg" variant="secondary" className="w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(1)}>
+                <MagneticButton size="lg" variant="secondary" className="hero-secondary-button w-full text-sm sm:w-auto sm:text-base" onClick={() => scrollToSection(1)}>
                   {hero.secondaryCta}
                 </MagneticButton>
               </div>
@@ -488,12 +496,22 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Scroll Progress Indicator - Desktop Only */}
+          {!isMobile && (
+            <div className="scroll-progress-indicator hidden xl:block animate-in fade-in duration-1000 delay-700">
+              <div 
+                className="scroll-progress-bar" 
+                style={{ height: `${(currentSection / 5) * 100}%` }}
+              />
+            </div>
+          )}
         </section>
 
         <ConceptSection />
-        {/* DNA Helix - Mobile Only (between methodology and services) */}
-        <div className="flex w-screen shrink-0 snap-start items-center justify-center py-6 md:hidden">
-          <div className="rotate-90 scale-[0.35]">
+        {/* DNA Helix - Mobile Only (between methodology and services) - Minimal Space */}
+        <div className="flex w-screen shrink-0 items-center justify-center md:hidden" style={{ minHeight: 'auto', height: 'auto', padding: 0, margin: 0 }}>
+          <div className="rotate-90 scale-[0.35]" style={{ margin: 0, padding: 0 }}>
             <DNAHelix scrollProgress={0.5} />
           </div>
         </div>

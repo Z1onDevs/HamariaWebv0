@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { useTranslation } from "@/hooks/use-translation"
 import { X, ChevronDown, ChevronUp, Search } from "lucide-react"
 
@@ -24,17 +24,31 @@ interface Subcategory {
   parentCategories: string[]
 }
 
-export function FilteredServices() {
+interface FilteredServicesProps {
+  prefilterCategories?: string[]
+  prefilterSubcategories?: string[]
+}
+
+export function FilteredServices({ 
+  prefilterCategories = [], 
+  prefilterSubcategories = [] 
+}: FilteredServicesProps = {}) {
   const { t, language } = useTranslation()
   const therapiesData = t.therapies || {}
   
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([])
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(prefilterCategories)
+  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(prefilterSubcategories)
   const [expandedTherapy, setExpandedTherapy] = useState<string | null>(null)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [sortBy, setSortBy] = useState<'alphabetical' | 'category'>('alphabetical')
   const [filterMode, setFilterMode] = useState<'AND' | 'OR'>('AND')
+
+  // Apply prefilters when they change
+  useEffect(() => {
+    setSelectedCategories(prefilterCategories)
+    setSelectedSubcategories(prefilterSubcategories)
+  }, [prefilterCategories, prefilterSubcategories])
 
   const categories: Category[] = therapiesData.categories || []
   const subcategories: Subcategory[] = therapiesData.subcategories || []

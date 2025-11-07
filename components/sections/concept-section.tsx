@@ -6,9 +6,8 @@ import { DNAHelix } from "@/components/dna-helix"
 import { useState, useEffect } from "react"
 
 export function ConceptSection() {
-  const { ref: titleRef, isVisible: titleVisible } = useReveal(0.3)
   const { ref: contentRef, isVisible: contentVisible } = useReveal(0.3)
-  const { ref: dividerRef, isVisible: dividerVisible } = useReveal(0.3)
+  const { ref: dividerRef } = useReveal(0.3)
   const { t } = useTranslation()
   const [scrollProgress, setScrollProgress] = useState(0)
 
@@ -37,21 +36,8 @@ export function ConceptSection() {
   }, [])
 
   return (
-    <section className="flex min-h-screen w-screen shrink-0 items-center justify-center px-5 py-12 pt-16 sm:px-6 sm:py-20 md:px-8 md:py-28 lg:px-12 lg:py-32">
+    <section className="relative flex min-h-screen w-screen shrink-0 items-center justify-center px-5 py-12 pt-24 sm:px-6 sm:py-20 sm:pt-28 md:px-8 md:py-28 md:pt-32 lg:px-12 lg:py-32 lg:pt-36">
       <div className="mx-auto w-full max-w-7xl">
-        {/* Header */}
-        <div className="mb-6 text-center sm:mb-8 md:mb-12 lg:mb-16">
-          <h2
-            ref={titleRef}
-            className={`mb-3 font-sans text-lg font-light leading-tight tracking-tight text-foreground transition-all duration-700 sm:mb-4 sm:text-xl md:mb-6 md:text-2xl lg:text-3xl xl:text-4xl ${
-              titleVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
-            }`}
-          >
-            <span className="text-balance">{concept.heading}</span>
-          </h2>
-          <div className="mx-auto h-px w-16 bg-primary/40 sm:w-20 md:w-24" />
-        </div>
-
         {/* Enhanced Content Grid with DNA Helix Divider */}
         <div
           ref={contentRef}
@@ -82,14 +68,15 @@ export function ConceptSection() {
             )}
           </div>
 
-          {/* Center Column - DNA Helix Divider */}
+          {/* Center Column - DNA Helix Divider - Minimal Space */}
           <div 
             ref={dividerRef}
-            className="my-1 flex items-center justify-center md:order-2"
+            className="my-0 flex items-center justify-center md:order-2 md:py-0"
+            style={{ minHeight: 'auto', height: 'auto', padding: 0, margin: 0 }}
           >
-            {/* Mobile: Horizontal (rotated 90°) */}
-            <div className="rotate-90 scale-[0.35] md:hidden">
-              <DNAHelix scrollProgress={scrollProgress} />
+            {/* Mobile: Horizontal (rotated 90°) - Minimal Space */}
+            <div className="rotate-90 scale-[0.35] md:hidden" style={{ margin: 0, padding: 0 }}>
+              <DNAHelix scrollProgress={0.5} />
             </div>
             {/* Desktop: Vertical */}
             <div className="hidden scale-75 md:block md:scale-90 lg:scale-100">
@@ -97,39 +84,44 @@ export function ConceptSection() {
             </div>
           </div>
 
-          {/* Right Column - Methodology */}
+          {/* Right Column - Methodology with Yoga Image */}
           <div className="relative space-y-4 sm:space-y-5 md:order-3 md:space-y-7">
             <div className="relative z-10 inline-block rounded-full bg-primary/10 px-3 py-1.5 sm:px-4 sm:py-2">
               <p className="font-sans text-xs uppercase tracking-widest text-primary sm:text-xs">{concept.methodology}</p>
             </div>
-            <div className="relative z-10 flex flex-col items-center space-y-2 sm:space-y-3 md:space-y-5">
-              {concept.features.map((feature: any, i: number) => (
-              <div
-                key={i}
-                className="group w-full max-w-sm rounded-lg border border-border/50 bg-card/30 p-4 text-center backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:p-5 md:max-w-none md:p-6 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
-                style={{
-                  transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-              >
-                <h3 className="mb-1.5 font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:mb-2 sm:text-base md:text-lg">
-                  {feature.title}
-                </h3>
-                {/* Mobile: Always show text, Desktop: Show on hover */}
-                <div className="grid grid-rows-[1fr] transition-all duration-500 md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr]"
+            
+            {/* Methodology Cards */}
+            <div className="relative flex items-center gap-6">
+              {/* Methodology Cards - Wider & Shorter */}
+              <div className="relative z-10 flex flex-1 flex-col items-stretch space-y-3 sm:space-y-4 md:space-y-4">
+                {concept.features.map((feature: any, i: number) => (
+                <div
+                  key={i}
+                  className="group w-full rounded-lg border border-border/50 bg-card/30 px-5 py-3 text-center backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card/50 hover:shadow-md sm:rounded-xl sm:px-6 sm:py-3.5 md:px-8 md:py-4 md:hover:scale-102 active:border-primary/30 active:bg-card/50"
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
                 >
-                  <p className="overflow-hidden font-sans text-xs leading-relaxed text-foreground/60 transition-all duration-500 sm:text-sm"
+                  <h3 className="mb-1 font-sans text-sm font-medium text-foreground transition-colors duration-300 group-hover:text-primary sm:text-base md:text-lg">
+                    {feature.title}
+                  </h3>
+                  {/* Desktop: Always show text by default */}
+                  <div className="grid grid-rows-[1fr] transition-all duration-500"
                     style={{
                       transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                     }}
                   >
-                    <span className="block pt-1.5 sm:pt-2">{feature.description}</span>
-                  </p>
+                    <p className="overflow-hidden font-sans text-xs leading-snug text-foreground/60 transition-all duration-500 sm:text-sm"
+                      style={{
+                        transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                    >
+                      <span className="block pt-1">{feature.description}</span>
+                    </p>
+                  </div>
                 </div>
+              ))}
               </div>
-            ))}
             </div>
           </div>
         </div>
