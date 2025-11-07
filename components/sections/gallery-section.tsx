@@ -129,14 +129,17 @@ export function GallerySection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-16 pt-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 pt-24 sm:px-6 sm:py-24 sm:pt-28 md:px-8 md:py-28 md:pt-32 lg:px-12 lg:py-32 lg:pt-36 xl:pt-40"
+        style={{
+          paddingTop: 'max(6rem, calc(env(safe-area-inset-top) + 5rem))',
+        }}
       >
-        <div className="mx-auto w-full max-w-5xl lg:max-w-6xl xl:max-w-7xl">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
+        <div className="mx-auto w-full max-w-4xl sm:max-w-5xl lg:max-w-6xl xl:max-w-7xl">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5 xl:gap-6">
             {galleryItems.slice(0, 6).map((item, i) => (
               <div
                 key={i}
-                className={`group relative aspect-[3/4] cursor-pointer transition-all duration-700 md:aspect-[4/3] ${
+                className={`group relative aspect-[3/4] cursor-pointer transition-all duration-700 sm:aspect-[3/4] md:aspect-[4/3] lg:aspect-[3/2] max-h-[28vh] sm:max-h-[30vh] md:max-h-[35vh] lg:max-h-none ${
                   isVisible ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-90"
                 }`}
                 style={{
@@ -148,13 +151,15 @@ export function GallerySection() {
                   setShowCarousel(true)
                 }}
               >
-                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-all duration-500 ease-out group-hover:scale-[1.05] group-hover:shadow-2xl group-hover:shadow-primary/20 group-hover:-translate-y-1 group-active:scale-[0.95] sm:rounded-xl md:rounded-2xl">
+                <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-all duration-500 ease-out group-hover:scale-[1.08] group-hover:shadow-2xl group-hover:shadow-primary/30 group-hover:-translate-y-2 group-active:scale-[0.98] sm:rounded-xl md:rounded-2xl">
                   <img 
                     src={item.src} 
                     alt={item.title} 
                     loading="lazy"
-                    className="h-full w-full object-cover transition-opacity duration-300" 
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105" 
                   />
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-primary/0 transition-all duration-500 group-hover:bg-primary/5" />
                   {/* Tap hint icon - mobile only, first image */}
                   {i === 0 && (
                     <div className="absolute right-2 top-2 animate-pulse rounded-full bg-primary/90 p-2 md:hidden">
@@ -175,7 +180,7 @@ export function GallerySection() {
           {/* More Link */}
           {hasMoreContent && (
             <div
-              className={`mt-6 flex justify-center transition-all duration-700 sm:mt-8 ${
+              className={`mt-4 flex justify-center transition-all duration-700 sm:mt-6 md:mt-8 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
               style={{ transitionDelay: "600ms" }}
@@ -264,13 +269,15 @@ export function GallerySection() {
                       setShowCarousel(true)
                     }}
                   >
-                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 bg-background/20 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out group-hover:scale-[1.02] group-hover:border-primary/20 group-hover:bg-background/40 group-hover:shadow-md group-active:scale-[0.96] sm:rounded-lg md:rounded-xl">
+                    <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 bg-background/20 shadow-sm backdrop-blur-sm transition-all duration-500 ease-out group-hover:scale-[1.05] group-hover:border-primary/20 group-hover:bg-background/40 group-hover:shadow-xl group-hover:shadow-primary/20 group-hover:-translate-y-1 group-active:scale-[0.98] sm:rounded-lg md:rounded-xl">
                       <img 
                         src={item.src} 
                         alt={item.title} 
                         loading="lazy"
-                        className="h-full w-full object-cover transition-opacity duration-300" 
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105" 
                       />
+                      {/* Subtle overlay on hover */}
+                      <div className="absolute inset-0 bg-primary/0 transition-all duration-500 group-hover:bg-primary/5" />
                       {/* Minimal gradient overlay - only at bottom for text readability */}
                       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/80 to-transparent opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100" />
                       {/* Title - always visible on mobile */}

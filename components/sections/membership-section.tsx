@@ -10,6 +10,7 @@ import { useSwipeToClose } from "@/hooks/use-swipe-to-close"
 import { MagneticButton } from "@/components/magnetic-button"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
+import { MembershipComparison } from "@/components/membership-comparison"
 import { therapyMatrix } from "@/lib/therapy-matrix"
 import { X } from "lucide-react"
 
@@ -50,6 +51,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const { t, language } = useTranslation()
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>("")
   const [expandedCards, setExpandedCards] = useState<number[]>([])
@@ -130,19 +132,24 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const freeMonths = isSpecialCode ? 4 : 3
   const form = t.membershipForm
 
-  // Swipe to close modal
+  // Swipe to close modals
   useSwipeToClose({ 
     onClose: () => setIsModalOpen(false), 
     enabled: isModalOpen 
+  })
+  
+  useSwipeToClose({ 
+    onClose: () => setIsComparisonOpen(false), 
+    enabled: isComparisonOpen 
   })
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Lock scrolling when modal is open
+  // Lock scrolling when any modal is open
   useEffect(() => {
-    if (isModalOpen) {
+    if (isModalOpen || isComparisonOpen) {
       const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
       if (scrollContainer) {
         scrollContainer.style.overflow = "hidden"
@@ -153,6 +160,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
           setIsModalOpen(false)
+          setIsComparisonOpen(false)
         }
       }
       window.addEventListener("keydown", handleEscape)
@@ -167,7 +175,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       }
       document.body.style.overflow = ""
     }
-  }, [isModalOpen])
+  }, [isModalOpen, isComparisonOpen])
 
   const handleApply = (plan: string) => {
     setSelectedPlan(plan)
@@ -277,6 +285,10 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const memberships = useMemo(
     () =>
       membershipDefinitions.map((membership) => {
+        // Get pricing data from translations
+        const membershipTiers = t.memberships?.tiers || {}
+        const tierData = membershipTiers[membership.key] || {}
+        
         let features: Array<{ name: string; nameES: string; schedule: string; isExtra?: boolean }> = []
         
         if (membership.key === "longevity") {
@@ -362,9 +374,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
         return {
           ...membership,
           features,
+          monthlyPrice: tierData.monthlyPrice || 0,
+          yearlyPrice: tierData.yearlyPrice || 0,
+          weeklyMinutes: tierData.weeklyMinutes || 0,
+          monthlyPerceivedValue: tierData.monthlyPerceivedValue || 0,
         }
       }),
-    []
+    [t.memberships]
   )
 
   return (
@@ -384,6 +400,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           <div className="mx-auto h-px w-16 bg-primary/40 sm:w-20 md:w-24" />
         </div>
 
+        {/* Membership Cards Grid */}
         <div className="grid gap-5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5 xl:gap-6">
           {memberships.map((membership, i) => (
             <div
@@ -402,22 +419,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                 if (isLargeScreen) setIsHoveringCard(false)
               }}
             >
-              <div className="mb-3 sm:mb-3">
+              <div className="mb-2.5 sm:mb-2.5">
                 <h3 className="mb-1 font-sans text-lg font-light text-foreground sm:mb-1 sm:text-lg md:text-xl">{membership.name}</h3>
                 <p className="font-mono text-xs leading-relaxed text-foreground/60 sm:text-xs">{membership.description}</p>
               </div>
 
-              {/* Show inclusion note for higher tiers */}
-              {membership.key !== "longevity" && (
-                <div className="mb-3 rounded-md bg-primary/10 px-3 py-2 sm:mb-3 sm:px-3 sm:py-2">
-                  <p className="font-mono text-xs text-primary/80 sm:text-xs">
-                    {form.includesAll}
-                  </p>
-                </div>
-              )}
-
               {/* Therapy count summary */}
-              <div className="mb-3">
+              <div className="mb-2.5">
                 <p className="font-mono text-xs text-foreground/60">
                   {membership.features.length} {form.therapiesIncluded}
                 </p>
@@ -433,7 +441,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                       : [...prev, i]
                   )
                 }}
-                className="mb-3 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all duration-300 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-md hover:shadow-primary/10 active:bg-background/50 active:scale-95 xl:hidden"
+                className="mb-2.5 w-full rounded-lg border border-primary/20 bg-background/30 px-4 py-3 text-left transition-all duration-300 hover:border-primary/30 hover:bg-background/40 hover:scale-105 hover:shadow-md hover:shadow-primary/10 active:bg-background/50 active:scale-95 xl:hidden"
                 style={{
                   transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
@@ -461,7 +469,7 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               {/* Collapsible therapy list with scroll - Always visible on large screens */}
               {(isLargeScreen || expandedCards.includes(i)) && (
                 <div 
-                  className="mb-4 animate-in fade-in slide-in-from-top-2 duration-500"
+                  className="mb-3 animate-in fade-in slide-in-from-top-2 duration-500"
                   style={{
                     animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
@@ -483,13 +491,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                         }))
                       }}
                     >
-                    <table className="w-full">
+                    <table className="w-auto mx-auto max-w-full">
                       <thead className="sticky top-0 z-10 bg-card/95 backdrop-blur-md shadow-sm">
                         <tr className="border-b border-foreground/10">
-                          <th className="px-4 pb-2 pt-3 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:text-xs">
+                          <th className="px-2 pb-2 pt-3 text-left font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:text-xs">
                             Therapy
                           </th>
-                          <th className="px-4 pb-2 pt-3 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:text-xs">
+                          <th className="pl-6 pr-2 pb-2 pt-3 text-right font-mono text-xs font-normal uppercase tracking-wide text-foreground/50 sm:text-xs">
                             Sessions
                           </th>
                         </tr>
@@ -500,10 +508,10 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                             key={j}
                             className="border-b border-foreground/5 last:border-0 transition-colors hover:bg-foreground/5 active:bg-foreground/10"
                           >
-                            <td className="px-4 py-3 text-xs leading-relaxed text-foreground/80 sm:text-xs">
+                            <td className="px-2 py-2.5 text-xs leading-relaxed text-foreground/80 sm:text-xs">
                               {language === "es" ? feature.nameES : feature.name}
                             </td>
-                            <td className="px-4 py-3 text-right font-mono text-xs tracking-wide text-foreground/60 sm:text-xs">
+                            <td className="pl-6 pr-2 py-2.5 text-right font-mono text-xs tracking-wide text-foreground/60 sm:text-xs whitespace-nowrap">
                               {feature.schedule}
                             </td>
                           </tr>
@@ -576,6 +584,22 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Compare Memberships Button */}
+        <div
+          className={`mt-6 flex justify-center transition-all duration-700 sm:mt-8 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+          }`}
+          style={{ transitionDelay: "600ms" }}
+        >
+          <button
+            onClick={() => setIsComparisonOpen(true)}
+            className="group border-b-2 border-transparent font-sans text-sm text-foreground/70 transition-all hover:border-foreground/70 hover:text-foreground sm:text-base"
+          >
+            {form.comparePlans}
+            <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">→</span>
+          </button>
         </div>
       </div>
 
@@ -715,6 +739,50 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
                   )}
                 </div>
               </form>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* Comparison Modal */}
+      {mounted && isComparisonOpen && createPortal(
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4"
+          onClick={() => setIsComparisonOpen(false)}
+        >
+          {/* Shader Background */}
+          <div className="absolute inset-0 z-0">
+            <ShaderWrapper />
+            <div className="absolute inset-0 bg-background/60" />
+          </div>
+          <GrainOverlay />
+
+          <div 
+            className="relative z-10 h-full w-full sm:h-auto sm:max-w-7xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsComparisonOpen(false)}
+              className="absolute right-4 top-4 z-20 rounded-full border border-primary/20 bg-background/60 p-3 text-foreground shadow-sm backdrop-blur-md transition-all hover:border-primary/30 hover:bg-background/80 hover:text-foreground sm:right-0 sm:top-0 sm:-right-12 sm:p-3"
+              aria-label="Close comparison"
+            >
+              <X className="h-6 w-6 sm:h-6 sm:w-6" />
+            </button>
+
+            {/* Modal Content */}
+            <div className="relative h-full overflow-y-auto border-primary/10 bg-background/30 p-5 shadow-2xl backdrop-blur-md sm:max-h-[90vh] sm:rounded-2xl sm:border sm:p-5 md:p-7 lg:p-9">
+              {/* Title */}
+              <div className="mb-5 animate-in fade-in slide-in-from-top-4 sm:mb-7 md:mb-9">
+                <h2 className="mb-2 font-sans text-xl font-light tracking-tight text-foreground sm:mb-3 sm:text-2xl md:text-3xl lg:text-4xl">
+                  {t.memberships?.compareTitle || "Compare Memberships"}
+                </h2>
+                <div className="mt-3 h-px w-12 bg-primary/30 sm:mt-4 sm:w-16 md:mt-5 md:w-20" />
+              </div>
+
+              {/* Comparison Table */}
+              <MembershipComparison />
             </div>
           </div>
         </div>,

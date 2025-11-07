@@ -350,11 +350,11 @@ export default function Home() {
             </button>
           </div>
           
-          {/* Desktop Apply Button - Fades out on membership section */}
+          {/* Desktop Apply Button - Fades out on services, spaces, and membership sections */}
           <MagneticButton 
             variant="primary" 
             className={`hidden text-xs transition-opacity duration-500 sm:text-sm xl:flex ${
-              currentSection === 4 ? "opacity-0 pointer-events-none" : "opacity-100"
+              [2, 3, 4].includes(currentSection) ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
             onClick={() => scrollToSection(4)}
           >
@@ -385,15 +385,21 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-4 pb-12 pt-16 sm:px-6 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24 lg:px-12 lg:pb-24">
-          {/* Mobile/Tablet Hero Sketch - Highly Visible & Larger - Centered */}
+          {/* Mobile/Tablet Hero Sketch - Highly Visible & Larger - Centered - Cropped */}
           <div className="lg:hidden absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute left-1/2 top-12 w-[65vw] h-[45vh] max-h-[450px] opacity-80 -translate-x-1/2 md:opacity-85 md:w-[70vw] md:h-[50vh] md:max-h-[500px]">
-              <img 
-                src="/hero-sketch.png" 
-                alt=""
-                className="w-full h-full object-contain object-center"
-                style={{ opacity: 0.9 }}
-              />
+            <div className="absolute left-1/2 top-[30%] w-[65vw] h-[36vh] max-h-[360px] opacity-80 -translate-x-1/2 -translate-y-1/2 sm:top-[32%] md:top-[35%] md:opacity-85 md:w-[70vw] md:h-[40vh] md:max-h-[400px]">
+              <div className="relative h-full w-full overflow-hidden" style={{ clipPath: 'inset(10% 0% 10% 0%)' }}>
+                <img 
+                  src="/hero-sketch.png" 
+                  alt=""
+                  className="absolute inset-0 w-full object-contain object-center"
+                  style={{ 
+                    opacity: 0.9,
+                    height: '125%',
+                    top: '-12.5%'
+                  }}
+                />
+              </div>
               
               {/* Corner frames - Mobile/Tablet */}
               <div className="absolute -left-2 -top-2 h-10 w-10 border-l-2 border-t-2 border-primary/30 sm:h-12 sm:w-12 md:h-14 md:w-14" />

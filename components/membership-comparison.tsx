@@ -14,7 +14,6 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
   const memberships = t.memberships
   const tiers = ["longevity", "performance", "aesthetics"]
   const tableContainerRef = useRef<HTMLDivElement>(null)
-  const [hideTherapyNames, setHideTherapyNames] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
   // Detect mobile screen size
@@ -26,39 +25,6 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
-
-  // Detect horizontal scroll to hide/show therapy names on mobile
-  useEffect(() => {
-    if (!isMobile || !tableContainerRef.current) return
-
-    const container = tableContainerRef.current
-    let scrollTimeout: NodeJS.Timeout
-
-    const handleScroll = () => {
-      const scrollLeft = container.scrollLeft
-      
-      // Clear existing timeout
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout)
-      }
-
-      // Hide therapy names when scrolled left (showing more plans)
-      if (scrollLeft > 50) {
-        setHideTherapyNames(true)
-      } else {
-        // Show therapy names when scrolled back to the right
-        scrollTimeout = setTimeout(() => {
-          setHideTherapyNames(false)
-        }, 150) // Small delay to prevent flickering
-      }
-    }
-
-    container.addEventListener('scroll', handleScroll, { passive: true })
-    return () => {
-      container.removeEventListener('scroll', handleScroll)
-      if (scrollTimeout) clearTimeout(scrollTimeout)
-    }
-  }, [isMobile])
 
   const renderAllocation = (value: number | string) => {
     if (value === "Unlimited") {
@@ -79,22 +45,31 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
   }
 
   return (
-    <div 
-      ref={tableContainerRef}
-      className="membership-comparison overflow-x-auto rounded-xl border border-border/50 bg-card/20"
-    >
-      <table className="w-full min-w-[800px]">
+    <>
+      {/* Scroll Hint - Mobile Only */}
+      {isMobile && (
+        <div className="mb-3 flex items-center justify-center gap-2 text-xs text-foreground/50">
+          <span>←</span>
+          <span>Scroll to compare all plans</span>
+          <span>→</span>
+        </div>
+      )}
+      
+      <div 
+        ref={tableContainerRef}
+        className="membership-comparison overflow-x-auto rounded-xl border border-border/50 bg-card/20"
+        style={{
+          WebkitOverflowScrolling: 'touch',
+        }}
+      >
+        <table className="w-full min-w-[800px]">
         {/* Header */}
         <thead className="border-b border-border/30">
           <tr>
             <th 
-              className={`sticky left-0 z-10 bg-card/60 px-6 py-4 text-left text-sm font-medium text-foreground/70 backdrop-blur-sm transition-all duration-300 ${
-                isMobile && hideTherapyNames 
-                  ? 'w-0 px-0 opacity-0 overflow-hidden' 
-                  : 'w-auto'
-              }`}
+              className="sticky left-0 z-10 bg-card/98 px-3 py-3 text-left text-xs font-medium text-foreground/70 backdrop-blur-md shadow-[2px_0_4px_rgba(0,0,0,0.1)] border-r border-border/30 max-w-[140px] md:px-6 md:py-4 md:text-sm md:max-w-none md:shadow-none md:border-r-0"
             >
-              {(!isMobile || !hideTherapyNames) && "Therapy"}
+              Therapy
             </th>
             {tiers.map((tierId) => {
               const tier = memberships.tiers[tierId]
@@ -103,7 +78,7 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
               return (
                 <th
                   key={tierId}
-                  className={`px-6 py-4 text-center ${
+                  className={`px-4 py-3 text-center min-w-[80px] md:px-6 md:py-4 md:min-w-0 ${
                     isCurrentTier ? "bg-primary/10" : ""
                   }`}
                 >
@@ -134,11 +109,9 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
           <tr className="border-b border-border/30">
             <td 
               colSpan={4} 
-              className={`bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60 transition-all duration-300 ${
-                isMobile && hideTherapyNames ? 'px-0' : ''
-              }`}
+              className="bg-foreground/10 px-3 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60 md:px-6"
             >
-              {(!isMobile || !hideTherapyNames) && memberships.monthlyTherapies}
+              {memberships.monthlyTherapies}
             </td>
           </tr>
 
@@ -156,13 +129,9 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
                   className="border-b border-border/10 last:border-0 transition-colors hover:bg-foreground/5"
                 >
                   <td 
-                    className={`sticky left-0 z-10 bg-card/60 px-6 py-3 text-sm text-foreground/80 backdrop-blur-sm transition-all duration-300 ${
-                      isMobile && hideTherapyNames 
-                        ? 'w-0 px-0 opacity-0 overflow-hidden' 
-                        : 'w-auto'
-                    }`}
+                    className="sticky left-0 z-10 bg-card/98 px-3 py-2 text-xs text-foreground/80 backdrop-blur-md shadow-[2px_0_4px_rgba(0,0,0,0.1)] border-r border-border/30 max-w-[140px] truncate md:px-6 md:py-3 md:text-sm md:max-w-none md:shadow-none md:border-r-0"
                   >
-                    {(!isMobile || !hideTherapyNames) && (language === "es" ? therapy.nameES : therapy.name)}
+                    {language === "es" ? therapy.nameES : therapy.name}
                   </td>
                   {tiers.map((tierId) => {
                     const allocation = therapy.allocations[tierId as keyof typeof therapy.allocations]
@@ -187,11 +156,9 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
           <tr className="border-b border-border/30">
             <td 
               colSpan={4} 
-              className={`bg-foreground/10 px-6 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60 transition-all duration-300 ${
-                isMobile && hideTherapyNames ? 'px-0' : ''
-              }`}
+              className="bg-foreground/10 px-3 py-2 text-xs font-medium uppercase tracking-wide text-foreground/60 md:px-6"
             >
-              {(!isMobile || !hideTherapyNames) && memberships.yearlyTherapies}
+              {memberships.yearlyTherapies}
             </td>
           </tr>
 
@@ -209,13 +176,9 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
                   className="border-b border-border/10 last:border-0 transition-colors hover:bg-foreground/5"
                 >
                   <td 
-                    className={`sticky left-0 z-10 bg-card/60 px-6 py-3 text-sm text-foreground/80 backdrop-blur-sm transition-all duration-300 ${
-                      isMobile && hideTherapyNames 
-                        ? 'w-0 px-0 opacity-0 overflow-hidden' 
-                        : 'w-auto'
-                    }`}
+                    className="sticky left-0 z-10 bg-card/98 px-3 py-2 text-xs text-foreground/80 backdrop-blur-md shadow-[2px_0_4px_rgba(0,0,0,0.1)] border-r border-border/30 max-w-[140px] truncate md:px-6 md:py-3 md:text-sm md:max-w-none md:shadow-none md:border-r-0"
                   >
-                    {(!isMobile || !hideTherapyNames) && (language === "es" ? therapy.nameES : therapy.name)}
+                    {language === "es" ? therapy.nameES : therapy.name}
                   </td>
                   {tiers.map((tierId) => {
                     const allocation = therapy.allocations[tierId as keyof typeof therapy.allocations]
@@ -224,7 +187,7 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
                     return (
                       <td
                         key={tierId}
-                        className={`px-6 py-3 text-center ${
+                        className={`px-4 py-2 text-center min-w-[80px] md:px-6 md:py-3 md:min-w-0 ${
                           isCurrentTier ? "bg-primary/5" : ""
                         }`}
                       >
@@ -238,6 +201,7 @@ export function MembershipComparison({ currentTier }: MembershipComparisonProps)
         </tbody>
       </table>
     </div>
+    </>
   )
 }
 

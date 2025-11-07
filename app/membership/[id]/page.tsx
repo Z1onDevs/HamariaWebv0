@@ -145,25 +145,6 @@ export default function MembershipDetailPage() {
             </p>
           </div>
 
-          {/* Pricing Card - Simplified */}
-          <div className="mb-10">
-            <div 
-              className="inline-block rounded-2xl border p-6 backdrop-blur-sm shadow-xl"
-              style={{
-                backgroundColor: `${tier.color}08`,
-                borderColor: `${tier.color}30`,
-              }}
-            >
-              <p className="mb-1 text-xs font-medium uppercase tracking-wide text-foreground/50">
-                {memberships.monthlyPrice}
-              </p>
-              <p className="font-sans text-4xl font-light text-foreground md:text-5xl">
-                €{tier.monthlyPrice}
-              </p>
-              <p className="mt-1 text-xs text-foreground/60">{memberships.perMonth}</p>
-            </div>
-          </div>
-
           {/* Founders Offer Banner */}
           <div className="mb-8 rounded-xl border border-primary/40 bg-primary/10 p-4 text-center backdrop-blur-sm">
             <p className="font-sans text-base font-medium text-foreground md:text-lg">
@@ -305,6 +286,41 @@ export default function MembershipDetailPage() {
                 )}
               </>
             )}
+          </div>
+
+          {/* Pricing Card - At Bottom */}
+          <div className="mb-10">
+            <div 
+              className="mx-auto max-w-md rounded-2xl border p-6 backdrop-blur-sm shadow-xl"
+              style={{
+                backgroundColor: `${tier.color}08`,
+                borderColor: `${tier.color}30`,
+              }}
+            >
+              <div className="space-y-4">
+                {/* Monthly Price */}
+                <div>
+                  <p className="mb-1 text-xs font-medium uppercase tracking-wide text-foreground/50">
+                    {memberships.monthlyPrice}
+                  </p>
+                  <p className="font-sans text-4xl font-light text-foreground md:text-5xl">
+                    €{tier.monthlyPrice}
+                  </p>
+                  <p className="mt-1 text-xs text-foreground/60">{memberships.perMonth}</p>
+                </div>
+
+                {/* Yearly Price */}
+                <div className="border-t border-foreground/10 pt-4">
+                  <p className="mb-1 text-xs font-medium uppercase tracking-wide text-foreground/50">
+                    {memberships.yearlyPrice}
+                  </p>
+                  <p className="font-sans text-2xl font-light text-foreground md:text-3xl">
+                    €{tier.yearlyPrice}
+                  </p>
+                  <p className="mt-1 text-xs text-foreground/60">{memberships.perYear}</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* CTA */}

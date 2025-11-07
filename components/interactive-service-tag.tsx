@@ -82,10 +82,7 @@ export function InteractiveServiceTag({
           <div className="flex flex-col items-start gap-0.5">
             {/* Label - Responsive text sizing */}
             <span
-              className="whitespace-nowrap font-sans text-[10px] font-medium tracking-wide transition-colors duration-300 md:text-xs lg:text-sm xl:text-base"
-              style={{
-                color: isHovered || isActive ? color : `${color}dd`,
-              }}
+              className="whitespace-nowrap font-sans text-[10px] font-medium tracking-wide transition-colors duration-300 md:text-xs lg:text-sm xl:text-base text-foreground"
             >
               {label}
             </span>
@@ -96,7 +93,7 @@ export function InteractiveServiceTag({
                 className="hidden text-[9px] font-light opacity-70 lg:inline md:text-[10px] xl:text-xs"
                 style={{ color }}
               >
-                {count}
+                {count} offerings
               </span>
             )}
           </div>

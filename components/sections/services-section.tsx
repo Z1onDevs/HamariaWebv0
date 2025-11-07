@@ -49,8 +49,16 @@ export function ServicesSection() {
     return therapies.filter(therapy => therapy.subcategories.includes(subcategoryId)).length
   }
 
-  // Get featured therapy names for a category/subcategory (first 4 as featured)
+  // Get featured therapy names for a category/subcategory
   const getFeaturedTherapyNames = (categoryId?: string, subcategoryId?: string): string[] => {
+    // Use curated featured therapies if available
+    const featuredTherapies = t.featuredTherapies
+    
+    if (categoryId && featuredTherapies && featuredTherapies[categoryId]) {
+      return featuredTherapies[categoryId]
+    }
+    
+    // Fallback to dynamic selection if no curated list
     let filtered = therapies
     
     if (categoryId) {
@@ -60,8 +68,8 @@ export function ServicesSection() {
       filtered = filtered.filter(t => t.subcategories.includes(subcategoryId))
     }
     
-    // Return first 4 as "featured" therapies
-    return filtered.slice(0, 4).map(t => t.name)
+    // Return first 3 (changed from 4 to match new display)
+    return filtered.slice(0, 3).map(t => t.name)
   }
 
   // Service tag configuration - 4 tags positioned inside figure (Olive Green Theme)
@@ -396,8 +404,7 @@ export function ServicesSection() {
                   >
                     <div className="flex flex-col gap-1">
                       <span
-                        className="text-sm font-medium"
-                        style={{ color: tag.color }}
+                        className="text-sm font-medium text-foreground"
                       >
                         {tag.label}
                       </span>
@@ -405,7 +412,7 @@ export function ServicesSection() {
                         className="text-xs font-light opacity-70"
                         style={{ color: tag.color }}
                       >
-                        {tag.count} therapies
+                        {tag.count} offerings
                       </span>
                     </div>
                   </button>
@@ -423,6 +430,7 @@ export function ServicesSection() {
                 therapies={currentTag?.therapyNames || []}
                 color={currentTag?.color || '#6B8E23'}
                 isActive={true}
+                categoryId={currentTag?.categoryId}
               />
             </div>
           </div>
