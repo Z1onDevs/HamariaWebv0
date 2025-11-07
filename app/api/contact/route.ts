@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import { supabaseAdmin } from "@/lib/supabase/admin"
 
 export async function POST(request: Request) {
   try {
@@ -13,6 +14,40 @@ export async function POST(request: Request) {
 
     const body = await request.json()
     const { to, subject, name, email, phone, plan, inviteCode, freeMonths } = body
+
+    // Step 1: Store application in Supabase
+    const [firstName, ...lastNameParts] = (name || "").split(" ")
+    const lastName = lastNameParts.join(" ") || firstName
+
+    const { data: applicationData, error: dbError } = await supabaseAdmin
+      .from("applications")
+      .insert({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone: phone || null,
+        application_type: "membership",
+        membership_tier: plan?.toLowerCase() || null,
+        subject: subject || "Membership Application",
+        message: `Membership application for ${plan} tier`,
+        invite_code: inviteCode || null,
+        free_months: freeMonths || 0,
+        preferred_language: "en",
+        status: "pending",
+        metadata: {
+          submitted_via: "contact_form",
+          user_agent: request.headers.get("user-agent") || "unknown"
+        }
+      })
+      .select()
+      .single()
+
+    if (dbError) {
+      console.error("Supabase error:", dbError)
+      // Continue with email even if database fails
+    } else {
+      console.log("Application stored in database:", applicationData?.id)
+    }
 
     console.log("Sending email to:", to)
     console.log("From applicant:", email)
@@ -125,7 +160,14 @@ export async function POST(request: Request) {
     }
 
     console.log("Email sent successfully:", data)
-    return NextResponse.json({ success: true, message: "Application submitted successfully", data })
+    return NextResponse.json({ 
+      success: true, 
+      message: "Application submitted successfully", 
+      data: {
+        email: data,
+        application: applicationData
+      }
+    })
   } catch (error) {
     console.error("Error processing request:", error)
     return NextResponse.json({ success: false, error: "Failed to process request" }, { status: 500 })
