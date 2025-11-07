@@ -181,6 +181,13 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
     setSelectedPlan(plan)
     setIsModalOpen(true)
     
+    // Track apply button click
+    if (typeof window !== "undefined" && (window as any).clarity) {
+      ;(window as any).clarity("event", "membership_apply_click", {
+        membership: plan,
+      })
+    }
+    
     // Focus first input after modal opens
     setTimeout(() => {
       const firstInput = document.querySelector('input[type="text"]') as HTMLInputElement
@@ -217,6 +224,15 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       if (response.ok && result.success) {
         setSubmitSuccess(true)
         setFormData({ name: "", email: "", phone: "", inviteCode: "" })
+        
+        // Track successful form submission
+        if (typeof window !== "undefined" && (window as any).clarity) {
+          ;(window as any).clarity("event", "membership_application_submitted", {
+            membership: selectedPlan,
+            hasInviteCode: !!formData.inviteCode,
+          })
+        }
+        
         setTimeout(() => {
           setIsModalOpen(false)
           setSubmitSuccess(false)
@@ -569,7 +585,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
 
               <div className="mt-auto space-y-2">
                 <button
-                  onClick={() => router.push(`/membership/${membership.key}`)}
+                  onClick={() => {
+                    router.push(`/membership/${membership.key}`)
+                    if (typeof window !== "undefined" && (window as any).clarity) {
+                      ;(window as any).clarity("event", "membership_learn_more", {
+                        membership: membership.name,
+                      })
+                    }
+                  }}
                   className="w-full rounded-full border border-primary/30 px-6 py-2.5 font-sans text-xs font-medium text-foreground transition-all hover:border-primary/50 hover:bg-card/40 sm:text-sm"
                 >
                   {form.learnMore}
@@ -594,7 +617,14 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
           style={{ transitionDelay: "600ms" }}
         >
           <button
-            onClick={() => setIsComparisonOpen(true)}
+            onClick={() => {
+              setIsComparisonOpen(true)
+              if (typeof window !== "undefined" && (window as any).clarity) {
+                ;(window as any).clarity("event", "membership_comparison_open", {
+                  source: "membership_section"
+                })
+              }
+            }}
             className="group border-b-2 border-transparent font-sans text-sm text-foreground/70 transition-all hover:border-foreground/70 hover:text-foreground sm:text-base"
           >
             {form.comparePlans}

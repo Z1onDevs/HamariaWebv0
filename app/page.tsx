@@ -45,17 +45,46 @@ export default function Home() {
   
   // Scroll-based animations for mobile
   const [scrollY, setScrollY] = useState(0)
+  const [showNavContent, setShowNavContent] = useState(true)
+  const lastScrollY = useRef(0)
   
   useEffect(() => {
     if (!isMobile) return
     
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      const currentScrollY = window.scrollY
+      setScrollY(currentScrollY)
+      
+      // Hide nav content when scrolling down, show when scrolling up
+      // Only hide after scrolling past 100px to avoid flickering at top
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY.current) {
+          // Scrolling down
+          setShowNavContent(false)
+        } else {
+          // Scrolling up
+          setShowNavContent(true)
+        }
+      } else {
+        // Near top of page, always show
+        setShowNavContent(true)
+      }
+      
+      lastScrollY.current = currentScrollY
     }
     
     window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initialize
+    
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isMobile])
+
+  // Track page view
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).clarity) {
+      ;(window as any).clarity("set", "page_view", "home")
+    }
+  }, [])
 
   useEffect(() => {
     // If shaders are disabled, load immediately
@@ -250,6 +279,13 @@ export default function Home() {
 
         if (newSection !== currentSection && newSection >= 0 && newSection <= 5) {
           setCurrentSection(newSection)
+          // Track section navigation
+          if (typeof window !== "undefined" && (window as any).clarity) {
+            const sectionNames = ["hero", "concept", "services", "gallery", "membership", "contact"]
+            ;(window as any).clarity("event", "section_navigation", {
+              section: sectionNames[newSection] || newSection,
+            })
+          }
         }
 
         scrollThrottleRef.current = undefined
@@ -299,7 +335,11 @@ export default function Home() {
       >
         <button
           onClick={() => scrollToSection(0)}
-          className="flex items-center gap-2 transition-transform hover:scale-105 sm:gap-3"
+          className={`flex items-center gap-2 transition-all duration-300 hover:scale-105 sm:gap-3 xl:opacity-100 xl:translate-x-0 ${
+            isMobile && !showNavContent 
+              ? "opacity-0 -translate-x-4 pointer-events-none" 
+              : "opacity-100 translate-x-0"
+          }`}
         >
           <span className="font-sans text-lg font-light tracking-wide text-foreground sm:text-xl md:text-2xl">{t.siteName}</span>
         </button>
@@ -330,9 +370,20 @@ export default function Home() {
 
         {/* Language Switcher & Mobile Nav */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="flex items-center gap-1 border-r border-foreground/20 pr-2 sm:pr-3">
+          <div 
+            className={`flex items-center gap-1 border-r border-foreground/20 pr-2 sm:pr-3 transition-all duration-300 xl:opacity-100 xl:translate-x-0 ${
+              isMobile && !showNavContent 
+                ? "opacity-0 translate-x-4 pointer-events-none" 
+                : "opacity-100 translate-x-0"
+            }`}
+          >
             <button
-              onClick={() => setLanguage("en")}
+              onClick={() => {
+                setLanguage("en")
+                if (typeof window !== "undefined" && (window as any).clarity) {
+                  ;(window as any).clarity("event", "language_change", { language: "en" })
+                }
+              }}
               className={`font-mono text-xs uppercase tracking-wide transition-colors sm:text-xs ${
                 language === "en" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
               }`}
@@ -341,7 +392,12 @@ export default function Home() {
             </button>
             <span className="text-foreground/20">|</span>
             <button
-              onClick={() => setLanguage("es")}
+              onClick={() => {
+                setLanguage("es")
+                if (typeof window !== "undefined" && (window as any).clarity) {
+                  ;(window as any).clarity("event", "language_change", { language: "es" })
+                }
+              }}
               className={`font-mono text-xs uppercase tracking-wide transition-colors sm:text-xs ${
                 language === "es" ? "text-foreground" : "text-foreground/40 hover:text-foreground/70"
               }`}
@@ -356,7 +412,15 @@ export default function Home() {
             className={`hidden text-xs transition-opacity duration-500 sm:text-sm xl:flex ${
               [2, 3, 4].includes(currentSection) ? "opacity-0 pointer-events-none" : "opacity-100"
             }`}
-            onClick={() => scrollToSection(4)}
+            onClick={() => {
+              scrollToSection(4)
+              if (typeof window !== "undefined" && (window as any).clarity) {
+                ;(window as any).clarity("event", "cta_click", { 
+                  button: "header_apply",
+                  destination: "membership"
+                })
+              }
+            }}
           >
             {t.applyButton}
           </MagneticButton>

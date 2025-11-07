@@ -30,6 +30,13 @@ export function ContactSection() {
             <div className="space-y-6 sm:space-y-5 md:space-y-6 lg:space-y-8">
               <a
                 href={`mailto:${contact.email}`}
+                onClick={() => {
+                  if (typeof window !== "undefined" && (window as any).clarity) {
+                    ;(window as any).clarity("event", "contact_email_click", {
+                      source: "contact_section"
+                    })
+                  }
+                }}
                 className={`group block transition-all duration-700 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}

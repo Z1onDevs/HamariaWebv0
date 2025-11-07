@@ -448,6 +448,11 @@ export function ServicesSection() {
                 setPrefilterCategories([])
                 setPrefilterSubcategories([])
                 setIsModalOpen(true)
+                if (typeof window !== "undefined" && (window as any).clarity) {
+                  ;(window as any).clarity("event", "services_modal_open", {
+                    source: "services_section"
+                  })
+                }
               }}
               className="group relative overflow-hidden rounded-full border border-primary/30 bg-background/40 px-8 py-3 font-sans text-sm font-medium text-foreground shadow-lg shadow-primary/20 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card/60 hover:shadow-xl hover:shadow-primary/30 active:scale-95 sm:px-10 sm:py-3.5 md:px-12 md:py-4 md:text-base lg:text-lg"
             >

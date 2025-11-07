@@ -186,7 +186,14 @@ export function GallerySection() {
               style={{ transitionDelay: "600ms" }}
             >
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  setIsModalOpen(true)
+                  if (typeof window !== "undefined" && (window as any).clarity) {
+                    ;(window as any).clarity("event", "gallery_modal_open", {
+                      source: "gallery_section"
+                    })
+                  }
+                }}
                 className="group border-b border-transparent font-sans text-sm text-foreground/70 transition-all hover:border-foreground/70 hover:text-foreground sm:text-base"
               >
                 {gallery.moreLink || t.moreLink}
