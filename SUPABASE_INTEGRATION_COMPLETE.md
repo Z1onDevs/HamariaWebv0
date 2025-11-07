@@ -61,10 +61,10 @@ cp .env.local.example .env.local
 
 The file should contain:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://gwztcvzxzoprmepjcneq.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-RESEND_API_KEY=your_resend_api_key_here
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+RESEND_API_KEY=your_resend_api_key
 ```
 
 ### Step 2: Run Database Schema in Supabase

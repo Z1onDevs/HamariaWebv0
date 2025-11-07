@@ -19,7 +19,7 @@ Your `.env.local` already has the correct Supabase credentials! ✅
 
 1. **Open Supabase Dashboard**
    ```
-   https://app.supabase.com/project/gwztcvzxzoprmepjcneq
+   https://app.supabase.com/project/YOUR_PROJECT_ID
    ```
 
 2. **Navigate to SQL Editor**
