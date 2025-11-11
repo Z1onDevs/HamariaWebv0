@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useEffect } from "react"
+import { useMemo, useState, useEffect, memo } from "react"
 import { createPortal } from "react-dom"
 import { useRouter } from "next/navigation"
 
@@ -46,7 +46,7 @@ interface MembershipSectionProps {
   scrollToSection: (index: number) => void
 }
 
-export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
+export const MembershipSection = memo(function MembershipSection({ scrollToSection }: MembershipSectionProps) {
   const { ref, isVisible } = useReveal(0.3)
   const { t, language } = useTranslation()
   const router = useRouter()
@@ -820,4 +820,4 @@ export function MembershipSection({ scrollToSection }: MembershipSectionProps) {
       )}
     </section>
   )
-}
+})

@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, memo, useMemo } from "react"
 import { createPortal } from "react-dom"
+import Image from "next/image"
 import { useReveal } from "@/hooks/use-reveal"
 import { X, Maximize2 } from "lucide-react"
 import { ShaderWrapper } from "@/components/shader-wrapper"
@@ -24,7 +25,7 @@ function toTitleCase(input: string): string {
     .join(" ")
 }
 
-export function GallerySection() {
+export const GallerySection = memo(function GallerySection() {
   const { ref, isVisible } = useReveal(0.3)
   const { t } = useTranslation()
   const gallery = t.gallery || {}
@@ -152,11 +153,14 @@ export function GallerySection() {
                 }}
               >
                 <div className="relative h-full w-full overflow-hidden rounded-lg shadow-sm transition-all duration-500 ease-out group-hover:scale-[1.08] group-hover:shadow-2xl group-hover:shadow-primary/30 group-hover:-translate-y-2 group-active:scale-[0.98] sm:rounded-xl md:rounded-2xl">
-                  <img 
+                  <Image 
                     src={item.src} 
                     alt={item.title} 
+                    fill
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105" 
+                    quality={80}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   {/* Subtle overlay on hover */}
                   <div className="absolute inset-0 bg-primary/0 transition-all duration-500 group-hover:bg-primary/5" />
@@ -277,11 +281,14 @@ export function GallerySection() {
                     }}
                   >
                     <div className="relative h-full w-full overflow-hidden rounded-md border border-primary/10 bg-background/20 shadow-sm backdrop-blur-sm transition-all duration-500 ease-out group-hover:scale-[1.05] group-hover:border-primary/20 group-hover:bg-background/40 group-hover:shadow-xl group-hover:shadow-primary/20 group-hover:-translate-y-1 group-active:scale-[0.98] sm:rounded-lg md:rounded-xl">
-                      <img 
+                      <Image 
                         src={item.src} 
                         alt={item.title} 
+                        fill
                         loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105" 
+                        quality={75}
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105"
+                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, 33vw"
                       />
                       {/* Subtle overlay on hover */}
                       <div className="absolute inset-0 bg-primary/0 transition-all duration-500 group-hover:bg-primary/5" />
@@ -303,4 +310,4 @@ export function GallerySection() {
       )}
     </>
   )
-}
+})

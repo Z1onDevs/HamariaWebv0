@@ -1,7 +1,7 @@
 "use client"
 
 import { useReveal } from "@/hooks/use-reveal"
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useMemo, memo } from "react"
 import { createPortal } from "react-dom"
 import { X } from "lucide-react"
 import { ShaderWrapper } from "@/components/shader-wrapper"
@@ -25,7 +25,7 @@ interface ServiceTagConfig {
   subcategories?: string[]
 }
 
-export function ServicesSection() {
+export const ServicesSection = memo(function ServicesSection() {
   const { ref, isVisible } = useReveal(0.3)
   const { t } = useTranslation()
   const services = t.services
@@ -521,4 +521,4 @@ export function ServicesSection() {
       )}
     </>
   )
-}
+})

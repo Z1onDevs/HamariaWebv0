@@ -1,10 +1,11 @@
 "use client"
 
+import { memo } from "react"
 import { Mail, MapPin } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 
-export function ContactSection() {
+export const ContactSection = memo(function ContactSection() {
   const { ref, isVisible } = useReveal(0.3)
   const { t } = useTranslation()
   const contact = t.contact
@@ -112,4 +113,4 @@ export function ContactSection() {
         </div>
       </section>
     )
-  }
+  })

@@ -3,9 +3,9 @@
 import { useReveal } from "@/hooks/use-reveal"
 import { useTranslation } from "@/hooks/use-translation"
 import { DNAHelix } from "@/components/dna-helix"
-import { useState, useEffect } from "react"
+import { useState, useEffect, memo } from "react"
 
-export function ConceptSection() {
+export const ConceptSection = memo(function ConceptSection() {
   const { ref: contentRef, isVisible: contentVisible } = useReveal(0.3)
   const { ref: dividerRef } = useReveal(0.3)
   const { t } = useTranslation()
@@ -128,4 +128,4 @@ export function ConceptSection() {
       </div>
     </section>
   )
-}
+})

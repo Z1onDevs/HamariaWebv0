@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import Image from "next/image"
 import { CustomCursor } from "@/components/custom-cursor"
 import { ConceptSection } from "@/components/sections/concept-section"
 import { ServicesSection } from "@/components/sections/services-section"
@@ -468,20 +469,20 @@ export default function Home() {
           <div className="lg:hidden absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute left-1/2 top-[30%] w-[65vw] h-[36vh] max-h-[360px] opacity-80 -translate-x-1/2 -translate-y-1/2 sm:top-[32%] md:top-[35%] md:opacity-85 md:w-[70vw] md:h-[40vh] md:max-h-[400px]">
               <div className="relative h-full w-full overflow-hidden" style={{ clipPath: 'inset(10% 0% 10% 0%)' }}>
-                <img 
+                <Image 
                   src="/hero-sketch.png" 
                   alt="Hamaria wellness visualization"
-                  width="800"
-                  height="600"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
+                  width={800}
+                  height={600}
+                  priority
+                  quality={85}
                   className="absolute inset-0 w-full object-contain object-center"
                   style={{ 
                     opacity: 0.9,
                     height: '125%',
                     top: '-12.5%'
                   }}
+                  sizes="(max-width: 768px) 65vw, (max-width: 1024px) 70vw, 50vw"
                 />
               </div>
               
@@ -494,16 +495,16 @@ export default function Home() {
           {/* Desktop Hero Sketch - Constrained for large screens */}
           <div className="pointer-events-none absolute top-28 right-0 hidden lg:block">
             <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px]">
-              <img
+              <Image
                 src="/hero-sketch.png"
                 alt="Hamaria wellness visualization"
-                width="700"
-                height="800"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
+                width={700}
+                height={800}
+                priority
+                quality={90}
                 className="h-full w-full object-contain object-center"
                 style={{ opacity: 0.95 }}
+                sizes="(min-width: 2048px) 40vw, (min-width: 1280px) 46vw, 42vw"
               />
               
               {/* Corner frames - Larger */}

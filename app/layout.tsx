@@ -45,6 +45,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://t.contentsquare.net" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+        <link rel="dns-prefetch" href="https://t.contentsquare.net" />
+        
+        {/* Preload critical hero image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-sketch.png"
+          // @ts-ignore
+          imageSizes="(max-width: 768px) 65vw, 50vw"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <Script 
           src="https://t.contentsquare.net/uxa/afe552b50f599.js" 

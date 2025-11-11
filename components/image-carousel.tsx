@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Image from "next/image"
 import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react"
 
 interface ImageCarouselProps {
@@ -225,17 +226,20 @@ export function ImageCarousel({ images, initialIndex = 0, onClose }: ImageCarous
                   // Scroll thumbnail into view
                   e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
                 }}
-                className={`flex-shrink-0 overflow-hidden rounded-md transition-all ${
+                className={`flex-shrink-0 overflow-hidden rounded-md transition-all relative h-16 w-16 sm:h-20 sm:w-20 ${
                   idx === currentIndex
                     ? "ring-2 ring-primary ring-offset-2 ring-offset-background scale-110"
                     : "opacity-60 hover:opacity-100"
                 }`}
               >
-                <img
+                <Image
                   src={img.src}
                   alt={img.title}
+                  fill
                   loading="lazy"
-                  className="h-16 w-16 object-cover sm:h-20 sm:w-20"
+                  quality={60}
+                  className="object-cover"
+                  sizes="80px"
                 />
               </button>
             ))}
