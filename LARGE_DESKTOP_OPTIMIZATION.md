@@ -338,9 +338,18 @@ font-size: clamp(min-size, preferred-size, max-size);
 
 ---
 
-## Status: ✅ COMPLETE
+## Status: ✅ COMPLETE (Updated)
 
 The site now displays beautifully on all large desktop screens while maintaining the elegant design on smaller viewports. The layout is balanced, readable, and professional at every resolution.
+
+### Update: Navigation Overlap Fix Applied ✅
+An issue was discovered where content was overlapping with the navigation bar on large screens. This has been fixed by:
+- Separating horizontal and vertical padding rules
+- Only overriding horizontal padding with media queries
+- Preserving vertical spacing for nav clearance
+- Improving selector specificity for hero section
+
+**See:** `LARGE_DESKTOP_NAV_OVERLAP_FIX.md` for complete details on the fix.
 
 **Next:** Test on actual large displays to verify the improvements!
 

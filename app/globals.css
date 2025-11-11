@@ -507,23 +507,27 @@
   
   /* Large Desktop (1920px - 2560px) */
   @media (min-width: 1920px) {
-    /* General section constraints */
+    /* General section constraints - only width and horizontal padding */
     section {
       max-width: 1920px;
       margin-left: auto;
       margin-right: auto;
+    }
+    
+    /* Only override horizontal padding, preserve vertical */
+    section {
       padding-left: 4rem !important;
       padding-right: 4rem !important;
     }
     
     /* Hero section - allow more width but constrain content */
-    section:first-of-type > div {
+    section:first-of-type > div:last-child {
       max-width: 1680px;
       margin-left: auto;
       margin-right: auto;
     }
     
-    /* Concept, Services, Gallery sections */
+    /* Concept, Services, Gallery sections - constrain content containers */
     section > div.max-w-7xl,
     section > div > div.max-w-7xl {
       max-width: 1440px !important;
@@ -555,12 +559,16 @@
     /* Constrain even more for ultra-wide */
     section {
       max-width: 2200px;
+    }
+    
+    /* Only horizontal padding */
+    section {
       padding-left: 5rem !important;
       padding-right: 5rem !important;
     }
     
     /* Hero content max width */
-    section:first-of-type > div {
+    section:first-of-type > div:last-child {
       max-width: 1800px;
     }
     
@@ -588,11 +596,15 @@
   @media (min-width: 3440px) {
     section {
       max-width: 2400px;
+    }
+    
+    /* Only horizontal padding */
+    section {
       padding-left: 6rem !important;
       padding-right: 6rem !important;
     }
     
-    section:first-of-type > div {
+    section:first-of-type > div:last-child {
       max-width: 2000px;
     }
   }
@@ -634,14 +646,29 @@
     }
   }
   
-  /* Spacing optimization */
+  /* Spacing optimization - only for flex/grid gaps, not padding */
   @media (min-width: 1920px) {
-    /* Prevent excessive gap sizes */
-    .gap-4 { gap: clamp(1rem, 1.5vw, 1.5rem) !important; }
-    .gap-6 { gap: clamp(1.5rem, 2vw, 2rem) !important; }
-    .gap-8 { gap: clamp(2rem, 2.5vw, 2.5rem) !important; }
-    .gap-12 { gap: clamp(3rem, 3.5vw, 3.5rem) !important; }
-    .gap-16 { gap: clamp(4rem, 4.5vw, 4.5rem) !important; }
+    /* Prevent excessive gap sizes in flex/grid layouts */
+    [class*="flex"] .gap-4,
+    [class*="grid"] .gap-4 { 
+      gap: clamp(1rem, 1.5vw, 1.5rem); 
+    }
+    [class*="flex"] .gap-6,
+    [class*="grid"] .gap-6 { 
+      gap: clamp(1.5rem, 2vw, 2rem); 
+    }
+    [class*="flex"] .gap-8,
+    [class*="grid"] .gap-8 { 
+      gap: clamp(2rem, 2.5vw, 2.5rem); 
+    }
+    [class*="flex"] .gap-12,
+    [class*="grid"] .gap-12 { 
+      gap: clamp(3rem, 3.5vw, 3.5rem); 
+    }
+    [class*="flex"] .gap-16,
+    [class*="grid"] .gap-16 { 
+      gap: clamp(4rem, 4.5vw, 4.5rem); 
+    }
   }
 
   /* ========================================
