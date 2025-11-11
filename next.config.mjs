@@ -28,9 +28,6 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
-  // Enable SWC minification for faster builds
-  swcMinify: true,
-  
   // Optimize production builds
   experimental: {
     optimizePackageImports: ['@/components', '@/hooks'],
