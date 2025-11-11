@@ -10,11 +10,18 @@ import "./globals.css"
 const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap", // Prevent invisible text while loading
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+  adjustFontFallback: true, // Prevent CLS
 })
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+  preload: false, // Only load when needed
+  fallback: ['monospace'],
 })
 
 export const metadata: Metadata = {
@@ -41,11 +48,11 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <Script 
           src="https://t.contentsquare.net/uxa/afe552b50f599.js" 
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           id="clarity-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){

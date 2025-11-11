@@ -1,16 +1,13 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { CustomCursor } from "@/components/custom-cursor"
-import { GrainOverlay } from "@/components/grain-overlay"
 import { ConceptSection } from "@/components/sections/concept-section"
 import { ServicesSection } from "@/components/sections/services-section"
 import { GallerySection } from "@/components/sections/gallery-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MembershipSection } from "@/components/sections/membership-section"
 import { MagneticButton } from "@/components/magnetic-button"
-import { ShaderWrapper } from "@/components/shader-wrapper"
-import { DNAHelix } from "@/components/dna-helix"
-import { HeartbeatTriangle } from "@/components/heartbeat-triangle"
 import { MobileNav } from "@/components/mobile-nav"
 import { SectionDots } from "@/components/section-dots"
 import { useLanguage } from "@/contexts/language-context"
@@ -20,6 +17,24 @@ import { useMediaQuery } from "@/hooks/use-media-query"
 import { useScrollProgress } from "@/hooks/use-scroll-progress"
 import { useRef, useEffect, useState } from "react"
 import site from "@/content/site.json"
+
+// Lazy load heavy components for better performance
+const ShaderWrapper = dynamic(() => import("@/components/shader-wrapper").then(mod => ({ default: mod.ShaderWrapper })), {
+  ssr: false,
+  loading: () => <div className="fixed inset-0 z-0 bg-gradient-to-br from-background via-background to-primary/5" />
+})
+
+const GrainOverlay = dynamic(() => import("@/components/grain-overlay").then(mod => ({ default: mod.GrainOverlay })), {
+  ssr: false
+})
+
+const DNAHelix = dynamic(() => import("@/components/dna-helix").then(mod => ({ default: mod.DNAHelix })), {
+  ssr: false
+})
+
+const HeartbeatTriangle = dynamic(() => import("@/components/heartbeat-triangle").then(mod => ({ default: mod.HeartbeatTriangle })), {
+  ssr: false
+})
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -455,7 +470,12 @@ export default function Home() {
               <div className="relative h-full w-full overflow-hidden" style={{ clipPath: 'inset(10% 0% 10% 0%)' }}>
                 <img 
                   src="/hero-sketch.png" 
-                  alt=""
+                  alt="Hamaria wellness visualization"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="absolute inset-0 w-full object-contain object-center"
                   style={{ 
                     opacity: 0.9,
@@ -476,7 +496,12 @@ export default function Home() {
             <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px]">
               <img
                 src="/hero-sketch.png"
-                alt=""
+                alt="Hamaria wellness visualization"
+                width="700"
+                height="800"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="h-full w-full object-contain object-center"
                 style={{ opacity: 0.95 }}
               />
