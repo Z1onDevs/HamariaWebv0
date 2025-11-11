@@ -471,9 +471,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Desktop Hero Sketch - Highly Visible */}
+          {/* Desktop Hero Sketch - Constrained for large screens */}
           <div className="pointer-events-none absolute top-28 right-0 hidden lg:block">
-            <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[48vw] 2xl:max-h-[850px]">
+            <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px]">
               <img
                 src="/hero-sketch.png"
                 alt=""
@@ -490,7 +490,7 @@ export default function Home() {
           <div className="flex w-full items-end justify-between gap-6 lg:gap-8">
             <div className="w-full max-w-3xl lg:max-w-4xl lg:flex-1">
               <p 
-                className="mb-3 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm"
+                className="mb-3 animate-in fade-in slide-in-from-bottom-4 font-sans text-xs uppercase tracking-widest text-foreground/60 duration-1000 sm:mb-4 sm:text-sm 2xl:text-base"
                 style={isMobile ? { 
                   transform: `translateY(${scrollY * 0.1}px)`,
                   transition: 'transform 0.3s ease-out'
@@ -513,7 +513,7 @@ export default function Home() {
               </h1>
 
               <p 
-                className="mb-5 max-w-xl animate-in fade-in slide-in-from-bottom-4 font-sans text-sm leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-6 sm:max-w-2xl sm:text-base md:mb-8 md:text-lg lg:text-xl"
+                className="mb-5 max-w-xl animate-in fade-in slide-in-from-bottom-4 font-sans text-sm leading-[1.7] text-foreground/80 duration-1000 delay-200 sm:mb-6 sm:max-w-2xl sm:text-base md:mb-8 md:text-lg lg:text-xl lg:max-w-3xl"
                 style={isMobile ? { 
                   transform: `translateY(${scrollY * 0.2}px)`,
                   opacity: Math.max(0, 1 - (scrollY * 0.002)),

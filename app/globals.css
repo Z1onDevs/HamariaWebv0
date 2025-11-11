@@ -495,6 +495,156 @@
   }
 
   /* ========================================
+     LARGE DESKTOP OPTIMIZATIONS (1920px+)
+     ======================================== */
+  
+  /* Container max-widths for optimal reading and viewing */
+  .section-container {
+    max-width: 1680px; /* Optimal max width for large screens */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Large Desktop (1920px - 2560px) */
+  @media (min-width: 1920px) {
+    /* General section constraints */
+    section {
+      max-width: 1920px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 4rem !important;
+      padding-right: 4rem !important;
+    }
+    
+    /* Hero section - allow more width but constrain content */
+    section:first-of-type > div {
+      max-width: 1680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Concept, Services, Gallery sections */
+    section > div.max-w-7xl,
+    section > div > div.max-w-7xl {
+      max-width: 1440px !important;
+    }
+    
+    /* Membership section cards container */
+    section .membership-section-wrapper,
+    section .membership-cards-container {
+      max-width: 1600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Contact section form */
+    section form {
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Text columns - optimal reading width */
+    .text-column {
+      max-width: 65ch; /* 65 characters for optimal readability */
+    }
+  }
+  
+  /* Ultra-wide screens (2560px+) */
+  @media (min-width: 2560px) {
+    /* Constrain even more for ultra-wide */
+    section {
+      max-width: 2200px;
+      padding-left: 5rem !important;
+      padding-right: 5rem !important;
+    }
+    
+    /* Hero content max width */
+    section:first-of-type > div {
+      max-width: 1800px;
+    }
+    
+    /* Other sections tighter */
+    section > div.max-w-7xl,
+    section > div > div.max-w-7xl {
+      max-width: 1600px !important;
+    }
+    
+    /* Membership cards */
+    section .membership-section-wrapper,
+    section .membership-cards-container {
+      max-width: 1800px;
+    }
+    
+    /* Gallery grid */
+    .gallery-grid {
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* Super ultra-wide (3440px+) - Ultrawide monitors */
+  @media (min-width: 3440px) {
+    section {
+      max-width: 2400px;
+      padding-left: 6rem !important;
+      padding-right: 6rem !important;
+    }
+    
+    section:first-of-type > div {
+      max-width: 2000px;
+    }
+  }
+  
+  /* Typography scaling for large screens */
+  @media (min-width: 1920px) {
+    /* Hero heading - don't let it get too large */
+    .hero-heading {
+      font-size: clamp(3.5rem, 5vw, 6rem) !important;
+      max-width: 900px;
+    }
+    
+    /* Body text optimal size */
+    p {
+      font-size: clamp(1rem, 1.1vw, 1.25rem);
+      line-height: 1.75;
+    }
+    
+    /* Headings proportional */
+    h1 {
+      font-size: clamp(2.5rem, 4vw, 5rem);
+    }
+    
+    h2 {
+      font-size: clamp(2rem, 3vw, 3.5rem);
+    }
+    
+    h3 {
+      font-size: clamp(1.5rem, 2vw, 2.25rem);
+    }
+  }
+  
+  /* Button sizing for large screens */
+  @media (min-width: 1920px) {
+    button,
+    .button {
+      font-size: clamp(0.875rem, 1vw, 1.125rem);
+      padding: clamp(0.75rem, 1vw, 1rem) clamp(1.5rem, 2vw, 2.5rem);
+    }
+  }
+  
+  /* Spacing optimization */
+  @media (min-width: 1920px) {
+    /* Prevent excessive gap sizes */
+    .gap-4 { gap: clamp(1rem, 1.5vw, 1.5rem) !important; }
+    .gap-6 { gap: clamp(1.5rem, 2vw, 2rem) !important; }
+    .gap-8 { gap: clamp(2rem, 2.5vw, 2.5rem) !important; }
+    .gap-12 { gap: clamp(3rem, 3.5vw, 3.5rem) !important; }
+    .gap-16 { gap: clamp(4rem, 4.5vw, 4.5rem) !important; }
+  }
+
+  /* ========================================
      ENHANCED TYPING ANIMATION UTILITIES
      ======================================== */
 

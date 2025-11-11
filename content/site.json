@@ -172,7 +172,6 @@
       }
     },
     "modalTitle": "Complete Wellness Ecosystem",
-      "modalDescription": "Our comprehensive approach integrates nine interconnected pillars designed to optimize every aspect of your health and performance. From advanced diagnostics and regenerative therapies to nutrition, movement, and cognitive enhancement—each pillar works synergistically to support your transformation. Explore our full range of services tailored to your unique biology and wellness goals.",
     "items": [
       {
         "title": "Biomarkers Tracking & Data-Led Protocols",
@@ -795,56 +794,56 @@
     "nav": ["Inicio", "Concepto", "Servicios", "Espacios", "Membresía", "Contacto"],
     "openingText": "Apertura Otoño 2026",
     "verticalText": "SIENTE EL CAMBIO",
-    "scrollText": "Desliza para explorar",
-    "applyButton": "Solicitar Membresía",
-    "applyButtonShort": "Unirse",
-    "moreLink": "Todos los Servicios",
+    "scrollText": "Desplázate para explorar",
+    "applyButton": "Solicita tu membresía",
+    "applyButtonShort": "Únete",
+    "moreLink": "Todos los servicios",
     "membershipForm": {
       "earlyBirdTitle": "Oferta Fundadores",
       "earlyBirdText": "Limitada a los primeros 42 miembros",
       "freeMonths": "meses gratis",
       "applyFor": "Solicitar",
       "subtitle": "Completa el formulario para iniciar tu transformación",
-      "nameLabel": "Nombre Completo",
+      "nameLabel": "Nombre completo",
       "namePlaceholder": "Tu nombre completo",
-      "emailLabel": "Correo Electrónico",
+      "emailLabel": "Correo electrónico",
       "emailPlaceholder": "tu@email.com",
       "phoneLabel": "Teléfono",
       "phonePlaceholder": "+34 123 456 789",
-      "inviteLabel": "Código de Invitación",
+      "inviteLabel": "Código de invitación",
       "inviteOptional": "(Opcional)",
       "invitePlaceholder": "EARLYBIRD",
-      "submitButton": "Enviar Solicitud",
+      "submitButton": "Enviar solicitud",
       "submitting": "Enviando...",
-      "success": "¡Solicitud Enviada!",
+      "success": "¡Solicitud enviada!",
       "successMessage": "¡Gracias! Te contactaremos pronto.",
-      "includesAll": "Incluye todas las terapias Wellness más:",
+      "includesAll": "Incluye todas las terapias de Bienestar, además de:",
       "therapiesIncluded": "terapias incluidas",
-      "viewDetails": "Ver Detalles",
-      "hideDetails": "Ocultar Detalles",
-      "applyNow": "Solicitar Ahora",
-      "learnMore": "Saber Más",
-      "comparePlans": "Comparar Planes"
+      "viewDetails": "Ver detalles",
+      "hideDetails": "Ocultar detalles",
+      "applyNow": "Solicitar ahora",
+      "learnMore": "Más información",
+      "comparePlans": "Comparar planes"
     },
     "memberships": {
-      "pageTitle": "Detalles de Membresía",
-      "backToHome": "Volver a Membresías",
-      "monthlyPrice": "Precio Mensual",
-      "yearlyPrice": "Precio Anual",
-      "weeklyMinutes": "Minutos Semanales Incluidos",
-      "monthlyValue": "Valor Percibido Mensual",
+      "pageTitle": "Detalles de membresía",
+      "backToHome": "Volver a membresías",
+      "monthlyPrice": "Precio mensual",
+      "yearlyPrice": "Precio anual",
+      "weeklyMinutes": "Minutos semanales incluidos",
+      "monthlyValue": "Valor percibido mensual",
       "savings": "Ahorras",
       "foundersOffer": "Fundadores: 3 meses gratis",
-      "includedTherapies": "Terapias Incluidas",
-      "allTherapies": "Todas las Terapias",
-      "monthlyTherapies": "Terapias Mensuales",
-      "yearlyTherapies": "Terapias Anuales",
+      "includedTherapies": "Terapias incluidas",
+      "allTherapies": "Todas las terapias",
+      "monthlyTherapies": "Terapias mensuales",
+      "yearlyTherapies": "Terapias anuales",
       "unlimited": "Ilimitado",
       "perMonth": "al mes",
       "perYear": "al año",
-      "compareTitle": "Comparar Membresías",
-      "viewFullDetails": "Ver Detalles Completos",
-      "scrollToCompare": "Desliza para comparar todos los planes",
+      "compareTitle": "Comparar membresías",
+      "viewFullDetails": "Ver detalles completos",
+      "scrollToCompare": "Desplázate para comparar todos los planes",
       "therapy": "Terapia",
       "sessions": "Sesiones",
       "perMonthShort": "/mes",
@@ -853,20 +852,20 @@
       "membershipNotFound": "Membresía no encontrada",
       "returnToMemberships": "Volver a membresías",
       "limitedMembers": "Limitada a los primeros 42 miembros",
-      "keyBenefits": "Beneficios Clave",
+      "keyBenefits": "Beneficios clave",
       "tiers": {
         "longevity": {
           "id": "longevity",
-          "name": "Wellness",
-          "tagline": "Bienestar Fundamental",
-          "description": "Terapias fundamentales diseñadas para bienestar holístico. Perfecto para quienes inician su viaje de bienestar.",
+          "name": "Bienestar",
+          "tagline": "Bienestar fundamental",
+          "description": "Terapias fundamentales para un bienestar holístico. Perfecto para quienes inician su camino.",
           "monthlyPrice": 950,
           "yearlyPrice": 10450,
           "weeklyMinutes": 240,
           "monthlyPerceivedValue": 3200,
           "color": "#8b5cf6",
           "features": [
-            "Evaluación integral de línea base",
+            "Evaluación basal integral",
             "Acceso ilimitado a instalaciones de recuperación",
             "Sesiones terapéuticas mensuales",
             "Orientación nutricional y de estilo de vida"
@@ -874,38 +873,38 @@
         },
         "performance": {
           "id": "performance",
-          "name": "Longevity",
-          "tagline": "Optimiza tu Máximo",
-          "description": "Añade optimización de rendimiento y recuperación a tu programa Wellness. Ideal para atletas y alto rendimiento.",
+          "name": "Longevidad",
+          "tagline": "Rinde a tu máximo nivel",
+          "description": "Añade optimización de rendimiento y recuperación a tu programa de Bienestar. Ideal para atletas y perfiles de alto rendimiento.",
           "monthlyPrice": 1450,
           "yearlyPrice": 15950,
           "weeklyMinutes": 360,
           "monthlyPerceivedValue": 5400,
           "color": "#10b981",
           "features": [
-            "Todo lo de Wellness",
+            "Todo lo de Bienestar",
             "Diagnósticos avanzados de rendimiento",
-            "Sesiones aumentadas de terapia de recuperación",
-            "Prueba VO₂ máx trimestral",
+            "Más sesiones de recuperación",
+            "Prueba de VO₂ máx trimestral",
             "Protocolos de entrenamiento personalizados"
           ]
         },
         "aesthetics": {
           "id": "aesthetics",
-          "name": "Aesthetics",
-          "tagline": "Belleza Regenerativa",
-          "description": "Añade tratamientos estéticos y regenerativos a tu programa Wellness. Perfecto para anti-envejecimiento integral.",
+          "name": "Estética",
+          "tagline": "Belleza regenerativa",
+          "description": "Añade tratamientos estéticos y regenerativos a tu programa de Bienestar. Perfecto para un abordaje integral del antienvejecimiento.",
           "monthlyPrice": 1650,
           "yearlyPrice": 18150,
           "weeklyMinutes": 400,
           "monthlyPerceivedValue": 6800,
           "color": "#f59e0b",
           "features": [
-            "Todo lo de Wellness",
+            "Todo lo de Bienestar",
             "Tratamientos estéticos avanzados",
-            "Terapias regenerativas aumentadas",
-            "Sesiones de masaje signature",
-            "Análisis cutáneo exhaustivo"
+            "Más terapias regenerativas",
+            "Sesiones de masaje Signature",
+            "Análisis cutáneo completo"
           ]
         }
       }
@@ -913,45 +912,45 @@
     "hero": {
       "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
       "description": "Regeneración holística en el corazón de Madrid. Experiencias diseñadas para armonizar mente, cuerpo y espíritu, fusionando sabiduría ancestral e innovación científica.",
-      "primaryCta": "Explorar Membresías",
-      "secondaryCta": "Descubre Nuestra Filosofía"
+      "primaryCta": "Explorar membresías",
+      "secondaryCta": "Descubre nuestra filosofía"
     },
     "gallery": {
       "folder": "/retiro render copia",
       "items": [],
       "moreLink": "Más",
-      "modalTitle": "Nuestros Espacios",
-      "modalDescription": "Un santuario en el corazón del Retiro. Gimnasio de última generación, zonas de hidroterapia con baños de sal y magnesio, saunas e inmersión en hielo, áreas de entrenamiento acuático y espacios dedicados a terapias regenerativas. Cada ambiente diseñado para tu transformación hacia la salud óptima."
+      "modalTitle": "Nuestros espacios",
+      "modalDescription": "Santuario meticulosamente diseñado en el barrio del Retiro. Gimnasio de última generación con tecnología de entrenamiento avanzada, zonas de hidroterapia con baños de sal y magnesio, saunas (tradicional e infrarroja) combinadas con piscinas de hielo para contraste, áreas de entrenamiento acuático con cintas de natación y salas dedicadas a masaje terapéutico y recuperación. Cada ambiente está pensado para potenciar tu transformación hacia una salud y longevidad óptimas."
     },
     "concept": {
-      "heading": "Tu Viaje de Transformación Comienza Aquí",
-      "vision": "Nuestra Visión",
+      "heading": "Tu viaje de transformación comienza aquí",
+      "vision": "Nuestra visión",
       "methodology": "Metodología",
-      "paragraph1": "Redefinimos longevidad y bienestar. Mediante biohacking científico, terapias regenerativas y diagnósticos de precisión, optimizamos tu salud de forma integral—desde la función celular hasta el rendimiento mental.",
-      "paragraph2": "En el corazón del Retiro, fusionamos tecnología avanzada y atención personalizada. Cada protocolo se diseña exclusivamente para tu biología, estilo de vida y objetivos.",
-      "paragraph3": "Nuestro equipo de médicos y especialistas aporta décadas de experiencia en medicina integrativa, rendimiento personal y terapias regenerativas.",
+      "paragraph1": "En Hamaria redefinimos la longevidad y el bienestar para la era moderna. A través de biohacking respaldado por evidencia, terapias regenerativas avanzadas y diagnósticos de precisión, te ayudamos a optimizar cada aspecto de tu salud: desde la función celular hasta el rendimiento mental.",
+      "paragraph2": "En el corazón del Retiro, combinamos tecnología de vanguardia con atención personalizada. Cada protocolo se adapta a tu biología, estilo de vida y objetivos.",
+      "paragraph3": "Nuestro equipo, con médicos y especialistas de referencia, aporta décadas de experiencia en medicina integrativa, rendimiento y terapias regenerativas para guiar tu transformación.",
       "features": [
         {
-          "title": "Diagnósticos de Precisión",
-          "description": "Evaluaciones exhaustivas, análisis metabólicos y monitorización continua de biomarcadores. Tus protocolos evolucionan con tu progreso, fundamentados en datos personalizados."
+          "title": "Diagnósticos de precisión",
+          "description": "Evaluaciones exhaustivas, test metabólicos y seguimiento continuo de biomarcadores para que tus protocolos evolucionen con tu progreso. Cada decisión se guía por datos."
         },
         {
-          "title": "Protocolos Científicos",
-          "description": "Cada terapia respaldada por investigación rigurosa y evidencia clínica. Empleamos modalidades validadas para potenciar la salud celular, acelerar la recuperación y prolongar la vida saludable."
+          "title": "Protocolos científicos",
+          "description": "Todas las terapias están respaldadas por investigación y evidencia clínica. Empleamos modalidades validadas para mejorar la salud celular, acelerar la recuperación y ampliar la salud funcional."
         },
         {
-          "title": "Enfoque Holístico",
-          "description": "La verdadera optimización requiere equilibrio. Integramos recuperación, rendimiento, estética y longevidad, honrando al cuerpo como un sistema único e interconectado."
+          "title": "Enfoque holístico",
+          "description": "La optimización real requiere equilibrio. Abordamos recuperación, rendimiento, estética y longevidad con una visión integrada del cuerpo como un sistema interconectado."
         }
       ]
     },
     "services": {
       "heading": "Longevidad · Bienestar · Estética",
-      "subheading": "Un nuevo estándar en longevidad de lujo. Más de 70 servicios. Con protocolos cuidadosamente diseñados para máxima efectividad y eficiencia temporal.",
+      "subheading": "Un nuevo estándar en longevidad de lujo. Más de 70 servicios. Protocolos diseñados para máxima efectividad y eficiencia de tiempo.",
       "pillars": {
         "longevity": {
           "title": "Longevidad",
-          "description": "Protocolos basados en datos para una vida saludable óptima"
+          "description": "Protocolos basados en datos para una salud óptima"
         },
         "wellness": {
           "title": "Bienestar",
@@ -959,50 +958,49 @@
         },
         "aesthetics": {
           "title": "Estética",
-          "description": "Belleza regenerativa y excelencia anti-envejecimiento"
+          "description": "Belleza regenerativa y excelencia antienvejecimiento"
         }
       },
-      "modalTitle": "Ecosistema Integral de Bienestar",
-      "modalDescription": "Nueve pilares interdependientes que optimizan cada dimensión de tu salud. Desde diagnósticos de precisión y terapias regenerativas hasta nutrición personalizada y optimización cognitiva—cada elemento trabaja en sinergia para tu transformación.",
+      "modalTitle": "Ecosistema integral de bienestar",
       "items": [
         {
-          "title": "Seguimiento de Biomarcadores y Protocolos Basados en Datos",
-          "description": "Diagnósticos exhaustivos, monitorización continua de biomarcadores y protocolos personalizados guiados por tus datos únicos para optimización de precisión.",
+          "title": "Seguimiento de biomarcadores y protocolos basados en datos",
+          "description": "Diagnósticos exhaustivos, monitorización continua de biomarcadores y protocolos personalizados guiados por tus datos únicos para una optimización de precisión.",
           "direction": "left",
           "primary": true
         },
         {
-          "title": "Biohacking Integrativo de Alta Frecuencia",
-          "description": "Terapias regenerativas avanzadas, optimización de recuperación y modalidades de vanguardia trabajando sinérgicamente para transformación holística.",
+          "title": "Biohacking integrativo de alta frecuencia",
+          "description": "Terapias regenerativas avanzadas, optimización de la recuperación y modalidades de vanguardia trabajando en sinergia para una transformación holística.",
           "direction": "right",
           "primary": true
         },
         {
-          "title": "Medicina Física y Regeneración",
-          "description": "HBOT, PEMF, fototerapia NIR, crioterapia e IHHT para optimizar recuperación tisular, movilidad y rendimiento físico.",
+          "title": "Medicina física y regeneración",
+          "description": "HBOT, PEMF, fotobiomodulación NIR, crioterapia e IHHT para optimizar la recuperación tisular, la movilidad y el rendimiento físico.",
           "direction": "top",
           "primary": false
         },
         {
-          "title": "Gestión del Estrés",
-          "description": "Sauna, inmersión en hielo, masajes signature y flotación sensorial para gestión del estrés y relajación del sistema nervioso.",
+          "title": "Gestión del estrés",
+          "description": "Sauna, inmersión en hielo, masajes Signature y flotación sensorial para regular el sistema nervioso y mejorar la relajación.",
           "direction": "right",
           "primary": false
         },
         {
-          "title": "Medicina de Información",
-          "description": "Consultas médicas especializadas y paneles metabólicos exhaustivos para optimización personalizada de tu salud.",
+          "title": "Medicina de precisión",
+          "description": "Consultas médicas especializadas y paneles metabólicos exhaustivos para una optimización personalizada de tu salud.",
           "direction": "left",
           "primary": false
         },
         {
-          "title": "Diagnósticos Avanzados",
-          "description": "Edad epigenética, análisis hormonal, pruebas de VO₂ y monitorización de biomarcadores para optimización basada en datos.",
+          "title": "Diagnósticos avanzados",
+          "description": "Edad epigenética, análisis hormonal, pruebas de VO₂ máx y seguimiento de biomarcadores para una optimización basada en datos.",
           "direction": "bottom",
           "primary": false
         },
         {
-          "title": "Nutrición y Suplementación",
+          "title": "Nutrición y suplementación",
           "description": "Protocolos nutricionales personalizados, terapia IV, NAD+ y suplementación estratégica según tu perfil biológico.",
           "direction": "top",
           "primary": false
@@ -1014,24 +1012,24 @@
           "primary": false
         },
         {
-          "title": "Psique y Cognición",
-          "description": "Mindfulness avanzado, protocolos cognitivos y programas personalizados para optimizar rendimiento mental y emocional.",
+          "title": "Psique y cognición",
+          "description": "Mindfulness avanzado, protocolos cognitivos y programas personalizados para optimizar el rendimiento mental y emocional.",
           "direction": "left",
           "primary": false
         },
         {
-          "title": "Sueño y Ritmo Circadiano",
-          "description": "Optimización del sueño profundo, equilibrio hormonal y sincronización circadiana para recuperación óptima y energía sostenible.",
+          "title": "Sueño y ritmo circadiano",
+          "description": "Optimización del sueño profundo, equilibrio hormonal y sincronización circadiana para una recuperación óptima y energía sostenible.",
           "direction": "bottom",
           "primary": false
       }
     ]
   },
   "therapies": {
-    "filterButton": "Filtrar Terapias",
+    "filterButton": "Filtrar terapias",
     "categoriesLabel": "Categorías",
     "subcategoriesLabel": "Especialidades",
-    "clearFilters": "Limpiar Todo",
+    "clearFilters": "Limpiar todo",
     "showingResults": "Mostrando",
     "therapySingular": "terapia",
     "therapyPlural": "terapias",
@@ -1071,7 +1069,7 @@
       },
       {
         "id": "information-medicine",
-        "name": "Medicina de Información",
+        "name": "Medicina de precisión",
         "parentCategories": ["diagnostics", "wellness", "performance"]
       },
       {
@@ -1117,105 +1115,105 @@
     ],
     "featuredTherapies": {
       "performance": [
-        "Cámara Hiperbárica (HBOT)",
-        "Crioterapia de Cuerpo Completo",
-        "Terapia de Luz Roja",
-        "Terapia IHHT",
-        "Campo Electromagnético Pulsado (PEMF)",
-        "Test de VO₂ Máx",
-        "Entrenamiento Personal",
-        "Baño de Hielo",
-        "Electroestimulación Muscular",
-        "Terapia de Ondas de Choque",
-        "Fisioterapia y Osteopatía",
-        "Coaching de Movilidad",
-        "Yoga Caliente",
+        "Cámara hiperbárica (HBOT)",
+        "Crioterapia de cuerpo completo",
+        "Terapia de luz roja corporal",
+        "IHHT",
+        "Campos electromagnéticos pulsados (PEMF)",
+        "Prueba de VO₂ máx",
+        "Entrenamiento personal",
+        "Baño de hielo",
+        "Electroestimulación muscular (EMS)",
+        "Terapia de ondas de choque",
+        "Fisioterapia y osteopatía",
+        "Coaching de movilidad",
+        "Hot Yoga",
         "Pilates Reformer",
-        "Análisis de Bioimpedancia",
-        "Test Metabólico RMR",
-        "Entrenamiento al Aire Libre (Retiro)",
-        "Respiración y Estiramiento"
+        "Análisis de bioimpedancia",
+        "Test metabólico RMR",
+        "Entrenamiento al aire libre (Retiro)",
+        "Respiración y estiramientos"
       ],
       "wellness": [
         "Masajes Signature",
-        "Sauna de Infrarrojos",
-        "Baños de Magnesio y Sal",
-        "Baño de Hielo",
-        "Masajes Orientales",
-        "Práctica de Mindfulness",
-        "Masajes Terapéuticos",
-        "Baño de Vapor",
-        "Reflexología Podal",
-        "Terapia de Flotación",
-        "Sanación con Sonido",
-        "Respiración y Estiramiento",
-        "IV de Limpieza Hepática",
-        "Presoterapia Drenaje Linfático",
-        "Yoga Caliente",
-        "Protocolos de Nutrición Personalizados",
-        "Protocolo de Optimización del Sueño",
-        "Protocolo de Drenaje Compresivo"
+        "Sauna de infrarrojos",
+        "Baños de magnesio y sal",
+        "Baño de hielo",
+        "Masajes orientales",
+        "Práctica de mindfulness",
+        "Masajes terapéuticos",
+        "Baño de vapor",
+        "Reflexología podal",
+        "Terapia de flotación",
+        "Sanación con sonido",
+        "Respiración y estiramientos",
+        "Limpieza hepática IV",
+        "Presoterapia (drenaje linfático)",
+        "Hot Yoga",
+        "Protocolos de nutrición personalizados",
+        "Protocolo de optimización del sueño",
+        "Protocolo de drenaje compresivo"
       ],
       "aesthetics": [
         "HydraFacial®",
-        "Radiofrecuencia Facial",
-        "Láser Fotorrejuvenecedor",
-        "Lifting con Células Madre PRF",
-        "Peelings Químicos Médicos",
+        "Radiofrecuencia facial",
+        "Láser fotorrejuvenecedor",
+        "Lifting con células madre PRF",
+        "Peelings químicos médicos",
         "Microagujas con PRP",
         "Faciales Signature",
-        "Terapia Capilar con Luz Roja",
+        "Terapia capilar con luz roja",
         "Presoterapia",
-        "Terapia de Luz Roja Corporal",
-        "Electroestimulación Muscular",
-        "Depilación Láser",
-        "Radiofrecuencia Corporal",
+        "Terapia de luz roja corporal",
+        "Electroestimulación muscular (EMS)",
+        "Depilación láser",
+        "Radiofrecuencia corporal",
         "Masajes Signature",
-        "Baño de Vapor",
-        "Baños Minerales",
-        "Terapia de Luz UV",
-        "Facial Dermaplaning"
+        "Baño de vapor",
+        "Baños minerales",
+        "Fototerapia UV",
+        "Dermaplaning facial"
       ],
       "diagnostics": [
-        "Edad Epigenética",
-        "Panel Hormonal Completo",
-        "Test de VO₂ Máx",
-        "Escáner DEXA Completo",
-        "Monitorización Continua de Glucosa",
-        "Análisis de Bioimpedancia",
-        "Test Metabólico RMR",
-        "Mapeo del Microbioma",
-        "Test de Sensibilidad Alimentaria",
-        "Panel Sanguíneo Avanzado",
-        "Evaluación Metabólica",
-        "Análisis de Composición Corporal",
-        "Evaluación Cardiovascular",
-        "Análisis de Calidad del Sueño",
-        "Test de Hormonas del Estrés",
-        "Panel de Vitaminas y Minerales",
-        "Marcadores de Inflamación",
-        "Biomarcadores de Longevidad"
+        "Edad epigenética",
+        "Panel hormonal completo",
+        "Prueba de VO₂ máx",
+        "Escáner DEXA completo",
+        "Monitorización continua de glucosa",
+        "Análisis de bioimpedancia",
+        "Test metabólico RMR",
+        "Mapeo del microbioma",
+        "Test de sensibilidad alimentaria",
+        "Panel sanguíneo avanzado",
+        "Evaluación metabólica",
+        "Análisis de composición corporal",
+        "Evaluación cardiovascular",
+        "Análisis de calidad del sueño",
+        "Test de hormonas del estrés",
+        "Panel de vitaminas y minerales",
+        "Marcadores de inflamación",
+        "Biomarcadores de longevidad"
       ]
     },
     "items": [
       {
         "id": "red-light-full-body",
-        "name": "Luz Roja Cuerpo Completo",
-        "description": "Fotobiomodulación integral con luz roja e infrarroja cercana para mejorar función celular, aumentar producción de energía, optimizar sueño y acelerar recuperación.",
+        "name": "Luz roja cuerpo completo",
+        "description": "Fotobiomodulación integral con luz roja e infrarroja cercana para mejorar la función celular, aumentar la energía, optimizar el sueño y acelerar la recuperación.",
         "categories": ["performance", "wellness", "aesthetics"],
         "subcategories": ["aesthetics-sub", "energy", "sleep"]
       },
       {
         "id": "infrared-sauna",
-        "name": "Sauna Infrarroja",
-        "description": "Terapia de sauna infrarroja para calentamiento profundo, detoxificación, alivio del estrés, regeneración y mejora de la calidad del sueño.",
+        "name": "Sauna infrarroja",
+        "description": "Sauna de infrarrojos para calentamiento profundo, detoxificación, alivio del estrés, regeneración y mejora del sueño.",
         "categories": ["wellness"],
         "subcategories": ["detox", "regeneration", "stress", "sleep"]
       },
       {
         "id": "pressotherapy-full",
         "name": "Presoterapia",
-        "description": "Terapia de compresión mecánica para mejorar drenaje linfático, reducir retención de líquidos, apoyar detoxificación y mejorar resultados estéticos.",
+        "description": "Compresión mecánica para mejorar el drenaje limfático, reducir la retención de líquidos, apoyar la detoxificación y potenciar resultados estéticos.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "aesthetics-sub"]
       },
@@ -1229,21 +1227,21 @@
       {
         "id": "personal-training-new",
         "name": "Entrenamiento personal",
-        "description": "Sesiones de entrenamiento personalizadas adaptadas a tus objetivos de fitness, rendimiento atlético y optimización del movimiento.",
+        "description": "Sesiones 1:1 adaptadas a tus objetivos de fitness, rendimiento atlético y optimización del movimiento.",
         "categories": ["performance"],
         "subcategories": ["movement"]
       },
       {
         "id": "pilates-reformer",
         "name": "Pilates Reformer",
-        "description": "Pilates con equipamiento para fuerza del core, flexibilidad, alineación corporal, calidad de movimiento y gestión del estrés.",
+        "description": "Pilates con equipamiento para fortalecer el core, mejorar la flexibilidad, la alineación y la gestión del estrés.",
         "categories": ["performance", "wellness"],
         "subcategories": ["movement", "stress"]
       },
       {
         "id": "body-lab-bioimpedance",
-        "name": "Body Lab Bioimpedancia",
-        "description": "Análisis avanzado de bioimpedancia para composición corporal, evaluación metabólica y datos de medicina física.",
+        "name": "Análisis de bioimpedancia (Body Lab)",
+        "description": "Prueba avanzada de bioimpedancia para composición corporal, evaluación metabólica y apoyo a la medicina física.",
         "categories": ["diagnostics", "performance"],
         "subcategories": ["information-medicine", "physical-medicine"]
       },
@@ -1256,309 +1254,309 @@
       },
       {
         "id": "steam-room",
-        "name": "Sala de vapor",
-        "description": "Terapia de vapor tradicional para detoxificación, regeneración tisular, alivio del estrés y beneficios estéticos para la piel.",
+        "name": "Baño de vapor",
+        "description": "Vapor tradicional para detoxificación, regeneración tisular, alivio del estrés y beneficios estéticos en la piel.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "stress", "aesthetics-sub"]
       },
       {
         "id": "outdoor-training-retiro",
         "name": "Entrenamiento al aire libre (Retiro)",
-        "description": "Sesiones de entrenamiento funcional al aire libre en el Parque del Retiro, combinando movimiento y optimización energética en la naturaleza.",
+        "description": "Sesiones funcionales en el Parque del Retiro, combinando movimiento y optimización energética en la naturaleza.",
         "categories": ["performance"],
         "subcategories": ["movement", "energy"]
       },
       {
         "id": "mindfulness",
         "name": "Mindfulness",
-        "description": "Meditación y prácticas de mindfulness guiadas para gestión del estrés, calidad del sueño y optimización cognitiva/psicológica.",
+        "description": "Meditación y prácticas guiadas para gestionar el estrés, mejorar el sueño y optimizar el rendimiento cognitivo y psicológico.",
         "categories": ["wellness"],
         "subcategories": ["stress", "sleep", "psyche"]
       },
       {
         "id": "breathing-stretching",
         "name": "Respiración y estiramientos",
-        "description": "Técnicas de respiración guiadas y rutinas de estiramiento para calidad de movimiento, alivio del estrés y mejora de flexibilidad.",
+        "description": "Técnicas de respiración y rutinas de estiramiento para mejorar la calidad del movimiento, aliviar el estrés y ganar flexibilidad.",
         "categories": ["wellness", "performance"],
         "subcategories": ["movement", "stress"]
       },
       {
         "id": "red-light-hair",
-        "name": "Luz Roja Capilar",
-        "description": "Terapia láser de baja intensidad para estimular folículos capilares, promover crecimiento capilar y mejorar salud del cuero cabelludo.",
+        "name": "Luz roja capilar",
+        "description": "Láser de baja intensidad para estimular los folículos, promover el crecimiento capilar y mejorar la salud del cuero cabelludo.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "cryotherapy",
-        "name": "Crioterapia",
-        "description": "Terapia de exposición al frío extremo para aumentar energía, mejorar detoxificación, acelerar regeneración, gestionar estrés y optimizar sueño.",
+        "name": "Crioterapia de cuerpo completo",
+        "description": "Exposición controlada al frío extremo para aumentar energía, mejorar la detoxificación, acelerar la regeneración, gestionar el estrés y optimizar el sueño.",
         "categories": ["performance", "wellness"],
         "subcategories": ["energy", "detox", "regeneration", "stress", "sleep"]
       },
       {
         "id": "uv-light-therapy",
-        "name": "Luz UV",
-        "description": "Exposición controlada a luz ultravioleta para optimización de salud cutánea y beneficios estéticos.",
+        "name": "Fototerapia UV",
+        "description": "Exposición controlada a luz ultravioleta para optimizar la salud cutánea y los resultados estéticos.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "compressive-drainage",
-        "name": "Protocolo de Drenaje Compresivo",
-        "description": "Protocolo avanzado de terapia de compresión para detoxificación, regeneración y aplicaciones de medicina física.",
+        "name": "Protocolo de drenaje compresivo",
+        "description": "Terapia de compresión avanzada para detoxificación, regeneración y aplicaciones de medicina física.",
         "categories": ["wellness", "performance"],
         "subcategories": ["detox", "regeneration", "physical-medicine"]
       },
       {
         "id": "pemf",
-        "name": "Campos Electromagnéticos Pulsados (PEMF)",
-        "description": "Terapia de campo electromagnético para mejorar energía celular, apoyar protocolos de medicina física, reducir estrés y mejorar sueño.",
+        "name": "Campos electromagnéticos pulsados (PEMF)",
+        "description": "Modalidad electromagnética para mejorar la energía celular, apoyar la medicina física, reducir el estrés y mejorar el sueño.",
         "categories": ["performance", "wellness"],
         "subcategories": ["energy", "physical-medicine", "stress", "sleep"]
       },
       {
         "id": "mineral-baths",
-        "name": "Baños Magnesio/Alcalinos/Salinos",
-        "description": "Baños terapéuticos en aguas ricas en minerales para detoxificación, regeneración, alivio del estrés y beneficios estéticos para la piel.",
+        "name": "Baños de magnesio, alcalinos y salinos",
+        "description": "Baños terapéuticos en aguas minerales para detoxificación, regeneración, alivio del estrés y beneficios estéticos para la piel.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "stress", "aesthetics-sub"]
       },
       {
         "id": "ems-training",
-        "name": "Entrenamiento Electroestimulación Muscular",
-        "description": "Estimulación electromagnética de alta intensidad para construcción muscular, escultura corporal estética, aplicaciones de medicina física y optimización del movimiento.",
+        "name": "Electroestimulación muscular (EMS)",
+        "description": "Estimulación electromagnética de alta intensidad para construir músculo, esculpir el cuerpo, apoyar la medicina física y optimizar el movimiento.",
         "categories": ["aesthetics", "performance"],
         "subcategories": ["aesthetics-sub", "physical-medicine", "movement"]
       },
       {
         "id": "therapeutic-massages",
         "name": "Masajes terapéuticos",
-        "description": "Terapia de masaje basada en evidencia para gestión del estrés y aplicaciones de medicina física.",
+        "description": "Terapia de masaje basada en evidencia para la gestión del estrés y el apoyo a la medicina física.",
         "categories": ["wellness", "performance"],
         "subcategories": ["stress", "physical-medicine"]
       },
       {
         "id": "oriental-massages",
         "name": "Masajes orientales",
-        "description": "Técnicas de masaje oriental tradicional para detoxificación, regeneración, alivio del estrés, medicina física y beneficios psico-cognitivos.",
+        "description": "Técnicas tradicionales orientales para detoxificación, regeneración, alivio del estrés, medicina física y beneficios psico-cognitivos.",
         "categories": ["wellness"],
         "subcategories": ["detox", "regeneration", "stress", "physical-medicine", "psyche"]
       },
       {
         "id": "foot-reflexology",
-        "name": "Reflexología Podal",
-        "description": "Masaje terapéutico de pies basado en puntos de presión para detoxificación, regeneración y gestión del estrés.",
+        "name": "Reflexología podal",
+        "description": "Masaje terapéutico en pies basado en puntos de presión para detoxificación, regeneración y gestión del estrés.",
         "categories": ["wellness"],
         "subcategories": ["detox", "regeneration", "stress"]
       },
       {
         "id": "hydrafacial",
         "name": "HydraFacial®",
-        "description": "Facial de grado médico combinando limpieza, exfoliación, extracción, hidratación y protección antioxidante.",
+        "description": "Facial de grado médico que combina limpieza, exfoliación, extracción, hidratación y protección antioxidante.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "signature-facials",
-        "name": "Signature Facials",
-        "description": "Tratamientos faciales personalizados adaptados a tus necesidades únicas de piel y objetivos estéticos.",
+        "name": "Faciales Signature",
+        "description": "Tratamientos faciales a medida según las necesidades de tu piel y tus objetivos estéticos.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "rf-facial-stimulation",
-        "name": "Estimulación Celular de Alta Frecuencia (Rostro/Cuello)",
-        "description": "Estimulación celular por radiofrecuencia para rostro y cuello para tensar piel, estimular colágeno y mejorar resultados estéticos.",
+        "name": "Radiofrecuencia facial (rostro/cuello)",
+        "description": "Radiofrecuencia para tensar la piel, estimular el colágeno y mejorar los resultados estéticos en rostro y cuello.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "hot-yoga",
-        "name": "Yoga caliente",
-        "description": "Práctica de yoga en ambiente caliente para optimización del movimiento, detoxificación y regeneración tisular.",
+        "name": "Hot Yoga",
+        "description": "Práctica de yoga en ambiente caliente para optimizar el movimiento, apoyar la detoxificación y la regeneración tisular.",
         "categories": ["performance", "wellness"],
         "subcategories": ["movement", "detox", "regeneration"]
       },
       {
         "id": "ihht",
-        "name": "Hipoxia/Hiperoxia Intermitente (IHHT)",
-        "description": "Simulación de entrenamiento en altitud alternando hipoxia e hiperoxia para aumentar energía, mejorar detoxificación y apoyar regeneración.",
+        "name": "Hipoxia/hiperoxia intermitente (IHHT)",
+        "description": "Simulación de altitud alternando hipoxia e hiperoxia para aumentar energía, apoyar la detoxificación y la regeneración.",
         "categories": ["performance"],
         "subcategories": ["energy", "detox", "regeneration"]
       },
       {
         "id": "shockwave-therapy",
-        "name": "Terapia de Ondas de Choque",
-        "description": "Terapia de ondas acústicas para tratar dolor, mejorar regeneración tisular y apoyar protocolos de medicina física.",
+        "name": "Terapia de ondas de choque",
+        "description": "Ondas acústicas para tratar el dolor, mejorar la regeneración tisular y apoyar la medicina física.",
         "categories": ["performance", "wellness"],
         "subcategories": ["physical-medicine"]
       },
       {
         "id": "hbot",
-        "name": "Cámara Hiperbárica (HBOT)",
-        "description": "Terapia de cámara de oxígeno presurizado para mejorar energía celular, apoyar detoxificación y acelerar regeneración.",
+        "name": "Cámara hiperbárica (HBOT)",
+        "description": "Oxigenoterapia en cámara presurizada para potenciar la energía celular, apoyar la detoxificación y acelerar la regeneración.",
         "categories": ["performance", "wellness"],
         "subcategories": ["energy", "detox", "regeneration"]
       },
       {
         "id": "physiotherapy-osteopathy",
-        "name": "Fisioterapia, Osteopatía",
-        "description": "Intervenciones de terapia manual para medicina física y optimización del movimiento.",
+        "name": "Fisioterapia y osteopatía",
+        "description": "Intervenciones manuales para medicina física y optimización del movimiento.",
         "categories": ["performance", "wellness"],
         "subcategories": ["physical-medicine", "movement"]
       },
       {
         "id": "signature-massages",
-        "name": "Masajes signature",
-        "description": "Experiencias de masaje personalizadas combinando detoxificación, regeneración, beneficios estéticos, medicina física y alivio del estrés.",
+        "name": "Masajes Signature",
+        "description": "Experiencias de masaje a medida que combinan detoxificación, regeneración, beneficios estéticos, medicina física y alivio del estrés.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "aesthetics-sub", "physical-medicine", "stress"]
       },
       {
         "id": "liver-cleanse-iv",
         "name": "Limpieza hepática IV",
-        "description": "Protocolo de detoxificación hepática intravenosa para regeneración celular y apoyo metabólico.",
+        "description": "Protocolo intravenoso para apoyar la detoxificación hepática, la regeneración celular y el metabolismo.",
         "categories": ["wellness"],
         "subcategories": ["detox", "regeneration"]
       },
       {
         "id": "photorejuvenation-laser",
-        "name": "Láser Fotorejuvenecedor",
-        "description": "Tratamiento láser IPL para reducir pigmentación, rojeces y mejorar textura cutánea para mejora estética.",
+        "name": "Láser fotorrejuvenecedor",
+        "description": "Tratamiento IPL para reducir la pigmentación y las rojeces y mejorar la textura cutánea.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "chemical-peels",
-        "name": "Peelings Químicos",
-        "description": "Exfoliación química de grado médico para renovar piel y tratar envejecimiento, acné y pigmentación.",
+        "name": "Peelings químicos médicos",
+        "description": "Exfoliación química de grado médico para renovar la piel y tratar envejecimiento, acné y pigmentación.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "nutrition-protocols",
         "name": "Protocolos de nutrición",
-        "description": "Evaluación nutricional integral y protocolos dietéticos personalizados para medicina de información, detoxificación, regeneración y optimización psico-cognitiva.",
+        "description": "Evaluación nutricional integral y pautas personalizadas para medicina de precisión, detoxificación, regeneración y optimización psico-cognitiva.",
         "categories": ["diagnostics", "wellness"],
         "subcategories": ["information-medicine", "detox", "regeneration", "psyche"]
       },
       {
         "id": "supplementation-protocols",
         "name": "Protocolos de suplementación",
-        "description": "Estrategias de suplementación dirigidas para optimización de energía, detoxificación y regeneración celular basadas en biomarcadores individuales.",
+        "description": "Suplementación estratégica para optimizar la energía, la detoxificación y la regeneración celular en función de tus biomarcadores.",
         "categories": ["wellness", "performance"],
         "subcategories": ["energy", "detox", "regeneration"]
       },
       {
         "id": "body-wraps-optional",
-        "name": "Envoltura Corporal",
-        "description": "Envolturas corporales detoxificantes con ingredientes regenerativos para eliminación de toxinas y nutrición estética de la piel.",
+        "name": "Envolturas corporales",
+        "description": "Envolturas detox con activos regenerativos para favorecer la eliminación de toxinas y nutrir la piel.",
         "categories": ["wellness", "aesthetics"],
         "subcategories": ["detox", "regeneration", "aesthetics-sub"]
       },
       {
         "id": "sofwave-ultrasound",
-        "name": "Terapia de Ultrasonidos / HIFU (Sofwave)",
-        "description": "Ultrasonido focalizado de alta intensidad para tensado estético de piel y aplicaciones de medicina física.",
+        "name": "Ultrasonidos focalizados / HIFU (Sofwave)",
+        "description": "Ultrasonido focalizado de alta intensidad para tensado cutáneo estético y apoyo a la medicina física.",
         "categories": ["aesthetics", "performance"],
         "subcategories": ["aesthetics-sub", "physical-medicine"]
       },
       {
         "id": "emsculpt-neo",
         "name": "HIFEM (Emsculpt NEO)",
-        "description": "Terapia electromagnética focalizada de alta intensidad para construcción muscular estética y escultura corporal con beneficios de medicina física.",
+        "description": "Electromagnetismo focalizado de alta intensidad para construir músculo y esculpir el cuerpo, con beneficios de medicina física.",
         "categories": ["aesthetics", "performance"],
         "subcategories": ["aesthetics-sub", "physical-medicine"]
       },
       {
         "id": "cryolipolysis-cooltech",
-        "name": "Criolipólisis (CoolTech)",
-        "description": "Tecnología no invasiva de congelación de grasa para contorno corporal estético y reducción adiposa.",
+        "name": "Criolipólisis (CoolTech®)",
+        "description": "Tecnología no invasiva de congelación de grasa para remodelado corporal estético y reducción adiposa.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "iv-therapy-nad",
-        "name": "Vitaminas/Antioxidantes, NAD IV",
-        "description": "Infusión intravenosa de vitaminas, antioxidantes y NAD+ para optimización de energía, detoxificación y regeneración celular.",
+        "name": "Vitaminas y antioxidantes IV, NAD+",
+        "description": "Infusiones intravenosas de vitaminas, antioxidantes y NAD+ para optimizar la energía, apoyar la detoxificación y la regeneración celular.",
         "categories": ["wellness", "performance"],
         "subcategories": ["energy", "detox", "regeneration"]
       },
       {
         "id": "complete-blood-count",
-        "name": "Hemograma Completo",
-        "description": "Análisis completo de células sanguíneas para medicina de información y evaluación general de salud.",
+        "name": "Hemograma completo",
+        "description": "Análisis completo de células sanguíneas para medicina de precisión y evaluación general de la salud.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       },
       {
         "id": "lipid-profile-annual",
-        "name": "Perfil de Lípidos",
-        "description": "Análisis lipídico completo para evaluación de riesgo cardiovascular y medicina de información.",
+        "name": "Perfil lipídico avanzado",
+        "description": "Análisis lipídico completo para evaluar el riesgo cardiovascular y obtener información de medicina de precisión.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       },
       {
         "id": "hs-crp",
-        "name": "PCR Ultrasensible",
-        "description": "Prueba de marcadores de inflamación para medicina de información y monitorización de salud sistémica.",
+        "name": "PCR de alta sensibilidad (hs-CRP)",
+        "description": "Marcador de inflamación para medicina de precisión y monitorización de la salud sistémica.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       },
       {
         "id": "hormone-panel-comprehensive",
-        "name": "TSH, T3, T4; Cortisol; IGF-1; Hormonas Sexuales",
-        "description": "Análisis hormonal completo para medicina de información y optimización de biorritmos.",
+        "name": "Panel hormonal completo (TSH, T3, T4, cortisol, IGF-1 y hormonas sexuales)",
+        "description": "Análisis hormonal completo para medicina de precisión y optimización de biorritmos.",
         "categories": ["diagnostics", "performance"],
         "subcategories": ["information-medicine", "biorhythms"]
       },
       {
         "id": "micronutrient-panel",
-        "name": "Vitamina D, B12, Folato; Magnesio, Calcio, Zinc, Selenio, Cobre, Hierro",
-        "description": "Análisis completo de micronutrientes para medicina de información y optimización nutricional.",
+        "name": "Panel de micronutrientes (vitamina D, B12, folato, magnesio, calcio, zinc, selenio, cobre, hierro)",
+        "description": "Análisis completo de micronutrientes para medicina de precisión y optimización nutricional.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       },
       {
         "id": "skin-analysis-visia",
-        "name": "Análisis Cutáneo (Visia)",
-        "description": "Análisis e imagen facial de alta tecnología para medicina de información y planificación de tratamientos estéticos.",
+        "name": "Análisis cutáneo (Visia)",
+        "description": "Imagen y análisis facial de alta tecnología para medicina de precisión y planificación estética.",
         "categories": ["diagnostics", "aesthetics"],
         "subcategories": ["information-medicine", "aesthetics-sub"]
       },
       {
         "id": "ultherapy-hifu",
-        "name": "HIFU (Ultherapy)",
+        "name": "HIFU (Ultherapy®)",
         "description": "Ultrasonido focalizado de alta intensidad para tensado y lifting estético sin cirugía.",
         "categories": ["aesthetics"],
         "subcategories": ["aesthetics-sub"]
       },
       {
         "id": "genetic-sequencing",
-        "name": "Secuenciación del Genoma, Predisposición Genética",
-        "description": "Secuenciación del genoma y análisis de predisposición genética para medicina de información y optimización personalizada de salud.",
+        "name": "Secuenciación del genoma y predisposición genética",
+        "description": "Secuenciación y análisis de predisposición para medicina de precisión y personalización de la salud.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       },
       {
         "id": "epigenetic-telomere",
-        "name": "Relojes Epigenéticos, Longitud Telomérica",
-        "description": "Prueba de edad biológica mediante metilación de ADN y longitud telomérica para medicina de información.",
+        "name": "Relojes epigenéticos y longitud telomérica",
+        "description": "Medición de edad biológica mediante metilación de ADN y longitud telomérica para medicina de precisión y optimización de la longevidad.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       },
       {
         "id": "vo2-max-test",
-        "name": "Prueba de Esfuerzo Cardiopulmonar (VO₂ Máx)",
-        "description": "Prueba de captación máxima de oxígeno para medicina de información y evaluación de rendimiento de biorritmos.",
+        "name": "Prueba de esfuerzo cardiopulmonar (VO₂ máx)",
+        "description": "Captación máxima de oxígeno para medicina de precisión y evaluación del rendimiento de biorritmos.",
         "categories": ["diagnostics", "performance"],
         "subcategories": ["information-medicine", "biorhythms"]
       },
       {
         "id": "metabolic-panel-glucose",
-        "name": "Glucosa, Insulina, HbA1c",
-        "description": "Pruebas metabólicas completas para medicina de información y optimización de salud metabólica.",
+        "name": "Panel metabólico (glucosa, insulina, HbA1c)",
+        "description": "Pruebas metabólicas completas para medicina de precisión y optimización de la salud metabólica.",
         "categories": ["diagnostics"],
         "subcategories": ["information-medicine"]
       }
