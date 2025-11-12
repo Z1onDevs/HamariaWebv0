@@ -917,8 +917,8 @@
       }
     },
     "hero": {
-      "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
-      "description": "Experiencia de regeneración holística en el corazón de Madrid. Hamaria Club ofrece programas de bienestar personalizados que armonizan mente, cuerpo y espíritu, integrando sabiduría ancestral con las tecnologías más avanzadas de longevidad.",
+      "titleLines": ["El futuro de", "la salud óptima"],
+      "description": "Centro de longevidad y bienestar en el corazón de Madrid. Terapias regenerativas avanzadas, medicina de precisión y optimización integral de su salud con base científica.",
       "primaryCta": "Explorar Membresías",
       "secondaryCta": "Descubre Nuestra Filosofía",
       "imageAlt": "Ilustración arquitectónica del centro de bienestar de lujo Hamaria Club con instalaciones modernas de spa y espacios de terapias regenerativas en Madrid"
@@ -932,23 +932,23 @@
     },
     "concept": {
       "heading": "Su transformación comienza aquí",
-      "vision": "Nuestro Enfoque",
+      "vision": "Visión",
       "methodology": "Metodología",
-      "paragraph1": "En Hamaria Club redefinimos la longevidad y el bienestar para la era moderna. Mediante biohacking basado en evidencia científica, terapias regenerativas de última generación y diagnósticos de medicina de precisión, le acompañamos en la optimización integral de su salud: desde la función celular y metabólica hasta el rendimiento cognitivo y la vitalidad sostenible.",
-      "paragraph2": "Ubicados en el exclusivo barrio del Retiro en Madrid, nuestro centro combina tecnología médica avanzada con atención personalizada de máximo nivel. Cada protocolo se diseña específicamente para su biología única, adaptándose a su estilo de vida, objetivos de salud y aspiraciones de longevidad.",
-      "paragraph3": "Nuestro equipo multidisciplinar, formado por médicos especialistas, fisioterapeutas avanzados y expertos en rendimiento humano, aporta décadas de experiencia en medicina funcional integrativa, optimización metabólica y terapias regenerativas de vanguardia. Le guiamos en cada etapa de su transformación hacia la salud óptima.",
+      "paragraph1": "Redefinimos la longevidad y el bienestar para la era moderna. Biohacking con base científica, terapias regenerativas avanzadas y medicina de precisión para optimizar su salud: desde la función celular hasta el rendimiento cognitivo.",
+      "paragraph2": "En el exclusivo Retiro de Madrid, combinamos tecnología médica de vanguardia con atención personalizada. Cada protocolo se diseña para su biología única.",
+      "paragraph3": "Equipo de médicos especialistas y expertos en rendimiento con décadas de experiencia en medicina funcional, optimización metabólica y terapias regenerativas.",
       "features": [
         {
           "title": "Diagnósticos de Precisión",
-          "description": "Evaluaciones basales exhaustivas, análisis de biomarcadores avanzados, pruebas metabólicas y seguimiento continuo mediante tecnología diagnóstica de última generación. Sus protocolos evolucionan con su progreso. Cada decisión terapéutica está guiada por datos objetivos y ciencia validada."
+          "description": "Evaluaciones exhaustivas y análisis de biomarcadores mediante tecnología avanzada. Sus protocolos evolucionan con su progreso. Decisiones guiadas por datos y ciencia validada."
         },
         {
-          "title": "Protocolos Científicamente Validados",
-          "description": "Todas nuestras terapias están respaldadas por investigación peer-reviewed y evidencia clínica robusta. Empleamos exclusivamente modalidades validadas científicamente para optimizar la salud celular, acelerar la recuperación tisular, mejorar la función mitocondrial y extender su healthspan (años de vida saludable)."
+          "title": "Protocolos Científicos",
+          "description": "Terapias respaldadas por investigación clínica robusta. Modalidades validadas para optimizar la salud celular, acelerar la recuperación y extender su healthspan."
         },
         {
-          "title": "Integración Holística",
-          "description": "La verdadera optimización de la salud requiere equilibrio sistémico. Abordamos de forma integrada la recuperación física, el rendimiento cognitivo, la estética regenerativa y la extensión de longevidad. Tratamos el cuerpo humano como el sistema interconectado y complejo que es, donde cada intervención potencia las demás."
+          "title": "Enfoque Holístico",
+          "description": "Abordaje integrado: recuperación física, rendimiento cognitivo, estética regenerativa y longevidad. El cuerpo como sistema interconectado donde cada intervención potencia las demás."
         }
       ]
     },
