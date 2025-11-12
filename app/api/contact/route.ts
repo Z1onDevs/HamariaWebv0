@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { supabaseAdmin } from "@/lib/supabase/admin"
+import { sendWelcomeEmail } from "@/lib/email/sendWelcomeEmail"
 
 export async function POST(request: Request) {
   try {
@@ -153,6 +154,11 @@ export async function POST(request: Request) {
         }
         
         console.log("Email sent successfully with resend.dev:", retryResult.data)
+        try {
+          await sendWelcomeEmail(email, name)
+        } catch (welErr) {
+          console.error("Welcome email failed:", welErr)
+        }
         return NextResponse.json({ success: true, message: "Application submitted successfully", data: retryResult.data })
       }
       
@@ -160,6 +166,11 @@ export async function POST(request: Request) {
     }
 
     console.log("Email sent successfully:", data)
+    try {
+      await sendWelcomeEmail(email, name)
+    } catch (welErr) {
+      console.error("Welcome email failed:", welErr)
+    }
     return NextResponse.json({ 
       success: true, 
       message: "Application submitted successfully", 
