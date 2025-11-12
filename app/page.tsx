@@ -471,7 +471,7 @@ export default function Home() {
               <div className="relative h-full w-full overflow-hidden" style={{ clipPath: 'inset(10% 0% 10% 0%)' }}>
                 <Image 
                   src="/hero-sketch.png" 
-                  alt="Hamaria wellness visualization"
+                  alt={hero.imageAlt || "Hamaria wellness visualization"}
                   width={800}
                   height={600}
                   priority
@@ -497,7 +497,7 @@ export default function Home() {
             <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px]">
               <Image
                 src="/hero-sketch.png"
-                alt="Hamaria wellness visualization"
+                alt={hero.imageAlt || "Hamaria wellness visualization"}
                 width={700}
                 height={800}
                 priority

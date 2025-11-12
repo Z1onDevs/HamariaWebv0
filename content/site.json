@@ -123,7 +123,8 @@
     "titleLines": ["Where wellness", "meets luxury"],
     "description": "Experience holistic rejuvenation in the heart of Madrid. Hamaria Club offers bespoke wellness journeys that harmonize mind, body, and spirit combining ancient wisdom and the latest innovative technologies.",
     "primaryCta": "Explore Memberships",
-    "secondaryCta": "Discover Our Philosophy"
+    "secondaryCta": "Discover Our Philosophy",
+    "imageAlt": "Architectural sketch of Hamaria Club luxury wellness center interior featuring modern spa facilities and regenerative therapy spaces in Madrid"
   },
   "gallery": {
     "folder": "/retiro render copia",
@@ -155,8 +156,11 @@
     ]
   },
   "services": {
+    "title": "Our Services",
+    "subtitle": "Explore our comprehensive wellness offerings",
     "heading": "Longevity · Wellness · Aesthetics",
     "subheading": "A new standard in luxury longevity. More than 70 services. Featuring thoughtfully crafted protocols for maximum effectiveness and time efficiency.",
+    "imageAlt": "Hamaria Club wellness services overview featuring longevity technology, spa therapies, aesthetics treatments, and advanced diagnostics",
     "pillars": {
       "longevity": {
         "title": "Longevity",
@@ -857,169 +861,177 @@
         "longevity": {
           "id": "longevity",
           "name": "Bienestar",
-          "tagline": "Bienestar fundamental",
-          "description": "Terapias fundamentales para un bienestar holístico. Perfecto para quienes inician su camino.",
+          "tagline": "Los fundamentos de la salud óptima",
+          "description": "Programa integral de bienestar que establece las bases de su transformación. Terapias de recuperación avanzadas, optimización del sistema nervioso y regeneración celular. Diseñado para quienes buscan equilibrio, vitalidad y rendimiento sostenible.",
           "monthlyPrice": 950,
           "yearlyPrice": 10450,
           "weeklyMinutes": 240,
           "monthlyPerceivedValue": 3200,
           "color": "#8b5cf6",
           "features": [
-            "Evaluación basal integral",
-            "Acceso ilimitado a instalaciones de recuperación",
-            "Sesiones terapéuticas mensuales",
-            "Orientación nutricional y de estilo de vida"
+            "Evaluación inicial integral con análisis de biomarcadores",
+            "Acceso ilimitado a instalaciones de recuperación y contraste térmico",
+            "Protocolos mensuales de terapias regenerativas",
+            "Asesoramiento nutricional personalizado basado en su biología",
+            "Crioterapia, sauna infrarroja y flotación sensorial"
           ]
         },
         "performance": {
           "id": "performance",
           "name": "Longevidad",
-          "tagline": "Rinde a tu máximo nivel",
-          "description": "Añade optimización de rendimiento y recuperación a tu programa de Bienestar. Ideal para atletas y perfiles de alto rendimiento.",
+          "tagline": "Optimización avanzada para longevidad",
+          "description": "Programa completo de extensión de salud funcional y optimización metabólica. Incluye diagnósticos de precisión, terapias regenerativas avanzadas (HBOT, fotobiomodulación NIR, PEMF) y protocolos basados en datos. Para ejecutivos, atletas y quienes buscan maximizar healthspan y rendimiento cognitivo.",
           "monthlyPrice": 1450,
           "yearlyPrice": 15950,
           "weeklyMinutes": 360,
           "monthlyPerceivedValue": 5400,
           "color": "#10b981",
           "features": [
-            "Todo lo de Bienestar",
-            "Diagnósticos avanzados de rendimiento",
-            "Más sesiones de recuperación",
-            "Prueba de VO₂ máx trimestral",
-            "Protocolos de entrenamiento personalizados"
+            "Todo lo incluido en Bienestar",
+            "Oxigenoterapia hiperbárica (HBOT) y terapia de luz roja",
+            "Evaluaciones de rendimiento con VO₂ máx y análisis metabólico",
+            "Seguimiento continuo de biomarcadores clave",
+            "Protocolos de recuperación acelerada y optimización hormonal",
+            "Consultas médicas especializadas trimestrales"
           ]
         },
         "aesthetics": {
           "id": "aesthetics",
           "name": "Estética",
-          "tagline": "Belleza regenerativa",
-          "description": "Añade tratamientos estéticos y regenerativos a tu programa de Bienestar. Perfecto para un abordaje integral del antienvejecimiento.",
+          "tagline": "Estética regenerativa y medicina antienvejecimiento",
+          "description": "Programa integral que combina bienestar sistémico con tratamientos estéticos de última generación. Rejuvenecimiento celular, optimización cutánea y protocolos regenerativos faciales y corporales. El enfoque más completo para retrasar el envejecimiento visible y mantener vitalidad estética.",
           "monthlyPrice": 1650,
           "yearlyPrice": 18150,
           "weeklyMinutes": 400,
           "monthlyPerceivedValue": 6800,
           "color": "#f59e0b",
           "features": [
-            "Todo lo de Bienestar",
-            "Tratamientos estéticos avanzados",
-            "Más terapias regenerativas",
-            "Sesiones de masaje Signature",
-            "Análisis cutáneo completo"
+            "Todo lo incluido en Bienestar",
+            "Tratamientos faciales regenerativos con tecnología avanzada",
+            "Terapias corporales de remodelación y firmeza",
+            "Masajes terapéuticos signature de 90 minutos",
+            "Análisis cutáneo integral con seguimiento fotográfico",
+            "Protocolos personalizados de nutricosmética y suplementación"
           ]
         }
       }
     },
     "hero": {
       "titleLines": ["Donde el bienestar", "se encuentra con el lujo"],
-      "description": "Regeneración holística en el corazón de Madrid. Experiencias diseñadas para armonizar mente, cuerpo y espíritu, fusionando sabiduría ancestral e innovación científica.",
-      "primaryCta": "Explorar membresías",
-      "secondaryCta": "Descubre nuestra filosofía"
+      "description": "Experiencia de regeneración holística en el corazón de Madrid. Hamaria Club ofrece programas de bienestar personalizados que armonizan mente, cuerpo y espíritu, integrando sabiduría ancestral con las tecnologías más avanzadas de longevidad.",
+      "primaryCta": "Explorar Membresías",
+      "secondaryCta": "Descubre Nuestra Filosofía",
+      "imageAlt": "Ilustración arquitectónica del centro de bienestar de lujo Hamaria Club con instalaciones modernas de spa y espacios de terapias regenerativas en Madrid"
     },
     "gallery": {
       "folder": "/retiro render copia",
       "items": [],
       "moreLink": "Más",
       "modalTitle": "Nuestros espacios",
-      "modalDescription": "Santuario meticulosamente diseñado en el barrio del Retiro. Gimnasio de última generación con tecnología de entrenamiento avanzada, zonas de hidroterapia con baños de sal y magnesio, saunas (tradicional e infrarroja) combinadas con piscinas de hielo para contraste, áreas de entrenamiento acuático con cintas de natación y salas dedicadas a masaje terapéutico y recuperación. Cada ambiente está pensado para potenciar tu transformación hacia una salud y longevidad óptimas."
+      "modalDescription": "Santuario de bienestar meticulosamente diseñado en el exclusivo barrio del Retiro de Madrid. Nuestras instalaciones de última generación incluyen salas de entrenamiento funcional y movilidad, zonas de hidroterapia avanzada, saunas (tradicional finlandesa e infrarroja) integradas con piscinas de inmersión en frío para contraste térmico, áreas de entrenamiento acuático con tecnología de vanguardia, y salas privadas dedicadas a masajes terapéuticos y terapias regenerativas. Cada ambiente ha sido diseñado con atención al detalle para crear la experiencia óptima que potencia su transformación hacia la salud, vitalidad y longevidad sostenibles."
     },
     "concept": {
-      "heading": "Tu viaje de transformación comienza aquí",
-      "vision": "Nuestra visión",
+      "heading": "Su transformación comienza aquí",
+      "vision": "Nuestro Enfoque",
       "methodology": "Metodología",
-      "paragraph1": "En Hamaria redefinimos la longevidad y el bienestar para la era moderna. A través de biohacking respaldado por evidencia, terapias regenerativas avanzadas y diagnósticos de precisión, te ayudamos a optimizar cada aspecto de tu salud: desde la función celular hasta el rendimiento mental.",
-      "paragraph2": "En el corazón del Retiro, combinamos tecnología de vanguardia con atención personalizada. Cada protocolo se adapta a tu biología, estilo de vida y objetivos.",
-      "paragraph3": "Nuestro equipo, con médicos y especialistas de referencia, aporta décadas de experiencia en medicina integrativa, rendimiento y terapias regenerativas para guiar tu transformación.",
+      "paragraph1": "En Hamaria Club redefinimos la longevidad y el bienestar para la era moderna. Mediante biohacking basado en evidencia científica, terapias regenerativas de última generación y diagnósticos de medicina de precisión, le acompañamos en la optimización integral de su salud: desde la función celular y metabólica hasta el rendimiento cognitivo y la vitalidad sostenible.",
+      "paragraph2": "Ubicados en el exclusivo barrio del Retiro en Madrid, nuestro centro combina tecnología médica avanzada con atención personalizada de máximo nivel. Cada protocolo se diseña específicamente para su biología única, adaptándose a su estilo de vida, objetivos de salud y aspiraciones de longevidad.",
+      "paragraph3": "Nuestro equipo multidisciplinar, formado por médicos especialistas, fisioterapeutas avanzados y expertos en rendimiento humano, aporta décadas de experiencia en medicina funcional integrativa, optimización metabólica y terapias regenerativas de vanguardia. Le guiamos en cada etapa de su transformación hacia la salud óptima.",
       "features": [
         {
-          "title": "Diagnósticos de precisión",
-          "description": "Evaluaciones exhaustivas, test metabólicos y seguimiento continuo de biomarcadores para que tus protocolos evolucionen con tu progreso. Cada decisión se guía por datos."
+          "title": "Diagnósticos de Precisión",
+          "description": "Evaluaciones basales exhaustivas, análisis de biomarcadores avanzados, pruebas metabólicas y seguimiento continuo mediante tecnología diagnóstica de última generación. Sus protocolos evolucionan con su progreso. Cada decisión terapéutica está guiada por datos objetivos y ciencia validada."
         },
         {
-          "title": "Protocolos científicos",
-          "description": "Todas las terapias están respaldadas por investigación y evidencia clínica. Empleamos modalidades validadas para mejorar la salud celular, acelerar la recuperación y ampliar la salud funcional."
+          "title": "Protocolos Científicamente Validados",
+          "description": "Todas nuestras terapias están respaldadas por investigación peer-reviewed y evidencia clínica robusta. Empleamos exclusivamente modalidades validadas científicamente para optimizar la salud celular, acelerar la recuperación tisular, mejorar la función mitocondrial y extender su healthspan (años de vida saludable)."
         },
         {
-          "title": "Enfoque holístico",
-          "description": "La optimización real requiere equilibrio. Abordamos recuperación, rendimiento, estética y longevidad con una visión integrada del cuerpo como un sistema interconectado."
+          "title": "Integración Holística",
+          "description": "La verdadera optimización de la salud requiere equilibrio sistémico. Abordamos de forma integrada la recuperación física, el rendimiento cognitivo, la estética regenerativa y la extensión de longevidad. Tratamos el cuerpo humano como el sistema interconectado y complejo que es, donde cada intervención potencia las demás."
         }
       ]
     },
     "services": {
+      "title": "Nuestros Servicios",
+      "subtitle": "Explora nuestra oferta integral de bienestar",
       "heading": "Longevidad · Bienestar · Estética",
-      "subheading": "Un nuevo estándar en longevidad de lujo. Más de 70 servicios. Protocolos diseñados para máxima efectividad y eficiencia de tiempo.",
+      "subheading": "Un nuevo estándar en wellness de lujo. Más de 70 terapias avanzadas. Protocolos optimizados para máxima efectividad científica y eficiencia temporal.",
+      "imageAlt": "Servicios de bienestar Hamaria Club incluyendo tecnología de longevidad, terapias de spa, tratamientos estéticos y diagnósticos avanzados",
       "pillars": {
         "longevity": {
           "title": "Longevidad",
-          "description": "Protocolos basados en datos para una salud óptima"
+          "description": "Protocolos basados en datos científicos para extender su healthspan y vitalidad"
         },
         "wellness": {
           "title": "Bienestar",
-          "description": "Equilibrio holístico para mente, cuerpo y espíritu"
+          "description": "Equilibrio holístico y regeneración integral para mente, cuerpo y espíritu"
         },
         "aesthetics": {
           "title": "Estética",
-          "description": "Belleza regenerativa y excelencia antienvejecimiento"
+          "description": "Medicina estética regenerativa y excelencia en antienvejecimiento"
         }
       },
-      "modalTitle": "Ecosistema integral de bienestar",
+      "modalTitle": "Ecosistema Integral de Optimización de la Salud",
+      "modalDescription": "Más de 70 terapias avanzadas organizadas en protocolos científicamente validados. Desde diagnósticos de medicina de precisión hasta terapias regenerativas de vanguardia, cada modalidad está diseñada para maximizar su salud celular, rendimiento cognitivo y longevidad funcional.",
       "items": [
         {
-          "title": "Seguimiento de biomarcadores y protocolos basados en datos",
-          "description": "Diagnósticos exhaustivos, monitorización continua de biomarcadores y protocolos personalizados guiados por tus datos únicos para una optimización de precisión.",
+          "title": "Seguimiento de Biomarcadores y Protocolos Basados en Datos",
+          "description": "Evaluaciones diagnósticas exhaustivas, monitorización continua de biomarcadores clave y protocolos terapéuticos personalizados guiados por sus datos biológicos únicos. Optimización de precisión respaldada por ciencia.",
           "direction": "left",
           "primary": true
         },
         {
-          "title": "Biohacking integrativo de alta frecuencia",
-          "description": "Terapias regenerativas avanzadas, optimización de la recuperación y modalidades de vanguardia trabajando en sinergia para una transformación holística.",
+          "title": "Biohacking Integrativo de Alta Frecuencia",
+          "description": "Terapias regenerativas avanzadas, optimización acelerada de la recuperación y modalidades tecnológicas de vanguardia trabajando en sinergia para una transformación holística y sostenible de su salud.",
           "direction": "right",
           "primary": true
         },
         {
-          "title": "Medicina física y regeneración",
-          "description": "HBOT, PEMF, fotobiomodulación NIR, crioterapia e IHHT para optimizar la recuperación tisular, la movilidad y el rendimiento físico.",
+          "title": "Medicina Física y Regeneración Tisular",
+          "description": "Oxigenoterapia hiperbárica (HBOT), campos electromagnéticos pulsados (PEMF), fotobiomodulación infrarroja (NIR), crioterapia y entrenamiento hipóxico intermitente (IHHT) para optimizar recuperación, movilidad y rendimiento físico.",
           "direction": "top",
           "primary": false
         },
         {
-          "title": "Gestión del estrés",
-          "description": "Sauna, inmersión en hielo, masajes Signature y flotación sensorial para regular el sistema nervioso y mejorar la relajación.",
+          "title": "Regulación del Sistema Nervioso y Gestión del Estrés",
+          "description": "Termoterapia en sauna infrarroja, inmersión en hielo, masajes terapéuticos signature y flotación sensorial para regular el sistema nervioso autónomo, reducir cortisol y mejorar la capacidad de recuperación al estrés.",
           "direction": "right",
           "primary": false
         },
         {
-          "title": "Medicina de precisión",
-          "description": "Consultas médicas especializadas y paneles metabólicos exhaustivos para una optimización personalizada de tu salud.",
+          "title": "Medicina de Precisión y Consulta Médica Especializada",
+          "description": "Consultas con médicos especialistas en medicina funcional integrativa y paneles metabólicos exhaustivos para optimización personalizada de su salud basada en su perfil biológico único.",
           "direction": "left",
           "primary": false
         },
         {
-          "title": "Diagnósticos avanzados",
-          "description": "Edad epigenética, análisis hormonal, pruebas de VO₂ máx y seguimiento de biomarcadores para una optimización basada en datos.",
+          "title": "Diagnósticos Avanzados y Análisis Predictivo",
+          "description": "Evaluación de edad epigenética, análisis hormonal completo, pruebas de VO₂ máx, composición corporal avanzada y seguimiento longitudinal de biomarcadores para optimización basada en datos objetivos.",
           "direction": "bottom",
           "primary": false
         },
         {
-          "title": "Nutrición y suplementación",
-          "description": "Protocolos nutricionales personalizados, terapia IV, NAD+ y suplementación estratégica según tu perfil biológico.",
+          "title": "Nutrición Personalizada y Terapia Intravenosa",
+          "description": "Protocolos nutricionales individualizados, terapia intravenosa con vitaminas y minerales, NAD+ IV y suplementación estratégica diseñada según su perfil metabólico y objetivos de salud.",
           "direction": "top",
           "primary": false
         },
         {
-          "title": "Movimiento",
-          "description": "Entrenamiento funcional personalizado, movilidad articular y evaluación biomecánica para construir resiliencia física.",
+          "title": "Entrenamiento Funcional y Movilidad",
+          "description": "Programas de entrenamiento funcional personalizados, optimización de movilidad articular y evaluación biomecánica avanzada para construir resiliencia física y prevenir lesiones.",
           "direction": "right",
           "primary": false
         },
         {
-          "title": "Psique y cognición",
-          "description": "Mindfulness avanzado, protocolos cognitivos y programas personalizados para optimizar el rendimiento mental y emocional.",
+          "title": "Optimización Cognitiva y Bienestar Mental",
+          "description": "Programas de mindfulness avanzado, protocolos de optimización cognitiva y terapias personalizadas para maximizar el rendimiento mental, claridad cognitiva y equilibrio emocional sostenible.",
           "direction": "left",
           "primary": false
         },
         {
-          "title": "Sueño y ritmo circadiano",
-          "description": "Optimización del sueño profundo, equilibrio hormonal y sincronización circadiana para una recuperación óptima y energía sostenible.",
+          "title": "Optimización del Sueño y Ritmo Circadiano",
+          "description": "Protocolos avanzados de optimización del sueño profundo, equilibrio hormonal nocturno y sincronización circadiana mediante tecnología y suplementación específica para maximizar la recuperación, energía diurna y longevidad.",
           "direction": "bottom",
           "primary": false
       }
@@ -1563,10 +1575,10 @@
     ]
   },
   "contact": {
-    "heading": "Hablemos",
-      "subheading": "/ Ponte en contacto",
+    "heading": "Conversemos",
+      "subheading": "/ Inicie su transformación",
       "email": "hola@hamaria.com",
-      "location": "Puerta de Alcalá, 28014, Madrid, España",
+      "location": "Barrio del Retiro, 28014, Madrid, España",
       "socials": ["Instagram"]
     },
     "footer": {

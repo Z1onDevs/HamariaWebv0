@@ -270,7 +270,7 @@ export const ServicesSection = memo(function ServicesSection() {
                 <div className="relative w-full h-[35vh] sm:h-[40vh] md:h-[45vh] lg:h-[50vh] max-h-[500px]">
                   <Image
                     src="/services figure.png"
-                    alt="Hamaria Services"
+                    alt={services.imageAlt || "Hamaria Services"}
                     fill
                     className="object-contain opacity-90"
                     priority

@@ -1,0 +1,21 @@
+# Hamaria Club - Robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes from indexing
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Allow crawling of static assets
+Allow: /_next/static/
+Allow: /_next/image
+
+# Sitemap location
+Sitemap: https://hamariaclub.com/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+# Crawl-delay: 1
+

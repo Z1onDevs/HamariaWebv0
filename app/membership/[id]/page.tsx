@@ -6,6 +6,7 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { MagneticButton } from "@/components/magnetic-button"
 import { MembershipComparison } from "@/components/membership-comparison"
+import { StructuredData } from "@/components/structured-data"
 import { ArrowLeft, Check, TrendingUp } from "lucide-react"
 import { useEffect, useState } from "react"
 import { therapyMatrix } from "@/lib/therapy-matrix"
@@ -72,8 +73,18 @@ export default function MembershipDetailPage() {
   const yearlySavings = tier.monthlyPerceivedValue * 12 - tier.yearlyPrice
   const savingsPercentage = Math.round((monthlySavings / tier.monthlyPerceivedValue) * 100)
 
+  // Prepare structured data for membership offer
+  const membershipStructuredData = {
+    name: tier.name,
+    description: tier.description,
+    price: tier.monthlyPrice.toString(),
+  }
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-background">
+      {/* SEO: Structured Data */}
+      <StructuredData type="membership" data={membershipStructuredData} />
+      
       {/* Background */}
       <div className="fixed inset-0 z-0">
         <ShaderWrapper />
