@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { supabaseAdmin } from "@/lib/supabase/admin"
 import { sendWelcomeEmail } from "@/lib/email/sendWelcomeEmail"
+import { emailQueue } from "@/lib/email/emailQueue"
 
 export async function POST(request: Request) {
   try {
@@ -131,51 +132,61 @@ export async function POST(request: Request) {
         </html>
       `
 
-    // Send email using Resend
-    // Try with custom domain first, fallback to resend.dev if domain not verified
-    let fromAddress = "Hamaria Club <memberships@hamaria.com>"
+    // Send admin notification email using rate-limited queue
+    console.log("=== Sending Admin Notification Email ===")
+    let adminEmailResult
     
-    const { data, error } = await resend.emails.send({
-      from: fromAddress,
-      to: to,
-      subject: subject,
-      replyTo: email,
-      html: emailHtml,
-    })
-
-    if (error) {
-      console.error("Resend error:", error)
-      console.error("Error details:", JSON.stringify(error, null, 2))
-      
-      // If domain not verified, try with resend.dev domain
-      if (error.message?.includes('domain') || error.message?.includes('verified')) {
-        console.log("Retrying with resend.dev domain...")
-        const retryResult = await resend.emails.send({
-          from: "Hamaria Club <onboarding@resend.dev>",
+    try {
+      adminEmailResult = await emailQueue.add(async () => {
+        let fromAddress = "Hamaria Club <memberships@hamaria.com>"
+        
+        const { data, error } = await resend.emails.send({
+          from: fromAddress,
           to: to,
           subject: subject,
           replyTo: email,
           html: emailHtml,
         })
-        
-        if (retryResult.error) {
-          console.error("Retry failed:", retryResult.error)
-          return NextResponse.json({ success: false, error: retryResult.error.message }, { status: 500 })
+
+        if (error) {
+          console.error("Resend error:", error)
+          
+          // If domain not verified, try with resend.dev domain
+          if (error.message?.includes('domain') || error.message?.includes('verified')) {
+            console.log("Retrying with resend.dev domain...")
+            const retryResult = await resend.emails.send({
+              from: "Hamaria Club <onboarding@resend.dev>",
+              to: to,
+              subject: subject,
+              replyTo: email,
+              html: emailHtml,
+            })
+            
+            if (retryResult.error) {
+              throw new Error(retryResult.error.message)
+            }
+            
+            console.log("Admin email sent via resend.dev:", retryResult.data)
+            return retryResult.data
+          }
+          
+          throw new Error(error.message)
         }
-        
-        console.log("Email sent successfully with resend.dev:", retryResult.data)
-        return NextResponse.json({ success: true, message: "Application submitted successfully", data: retryResult.data })
-      }
-      
-      return NextResponse.json({ success: false, error: error.message }, { status: 500 })
+
+        console.log("Admin email sent successfully:", data)
+        return data
+      })
+    } catch (emailError: any) {
+      console.error("Admin email failed:", emailError)
+      return NextResponse.json({ success: false, error: emailError.message }, { status: 500 })
     }
 
-    console.log("Email sent successfully:", data)
+    console.log("✓ Admin notification queued/sent")
     return NextResponse.json({ 
       success: true, 
       message: "Application submitted successfully", 
       data: {
-        email: data,
+        email: adminEmailResult,
         application: applicationData
       }
     })

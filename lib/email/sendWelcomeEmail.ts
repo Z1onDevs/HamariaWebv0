@@ -1,7 +1,8 @@
 import { Resend } from 'resend'
+import { emailQueue } from './emailQueue'
 
 export async function sendWelcomeEmail(to: string, name?: string) {
-  console.log('[Welcome Email] Starting send to:', to, 'Name:', name)
+  console.log('[Welcome Email] Queueing send to:', to, 'Name:', name)
   
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
@@ -42,39 +43,42 @@ export async function sendWelcomeEmail(to: string, name?: string) {
   const fromBranded = 'Hamaria Club <welcome@hamaria.com>'
   const subject = 'Welcome to Hamaria'
 
-  console.log('[Welcome Email] Attempting send from:', fromBranded)
-  
-  const firstAttempt = await resend.emails.send({
-    from: fromBranded,
-    to,
-    subject,
-    html
-  })
-
-  if (firstAttempt.error) {
-    const message = firstAttempt.error.message || ''
-    console.error('[Welcome Email] ⚠️ First attempt failed:', message)
+  // Queue the email send to respect rate limits
+  return emailQueue.add(async () => {
+    console.log('[Welcome Email] Attempting send from:', fromBranded)
     
-    // Try with resend.dev domain for any error
-    console.log('[Welcome Email] Retrying with resend.dev domain...')
-    const retry = await resend.emails.send({
-      from: 'Hamaria Club <onboarding@resend.dev>',
+    const firstAttempt = await resend.emails.send({
+      from: fromBranded,
       to,
       subject,
       html
     })
-    
-    if (retry.error) {
-      console.error('[Welcome Email] ❌ Retry failed:', retry.error.message)
-      throw new Error(retry.error.message)
-    }
-    
-    console.log('[Welcome Email] ✓ Email sent via resend.dev:', retry.data?.id)
-    return retry.data?.id
-  }
 
-  console.log('[Welcome Email] ✓ Email sent via custom domain:', firstAttempt.data?.id)
-  return firstAttempt.data?.id
+    if (firstAttempt.error) {
+      const message = firstAttempt.error.message || ''
+      console.error('[Welcome Email] ⚠️ First attempt failed:', message)
+      
+      // Try with resend.dev domain for any error
+      console.log('[Welcome Email] Retrying with resend.dev domain...')
+      const retry = await resend.emails.send({
+        from: 'Hamaria Club <onboarding@resend.dev>',
+        to,
+        subject,
+        html
+      })
+      
+      if (retry.error) {
+        console.error('[Welcome Email] ❌ Retry failed:', retry.error.message)
+        throw new Error(retry.error.message)
+      }
+      
+      console.log('[Welcome Email] ✓ Email sent via resend.dev:', retry.data?.id)
+      return retry.data?.id
+    }
+
+    console.log('[Welcome Email] ✓ Email sent via custom domain:', firstAttempt.data?.id)
+    return firstAttempt.data?.id
+  })
 }
 
 
