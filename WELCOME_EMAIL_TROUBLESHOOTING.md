@@ -1,6 +1,6 @@
 # Welcome Email Troubleshooting Guide
 
-## ✅ Issues Fixed (Latest Update)
+## ✅ Issues Fixed (Latest Update - Nov 13, 2025)
 
 ### Problems Identified & Resolved:
 
@@ -13,6 +13,12 @@
 3. **❌ Fallback logic too narrow**
    - **Fixed:** Now falls back to resend.dev for ANY error, not just domain errors
 
+4. **❌ "Too many requests" error from Resend (2/second limit)** 🆕
+   - **Fixed:** Implemented email queue with automatic rate limiting
+   - 550ms delay between emails ensures <2 emails/second
+   - Both admin and welcome emails now queued
+   - Prevents rate limit errors even with multiple rapid submissions
+
 ---
 
 ## 🔍 How to Check If It's Working
@@ -23,17 +29,25 @@ When a membership application is submitted, you should see:
 
 ```bash
 === Sending Welcome Email to Applicant ===
-[Welcome Email] Starting send to: user@example.com Name: John Doe
+[Welcome Email] Queueing send to: user@example.com Name: John Doe
 [Welcome Email] ✓ API key found
+[Email Queue] Added job abc123. Queue size: 1
+[Email Queue] Starting to process 1 job(s)
+[Email Queue] Processing job abc123
 [Welcome Email] Attempting send from: Hamaria Club <welcome@hamaria.com>
 
 # If custom domain works:
 [Welcome Email] ✓ Email sent via custom domain: abc123-xyz
+[Email Queue] ✓ Job abc123 completed
 
 # OR if fallback to resend.dev:
 [Welcome Email] ⚠️ First attempt failed: Domain not verified
 [Welcome Email] Retrying with resend.dev domain...
 [Welcome Email] ✓ Email sent via resend.dev: def456-uvw
+[Email Queue] ✓ Job def456 completed
+
+# If multiple emails queued (rate limiting in action):
+[Email Queue] Rate limit delay: 250ms before job xyz789
 ```
 
 ### 2. Check Resend Dashboard
@@ -141,6 +155,28 @@ But email never arrives in inbox.
 **If you see a different address:**
 1. Check `lib/email/sendWelcomeEmail.ts` line 42
 2. Verify domain is fully verified in Resend dashboard
+
+---
+
+### Issue: "Too many requests" error from Resend
+
+**Symptoms:**
+```bash
+Error: Too many requests. Maximum 2 emails per second.
+```
+
+**This should NOT happen after the latest fix!**
+
+**Solution Applied:**
+- Email queue automatically spaces emails 550ms apart
+- Queue handles bursts gracefully
+- Both admin and welcome emails use the same queue
+
+**If you still see this:**
+1. Check you're running the latest code: `git pull`
+2. Restart your dev server
+3. Verify `emailQueue.ts` exists in `lib/email/`
+4. Check logs show `[Email Queue]` messages
 
 ---
 
@@ -315,18 +351,24 @@ Some email providers (corporate, edu) block automated emails:
 
 ### Current Setup:
 ```typescript
+// lib/email/emailQueue.ts (NEW)
+- Rate limiting: 550ms delay between emails (~1.8/sec)
+- Queue management: Automatic processing
+- Multiple email support: Admin + Welcome queued together
+- Error handling: Per-job error logging
+
 // lib/email/sendWelcomeEmail.ts
 - Primary sender: welcome@hamaria.com
 - Fallback sender: onboarding@resend.dev
 - Template: Modern, responsive HTML
 - Error handling: Comprehensive with logging
-```
+- Queued: Yes, via emailQueue
 
-```typescript
 // app/api/contact/route.ts
 - Trigger: Immediately after application saved
-- Execution: Non-blocking (doesn't delay response)
+- Execution: Queued (doesn't block, respects rate limits)
 - Error handling: Logs but doesn't fail request
+- Admin email: Also queued via emailQueue
 ```
 
 ### Environment Variables Required:
