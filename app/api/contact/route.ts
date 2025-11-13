@@ -55,6 +55,16 @@ export async function POST(request: Request) {
     console.log("Selected plan:", plan)
     console.log("Free months offer:", freeMonths)
 
+    // Send welcome email to applicant first (non-blocking)
+    console.log("=== Sending Welcome Email to Applicant ===")
+    sendWelcomeEmail(email, name)
+      .then((emailId) => {
+        console.log("✓ Welcome email queued/sent successfully:", emailId)
+      })
+      .catch((welErr) => {
+        console.error("✗ Welcome email failed (non-blocking):", welErr)
+      })
+
     // Membership Application Email
     const emailHtml = `
         <!DOCTYPE html>
@@ -154,11 +164,6 @@ export async function POST(request: Request) {
         }
         
         console.log("Email sent successfully with resend.dev:", retryResult.data)
-        try {
-          await sendWelcomeEmail(email, name)
-        } catch (welErr) {
-          console.error("Welcome email failed:", welErr)
-        }
         return NextResponse.json({ success: true, message: "Application submitted successfully", data: retryResult.data })
       }
       
@@ -166,11 +171,6 @@ export async function POST(request: Request) {
     }
 
     console.log("Email sent successfully:", data)
-    try {
-      await sendWelcomeEmail(email, name)
-    } catch (welErr) {
-      console.error("Welcome email failed:", welErr)
-    }
     return NextResponse.json({ 
       success: true, 
       message: "Application submitted successfully", 

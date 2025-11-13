@@ -1,12 +1,15 @@
 import { Resend } from 'resend'
 
 export async function sendWelcomeEmail(to: string, name?: string) {
+  console.log('[Welcome Email] Starting send to:', to, 'Name:', name)
+  
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
-    console.error('Missing RESEND_API_KEY environment variable')
+    console.error('[Welcome Email] ❌ Missing RESEND_API_KEY environment variable')
     throw new Error('Email service not configured')
   }
 
+  console.log('[Welcome Email] ✓ API key found')
   const resend = new Resend(apiKey)
 
   const html = `
@@ -39,6 +42,8 @@ export async function sendWelcomeEmail(to: string, name?: string) {
   const fromBranded = 'Hamaria Club <welcome@hamaria.com>'
   const subject = 'Welcome to Hamaria'
 
+  console.log('[Welcome Email] Attempting send from:', fromBranded)
+  
   const firstAttempt = await resend.emails.send({
     from: fromBranded,
     to,
@@ -48,21 +53,27 @@ export async function sendWelcomeEmail(to: string, name?: string) {
 
   if (firstAttempt.error) {
     const message = firstAttempt.error.message || ''
-    if (message.includes('domain') || message.includes('verified')) {
-      const retry = await resend.emails.send({
-        from: 'Hamaria Club <onboarding@resend.dev>',
-        to,
-        subject,
-        html
-      })
-      if (retry.error) {
-        throw new Error(retry.error.message)
-      }
-      return retry.data?.id
+    console.error('[Welcome Email] ⚠️ First attempt failed:', message)
+    
+    // Try with resend.dev domain for any error
+    console.log('[Welcome Email] Retrying with resend.dev domain...')
+    const retry = await resend.emails.send({
+      from: 'Hamaria Club <onboarding@resend.dev>',
+      to,
+      subject,
+      html
+    })
+    
+    if (retry.error) {
+      console.error('[Welcome Email] ❌ Retry failed:', retry.error.message)
+      throw new Error(retry.error.message)
     }
-    throw new Error(message)
+    
+    console.log('[Welcome Email] ✓ Email sent via resend.dev:', retry.data?.id)
+    return retry.data?.id
   }
 
+  console.log('[Welcome Email] ✓ Email sent via custom domain:', firstAttempt.data?.id)
   return firstAttempt.data?.id
 }
 
