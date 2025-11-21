@@ -50,26 +50,37 @@
       "addOnPrograms": "Specialized Programs",
       "addOnProgramsSubtitle": "Curated programs designed for specific wellness goals",
       "seePrograms": "See Programs",
+      "scheduleTour": "Schedule Tour",
       "unlimited": "Unlimited",
       "perYear": "per year",
       "sessions": "sessions",
       "guestPasses": "guest passes",
+      "totalTherapies": "Total",
+      "unlimitedTherapies": "unlimited therapies",
+      "annualSessions": "annual sessions",
       "categories": {
         "fitness": {
           "title": "Fitness",
           "subtitle": "Unlimited Training",
-          "description": "Small group classes, personal training, Pilates reformer, mobility coaching, and outdoor training in Retiro Park. Train as much as you want with expert guidance."
+          "description": "Train without limits. Our fitness program includes small group classes, 1-on-1 training, and outdoor experiences designed by expert coaches to help you reach peak performance."
         },
         "wellness": {
           "title": "Wellness",
           "subtitle": "Full Spa Access",
-          "description": "Complete access to our spa facilities including infrared sauna, dry sauna, steam room, ice plunge, cryotherapy, float tank, red light therapy, and private contrast suite."
+          "description": "Our spa facilities offer the perfect environment for recovery, detoxification, and deep relaxation. Experience world-class wellness amenities designed for your complete rejuvenation."
         },
         "longevity": {
           "title": "Longevity",
           "subtitle": "Members Lounge & Health Tracking",
-          "description": "Private lounge with PEMF, HBOT, IHHT, vagus nerve stimulation, H₂ therapy, and more. Includes monthly checkups and annual comprehensive longevity assessment."
+          "description": "Access our private members lounge featuring cutting-edge longevity devices in a peaceful environment with optional privacy and silence. Plus ongoing health monitoring to track and optimize your wellness journey."
         }
+      },
+      "programOneLiners": {
+        "aesthetics": "Regenerative beauty treatments and body contouring for visible anti-aging results",
+        "stress": "Master stress and optimize cognitive performance through advanced therapies",
+        "detox": "Metabolic optimization and sustainable weight transformation protocols",
+        "pain": "Break free from pain with intensive therapeutic and rehabilitation protocols",
+        "longevity": "Maximize healthspan with cutting-edge diagnostics and longevity optimization"
       },
       "membership": {
         "id": "hamaria",
@@ -851,26 +862,37 @@
       "addOnPrograms": "Programas especializados",
       "addOnProgramsSubtitle": "Programas curados diseñados para objetivos de bienestar específicos",
       "seePrograms": "Ver programas",
+      "scheduleTour": "Agendar visita",
       "unlimited": "Ilimitado",
       "perYear": "al año",
       "sessions": "sesiones",
       "guestPasses": "pases de invitado",
+      "totalTherapies": "Total",
+      "unlimitedTherapies": "terapias ilimitadas",
+      "annualSessions": "sesiones anuales",
       "categories": {
         "fitness": {
           "title": "Fitness",
           "subtitle": "Entrenamiento ilimitado",
-          "description": "Clases en grupos pequeños, entrenamiento personal, Pilates reformer, coaching de movilidad y entrenamiento al aire libre en el Retiro. Entrena todo lo que quieras con orientación experta."
+          "description": "Entrena sin límites. Nuestro programa de fitness incluye clases en grupos pequeños, entrenamiento 1-a-1 y experiencias al aire libre diseñadas por entrenadores expertos para ayudarte a alcanzar el máximo rendimiento."
         },
         "wellness": {
           "title": "Bienestar",
           "subtitle": "Acceso completo al spa",
-          "description": "Acceso completo a nuestras instalaciones spa incluyendo sauna infrarroja, sauna seca, sala de vapor, inmersión en hielo, crioterapia, tanque de flotación, terapia de luz roja y suite de contraste privada."
+          "description": "Nuestras instalaciones spa ofrecen el entorno perfecto para recuperación, detoxificación y relajación profunda. Experimenta servicios de bienestar de clase mundial diseñados para tu rejuvenecimiento completo."
         },
         "longevity": {
           "title": "Longevidad",
           "subtitle": "Salón de miembros y seguimiento de salud",
-          "description": "Salón privado con PEMF, HBOT, IHHT, estimulación del nervio vago, terapia H₂ y más. Incluye revisiones mensuales y evaluación integral anual de longevidad."
+          "description": "Accede a nuestro salón privado de miembros con dispositivos de longevidad de vanguardia en un ambiente tranquilo con privacidad y silencio opcionales. Además, monitoreo continuo de salud para rastrear y optimizar tu viaje de bienestar."
         }
+      },
+      "programOneLiners": {
+        "aesthetics": "Tratamientos de belleza regenerativa y contorneo corporal para resultados anti-edad visibles",
+        "stress": "Domina el estrés y optimiza el rendimiento cognitivo con terapias avanzadas",
+        "detox": "Optimización metabólica y protocolos de transformación de peso sostenible",
+        "pain": "Libérate del dolor con protocolos terapéuticos y de rehabilitación intensivos",
+        "longevity": "Maximiza tu vida saludable con diagnósticos de vanguardia y optimización de longevidad"
       },
       "membership": {
         "id": "hamaria",
