@@ -24,6 +24,10 @@ export default function MembershipPage() {
   const { ref: wellnessRef, isVisible: wellnessVisible } = useReveal(0.2)
   const { ref: longevityRef, isVisible: longevityVisible } = useReveal(0.2)
   const { ref: programsRef, isVisible: programsVisible } = useReveal(0.2)
+  
+  // Tab state for programs
+  const [activeTab, setActiveTab] = useState<'aesthetics' | 'stress' | 'detox' | 'pain' | 'longevity'>('aesthetics')
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   const membership = t.memberships.membership
   const categories = t.memberships.categories
@@ -65,6 +69,37 @@ export default function MembershipPage() {
       ;(window as any).clarity("set", "membership_detail_view", "hamaria")
     }
   }, [])
+
+  // Keyboard navigation for tabs
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!programsVisible) return
+      
+      const tabs: ('aesthetics' | 'stress' | 'detox' | 'pain' | 'longevity')[] = ['aesthetics', 'stress', 'detox', 'pain', 'longevity']
+      const currentIndex = tabs.indexOf(activeTab)
+      
+      if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        const nextIndex = (currentIndex + 1) % tabs.length
+        setIsTransitioning(true)
+        setTimeout(() => {
+          setActiveTab(tabs[nextIndex])
+          setIsTransitioning(false)
+        }, 150)
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        const prevIndex = (currentIndex - 1 + tabs.length) % tabs.length
+        setIsTransitioning(true)
+        setTimeout(() => {
+          setActiveTab(tabs[prevIndex])
+          setIsTransitioning(false)
+        }, 150)
+      }
+    }
+    
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [activeTab, programsVisible])
 
   const membershipStructuredData = {
     name: membership.name,
@@ -533,13 +568,13 @@ export default function MembershipPage() {
           </div>
         </div>
 
-        {/* ADD-ON PROGRAMS SECTION */}
+        {/* ADD-ON PROGRAMS SECTION - TABBED INTERFACE */}
         <div ref={programsRef} data-section="programs" id="programs-section" className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12 scroll-mt-20">
           <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
             programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
-            <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-4xl mx-auto">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-3 sm:mb-4 md:mb-5">
                 {t.memberships.addOnPrograms}
               </h2>
@@ -551,57 +586,140 @@ export default function MembershipPage() {
               </p>
             </div>
 
-            {/* Programs Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
-              {addOnPrograms.map((program, index) => (
-                <div
-                  key={program.id}
-                  className={`rounded-xl border-2 border-border/30 bg-card/10 p-5 sm:p-6 md:p-7 lg:p-8 hover:border-primary/40 hover:bg-card/20 transition-all duration-300 group relative overflow-hidden min-h-[44px] ${
-                    programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-                  }`}
-                  style={{
-                    borderTopColor: `${program.color}60`,
-                    borderTopWidth: '4px',
-                    transitionDelay: `${index * 100}ms`
-                  }}
-                >
-                  <div className="text-center">
-                    {/* Icon */}
-                    <div 
-                      className="inline-flex items-center justify-center rounded-full p-3 md:p-4 mb-4 md:mb-5"
-                      style={{ backgroundColor: `${program.color}20` }}
-                    >
-                      <div 
-                        className="h-8 w-8 md:h-10 md:w-10 rounded-full"
-                        style={{ backgroundColor: program.color }}
-                      />
-                    </div>
-                    
-                    {/* Name */}
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2 md:mb-3">
+            {/* Tab Navigation */}
+            <div className="mb-6 sm:mb-8 overflow-x-auto scrollbar-hide">
+              <div className="flex flex-wrap gap-2 sm:gap-3 justify-center min-w-min">
+                {addOnPrograms.map((program, index) => (
+                  <button
+                    key={program.id}
+                    onClick={() => {
+                      if (activeTab !== program.id) {
+                        setIsTransitioning(true)
+                        setTimeout(() => {
+                          setActiveTab(program.id)
+                          setIsTransitioning(false)
+                        }, 150)
+                      }
+                    }}
+                    className={`px-4 py-2 md:px-6 md:py-3 rounded-lg transition-all duration-200 whitespace-nowrap min-h-[44px] ${
+                      activeTab === program.id
+                        ? 'bg-card/30 shadow-md'
+                        : 'bg-card/10 hover:bg-card/20'
+                    }`}
+                    style={{
+                      border: activeTab === program.id ? `2px solid ${program.color}` : '1px solid rgb(var(--border) / 0.3)',
+                      borderBottomWidth: activeTab === program.id ? '3px' : '1px',
+                      borderBottomColor: activeTab === program.id ? program.color : undefined,
+                      color: activeTab === program.id ? 'rgb(var(--foreground))' : 'rgb(var(--foreground) / 0.7)',
+                    }}
+                    aria-selected={activeTab === program.id}
+                    role="tab"
+                  >
+                    <span className="text-xs sm:text-sm md:text-base font-medium">
                       {language === "es" ? program.nameES : program.name}
-                    </h3>
-                    
-                    {/* Tagline */}
-                    <p className="text-xs md:text-sm font-medium uppercase tracking-wide mb-4 md:mb-5" style={{ color: program.color }}>
-                      {language === "es" ? program.taglineES : program.tagline}
-                    </p>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Tab Content */}
+            <div 
+              className={`rounded-2xl border border-border/30 bg-card/10 backdrop-blur-sm p-6 md:p-8 lg:p-10 transition-opacity duration-200 min-h-[500px] ${
+                isTransitioning ? 'opacity-0' : 'opacity-100'
+              }`}
+            >
+              {addOnPrograms.map((program) => {
+                if (program.id !== activeTab) return null
+                
+                return (
+                  <div key={program.id} className="space-y-6 md:space-y-8">
+                    {/* Program Header */}
+                    <div className="text-center pb-6 border-b border-border/30">
+                      {/* Icon */}
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full p-4 md:p-5 mb-4 md:mb-5"
+                        style={{ backgroundColor: `${program.color}20` }}
+                      >
+                        <div 
+                          className="h-12 w-12 md:h-16 md:w-16 rounded-full"
+                          style={{ backgroundColor: program.color }}
+                        />
+                      </div>
+                      
+                      {/* Name */}
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-light text-foreground mb-2 md:mb-3">
+                        {language === "es" ? program.nameES : program.name}
+                      </h3>
+                      
+                      {/* Tagline */}
+                      <p className="text-sm md:text-base font-medium uppercase tracking-wide mb-3 md:mb-4" style={{ color: program.color }}>
+                        {language === "es" ? program.taglineES : program.tagline}
+                      </p>
+
+                      {/* Pricing Badge */}
+                      <div 
+                        className="inline-block px-4 py-2 rounded-full text-sm md:text-base font-medium"
+                        style={{ 
+                          backgroundColor: `${program.color}20`,
+                          color: program.color,
+                          border: `1px solid ${program.color}40`
+                        }}
+                      >
+                        +€{program.yearlyPrice.toLocaleString()}/year
+                      </div>
+                    </div>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed mb-6 md:mb-8">
-                      {language === "es" ? program.descriptionES : program.description}
-                    </p>
+                    <div>
+                      <p className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed text-center max-w-3xl mx-auto">
+                        {language === "es" ? program.descriptionES : program.description}
+                      </p>
+                    </div>
 
-                    {/* CTA */}
-                    <button
-                      onClick={() => router.push("/?section=contact")}
-                      className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-primary hover:text-primary/80 transition-all min-h-[44px] justify-center group"
-                    >
-                      Learn more <ArrowRight className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    {/* Features List */}
+                    <div>
+                      <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-4 md:mb-6 text-center">
+                        Features Included
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
+                        {(language === "es" ? program.featuresES : program.features).map((feature, idx) => (
+                          <div key={idx} className="flex items-start gap-3 p-3 rounded-lg bg-card/20 hover:bg-card/30 transition-colors">
+                            <Check 
+                              className="h-5 w-5 flex-shrink-0 mt-0.5" 
+                              style={{ color: program.color }} 
+                            />
+                            <span className="text-sm md:text-base text-foreground/80 leading-relaxed">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Session Count */}
+                    <div className="text-center py-4 rounded-xl bg-card/20 border border-border/30">
+                      <p className="text-xs uppercase tracking-wide text-foreground/50 mb-1">
+                        Annual Sessions
+                      </p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-light text-foreground">
+                        {language === "es" ? program.sessionCountES : program.sessionCount}
+                      </p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="flex justify-center pt-4">
+                      <MagneticButton
+                        variant="primary"
+                        className="w-full sm:w-auto min-w-[240px] shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 text-base sm:text-lg py-4 px-8 min-h-[56px]"
+                        onClick={() => router.push("/?section=contact")}
+                      >
+                        {t.memberships.applyNow}
+                      </MagneticButton>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>
