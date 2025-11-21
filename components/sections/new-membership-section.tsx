@@ -30,9 +30,9 @@ export const NewMembershipSection = memo(function NewMembershipSection({
     <section
       ref={ref}
       data-section="membership"
-      className="relative w-screen xl:w-full shrink-0 flex items-center justify-center min-h-screen py-12 sm:py-16 md:py-20 lg:py-24 overflow-visible"
+      className="relative w-screen shrink-0 flex items-center justify-center min-h-screen py-12 sm:py-16 md:py-20 lg:py-24 overflow-visible"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-4xl sm:max-w-5xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-6 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <div 
           className={`transition-all duration-1000 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
@@ -108,9 +108,9 @@ export const NewMembershipSection = memo(function NewMembershipSection({
               {t.memberships.whatsIncluded}
             </h3>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 lg:gap-8 xl:gap-10 max-w-6xl mx-auto">
               {/* FITNESS CARD */}
-              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-5 sm:p-6 md:p-7 lg:p-8 hover:bg-card/30 hover:border-border/60 transition-all duration-300 min-h-[44px]">
+              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-5 sm:p-6 lg:p-7 xl:p-8 hover:bg-card/30 hover:border-border/60 transition-all duration-300 min-h-[44px]">
                 <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 text-center">💪</div>
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground mb-2 md:mb-3 text-center">
                   {t.memberships.categories?.fitness?.title || "Fitness"}
@@ -124,7 +124,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
               </div>
               
               {/* WELLNESS CARD */}
-              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-5 sm:p-6 md:p-7 lg:p-8 hover:bg-card/30 hover:border-border/60 transition-all duration-300 min-h-[44px]">
+              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-5 sm:p-6 lg:p-7 xl:p-8 hover:bg-card/30 hover:border-border/60 transition-all duration-300 min-h-[44px]">
                 <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 text-center">💎</div>
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground mb-2 md:mb-3 text-center">
                   {t.memberships.categories?.wellness?.title || "Wellness"}
@@ -138,7 +138,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
               </div>
               
               {/* LONGEVITY CARD */}
-              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-5 sm:p-6 md:p-7 lg:p-8 hover:bg-card/30 hover:border-border/60 transition-all duration-300 min-h-[44px] sm:col-span-2 lg:col-span-1">
+              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-5 sm:p-6 lg:p-7 xl:p-8 hover:bg-card/30 hover:border-border/60 transition-all duration-300 min-h-[44px] sm:col-span-2 lg:col-span-1">
                 <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 md:mb-5 text-center">🧬</div>
                 <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground mb-2 md:mb-3 text-center">
                   {t.memberships.categories?.longevity?.title || "Longevity"}
@@ -178,7 +178,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-foreground mb-5 sm:mb-6 md:mb-8 text-center">
               {t.memberships.unlimitedAccess}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-7xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto">
               {unlimitedTherapies.map((therapy, index) => (
                 <div
                   key={index}
@@ -198,7 +198,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
             <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-foreground mb-5 sm:mb-6 md:mb-8 text-center">
               {t.memberships.includedSessions}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 max-w-5xl mx-auto">
               {limitedTherapies.map((therapy, index) => {
                 const allocation = therapy.baseAllocation
                 if (allocation === 0 || !allocation) return null
@@ -236,7 +236,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
               {addOnPrograms.map((program) => (
                 <div
                   key={program.id}

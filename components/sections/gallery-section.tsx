@@ -136,7 +136,7 @@ export const GallerySection = memo(function GallerySection() {
         }}
       >
         <div className="mx-auto w-full max-w-4xl sm:max-w-5xl lg:max-w-6xl xl:max-w-7xl">
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5 xl:gap-6">
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:gap-5 xl:gap-6 2xl:gap-8">
             {galleryItems.slice(0, 6).map((item, i) => (
               <div
                 key={i}

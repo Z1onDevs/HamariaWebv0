@@ -81,7 +81,7 @@ export default function MembershipPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-background">
+    <main className="relative min-h-screen bg-background overflow-x-hidden">
       <StructuredData type="membership" data={membershipStructuredData} />
       
       {/* Background */}
@@ -94,8 +94,8 @@ export default function MembershipPage() {
       {/* Content */}
       <div className="relative z-10">
         {/* Header with Back Button */}
-        <div className="px-4 pt-6 sm:pt-8 sm:px-6 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-7xl">
+        <div className="px-6 pt-6 sm:pt-8 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl xl:max-w-7xl">
             <button
               onClick={() => router.back()}
               className="mb-4 sm:mb-6 flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground transition-colors min-h-[44px]"
@@ -107,8 +107,8 @@ export default function MembershipPage() {
         </div>
 
         {/* Hero Section */}
-        <div className="px-4 py-8 sm:py-12 sm:px-6 md:px-8 md:py-16 lg:px-12 lg:py-20">
-          <div className="mx-auto max-w-7xl text-center">
+        <div className="px-6 py-8 sm:py-12 sm:px-6 md:px-8 md:py-16 lg:px-10 lg:py-20 xl:px-12">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl xl:max-w-7xl text-center">
             <div
               className="inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 mb-4 sm:mb-6 text-xs md:text-sm font-medium"
               style={{
@@ -132,7 +132,7 @@ export default function MembershipPage() {
         </div>
 
         {/* Founders Offer */}
-        <div className="px-4 pb-10 sm:pb-12 sm:px-6 md:px-8 lg:px-12">
+        <div className="px-6 pb-10 sm:pb-12 sm:px-6 md:px-8 lg:px-10 xl:px-12">
           <div className="mx-auto max-w-2xl">
             <div className="rounded-2xl border border-primary/40 bg-primary/10 p-4 sm:p-6 text-center backdrop-blur-sm">
               <p className="font-sans text-sm sm:text-base md:text-lg lg:text-xl font-medium text-foreground">
@@ -146,8 +146,8 @@ export default function MembershipPage() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
-          <div className="mx-auto max-w-4xl">
+        <div className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12">
+          <div className="mx-auto max-w-3xl lg:max-w-4xl">
             <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
               {/* Monthly */}
               <div 
@@ -200,8 +200,8 @@ export default function MembershipPage() {
         </div>
 
         {/* Category Overview Cards */}
-        <div ref={overviewRef} className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
-          <div className="mx-auto max-w-7xl">
+        <div ref={overviewRef} className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl">
             <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-6 sm:mb-8 md:mb-12 text-center transition-all duration-1000 ${
               overviewVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
             }`}>
@@ -279,8 +279,8 @@ export default function MembershipPage() {
         </div>
 
         {/* FITNESS DETAILED SECTION */}
-        <div ref={fitnessRef} id="fitness-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
-          <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
+        <div ref={fitnessRef} id="fitness-section" className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12 scroll-mt-20">
+          <div className={`mx-auto max-w-5xl lg:max-w-6xl transition-all duration-1000 ${
             fitnessVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
@@ -300,7 +300,7 @@ export default function MembershipPage() {
             </div>
 
             {/* Fitness Therapies Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-5 sm:mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 mb-5 sm:mb-6">
               {fitnessTherapies.map((therapy, index) => (
                 <div
                   key={index}
@@ -341,8 +341,8 @@ export default function MembershipPage() {
         </div>
 
         {/* WELLNESS DETAILED SECTION */}
-        <div ref={wellnessRef} id="wellness-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
-          <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
+        <div ref={wellnessRef} id="wellness-section" className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12 scroll-mt-20">
+          <div className={`mx-auto max-w-5xl lg:max-w-6xl transition-all duration-1000 ${
             wellnessVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
@@ -364,7 +364,7 @@ export default function MembershipPage() {
             {/* Unlimited Spa Access */}
             <div className="mb-6 sm:mb-8">
               <h4 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">{t.memberships.unlimitedAccess}</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {wellnessUnlimited.map((therapy, index) => (
                   <div
                     key={index}
@@ -399,7 +399,7 @@ export default function MembershipPage() {
             {/* Annual Sessions */}
             <div className="mb-5 sm:mb-6">
               <h4 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">{t.memberships.includedSessions}</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
                 {wellnessAnnual.map((therapy, index) => {
                   const allocation = therapy.baseAllocation
                   if (allocation === 0 || !allocation) return null
@@ -433,8 +433,8 @@ export default function MembershipPage() {
         </div>
 
         {/* LONGEVITY DETAILED SECTION */}
-        <div ref={longevityRef} id="longevity-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
-          <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
+        <div ref={longevityRef} id="longevity-section" className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12 scroll-mt-20">
+          <div className={`mx-auto max-w-5xl lg:max-w-6xl transition-all duration-1000 ${
             longevityVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
@@ -534,8 +534,8 @@ export default function MembershipPage() {
         </div>
 
         {/* ADD-ON PROGRAMS SECTION */}
-        <div ref={programsRef} data-section="programs" id="programs-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
-          <div className={`mx-auto max-w-7xl transition-all duration-1000 ${
+        <div ref={programsRef} data-section="programs" id="programs-section" className="px-6 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-10 lg:pb-24 xl:px-12 scroll-mt-20">
+          <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
             programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
@@ -552,7 +552,7 @@ export default function MembershipPage() {
             </div>
 
             {/* Programs Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
               {addOnPrograms.map((program, index) => (
                 <div
                   key={program.id}
@@ -607,7 +607,7 @@ export default function MembershipPage() {
         </div>
 
         {/* FINAL CTA SECTION */}
-        <div className="px-4 pb-16 sm:pb-20 sm:px-6 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
+        <div className="px-6 pb-16 sm:pb-20 sm:px-6 md:px-8 md:pb-24 lg:px-10 lg:pb-28 xl:px-12">
           <div className="mx-auto max-w-4xl text-center">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-foreground mb-6 sm:mb-8">
               Ready to begin your wellness journey?

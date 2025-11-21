@@ -514,10 +514,6 @@
       max-width: 1920px;
       margin-left: auto;
       margin-right: auto;
-    }
-    
-    /* Only override horizontal padding, preserve vertical */
-    section {
       padding-left: 4rem !important;
       padding-right: 4rem !important;
     }
@@ -561,10 +557,6 @@
     /* Constrain even more for ultra-wide */
     section {
       max-width: 2200px;
-    }
-    
-    /* Only horizontal padding */
-    section {
       padding-left: 5rem !important;
       padding-right: 5rem !important;
     }
@@ -598,10 +590,6 @@
   @media (min-width: 3440px) {
     section {
       max-width: 2400px;
-    }
-    
-    /* Only horizontal padding */
-    section {
       padding-left: 6rem !important;
       padding-right: 6rem !important;
     }
