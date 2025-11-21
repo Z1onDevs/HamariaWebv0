@@ -72,47 +72,47 @@ export const ServicesSection = memo(function ServicesSection() {
     return filtered.slice(0, 3).map(t => t.name)
   }
 
-  // Service tag configuration - 4 tags positioned inside figure (Olive Green Theme)
+  // Service tag configuration - 4 tags positioned inside figure (Website Color Palette)
   const serviceTags: ServiceTagConfig[] = useMemo(() => [
-    // TOP LEFT
+    // TOP LEFT - Performance (Bright Blue)
     {
       id: "longevity-tech",
       label: "Longevity Technology",
       position: { x: 15, y: 20 },
       side: "left",
       verticalPosition: 1,
-      color: "#6B8E23",
+      color: "#4A90E2",
       categoryId: "performance",
     },
-    // BOTTOM LEFT
+    // BOTTOM LEFT - Wellness (Light Blue)
     {
       id: "wellness-spa",
       label: "Wellness Spa",
       position: { x: 15, y: 80 },
       side: "left",
       verticalPosition: 2,
-      color: "#6B8E23",
+      color: "#7CB4E8",
       categoryId: "wellness",
     },
     
-    // TOP RIGHT
+    // TOP RIGHT - Aesthetics (Gold)
     {
       id: "aesthetics",
       label: "Aesthetics",
       position: { x: 85, y: 20 },
       side: "right",
       verticalPosition: 1,
-      color: "#6B8E23",
+      color: "#C9A961",
       categoryId: "aesthetics",
     },
-    // BOTTOM RIGHT
+    // BOTTOM RIGHT - Diagnostics (Bright Blue)
     {
       id: "diagnostics",
       label: "Diagnostics",
       position: { x: 85, y: 80 },
       side: "right",
       verticalPosition: 2,
-      color: "#6B8E23",
+      color: "#4A90E2",
       categoryId: "diagnostics",
     },
   ], [])
@@ -164,7 +164,7 @@ export const ServicesSection = memo(function ServicesSection() {
     return {
       id: 'all-featured',
       label: 'Featured Therapies',
-      color: '#6B8E23',
+      color: '#4A90E2',
       therapyNames: allFeaturedTherapies,
       count: allFeaturedTherapies.length,
     }
@@ -315,15 +315,15 @@ export const ServicesSection = memo(function ServicesSection() {
                   >
                     <defs>
                       <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#6B8E23" stopOpacity="0.1" />
-                        <stop offset="50%" stopColor="#6B8E23" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#6B8E23" stopOpacity="0.1" />
+                        <stop offset="0%" stopColor="#4A90E2" stopOpacity="0.1" />
+                        <stop offset="50%" stopColor="#4A90E2" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#4A90E2" stopOpacity="0.1" />
                       </linearGradient>
                       
                       <linearGradient id="activeConnectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#6B8E23" stopOpacity="0.3" />
-                        <stop offset="50%" stopColor="#6B8E23" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="#6B8E23" stopOpacity="0.3" />
+                        <stop offset="0%" stopColor="#4A90E2" stopOpacity="0.3" />
+                        <stop offset="50%" stopColor="#4A90E2" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#4A90E2" stopOpacity="0.3" />
                       </linearGradient>
                     </defs>
                     
@@ -362,7 +362,7 @@ export const ServicesSection = memo(function ServicesSection() {
                         <circle
                           key={`dot-${tag.id}`}
                           r="3"
-                          fill="#6B8E23"
+                          fill={tag.color}
                           opacity="0.8"
                         >
                           <animateMotion
@@ -428,7 +428,7 @@ export const ServicesSection = memo(function ServicesSection() {
             >
               <TypingTherapies
                 therapies={currentTag?.therapyNames || []}
-                color={currentTag?.color || '#6B8E23'}
+                color={currentTag?.color || '#4A90E2'}
                 isActive={true}
                 categoryId={currentTag?.categoryId}
               />

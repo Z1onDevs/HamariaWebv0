@@ -30,7 +30,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
     <section
       ref={ref}
       data-section="membership"
-      className="relative w-screen md:w-full shrink-0 flex items-center justify-center min-h-screen py-12 sm:py-16 md:py-20 lg:py-24 overflow-visible"
+      className="relative w-screen xl:w-full shrink-0 flex items-center justify-center min-h-screen py-12 sm:py-16 md:py-20 lg:py-24 overflow-visible"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
         <div 
