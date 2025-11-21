@@ -19,7 +19,13 @@ export const NewMembershipSection = memo(function NewMembershipSection({
   const { t, language } = useTranslation()
   const router = useRouter()
 
-  const membership = t.memberships.membership
+  const membership = t?.memberships?.membership || {
+    name: 'Membership',
+    description: 'Complete wellness access',
+    monthlyPrice: '350',
+    yearlyPrice: '3780',
+    color: '#4A90E2'
+  }
 
   return (
     <section
@@ -67,7 +73,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                 <div className="flex items-baseline justify-between">
                   <div>
                     <p className="text-[9px] uppercase tracking-wide text-foreground/50 mb-0.5">
-                      {t.memberships.monthlyPrice}
+                      {t?.memberships?.monthlyPrice || 'Monthly'}
                     </p>
                     <p className="font-sans text-xl sm:text-2xl lg:text-3xl font-light text-foreground">
                       €{membership.monthlyPrice}
@@ -80,7 +86,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                 <div className="flex items-baseline justify-between">
                   <div>
                     <p className="text-[9px] uppercase tracking-wide text-foreground/50 mb-0.5">
-                      {t.memberships.yearlyPrice}
+                      {t?.memberships?.yearlyPrice || 'Yearly'}
                     </p>
                     <p className="font-sans text-lg sm:text-xl lg:text-2xl font-light text-foreground">
                       €{membership.yearlyPrice}
@@ -102,7 +108,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
               {/* What's Included - 4 Categories */}
               <div>
                 <h4 className="text-xs sm:text-sm font-medium text-foreground mb-1.5">
-                  {t.memberships.whatsIncluded}
+                  {t?.memberships?.whatsIncluded || "What's Included"}
                 </h4>
                 <div className="space-y-1.5 xl:space-y-1">
                   {/* Wellness */}
@@ -197,7 +203,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                   className="w-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 text-xs lg:text-sm py-2.5 lg:py-3 min-h-[40px] lg:min-h-[44px]"
                   onClick={() => scrollToSection?.("contact")}
                 >
-                  {t.memberships.applyNow}
+                  {t?.memberships?.applyNow || 'Apply Now'}
                 </MagneticButton>
               </div>
             </div>
@@ -211,51 +217,51 @@ export const NewMembershipSection = memo(function NewMembershipSection({
               {/* Programs Header */}
               <div className="mb-3">
                 <h3 className="font-sans text-sm sm:text-base lg:text-lg font-light text-foreground mb-1">
-                  {t.memberships.addOnPrograms}
+                  {t?.memberships?.addOnPrograms || 'Specialized Programs'}
                 </h3>
                 <p className="text-[9px] sm:text-[10px] text-foreground/60">
-                  {t.memberships.addOnProgramsSubtitle}
+                  {t?.memberships?.addOnProgramsSubtitle || 'Curated programs for specific wellness goals'}
                 </p>
                 {/* Shared Feature Note */}
                 <p className="text-[9px] sm:text-[10px] text-foreground/60 italic mt-1.5">
-                  {t.memberships.programsNote}
+                  {t?.memberships?.programsNote || 'All programs include personalized protocols'}
                 </p>
               </div>
 
               {/* Programs List */}
               <div className="space-y-2 xl:space-y-1.5">
-                {addOnPrograms.map((program, index) => (
+                {addOnPrograms?.map((program, index) => (
                   <div
-                    key={program.id}
+                    key={program?.id || index}
                     className="group relative rounded-md border border-border/30 bg-card/10 p-2 lg:p-2 xl:p-2 hover:bg-card/20 hover:border-border/50 transition-all duration-300"
                     style={{
                       borderLeftWidth: '3px',
-                      borderLeftColor: program.color,
+                      borderLeftColor: program?.color || '#888',
                     }}
                   >
                     <div className="space-y-0.5">
                       {/* Program Name */}
                       <div className="flex items-start justify-between gap-1.5">
                         <h4 className="text-xs sm:text-sm lg:text-base font-medium text-foreground leading-tight">
-                          {language === "es" ? program.nameES : program.name}
+                          {language === "es" ? (program?.nameES || program?.name) : (program?.name || '')}
                         </h4>
                         <div 
                           className="h-2 w-2 rounded-full flex-shrink-0 mt-0.5"
-                          style={{ backgroundColor: program.color }}
+                          style={{ backgroundColor: program?.color || '#888' }}
                         />
                       </div>
 
                       {/* Tagline */}
                       <p 
                         className="text-[8px] sm:text-[9px] uppercase tracking-wide font-medium"
-                        style={{ color: program.color }}
+                        style={{ color: program?.color || '#888' }}
                       >
-                        {language === "es" ? program.taglineES : program.tagline}
+                        {language === "es" ? (program?.taglineES || program?.tagline) : (program?.tagline || '')}
                       </p>
 
                       {/* Key Therapies */}
                       <p className="text-[10px] sm:text-xs text-foreground/70 leading-snug">
-                        {(language === "es" ? program.keyTherapiesES : program.keyTherapies).join(', ')}
+                        {(language === "es" ? program?.keyTherapiesES : program?.keyTherapies)?.join(', ') || ''}
                       </p>
                     </div>
                   </div>
