@@ -115,10 +115,10 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                     </div>
                     <div>
                       <p className="text-xs sm:text-sm font-medium text-foreground">
-                        {t.memberships.inclusionCategories.wellness.title}
+                        {t.memberships?.inclusionCategories?.wellness?.title || "Wellness"}
                       </p>
                       <p className="text-[9px] sm:text-[10px] text-foreground/60 leading-snug">
-                        {t.memberships.inclusionCategories.wellness.description}
+                        {t.memberships?.inclusionCategories?.wellness?.description || "Unlimited wellness access"}
                       </p>
                     </div>
                   </div>
@@ -133,10 +133,10 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                     </div>
                     <div>
                       <p className="text-xs sm:text-sm font-medium text-foreground">
-                        {t.memberships.inclusionCategories.fitness.title}
+                        {t.memberships?.inclusionCategories?.fitness?.title || "Fitness"}
                       </p>
                       <p className="text-[9px] sm:text-[10px] text-foreground/60 leading-snug">
-                        {t.memberships.inclusionCategories.fitness.description}
+                        {t.memberships?.inclusionCategories?.fitness?.description || "Unlimited fitness access"}
                       </p>
                     </div>
                   </div>
@@ -151,10 +151,10 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                     </div>
                     <div>
                       <p className="text-xs sm:text-sm font-medium text-foreground">
-                        {t.memberships.inclusionCategories.longevityTech.title}
+                        {t.memberships?.inclusionCategories?.longevityTech?.title || "Longevity Technology"}
                       </p>
                       <p className="text-[9px] sm:text-[10px] text-foreground/60 leading-snug">
-                        {t.memberships.inclusionCategories.longevityTech.description}
+                        {t.memberships?.inclusionCategories?.longevityTech?.description || "Advanced longevity devices"}
                       </p>
                     </div>
                   </div>
@@ -169,10 +169,10 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                     </div>
                     <div>
                       <p className="text-xs sm:text-sm font-medium text-foreground">
-                        {t.memberships.inclusionCategories.diagnostics.title}
+                        {t.memberships?.inclusionCategories?.diagnostics?.title || "Diagnostics"}
                       </p>
                       <p className="text-[9px] sm:text-[10px] text-foreground/60 leading-snug">
-                        {t.memberships.inclusionCategories.diagnostics.description}
+                        {t.memberships?.inclusionCategories?.diagnostics?.description || "Comprehensive health diagnostics"}
                       </p>
                     </div>
                   </div>
