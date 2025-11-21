@@ -30,51 +30,51 @@ export const NewMembershipSection = memo(function NewMembershipSection({
     <section
       ref={ref}
       data-section="membership"
-      className="relative min-h-screen py-20 px-5 sm:px-6 md:px-8 lg:px-12"
+      className="relative min-h-screen py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl w-full">
         <div 
           className={`transition-all duration-1000 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}
         >
           {/* Header */}
-          <div className="mb-16 text-center">
+          <div className="mb-16 text-center px-4 w-full">
             <div 
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6 text-xs font-medium"
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6 text-xs md:text-sm font-medium"
               style={{
                 backgroundColor: `${membership.color}20`,
                 color: membership.color,
                 border: `1px solid ${membership.color}40`,
               }}
             >
-              <Sparkles className="h-3 w-3" />
+              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
               {membership.tagline}
             </div>
             
-            <h2 className="font-sans text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl mb-4">
+            <h2 className="font-sans text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl mb-4 px-2">
               {membership.name}
             </h2>
             
-            <p className="max-w-3xl mx-auto font-sans text-base text-foreground/70 md:text-lg">
+            <p className="max-w-3xl mx-auto font-sans text-base text-foreground/70 md:text-lg px-4">
               {membership.description}
             </p>
           </div>
 
           {/* Founders Offer Banner */}
-          <div className="mb-12 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center backdrop-blur-sm max-w-2xl mx-auto">
-            <p className="font-sans text-lg font-medium text-foreground md:text-xl">
+          <div className="mb-12 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center backdrop-blur-sm max-w-2xl mx-auto w-full mx-4 sm:mx-auto">
+            <p className="font-sans text-base font-medium text-foreground md:text-lg lg:text-xl px-2">
               {t.memberships.foundersOffer}
             </p>
-            <p className="mt-2 text-sm text-foreground/70">
+            <p className="mt-2 text-xs md:text-sm text-foreground/70">
               {t.memberships.limitedMembers}
             </p>
           </div>
 
           {/* Pricing Card */}
-          <div className="mb-16 max-w-md mx-auto">
+          <div className="mb-16 max-w-md mx-auto w-full px-4 sm:px-0">
             <div 
-              className="rounded-2xl border p-8 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
+              className="rounded-2xl border p-6 sm:p-8 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
               style={{
                 backgroundColor: `${membership.color}08`,
                 borderColor: `${membership.color}30`,
@@ -84,7 +84,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                 <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-2">
                   {t.memberships.monthlyPrice}
                 </p>
-                <p className="font-sans text-5xl font-light text-foreground mb-1">
+                <p className="font-sans text-4xl sm:text-5xl font-light text-foreground mb-1">
                   €{membership.monthlyPrice}
                 </p>
                 <p className="text-sm text-foreground/60">per month</p>
@@ -94,7 +94,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                 <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-2">
                   {t.memberships.yearlyPrice}
                 </p>
-                <p className="font-sans text-3xl font-light text-foreground mb-1">
+                <p className="font-sans text-2xl sm:text-3xl font-light text-foreground mb-1">
                   €{membership.yearlyPrice}
                 </p>
                 <p className="text-sm text-foreground/60">{t.memberships.perYear}</p>
@@ -102,12 +102,60 @@ export const NewMembershipSection = memo(function NewMembershipSection({
             </div>
           </div>
 
-          {/* Key Features */}
-          <div className="mb-16 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-light text-foreground mb-6 text-center">
+          {/* Category Cards - Fitness, Wellness, Longevity */}
+          <div className="mb-16 w-full">
+            <h3 className="text-2xl md:text-3xl font-light text-foreground mb-8 text-center px-4">
               {t.memberships.whatsIncluded}
             </h3>
-            <div className="grid md:grid-cols-2 gap-3">
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6">
+              {/* FITNESS CARD */}
+              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-6 hover:bg-card/30 hover:border-border/60 transition-all duration-300">
+                <div className="text-4xl mb-4 text-center">💪</div>
+                <h4 className="text-lg font-medium text-foreground mb-2 text-center">
+                  {t.memberships.categories?.fitness?.title || "Fitness"}
+                </h4>
+                <p className="text-xs text-primary mb-3 text-center font-medium uppercase tracking-wide">
+                  {t.memberships.categories?.fitness?.subtitle || "Unlimited Training"}
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed text-center">
+                  {t.memberships.categories?.fitness?.description || "Small group classes, personal training, Pilates reformer, mobility coaching, and outdoor training."}
+                </p>
+              </div>
+              
+              {/* WELLNESS CARD */}
+              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-6 hover:bg-card/30 hover:border-border/60 transition-all duration-300">
+                <div className="text-4xl mb-4 text-center">💎</div>
+                <h4 className="text-lg font-medium text-foreground mb-2 text-center">
+                  {t.memberships.categories?.wellness?.title || "Wellness"}
+                </h4>
+                <p className="text-xs text-primary mb-3 text-center font-medium uppercase tracking-wide">
+                  {t.memberships.categories?.wellness?.subtitle || "Full Spa Access"}
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed text-center">
+                  {t.memberships.categories?.wellness?.description || "Complete access to spa facilities including sauna, steam room, ice plunge, cryotherapy, and more."}
+                </p>
+              </div>
+              
+              {/* LONGEVITY CARD */}
+              <div className="rounded-xl border border-border/40 bg-card/20 backdrop-blur-sm p-6 hover:bg-card/30 hover:border-border/60 transition-all duration-300">
+                <div className="text-4xl mb-4 text-center">🧬</div>
+                <h4 className="text-lg font-medium text-foreground mb-2 text-center">
+                  {t.memberships.categories?.longevity?.title || "Longevity"}
+                </h4>
+                <p className="text-xs text-primary mb-3 text-center font-medium uppercase tracking-wide">
+                  {t.memberships.categories?.longevity?.subtitle || "Members Lounge & Health Tracking"}
+                </p>
+                <p className="text-sm text-foreground/70 leading-relaxed text-center">
+                  {t.memberships.categories?.longevity?.description || "Private lounge with longevity devices and comprehensive health monitoring."}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Key Features */}
+          <div className="mb-16 w-full">
+            <div className="grid md:grid-cols-2 gap-3 max-w-5xl mx-auto px-4 sm:px-6">
               {membership.features.map((feature, index) => (
                 <div
                   key={index}
@@ -126,11 +174,11 @@ export const NewMembershipSection = memo(function NewMembershipSection({
           </div>
 
           {/* Unlimited Therapies */}
-          <div className="mb-12">
-            <h3 className="text-xl font-light text-foreground mb-4 text-center">
+          <div className="mb-12 w-full">
+            <h3 className="text-xl md:text-2xl font-light text-foreground mb-6 text-center px-4">
               {t.memberships.unlimitedAccess}
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-6xl mx-auto px-4 sm:px-6">
               {unlimitedTherapies.map((therapy, index) => (
                 <div
                   key={index}
@@ -146,11 +194,11 @@ export const NewMembershipSection = memo(function NewMembershipSection({
           </div>
 
           {/* Limited Sessions */}
-          <div className="mb-16">
-            <h3 className="text-xl font-light text-foreground mb-4 text-center">
+          <div className="mb-16 w-full">
+            <h3 className="text-xl md:text-2xl font-light text-foreground mb-6 text-center px-4">
               {t.memberships.includedSessions}
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto px-4 sm:px-6">
               {limitedTherapies.map((therapy, index) => {
                 const allocation = therapy.baseAllocation
                 if (allocation === 0 || !allocation) return null
@@ -175,17 +223,17 @@ export const NewMembershipSection = memo(function NewMembershipSection({
           </div>
 
           {/* Add-on Programs */}
-          <div className="mb-12">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-light text-foreground mb-3">
+          <div className="mb-12 w-full" data-section="programs">
+            <div className="text-center mb-8 px-4">
+              <h3 className="text-2xl md:text-3xl font-light text-foreground mb-3">
                 {t.memberships.addOnPrograms}
               </h3>
-              <p className="text-foreground/70 max-w-2xl mx-auto text-sm">
+              <p className="text-foreground/70 max-w-2xl mx-auto text-sm md:text-base">
                 {t.memberships.addOnProgramsSubtitle}
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6">
               {addOnPrograms.map((program) => (
                 <div
                   key={program.id}
@@ -244,24 +292,30 @@ export const NewMembershipSection = memo(function NewMembershipSection({
             </div>
           </div>
 
-          {/* CTA */}
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          {/* CTA Buttons */}
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center px-4 w-full">
+            {/* PRIMARY: Apply Now */}
             <MagneticButton
               variant="primary"
-              className="w-full sm:w-auto shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
+              className="w-full sm:w-auto min-w-[200px] shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 text-base md:text-lg py-4 px-8"
               onClick={() => scrollToSection?.("contact")}
             >
               {t.memberships.applyNow}
             </MagneticButton>
             
+            {/* SECONDARY: See Programs */}
             <MagneticButton
               variant="secondary"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto min-w-[200px] text-base md:text-lg py-4 px-8 border-2"
               onClick={() => {
-                window.location.href = "/membership"
+                // Scroll to add-on programs section within same page
+                const programsSection = document.querySelector('[data-section="programs"]')
+                if (programsSection) {
+                  programsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
               }}
             >
-              {t.memberships.learnMore}
+              {t.memberships.seePrograms || "See Programs"}
             </MagneticButton>
           </div>
         </div>
