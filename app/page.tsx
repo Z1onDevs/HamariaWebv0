@@ -7,7 +7,7 @@ import { ConceptSection } from "@/components/sections/concept-section"
 import { ServicesSection } from "@/components/sections/services-section"
 import { GallerySection } from "@/components/sections/gallery-section"
 import { ContactSection } from "@/components/sections/contact-section"
-import { MembershipSection } from "@/components/sections/membership-section"
+import { NewMembershipSection } from "@/components/sections/new-membership-section"
 import { MagneticButton } from "@/components/magnetic-button"
 import { MobileNav } from "@/components/mobile-nav"
 import { SectionDots } from "@/components/section-dots"
@@ -465,22 +465,20 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         <section className="relative flex min-h-screen w-screen shrink-0 items-end px-4 pb-12 pt-16 sm:px-6 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24 lg:px-12 lg:pb-24">
-          {/* Mobile/Tablet Hero Sketch - Highly Visible & Larger - Centered - Cropped */}
+          {/* Mobile/Tablet Hero Pool Image - Highly Visible & Larger - Centered */}
           <div className="lg:hidden absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute left-1/2 top-[30%] w-[65vw] h-[36vh] max-h-[360px] opacity-80 -translate-x-1/2 -translate-y-1/2 sm:top-[32%] md:top-[35%] md:opacity-85 md:w-[70vw] md:h-[40vh] md:max-h-[400px]">
-              <div className="relative h-full w-full overflow-hidden" style={{ clipPath: 'inset(10% 0% 10% 0%)' }}>
+              <div className="relative h-full w-full overflow-hidden rounded-lg">
                 <Image 
-                  src="/hero-sketch.png" 
-                  alt={hero.imageAlt || "Hamaria wellness visualization"}
+                  src="/retiro render copia/Swimming Treadmill.jpeg" 
+                  alt={hero.imageAlt || "Hamaria wellness center pool with architectural slatted ceiling"}
                   width={800}
                   height={600}
                   priority
                   quality={85}
-                  className="absolute inset-0 w-full object-contain object-center"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                   style={{ 
-                    opacity: 0.9,
-                    height: '125%',
-                    top: '-12.5%'
+                    opacity: 0.9
                   }}
                   sizes="(max-width: 768px) 65vw, (max-width: 1024px) 70vw, 50vw"
                 />
@@ -492,17 +490,17 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Desktop Hero Sketch - Constrained for large screens */}
+          {/* Desktop Hero Pool Image - Constrained for large screens */}
           <div className="pointer-events-none absolute top-28 right-0 hidden lg:block">
-            <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px]">
+            <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px] overflow-hidden rounded-lg">
               <Image
-                src="/hero-sketch.png"
-                alt={hero.imageAlt || "Hamaria wellness visualization"}
+                src="/retiro render copia/Swimming Treadmill.jpeg"
+                alt={hero.imageAlt || "Hamaria wellness center pool with architectural slatted ceiling"}
                 width={700}
                 height={800}
                 priority
                 quality={90}
-                className="h-full w-full object-contain object-center"
+                className="h-full w-full object-cover object-center"
                 style={{ opacity: 0.95 }}
                 sizes="(min-width: 2048px) 40vw, (min-width: 1280px) 46vw, 42vw"
               />
@@ -613,7 +611,7 @@ export default function Home() {
         </div>
         <ServicesSection />
         <GallerySection />
-        <MembershipSection scrollToSection={scrollToSection} />
+        <NewMembershipSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>
 

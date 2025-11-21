@@ -36,87 +36,41 @@
       "comparePlans": "Compare Plans"
     },
     "memberships": {
-      "pageTitle": "Membership Details",
-      "backToHome": "Back to Memberships",
-      "monthlyPrice": "Monthly Price",
-      "yearlyPrice": "Yearly Price",
-      "weeklyMinutes": "Weekly Minutes Included",
-      "monthlyValue": "Monthly Perceived Value",
-      "savings": "You Save",
+      "title": "Membership",
+      "subtitle": "Complete Wellness Access",
+      "monthlyPrice": "Monthly",
+      "yearlyPrice": "Yearly",
       "foundersOffer": "Founders: 3 months free",
-      "includedTherapies": "Included Therapies",
-      "allTherapies": "All Therapies",
-      "monthlyTherapies": "Monthly Therapies",
-      "yearlyTherapies": "Yearly Therapies",
-      "unlimited": "Unlimited",
-      "perMonth": "per month",
-      "perYear": "per year",
-      "compareTitle": "Compare Memberships",
-      "viewFullDetails": "View Full Details",
-      "scrollToCompare": "Scroll to compare all plans",
-      "therapy": "Therapy",
-      "sessions": "Sessions",
-      "perMonthShort": "/mo",
-      "perMonthSuffix": "/month",
-      "perYearSuffix": "/year",
-      "membershipNotFound": "Membership not found",
-      "returnToMemberships": "Return to memberships",
       "limitedMembers": "Limited to first 42 members",
-      "keyBenefits": "Key Benefits",
-      "tiers": {
-        "longevity": {
-          "id": "longevity",
-          "name": "Wellness",
-          "tagline": "Foundational Wellness",
-          "description": "Foundational therapies curated for holistic wellbeing. Perfect for those starting their wellness journey.",
-          "monthlyPrice": 950,
-          "yearlyPrice": 10450,
-          "weeklyMinutes": 240,
-          "monthlyPerceivedValue": 3200,
-          "color": "#8b5cf6",
-          "features": [
-            "Comprehensive baseline assessment",
-            "Unlimited access to recovery facilities",
-            "Monthly therapeutic sessions",
-            "Nutrition and lifestyle guidance"
-          ]
-        },
-        "performance": {
-          "id": "performance",
-          "name": "Longevity",
-          "tagline": "Optimize Your Peak",
-          "description": "Add performance and recovery optimization to your Wellness program. Ideal for athletes and high performers.",
-          "monthlyPrice": 1450,
-          "yearlyPrice": 15950,
-          "weeklyMinutes": 360,
-          "monthlyPerceivedValue": 5400,
-          "color": "#10b981",
-          "features": [
-            "Everything in Wellness",
-            "Advanced performance diagnostics",
-            "Increased recovery therapy sessions",
-            "VO₂ max testing quarterly",
-            "Personalized training protocols"
-          ]
-        },
-        "aesthetics": {
-          "id": "aesthetics",
-          "name": "Aesthetics",
-          "tagline": "Regenerative Beauty",
-          "description": "Add aesthetic and regenerative treatments to your Wellness program. Perfect for comprehensive anti-aging.",
-          "monthlyPrice": 1650,
-          "yearlyPrice": 18150,
-          "weeklyMinutes": 400,
-          "monthlyPerceivedValue": 6800,
-          "color": "#f59e0b",
-          "features": [
-            "Everything in Wellness",
-            "Advanced aesthetic treatments",
-            "Increased regenerative therapies",
-            "Signature massage sessions",
-            "Comprehensive skin analysis"
-          ]
-        }
+      "applyNow": "Apply Now",
+      "learnMore": "Learn More",
+      "whatsIncluded": "What's Included",
+      "unlimitedAccess": "Unlimited Access",
+      "includedSessions": "Included Sessions",
+      "addOnPrograms": "Specialized Programs",
+      "addOnProgramsSubtitle": "Curated programs designed for specific wellness goals",
+      "unlimited": "Unlimited",
+      "perYear": "per year",
+      "sessions": "sessions",
+      "guestPasses": "guest passes",
+      "membership": {
+        "id": "hamaria",
+        "name": "Hamaria Members",
+        "tagline": "Everything You Need to Thrive",
+        "description": "One membership. Complete access. Unlimited fitness, full spa facilities, and comprehensive wellness services.",
+        "monthlyPrice": 650,
+        "yearlyPrice": 7800,
+        "color": "#8b5cf6",
+        "features": [
+          "Unlimited access to 16 wellness therapies",
+          "Personal training & Pilates reformer",
+          "Complete spa facilities",
+          "Cryotherapy & float tank sessions",
+          "Health diagnostics & VO₂ max testing",
+          "Members lounge access",
+          "12 annual guest passes",
+          "Specialized programs available"
+        ]
       }
     },
     "hero": {
@@ -124,7 +78,7 @@
     "description": "Experience holistic rejuvenation in the heart of Madrid. Hamaria Club offers bespoke wellness journeys that harmonize mind, body, and spirit combining ancient wisdom and the latest innovative technologies.",
     "primaryCta": "Explore Memberships",
     "secondaryCta": "Discover Our Philosophy",
-    "imageAlt": "Architectural sketch of Hamaria Club luxury wellness center interior featuring modern spa facilities and regenerative therapy spaces in Madrid"
+    "imageAlt": "Hamaria Club luxury pool with architectural slatted ceiling featuring modern aquatic training facilities and sophisticated wellness design in Madrid"
   },
   "gallery": {
     "folder": "/retiro render copia",
@@ -425,6 +379,13 @@
         "subcategories": ["detox", "regeneration", "stress", "sleep"]
       },
       {
+        "id": "dry-sauna",
+        "name": "Dry Sauna",
+        "description": "Traditional Finnish sauna experience with high heat and low humidity for deep detoxification, stress relief, cardiovascular health, and muscle recovery.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["detox", "regeneration", "stress", "physical-medicine"]
+      },
+      {
         "id": "pressotherapy-full",
         "name": "Pressotherapy Lymphatic Drainage",
         "description": "Mechanical compression therapy to enhance lymphatic drainage, reduce fluid retention, support detoxification, and improve aesthetic outcomes.",
@@ -453,6 +414,13 @@
         "subcategories": ["movement", "stress"]
       },
       {
+        "id": "swimming-treadmill",
+        "name": "Hydrodrive Swimming Treadmill",
+        "description": "Advanced Hydrodrive aquatic treadmill training for low-impact cardiovascular exercise, rehabilitation, movement optimization, and performance enhancement in a controlled water environment.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["movement", "physical-medicine", "energy"]
+      },
+      {
         "id": "body-lab-bioimpedance",
         "name": "Body Lab Bioimpedance Analysis",
         "description": "Advanced bioimpedance testing for body composition analysis, metabolic assessment, and physical medicine insights.",
@@ -465,6 +433,20 @@
         "description": "Cold water immersion therapy for regeneration, physical recovery, stress management, sleep enhancement, cognitive optimization, and energy boost.",
         "categories": ["performance", "wellness"],
         "subcategories": ["regeneration", "physical-medicine", "stress", "sleep", "psyche", "energy"]
+      },
+      {
+        "id": "flotation-therapy",
+        "name": "Flotation Therapy",
+        "description": "Sensory deprivation float tank therapy with Epsom salt solution for deep relaxation, stress relief, pain management, enhanced sleep, and meditative states.",
+        "categories": ["wellness"],
+        "subcategories": ["stress", "sleep", "psyche", "physical-medicine"]
+      },
+      {
+        "id": "contrast-suite",
+        "name": "Private Contrast Suite",
+        "description": "Private infrared sauna and cold plunge combination for contrast therapy, enhancing circulation, detoxification, recovery, and stress management.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["detox", "regeneration", "physical-medicine", "stress"]
       },
       {
         "id": "steam-room",
@@ -528,6 +510,13 @@
         "description": "Electromagnetic field therapy to enhance cellular energy, support physical medicine protocols, reduce stress, and improve sleep.",
         "categories": ["performance", "wellness"],
         "subcategories": ["energy", "physical-medicine", "stress", "sleep"]
+      },
+      {
+        "id": "vagus-nerve-stimulation",
+        "name": "Vagus Nerve Stimulation",
+        "description": "Non-invasive electrical stimulation of the vagus nerve to enhance parasympathetic activation, reduce stress, improve heart rate variability, and support mental clarity.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["stress", "psyche", "biorhythms", "energy"]
       },
       {
         "id": "mineral-baths",
@@ -830,90 +819,41 @@
       "comparePlans": "Comparar planes"
     },
     "memberships": {
-      "pageTitle": "Detalles de membresía",
-      "backToHome": "Volver a membresías",
-      "monthlyPrice": "Precio mensual",
-      "yearlyPrice": "Precio anual",
-      "weeklyMinutes": "Minutos semanales incluidos",
-      "monthlyValue": "Valor percibido mensual",
-      "savings": "Ahorras",
+      "title": "Membresía",
+      "subtitle": "Acceso Completo al Bienestar",
+      "monthlyPrice": "Mensual",
+      "yearlyPrice": "Anual",
       "foundersOffer": "Fundadores: 3 meses gratis",
-      "includedTherapies": "Terapias incluidas",
-      "allTherapies": "Todas las terapias",
-      "monthlyTherapies": "Terapias mensuales",
-      "yearlyTherapies": "Terapias anuales",
-      "unlimited": "Ilimitado",
-      "perMonth": "al mes",
-      "perYear": "al año",
-      "compareTitle": "Comparar membresías",
-      "viewFullDetails": "Ver detalles completos",
-      "scrollToCompare": "Desplázate para comparar todos los planes",
-      "therapy": "Terapia",
-      "sessions": "Sesiones",
-      "perMonthShort": "/mes",
-      "perMonthSuffix": "/mes",
-      "perYearSuffix": "/año",
-      "membershipNotFound": "Membresía no encontrada",
-      "returnToMemberships": "Volver a membresías",
       "limitedMembers": "Limitada a los primeros 42 miembros",
-      "keyBenefits": "Beneficios clave",
-      "tiers": {
-        "longevity": {
-          "id": "longevity",
-          "name": "Bienestar",
-          "tagline": "Los fundamentos de la salud óptima",
-          "description": "Programa integral de bienestar que establece las bases de su transformación. Terapias de recuperación avanzadas, optimización del sistema nervioso y regeneración celular. Diseñado para quienes buscan equilibrio, vitalidad y rendimiento sostenible.",
-          "monthlyPrice": 950,
-          "yearlyPrice": 10450,
-          "weeklyMinutes": 240,
-          "monthlyPerceivedValue": 3200,
-          "color": "#8b5cf6",
-          "features": [
-            "Evaluación inicial integral con análisis de biomarcadores",
-            "Acceso ilimitado a instalaciones de recuperación y contraste térmico",
-            "Protocolos mensuales de terapias regenerativas",
-            "Asesoramiento nutricional personalizado basado en su biología",
-            "Crioterapia, sauna infrarroja y flotación sensorial"
-          ]
-        },
-        "performance": {
-          "id": "performance",
-          "name": "Longevidad",
-          "tagline": "Optimización avanzada para longevidad",
-          "description": "Programa completo de extensión de salud funcional y optimización metabólica. Incluye diagnósticos de precisión, terapias regenerativas avanzadas (HBOT, fotobiomodulación NIR, PEMF) y protocolos basados en datos. Para ejecutivos, atletas y quienes buscan maximizar healthspan y rendimiento cognitivo.",
-          "monthlyPrice": 1450,
-          "yearlyPrice": 15950,
-          "weeklyMinutes": 360,
-          "monthlyPerceivedValue": 5400,
-          "color": "#10b981",
-          "features": [
-            "Todo lo incluido en Bienestar",
-            "Oxigenoterapia hiperbárica (HBOT) y terapia de luz roja",
-            "Evaluaciones de rendimiento con VO₂ máx y análisis metabólico",
-            "Seguimiento continuo de biomarcadores clave",
-            "Protocolos de recuperación acelerada y optimización hormonal",
-            "Consultas médicas especializadas trimestrales"
-          ]
-        },
-        "aesthetics": {
-          "id": "aesthetics",
-          "name": "Estética",
-          "tagline": "Estética regenerativa y medicina antienvejecimiento",
-          "description": "Programa integral que combina bienestar sistémico con tratamientos estéticos de última generación. Rejuvenecimiento celular, optimización cutánea y protocolos regenerativos faciales y corporales. El enfoque más completo para retrasar el envejecimiento visible y mantener vitalidad estética.",
-          "monthlyPrice": 1650,
-          "yearlyPrice": 18150,
-          "weeklyMinutes": 400,
-          "monthlyPerceivedValue": 6800,
-          "color": "#f59e0b",
-          "features": [
-            "Todo lo incluido en Bienestar",
-            "Tratamientos faciales regenerativos con tecnología avanzada",
-            "Terapias corporales de remodelación y firmeza",
-            "Masajes terapéuticos signature de 90 minutos",
-            "Análisis cutáneo integral con seguimiento fotográfico",
-            "Protocolos personalizados de nutricosmética y suplementación"
-          ]
-        }
+      "applyNow": "Solicitar ahora",
+      "learnMore": "Saber más",
+      "whatsIncluded": "Qué está incluido",
+      "unlimitedAccess": "Acceso ilimitado",
+      "includedSessions": "Sesiones incluidas",
+      "addOnPrograms": "Programas especializados",
+      "addOnProgramsSubtitle": "Programas curados diseñados para objetivos de bienestar específicos",
+      "unlimited": "Ilimitado",
+      "perYear": "al año",
+      "sessions": "sesiones",
+      "guestPasses": "pases de invitado",
+      "membership": {
+        "id": "hamaria",
+        "name": "Miembros Hamaria",
+        "tagline": "Todo lo que necesitas para prosperar",
+        "description": "Una membresía. Acceso completo. Fitness ilimitado, instalaciones spa completas y servicios integrales de bienestar.",
+        "monthlyPrice": 650,
+        "yearlyPrice": 7800,
+        "color": "#8b5cf6",
+        "features": [
+          "Acceso ilimitado a 16 terapias de bienestar",
+          "Entrenamiento personal y Pilates reformer",
+          "Instalaciones spa completas",
+          "Sesiones de crioterapia y tanque de flotación",
+          "Diagnósticos de salud y prueba VO₂ máx",
+          "Acceso al salón de miembros",
+          "12 pases de invitado anuales",
+          "Programas especializados disponibles"
+        ]
       }
     },
     "hero": {
@@ -921,7 +861,7 @@
       "description": "Centro de longevidad y bienestar en el corazón de Madrid. Terapias regenerativas avanzadas, medicina de precisión y optimización integral de su salud con base científica.",
       "primaryCta": "Explorar Membresías",
       "secondaryCta": "Descubre Nuestra Filosofía",
-      "imageAlt": "Ilustración arquitectónica del centro de bienestar de lujo Hamaria Club con instalaciones modernas de spa y espacios de terapias regenerativas en Madrid"
+      "imageAlt": "Piscina de lujo Hamaria Club con techo arquitectónico de listones con instalaciones modernas de entrenamiento acuático y diseño sofisticado de bienestar en Madrid"
     },
     "gallery": {
       "folder": "/retiro render copia",
@@ -1223,6 +1163,13 @@
         "subcategories": ["detox", "regeneration", "stress", "sleep"]
       },
       {
+        "id": "dry-sauna",
+        "name": "Sauna seca",
+        "description": "Experiencia tradicional de sauna finlandesa con calor elevado y baja humedad para detoxificación profunda, alivio del estrés, salud cardiovascular y recuperación muscular.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["detox", "regeneration", "stress", "physical-medicine"]
+      },
+      {
         "id": "pressotherapy-full",
         "name": "Presoterapia",
         "description": "Compresión mecánica para mejorar el drenaje limfático, reducir la retención de líquidos, apoyar la detoxificación y potenciar resultados estéticos.",
@@ -1251,6 +1198,13 @@
         "subcategories": ["movement", "stress"]
       },
       {
+        "id": "swimming-treadmill",
+        "name": "Cinta acuática Hydrodrive",
+        "description": "Entrenamiento avanzado en cinta acuática Hydrodrive para ejercicio cardiovascular de bajo impacto, rehabilitación, optimización del movimiento y mejora del rendimiento en un entorno acuático controlado.",
+        "categories": ["performance", "wellness"],
+        "subcategories": ["movement", "physical-medicine", "energy"]
+      },
+      {
         "id": "body-lab-bioimpedance",
         "name": "Análisis de bioimpedancia (Body Lab)",
         "description": "Prueba avanzada de bioimpedancia para composición corporal, evaluación metabólica y apoyo a la medicina física.",
@@ -1263,6 +1217,20 @@
         "description": "Inmersión en agua fría para regeneración, recuperación física, gestión del estrés, mejora del sueño, optimización cognitiva y aumento de energía.",
         "categories": ["performance", "wellness"],
         "subcategories": ["regeneration", "physical-medicine", "stress", "sleep", "psyche", "energy"]
+      },
+      {
+        "id": "flotation-therapy",
+        "name": "Terapia de flotación",
+        "description": "Tanque de flotación con privación sensorial en solución de sales de Epsom para relajación profunda, alivio del estrés, manejo del dolor, mejora del sueño y estados meditativos.",
+        "categories": ["wellness"],
+        "subcategories": ["stress", "sleep", "psyche", "physical-medicine"]
+      },
+      {
+        "id": "contrast-suite",
+        "name": "Suite de contraste privada",
+        "description": "Combinación privada de sauna infrarroja e inmersión en frío para terapia de contraste, mejorando circulación, detoxificación, recuperación y gestión del estrés.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["detox", "regeneration", "physical-medicine", "stress"]
       },
       {
         "id": "steam-room",
@@ -1326,6 +1294,13 @@
         "description": "Modalidad electromagnética para mejorar la energía celular, apoyar la medicina física, reducir el estrés y mejorar el sueño.",
         "categories": ["performance", "wellness"],
         "subcategories": ["energy", "physical-medicine", "stress", "sleep"]
+      },
+      {
+        "id": "vagus-nerve-stimulation",
+        "name": "Estimulación del nervio vago",
+        "description": "Estimulación eléctrica no invasiva del nervio vago para activar el sistema parasimpático, reducir el estrés, mejorar la variabilidad cardíaca y apoyar la claridad mental.",
+        "categories": ["wellness", "performance"],
+        "subcategories": ["stress", "psyche", "biorhythms", "energy"]
       },
       {
         "id": "mineral-baths",

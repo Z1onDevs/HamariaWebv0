@@ -33,6 +33,47 @@ const nextConfig = {
     optimizePackageImports: ['@/components', '@/hooks'],
   },
   
+  async redirects() {
+    return [
+      // Redirect old membership tier pages to new unified membership page
+      {
+        source: '/membership/wellness',
+        destination: '/membership',
+        permanent: true,
+      },
+      {
+        source: '/membership/longevity',
+        destination: '/membership',
+        permanent: true,
+      },
+      {
+        source: '/membership/performance',
+        destination: '/membership',
+        permanent: true,
+      },
+      {
+        source: '/membership/aesthetics',
+        destination: '/membership',
+        permanent: true,
+      },
+      {
+        source: '/membership/harmony',
+        destination: '/membership',
+        permanent: true,
+      },
+      {
+        source: '/membership/renaissance',
+        destination: '/membership',
+        permanent: true,
+      },
+      {
+        source: '/membership/opulence',
+        destination: '/membership',
+        permanent: true,
+      },
+    ]
+  },
+  
   async headers() {
     return [
       {
