@@ -470,7 +470,7 @@ export default function Home() {
             <div className="absolute left-1/2 top-[30%] w-[65vw] h-[36vh] max-h-[360px] opacity-80 -translate-x-1/2 -translate-y-1/2 sm:top-[32%] md:top-[35%] md:opacity-85 md:w-[70vw] md:h-[40vh] md:max-h-[400px]">
               <div className="relative h-full w-full overflow-hidden rounded-lg">
                 <Image 
-                  src="/retiro render copia/_ (5).jpg" 
+                  src="/retiro render copia/pool.jpg" 
                   alt={hero.imageAlt || "Hamaria wellness center pool with architectural slatted ceiling"}
                   width={800}
                   height={600}
@@ -490,24 +490,24 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Desktop Hero Pool Image - Constrained for large screens */}
+          {/* Desktop Hero Pool Image - Reduced size, better proportions */}
           <div className="pointer-events-none absolute top-28 right-0 hidden lg:block">
-            <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px] overflow-hidden rounded-lg">
+            <div className="relative h-[45vh] w-[35vw] max-h-[500px] max-w-[450px] xl:h-[50vh] xl:w-[38vw] xl:max-h-[550px] xl:max-w-[500px] 2xl:h-[55vh] 2xl:w-[35vw] 2xl:max-h-[600px] 2xl:max-w-[550px] overflow-hidden rounded-lg">
               <Image
-                src="/retiro render copia/_ (5).jpg"
+                src="/retiro render copia/pool.jpg"
                 alt={hero.imageAlt || "Hamaria wellness center pool with architectural slatted ceiling"}
-                width={700}
-                height={800}
+                width={600}
+                height={700}
                 priority
                 quality={90}
                 className="h-full w-full object-cover object-center"
                 style={{ opacity: 0.95 }}
-                sizes="(min-width: 2048px) 40vw, (min-width: 1280px) 46vw, 42vw"
+                sizes="(min-width: 2048px) 35vw, (min-width: 1280px) 38vw, 35vw"
               />
               
-              {/* Corner frames - Larger */}
-              <div className="absolute -left-4 -top-4 h-16 w-16 border-l-2 border-t-2 border-primary/30 xl:h-20 xl:w-20" />
-              <div className="absolute -bottom-4 -right-4 h-16 w-16 border-b-2 border-r-2 border-primary/30 xl:h-20 xl:w-20" />
+              {/* Corner frames - Proportional */}
+              <div className="absolute -left-3 -top-3 h-14 w-14 border-l-2 border-t-2 border-primary/30 xl:h-16 xl:w-16" />
+              <div className="absolute -bottom-3 -right-3 h-14 w-14 border-b-2 border-r-2 border-primary/30 xl:h-16 xl:w-16" />
             </div>
           </div>
 

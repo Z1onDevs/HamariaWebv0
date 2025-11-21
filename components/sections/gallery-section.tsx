@@ -92,7 +92,7 @@ export const GallerySection = memo(function GallerySection() {
           "Salt & Magnesium Bath.jpeg",
           "Sauna & Ice plunge.jpeg",
           "Spa Entrance.jpeg",
-          "_ (5).jpg",
+          "pool.jpg",
         ]
         
         // Define specific order for new images in popup
@@ -159,7 +159,9 @@ export const GallerySection = memo(function GallerySection() {
                     fill
                     loading="lazy"
                     quality={80}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105"
+                    className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105 ${
+                      item.src.includes('pool.jpg') ? 'object-bottom' : ''
+                    }`}
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   {/* Subtle overlay on hover */}
@@ -287,7 +289,9 @@ export const GallerySection = memo(function GallerySection() {
                         fill
                         loading="lazy"
                         quality={75}
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105"
+                        className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-hover:brightness-105 ${
+                          item.src.includes('pool.jpg') ? 'object-bottom' : ''
+                        }`}
                         sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, 33vw"
                       />
                       {/* Subtle overlay on hover */}
