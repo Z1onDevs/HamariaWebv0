@@ -470,7 +470,7 @@ export default function Home() {
             <div className="absolute left-1/2 top-[30%] w-[65vw] h-[36vh] max-h-[360px] opacity-80 -translate-x-1/2 -translate-y-1/2 sm:top-[32%] md:top-[35%] md:opacity-85 md:w-[70vw] md:h-[40vh] md:max-h-[400px]">
               <div className="relative h-full w-full overflow-hidden rounded-lg">
                 <Image 
-                  src="/retiro render copia/Swimming Treadmill.jpeg" 
+                  src="/retiro render copia/_ (5).jpg" 
                   alt={hero.imageAlt || "Hamaria wellness center pool with architectural slatted ceiling"}
                   width={800}
                   height={600}
@@ -494,7 +494,7 @@ export default function Home() {
           <div className="pointer-events-none absolute top-28 right-0 hidden lg:block">
             <div className="relative h-[60vh] w-[42vw] max-h-[650px] max-w-[550px] xl:h-[70vh] xl:w-[46vw] xl:max-h-[750px] xl:max-w-[650px] 2xl:h-[75vh] 2xl:w-[40vw] 2xl:max-h-[800px] 2xl:max-w-[700px] overflow-hidden rounded-lg">
               <Image
-                src="/retiro render copia/Swimming Treadmill.jpeg"
+                src="/retiro render copia/_ (5).jpg"
                 alt={hero.imageAlt || "Hamaria wellness center pool with architectural slatted ceiling"}
                 width={700}
                 height={800}

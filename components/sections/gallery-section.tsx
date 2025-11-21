@@ -92,7 +92,7 @@ export const GallerySection = memo(function GallerySection() {
           "Salt & Magnesium Bath.jpeg",
           "Sauna & Ice plunge.jpeg",
           "Spa Entrance.jpeg",
-          "Swimming Treadmill.jpeg",
+          "_ (5).jpg",
         ]
         
         // Define specific order for new images in popup
