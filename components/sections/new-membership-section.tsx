@@ -224,12 +224,15 @@ export const NewMembershipSection = memo(function NewMembershipSection({
 
           {/* Add-on Programs */}
           <div className="mb-10 sm:mb-12 md:mb-16" data-section="programs">
-            <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <div className="text-center mb-6 sm:mb-8 md:mb-10 max-w-4xl mx-auto">
               <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-3 md:mb-4">
                 {t.memberships.addOnPrograms}
               </h3>
-              <p className="text-foreground/70 max-w-3xl mx-auto text-xs sm:text-sm md:text-base lg:text-lg">
+              <p className="text-foreground/70 mb-3 sm:mb-4 text-xs sm:text-sm md:text-base lg:text-lg">
                 {t.memberships.addOnProgramsSubtitle}
+              </p>
+              <p className="text-xs sm:text-sm md:text-base text-foreground/60 leading-relaxed">
+                Enhance your membership with specialized programs designed for specific wellness goals
               </p>
             </div>
 
@@ -243,49 +246,30 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                     borderTopWidth: '4px',
                   }}
                 >
-                  <div className="mb-4 md:mb-5">
+                  <div className="text-center">
                     <div 
-                      className="inline-flex items-center justify-center rounded-full p-2.5 md:p-3 mb-3 md:mb-4"
+                      className="inline-flex items-center justify-center rounded-full p-3 md:p-4 mb-4 md:mb-5"
                       style={{ backgroundColor: `${program.color}20` }}
                     >
                       <div 
-                        className="h-6 w-6 md:h-7 md:w-7 rounded-full"
+                        className="h-8 w-8 md:h-10 md:w-10 rounded-full"
                         style={{ backgroundColor: program.color }}
                       />
                     </div>
-                    <h4 className="font-sans text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-foreground mb-1.5 md:mb-2">
+                    <h4 className="font-sans text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2 md:mb-3">
                       {language === "es" ? program.nameES : program.name}
                     </h4>
-                    <p className="text-xs md:text-sm font-medium uppercase tracking-wide text-foreground/50 mb-3 md:mb-4">
+                    <p className="text-xs md:text-sm font-medium uppercase tracking-wide mb-4 md:mb-5" style={{ color: program.color }}>
                       {language === "es" ? program.taglineES : program.tagline}
                     </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm md:text-base text-foreground/70 mb-4 md:mb-5 leading-relaxed">
-                    {language === "es" ? program.descriptionES : program.description}
-                  </p>
-
-                  <div className="mb-4 md:mb-5">
-                    <p className="text-xs md:text-sm font-medium text-foreground/60 mb-2.5 md:mb-3">Key features:</p>
-                    <ul className="space-y-2 md:space-y-2.5">
-                      {(language === "es" ? program.featuresES : program.features).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 md:gap-2.5 text-xs md:text-sm text-foreground/70">
-                          <Check className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0 text-primary mt-0.5" />
-                          <span className="leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 md:pt-5 border-t border-border/20">
-                    <p className="text-xs md:text-sm font-medium text-foreground/60">
-                      {language === "es" ? program.sessionCountES : program.sessionCount}
+                    <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed mb-6 md:mb-8">
+                      {language === "es" ? program.descriptionES : program.description}
                     </p>
                     <button 
-                      className="flex items-center gap-1 text-xs md:text-sm font-medium text-primary hover:text-primary/80 group-hover:gap-2 transition-all min-h-[44px] justify-center sm:justify-start"
+                      className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-primary hover:text-primary/80 group-hover:gap-3 transition-all min-h-[44px] justify-center"
                       onClick={() => scrollToSection?.("contact")}
                     >
-                      Learn more <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                      Learn more <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
                     </button>
                   </div>
                 </div>

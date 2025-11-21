@@ -211,6 +211,7 @@ export interface AddOnProgramDefinition {
   featuresES: string[]
   sessionCount: string
   sessionCountES: string
+  yearlyPrice: number  // Annual cost in euros
 }
 
 export const addOnPrograms: AddOnProgramDefinition[] = [
@@ -244,6 +245,7 @@ export const addOnPrograms: AddOnProgramDefinition[] = [
     ],
     sessionCount: '~150 annual sessions',
     sessionCountES: '~150 sesiones anuales',
+    yearlyPrice: 10500,
   },
   {
     id: 'stress',
@@ -273,6 +275,7 @@ export const addOnPrograms: AddOnProgramDefinition[] = [
     ],
     sessionCount: '~144 annual sessions',
     sessionCountES: '~144 sesiones anuales',
+    yearlyPrice: 5200,
   },
   {
     id: 'detox',
@@ -304,6 +307,7 @@ export const addOnPrograms: AddOnProgramDefinition[] = [
     ],
     sessionCount: '~189 annual sessions',
     sessionCountES: '~189 sesiones anuales',
+    yearlyPrice: 8400,
   },
   {
     id: 'pain',
@@ -333,6 +337,7 @@ export const addOnPrograms: AddOnProgramDefinition[] = [
     ],
     sessionCount: '~257 annual sessions',
     sessionCountES: '~257 sesiones anuales',
+    yearlyPrice: 9500,
   },
   {
     id: 'longevity',
@@ -364,6 +369,7 @@ export const addOnPrograms: AddOnProgramDefinition[] = [
     ],
     sessionCount: '~237 annual sessions',
     sessionCountES: '~237 sesiones anuales',
+    yearlyPrice: 12700,
   },
 ]
 

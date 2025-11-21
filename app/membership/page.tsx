@@ -7,7 +7,7 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { MagneticButton } from "@/components/magnetic-button"
 import { StructuredData } from "@/components/structured-data"
-import { ArrowLeft, Check, Sparkles, Dumbbell, Heart, Activity } from "lucide-react"
+import { ArrowLeft, Check, Sparkles, Dumbbell, Heart, Activity, ArrowRight } from "lucide-react"
 import { useEffect, useState } from "react"
 import { 
   baseMembershipTherapies,
@@ -539,55 +539,66 @@ export default function MembershipPage() {
             programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
-            <div className="text-center mb-8 sm:mb-10 md:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-3 sm:mb-4">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-3 sm:mb-4 md:mb-5">
                 {t.memberships.addOnPrograms}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground/70 mb-3 sm:mb-4">
                 {t.memberships.addOnProgramsSubtitle}
+              </p>
+              <p className="text-xs sm:text-sm md:text-base text-foreground/60 leading-relaxed">
+                Enhance your base membership with specialized programs designed for specific wellness goals
               </p>
             </div>
 
             {/* Programs Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
               {addOnPrograms.map((program, index) => (
                 <div
                   key={program.id}
-                  className={`rounded-xl border-2 border-border/30 bg-card/10 p-5 sm:p-6 md:p-8 hover:border-primary/40 hover:bg-card/20 transition-all duration-300 group relative overflow-hidden min-h-[44px] ${
+                  className={`rounded-xl border-2 border-border/30 bg-card/10 p-5 sm:p-6 md:p-7 lg:p-8 hover:border-primary/40 hover:bg-card/20 transition-all duration-300 group relative overflow-hidden min-h-[44px] ${
                     programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                   }`}
                   style={{
-                    borderTopColor: program.color,
-                    borderTopWidth: '3px',
+                    borderTopColor: `${program.color}60`,
+                    borderTopWidth: '4px',
                     transitionDelay: `${index * 100}ms`
                   }}
                 >
-                  {/* Icon */}
-                  <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">{program.icon === 'sparkles' ? '💅' : program.icon === 'brain' ? '🧠' : program.icon === 'leaf' ? '⚖️' : program.icon === 'heart-pulse' ? '💪' : '🧬'}</div>
-                  
-                  {/* Name */}
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2">
-                    {language === "es" ? program.nameES : program.name}
-                  </h3>
-                  
-                  {/* Tagline */}
-                  <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-3 sm:mb-4">
-                    {language === "es" ? program.taglineES : program.tagline}
-                  </p>
-                  
-                  {/* One-liner */}
-                  <p className="text-xs sm:text-sm md:text-base text-foreground/70 leading-relaxed mb-5 sm:mb-6">
-                    {language === "es" ? programOneLiners?.[program.id] : programOneLiners?.[program.id]}
-                  </p>
-                  
-                  {/* Session count */}
-                  <div className="pt-3 sm:pt-4 border-t border-border/20">
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs text-foreground/50">Annual sessions</p>
-                      <p className="text-xs sm:text-sm font-mono font-medium text-primary">
-                        {language === "es" ? program.sessionCountES : program.sessionCount}
-                      </p>
+                  <div className="text-center">
+                    {/* Icon */}
+                    <div 
+                      className="inline-flex items-center justify-center rounded-full p-3 md:p-4 mb-4 md:mb-5"
+                      style={{ backgroundColor: `${program.color}20` }}
+                    >
+                      <div 
+                        className="h-8 w-8 md:h-10 md:w-10 rounded-full"
+                        style={{ backgroundColor: program.color }}
+                      />
                     </div>
+                    
+                    {/* Name */}
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2 md:mb-3">
+                      {language === "es" ? program.nameES : program.name}
+                    </h3>
+                    
+                    {/* Tagline */}
+                    <p className="text-xs md:text-sm font-medium uppercase tracking-wide mb-4 md:mb-5" style={{ color: program.color }}>
+                      {language === "es" ? program.taglineES : program.tagline}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed mb-6 md:mb-8">
+                      {language === "es" ? program.descriptionES : program.description}
+                    </p>
+
+                    {/* CTA */}
+                    <button
+                      onClick={() => router.push("/?section=contact")}
+                      className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-primary hover:text-primary/80 transition-all min-h-[44px] justify-center group"
+                    >
+                      Learn more <ArrowRight className="h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </div>
                 </div>
               ))}
