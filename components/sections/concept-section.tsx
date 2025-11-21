@@ -36,7 +36,7 @@ export const ConceptSection = memo(function ConceptSection() {
   }, [])
 
   return (
-    <section className="relative flex min-h-screen w-screen shrink-0 items-center justify-center px-6 py-12 pt-24 sm:px-6 sm:py-20 sm:pt-28 md:px-8 md:py-28 md:pt-32 lg:px-12 lg:py-32 lg:pt-36 xl:px-16">
+    <section className="relative flex min-h-screen items-center justify-center px-6 py-12 pt-24 sm:px-6 sm:py-20 sm:pt-28 md:px-8 md:py-28 md:pt-32 lg:px-12 lg:py-32 lg:pt-36 xl:px-16">
       <div className="mx-auto w-full max-w-7xl">
         {/* Enhanced Content Grid with DNA Helix Divider */}
         <div

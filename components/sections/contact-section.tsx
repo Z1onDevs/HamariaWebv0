@@ -13,7 +13,7 @@ export const ContactSection = memo(function ContactSection() {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-5 py-16 pt-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
+      className="flex min-h-screen items-center justify-center px-5 py-16 pt-20 sm:px-6 sm:py-24 md:px-8 md:py-28 lg:px-12 lg:py-32"
     >
       <div className="mx-auto w-full max-w-3xl text-center">
         <div className="flex flex-col items-center justify-center">

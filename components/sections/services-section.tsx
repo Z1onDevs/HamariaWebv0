@@ -238,7 +238,7 @@ export const ServicesSection = memo(function ServicesSection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-8 pt-12 sm:px-6 sm:py-12 sm:pt-16 md:px-8 md:py-16 md:pt-20"
+        className="flex min-h-screen items-center justify-center px-4 py-8 pt-12 sm:px-6 sm:py-12 sm:pt-16 md:px-8 md:py-16 md:pt-20"
       >
         <div className="mx-auto w-full max-w-[1600px] px-2 sm:px-4 md:px-6 lg:px-8">
           {/* Section Title */}

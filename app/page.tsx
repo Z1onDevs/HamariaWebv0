@@ -41,12 +41,7 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
-  const touchStartY = useRef(0)
-  const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
-  const scrollThrottleRef = useRef<number>()
-  const [heroScrollProgress, setHeroScrollProgress] = useState(0)
-  const [heroSketchOffset, setHeroSketchOffset] = useState(0)
   const { language, setLanguage } = useLanguage()
   const { t } = useTranslation()
   const hero = t.hero
@@ -139,192 +134,48 @@ export default function Home() {
   }, [shouldRenderShader])
 
   const scrollToSection = (index: number) => {
-    if (!scrollContainerRef.current) return
-
-    if (isMobile) {
-      // Mobile: Scroll to section vertically
-      const sections = scrollContainerRef.current.querySelectorAll('section')
-      const targetSection = sections[index] as HTMLElement
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        setCurrentSection(index)
-      }
-    } else {
-      // Desktop: Scroll horizontally
-      const sectionWidth = scrollContainerRef.current.offsetWidth
-      scrollContainerRef.current.scrollTo({
-        left: sectionWidth * index,
-        behavior: "smooth",
-      })
+    const sections = document.querySelectorAll('section')
+    const targetSection = sections[index] as HTMLElement
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
       setCurrentSection(index)
     }
   }
 
-  useEffect(() => {
-    // Only add touch handlers on desktop (for horizontal scroll)
-    if (isMobile) return
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY.current = e.touches[0].clientY
-      touchStartX.current = e.touches[0].clientX
-    }
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (Math.abs(e.touches[0].clientY - touchStartY.current) > 10) {
-        e.preventDefault()
-      }
-    }
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndY = e.changedTouches[0].clientY
-      const touchEndX = e.changedTouches[0].clientX
-      const deltaY = touchStartY.current - touchEndY
-      const deltaX = touchStartX.current - touchEndX
-
-      // Increase threshold to 150px to allow for scrolling within sections
-      // Only trigger page change for strong vertical swipes
-      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 150) {
-        if (deltaY > 0 && currentSection < 5) {
-          scrollToSection(currentSection + 1)
-        } else if (deltaY < 0 && currentSection > 0) {
-          scrollToSection(currentSection - 1)
-        }
-      }
-    }
-
-    const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener("touchstart", handleTouchStart, { passive: true })
-      container.addEventListener("touchmove", handleTouchMove, { passive: false })
-      container.addEventListener("touchend", handleTouchEnd, { passive: true })
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("touchstart", handleTouchStart)
-        container.removeEventListener("touchmove", handleTouchMove)
-        container.removeEventListener("touchend", handleTouchEnd)
-      }
-    }
-  }, [currentSection, isMobile])
 
   useEffect(() => {
-    // Only add wheel handler on desktop (for horizontal scroll)
-    if (isMobile) return
-
-    const handleWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault()
-
-        if (!scrollContainerRef.current) return
-
-        scrollContainerRef.current.scrollBy({
-          left: e.deltaY,
-          behavior: "instant",
-        })
-
-        const sectionWidth = scrollContainerRef.current.offsetWidth
-        const scrollLeft = scrollContainerRef.current.scrollLeft
-        const newSection = Math.round(scrollLeft / sectionWidth)
-
-        if (newSection !== currentSection && newSection >= 0 && newSection <= 5) {
-          setCurrentSection(newSection)
-        }
-      }
-    }
-
-    const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false })
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("wheel", handleWheel)
-      }
-    }
-  }, [currentSection, isMobile])
-
-  useEffect(() => {
-    // Mobile: Use Intersection Observer for section detection
-    if (isMobile) {
-      const sections = document.querySelectorAll('section')
-      
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-              const index = Array.from(sections).indexOf(entry.target as HTMLElement)
-              if (index !== -1 && index !== currentSection) {
-                setCurrentSection(index)
+    const sections = document.querySelectorAll('section')
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            const index = Array.from(sections).indexOf(entry.target as HTMLElement)
+            if (index !== -1 && index !== currentSection) {
+              setCurrentSection(index)
+              // Track section navigation
+              if (typeof window !== "undefined" && (window as any).clarity) {
+                const sectionNames = ["hero", "concept", "services", "gallery", "membership", "contact"]
+                ;(window as any).clarity("event", "section_navigation", {
+                  section: sectionNames[index] || index,
+                })
               }
             }
-          })
-        },
-        { threshold: [0.5], rootMargin: '-64px 0px' }
-      )
-
-      sections.forEach((section) => observer.observe(section))
-
-      return () => {
-        sections.forEach((section) => observer.unobserve(section))
-      }
-    }
-
-    // Desktop: Use scroll position for horizontal scroll detection
-    const handleScroll = () => {
-      if (scrollThrottleRef.current) return
-
-      scrollThrottleRef.current = requestAnimationFrame(() => {
-        if (!scrollContainerRef.current) {
-          scrollThrottleRef.current = undefined
-          return
-        }
-
-        const sectionWidth = scrollContainerRef.current.offsetWidth
-        const scrollLeft = scrollContainerRef.current.scrollLeft
-        const newSection = Math.round(scrollLeft / sectionWidth)
-
-        // Calculate hero scroll progress (0 to 1 in first section)
-        if (scrollLeft < sectionWidth) {
-          const progress = scrollLeft / sectionWidth
-          setHeroScrollProgress(progress)
-          // Parallax effect: 50px max movement
-          setHeroSketchOffset(progress * 50)
-        }
-
-        if (newSection !== currentSection && newSection >= 0 && newSection <= 5) {
-          setCurrentSection(newSection)
-          // Track section navigation
-          if (typeof window !== "undefined" && (window as any).clarity) {
-            const sectionNames = ["hero", "concept", "services", "gallery", "membership", "contact"]
-            ;(window as any).clarity("event", "section_navigation", {
-              section: sectionNames[newSection] || newSection,
-            })
           }
-        }
+        })
+      },
+      { threshold: [0.5], rootMargin: '-64px 0px' }
+    )
 
-        scrollThrottleRef.current = undefined
-      })
-    }
-
-    const container = scrollContainerRef.current
-    if (container) {
-      container.addEventListener("scroll", handleScroll, { passive: true })
-    }
+    sections.forEach((section) => observer.observe(section))
 
     return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll)
-      }
-      if (scrollThrottleRef.current) {
-        cancelAnimationFrame(scrollThrottleRef.current)
-      }
+      sections.forEach((section) => observer.unobserve(section))
     }
-  }, [currentSection, isMobile])
+  }, [currentSection])
 
   return (
-    <main className={`relative w-full bg-background ${isMobile ? 'h-auto' : 'h-screen overflow-hidden'}`}>
+    <main className="relative w-full h-auto bg-background">
       <CustomCursor />
       <GrainOverlay />
 
@@ -457,14 +308,10 @@ export default function Home() {
       <div
         ref={scrollContainerRef}
         data-scroll-container
-        className={`relative z-10 transition-opacity duration-700 ${
-          isMobile 
-            ? "flex flex-col h-auto overflow-y-auto overflow-x-hidden" 
-            : "flex flex-row h-screen overflow-x-auto overflow-y-hidden"
-        } ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        className={`relative z-10 flex flex-col h-auto overflow-y-auto overflow-x-hidden transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section className="relative flex min-h-screen w-screen shrink-0 items-end px-4 pb-12 pt-16 sm:px-6 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24 lg:px-12 lg:pb-24">
+        <section className="relative flex min-h-screen items-end px-4 pb-12 pt-16 sm:px-6 sm:pb-16 sm:pt-20 md:px-8 md:pb-20 md:pt-24 lg:px-12 lg:pb-24">
           {/* Mobile/Tablet Hero Pool Image - Highly Visible & Larger - Centered */}
           <div className="lg:hidden absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute left-1/2 top-[30%] w-[65vw] h-[36vh] max-h-[360px] opacity-80 -translate-x-1/2 -translate-y-1/2 sm:top-[32%] md:top-[35%] md:opacity-85 md:w-[70vw] md:h-[40vh] md:max-h-[400px]">
@@ -604,7 +451,7 @@ export default function Home() {
 
         <ConceptSection />
         {/* DNA Helix - Mobile Only (between methodology and services) - Minimal Space */}
-        <div className="flex w-screen shrink-0 items-center justify-center md:hidden" style={{ minHeight: 'auto', height: 'auto', padding: 0, margin: 0 }}>
+        <div className="flex items-center justify-center md:hidden" style={{ minHeight: 'auto', height: 'auto', padding: 0, margin: 0 }}>
           <div className="rotate-90 scale-[0.35]" style={{ margin: 0, padding: 0 }}>
             <DNAHelix scrollProgress={0.5} />
           </div>

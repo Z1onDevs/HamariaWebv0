@@ -130,7 +130,7 @@ export const GallerySection = memo(function GallerySection() {
     <>
       <section
         ref={ref}
-        className="flex min-h-screen w-screen shrink-0 snap-start items-center justify-center px-4 py-20 pt-24 sm:px-6 sm:py-24 sm:pt-28 md:px-8 md:py-28 md:pt-32 lg:px-12 lg:py-32 lg:pt-36 xl:pt-40"
+        className="flex min-h-screen items-center justify-center px-4 py-20 pt-24 sm:px-6 sm:py-24 sm:pt-28 md:px-8 md:py-28 md:pt-32 lg:px-12 lg:py-32 lg:pt-36 xl:pt-40"
         style={{
           paddingTop: 'max(6rem, calc(env(safe-area-inset-top) + 5rem))',
         }}
