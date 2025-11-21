@@ -15,7 +15,7 @@ export function ShaderWrapper() {
 
   if (!isClient || hasError) {
     return fallback ?? (
-      <div className="h-full w-full bg-gradient-to-br from-[#1275d8] via-[#0066ff] to-[#e19136]" />
+      <div className="h-full w-full bg-gradient-to-br from-[#1A1F35] via-[#4A90E2] to-[#C9A961]" />
     )
   }
 
@@ -26,8 +26,8 @@ export function ShaderWrapper() {
   const shaderContent = (
     <Shader className="h-full w-full">
       <Swirl
-        colorA="#1275d8"
-        colorB="#e19136"
+        colorA="#1A1F35"
+        colorB="#C9A961"
         speed={0.8}
         detail={0.8}
         blend={50}
@@ -39,11 +39,11 @@ export function ShaderWrapper() {
         fineY={40}
       />
       <ChromaFlow
-        baseColor="#0066ff"
-        upColor="#0066ff"
-        downColor="#d1d1d1"
-        leftColor="#e19136"
-        rightColor="#e19136"
+        baseColor="#4A90E2"
+        upColor="#4A90E2"
+        downColor="#7CB4E8"
+        leftColor="#C9A961"
+        rightColor="#C9A961"
         intensity={0.9}
         radius={1.8}
         momentum={25}
@@ -58,7 +58,7 @@ export function ShaderWrapper() {
   } catch (error) {
     setHasError(true)
     const gradientFallback = (
-      <div className="h-full w-full bg-gradient-to-br from-[#1275d8] via-[#0066ff] to-[#e19136]" />
+      <div className="h-full w-full bg-gradient-to-br from-[#1A1F35] via-[#4A90E2] to-[#C9A961]" />
     )
     setFallback(gradientFallback)
     return gradientFallback

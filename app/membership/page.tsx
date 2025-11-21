@@ -81,7 +81,7 @@ export default function MembershipPage() {
   }
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-background">
+    <main className="relative min-h-screen overflow-x-hidden bg-background">
       <StructuredData type="membership" data={membershipStructuredData} />
       
       {/* Background */}
@@ -94,11 +94,11 @@ export default function MembershipPage() {
       {/* Content */}
       <div className="relative z-10">
         {/* Header with Back Button */}
-        <div className="px-4 pt-8 sm:px-6 md:px-8 lg:px-12">
+        <div className="px-4 pt-6 sm:pt-8 sm:px-6 md:px-8 lg:px-12">
           <div className="mx-auto max-w-7xl">
             <button
               onClick={() => router.back()}
-              className="mb-6 flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground transition-colors"
+              className="mb-4 sm:mb-6 flex items-center gap-2 text-sm text-foreground/70 hover:text-foreground transition-colors min-h-[44px]"
             >
               <ArrowLeft className="h-4 w-4" />
               Back
@@ -107,10 +107,10 @@ export default function MembershipPage() {
         </div>
 
         {/* Hero Section */}
-        <div className="px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12 lg:py-20">
+        <div className="px-4 py-8 sm:py-12 sm:px-6 md:px-8 md:py-16 lg:px-12 lg:py-20">
           <div className="mx-auto max-w-7xl text-center">
             <div
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6 text-xs md:text-sm font-medium"
+              className="inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-1.5 mb-4 sm:mb-6 text-xs md:text-sm font-medium"
               style={{
                 backgroundColor: `${membership.color}20`,
                 color: membership.color,
@@ -121,24 +121,24 @@ export default function MembershipPage() {
               {membership.tagline}
             </div>
             
-            <h1 className="font-sans text-4xl font-light tracking-tight text-foreground md:text-5xl lg:text-6xl xl:text-7xl mb-4 px-2">
+            <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground mb-3 sm:mb-4">
               {membership.name}
             </h1>
             
-            <p className="max-w-3xl mx-auto font-sans text-base text-foreground/70 md:text-lg lg:text-xl px-4">
+            <p className="max-w-3xl mx-auto font-sans text-sm sm:text-base md:text-lg lg:text-xl text-foreground/70">
               {membership.description}
             </p>
           </div>
         </div>
 
         {/* Founders Offer */}
-        <div className="px-4 pb-12 sm:px-6 md:px-8 lg:px-12">
+        <div className="px-4 pb-10 sm:pb-12 sm:px-6 md:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl">
-            <div className="rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center backdrop-blur-sm">
-              <p className="font-sans text-base font-medium text-foreground md:text-lg lg:text-xl">
+            <div className="rounded-2xl border border-primary/40 bg-primary/10 p-4 sm:p-6 text-center backdrop-blur-sm">
+              <p className="font-sans text-sm sm:text-base md:text-lg lg:text-xl font-medium text-foreground">
                 {t.memberships.foundersOffer}
               </p>
-              <p className="mt-2 text-xs md:text-sm text-foreground/70">
+              <p className="mt-2 text-xs sm:text-sm text-foreground/70">
                 {t.memberships.limitedMembers}
               </p>
             </div>
@@ -146,12 +146,12 @@ export default function MembershipPage() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="px-4 pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
+        <div className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
           <div className="mx-auto max-w-4xl">
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
               {/* Monthly */}
               <div 
-                className="rounded-2xl border p-6 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow sm:p-8"
+                className="rounded-2xl border p-5 sm:p-6 md:p-8 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow"
                 style={{
                   backgroundColor: `${membership.color}05`,
                   borderColor: `${membership.color}20`,
@@ -161,7 +161,7 @@ export default function MembershipPage() {
                   <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-2">
                     {t.memberships.monthlyPrice}
                   </p>
-                  <p className="font-sans text-5xl md:text-6xl font-light text-foreground mb-2">
+                  <p className="font-sans text-4xl sm:text-5xl md:text-6xl font-light text-foreground mb-2">
                     €{membership.monthlyPrice}
                   </p>
                   <p className="text-sm text-foreground/60">per month</p>
@@ -170,14 +170,14 @@ export default function MembershipPage() {
 
               {/* Yearly */}
               <div 
-                className="rounded-2xl border p-6 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow sm:p-8 relative overflow-hidden"
+                className="rounded-2xl border p-5 sm:p-6 md:p-8 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow relative overflow-hidden"
                 style={{
                   backgroundColor: `${membership.color}10`,
                   borderColor: `${membership.color}40`,
                 }}
               >
                 <div 
-                  className="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-medium"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full px-2.5 py-1 text-xs font-medium"
                   style={{
                     backgroundColor: membership.color,
                     color: 'white',
@@ -189,7 +189,7 @@ export default function MembershipPage() {
                   <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-2">
                     {t.memberships.yearlyPrice}
                   </p>
-                  <p className="font-sans text-5xl md:text-6xl font-light text-foreground mb-2">
+                  <p className="font-sans text-4xl sm:text-5xl md:text-6xl font-light text-foreground mb-2">
                     €{membership.yearlyPrice}
                   </p>
                   <p className="text-sm text-foreground/60">{t.memberships.perYear}</p>
@@ -200,18 +200,18 @@ export default function MembershipPage() {
         </div>
 
         {/* Category Overview Cards */}
-        <div ref={overviewRef} className="px-4 pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
+        <div ref={overviewRef} className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
           <div className="mx-auto max-w-7xl">
-            <h2 className={`text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-8 md:mb-12 text-center transition-all duration-1000 ${
+            <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-6 sm:mb-8 md:mb-12 text-center transition-all duration-1000 ${
               overviewVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
             }`}>
               {t.memberships.whatsIncluded}
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
               {/* Fitness Overview */}
               <div 
-                className={`rounded-xl border-2 bg-card/20 backdrop-blur-sm p-6 md:p-8 hover:bg-card/30 hover:scale-[1.02] transition-all duration-300 ${
+                className={`rounded-xl border-2 bg-card/20 backdrop-blur-sm p-5 sm:p-6 md:p-8 hover:bg-card/30 hover:scale-[1.02] transition-all duration-300 min-h-[44px] ${
                   overviewVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
                 style={{
@@ -219,21 +219,21 @@ export default function MembershipPage() {
                   transitionDelay: '100ms'
                 }}
               >
-                <div className="text-4xl md:text-5xl mb-4 text-center">💪</div>
-                <h3 className="text-lg md:text-xl font-medium text-foreground mb-2 text-center">
+                <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 text-center">💪</div>
+                <h3 className="text-base sm:text-lg md:text-xl font-medium text-foreground mb-2 text-center">
                   {categories?.fitness?.title || "Fitness"}
                 </h3>
                 <p className="text-xs text-center font-medium uppercase tracking-wide mb-3" style={{ color: categoryColors.fitness.primary }}>
                   {categories?.fitness?.subtitle || "Unlimited Training"}
                 </p>
-                <p className="text-sm text-foreground/70 leading-relaxed text-center">
+                <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed text-center">
                   9 unlimited fitness therapies
                 </p>
               </div>
 
               {/* Wellness Overview */}
               <div 
-                className={`rounded-xl border-2 bg-card/20 backdrop-blur-sm p-6 md:p-8 hover:bg-card/30 hover:scale-[1.02] transition-all duration-300 ${
+                className={`rounded-xl border-2 bg-card/20 backdrop-blur-sm p-5 sm:p-6 md:p-8 hover:bg-card/30 hover:scale-[1.02] transition-all duration-300 min-h-[44px] ${
                   overviewVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
                 style={{
@@ -241,21 +241,21 @@ export default function MembershipPage() {
                   transitionDelay: '200ms'
                 }}
               >
-                <div className="text-4xl md:text-5xl mb-4 text-center">💎</div>
-                <h3 className="text-lg md:text-xl font-medium text-foreground mb-2 text-center">
+                <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 text-center">💎</div>
+                <h3 className="text-base sm:text-lg md:text-xl font-medium text-foreground mb-2 text-center">
                   {categories?.wellness?.title || "Wellness"}
                 </h3>
                 <p className="text-xs text-center font-medium uppercase tracking-wide mb-3" style={{ color: categoryColors.wellness.primary }}>
                   {categories?.wellness?.subtitle || "Full Spa Access"}
                 </p>
-                <p className="text-sm text-foreground/70 leading-relaxed text-center">
+                <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed text-center">
                   12 spa services included
                 </p>
               </div>
 
               {/* Longevity Overview */}
               <div 
-                className={`rounded-xl border-2 bg-card/20 backdrop-blur-sm p-6 md:p-8 hover:bg-card/30 hover:scale-[1.02] transition-all duration-300 ${
+                className={`rounded-xl border-2 bg-card/20 backdrop-blur-sm p-5 sm:p-6 md:p-8 hover:bg-card/30 hover:scale-[1.02] transition-all duration-300 min-h-[44px] sm:col-span-2 lg:col-span-1 ${
                   overviewVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                 }`}
                 style={{
@@ -263,14 +263,14 @@ export default function MembershipPage() {
                   transitionDelay: '300ms'
                 }}
               >
-                <div className="text-4xl md:text-5xl mb-4 text-center">🧬</div>
-                <h3 className="text-lg md:text-xl font-medium text-foreground mb-2 text-center">
+                <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 text-center">🧬</div>
+                <h3 className="text-base sm:text-lg md:text-xl font-medium text-foreground mb-2 text-center">
                   {categories?.longevity?.title || "Longevity"}
                 </h3>
                 <p className="text-xs text-center font-medium uppercase tracking-wide mb-3" style={{ color: categoryColors.longevity.primary }}>
                   {categories?.longevity?.subtitle || "Health Tracking"}
                 </p>
-                <p className="text-sm text-foreground/70 leading-relaxed text-center">
+                <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed text-center">
                   Lounge access + monitoring
                 </p>
               </div>
@@ -279,40 +279,40 @@ export default function MembershipPage() {
         </div>
 
         {/* FITNESS DETAILED SECTION */}
-        <div ref={fitnessRef} id="fitness-section" className="px-4 pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
+        <div ref={fitnessRef} id="fitness-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
           <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
             fitnessVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
-            <div className="mb-8 md:mb-12 pb-6 border-b-2" style={{ borderColor: categoryColors.fitness.border }}>
-              <div className="flex items-center gap-4 mb-4 justify-center md:justify-start">
-                <div className="text-5xl">💪</div>
-                <h2 className="text-3xl md:text-4xl font-light text-foreground">
+            <div className="mb-6 sm:mb-8 md:mb-12 pb-5 sm:pb-6 border-b-2" style={{ borderColor: categoryColors.fitness.border }}>
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-3 sm:mb-4 justify-center md:justify-start">
+                <div className="text-4xl sm:text-5xl">💪</div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-foreground">
                   {categories?.fitness?.title || "Fitness"}
                 </h2>
               </div>
-              <p className="text-sm font-medium uppercase tracking-wide mb-3 text-center md:text-left" style={{ color: categoryColors.fitness.primary }}>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-wide mb-3 text-center md:text-left" style={{ color: categoryColors.fitness.primary }}>
                 {categories?.fitness?.subtitle || "Unlimited Training"}
               </p>
-              <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-3xl">
+              <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-3xl">
                 {categories?.fitness?.description}
               </p>
             </div>
 
             {/* Fitness Therapies Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-5 sm:mb-6">
               {fitnessTherapies.map((therapy, index) => (
                 <div
                   key={index}
-                  className="group rounded-lg border border-border/30 bg-card/15 p-4 hover:bg-card/25 hover:border-border/50 hover:scale-[1.02] transition-all duration-300"
+                  className="group rounded-lg border border-border/30 bg-card/15 p-4 hover:bg-card/25 hover:border-border/50 hover:scale-[1.02] transition-all duration-300 min-h-[44px]"
                   style={{
                     animationDelay: `${index * 50}ms`
                   }}
                 >
-                  <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: categoryColors.fitness.primary }} />
+                  <div className="flex items-start gap-2.5 sm:gap-3">
+                    <Check className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 sm:mt-1" style={{ color: categoryColors.fitness.primary }} />
                     <div className="flex-1">
-                      <h5 className="font-medium text-foreground mb-1">
+                      <h5 className="text-sm sm:text-base font-medium text-foreground mb-1">
                         {language === "es" ? therapy.nameES : therapy.name}
                       </h5>
                       {therapy.duration && therapy.capacity && (
@@ -320,9 +320,9 @@ export default function MembershipPage() {
                           {therapy.duration} min · Capacity: {therapy.capacity}
                         </p>
                       )}
-                      <div className="mt-3">
+                      <div className="mt-2 sm:mt-3">
                         <span 
-                          className="inline-block px-3 py-1 rounded-full text-xs font-medium"
+                          className="inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium"
                           style={{ backgroundColor: categoryColors.fitness.light, color: categoryColors.fitness.primary }}
                         >
                           UNLIMITED
@@ -334,46 +334,46 @@ export default function MembershipPage() {
               ))}
             </div>
 
-            <p className="text-sm text-foreground/60 text-center">
+            <p className="text-xs sm:text-sm text-foreground/60 text-center">
               {t.memberships.totalTherapies}: 9 {t.memberships.unlimitedTherapies}
             </p>
           </div>
         </div>
 
         {/* WELLNESS DETAILED SECTION */}
-        <div ref={wellnessRef} id="wellness-section" className="px-4 pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
+        <div ref={wellnessRef} id="wellness-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
           <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
             wellnessVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
-            <div className="mb-8 md:mb-12 pb-6 border-b-2" style={{ borderColor: categoryColors.wellness.border }}>
-              <div className="flex items-center gap-4 mb-4 justify-center md:justify-start">
-                <div className="text-5xl">💎</div>
-                <h2 className="text-3xl md:text-4xl font-light text-foreground">
+            <div className="mb-6 sm:mb-8 md:mb-12 pb-5 sm:pb-6 border-b-2" style={{ borderColor: categoryColors.wellness.border }}>
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-3 sm:mb-4 justify-center md:justify-start">
+                <div className="text-4xl sm:text-5xl">💎</div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-foreground">
                   {categories?.wellness?.title || "Wellness"}
                 </h2>
               </div>
-              <p className="text-sm font-medium uppercase tracking-wide mb-3 text-center md:text-left" style={{ color: categoryColors.wellness.primary }}>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-wide mb-3 text-center md:text-left" style={{ color: categoryColors.wellness.primary }}>
                 {categories?.wellness?.subtitle || "Full Spa Access"}
               </p>
-              <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-3xl">
+              <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-3xl">
                 {categories?.wellness?.description}
               </p>
             </div>
 
             {/* Unlimited Spa Access */}
-            <div className="mb-8">
-              <h4 className="text-lg font-medium text-foreground mb-4">{t.memberships.unlimitedAccess}</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="mb-6 sm:mb-8">
+              <h4 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">{t.memberships.unlimitedAccess}</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {wellnessUnlimited.map((therapy, index) => (
                   <div
                     key={index}
-                    className="rounded-lg border border-border/30 bg-card/15 p-4 hover:bg-card/25 hover:border-border/50 hover:scale-[1.02] transition-all duration-300"
+                    className="rounded-lg border border-border/30 bg-card/15 p-4 hover:bg-card/25 hover:border-border/50 hover:scale-[1.02] transition-all duration-300 min-h-[44px]"
                   >
-                    <div className="flex items-start gap-3">
-                      <Check className="h-5 w-5 flex-shrink-0 mt-1" style={{ color: categoryColors.wellness.primary }} />
+                    <div className="flex items-start gap-2.5 sm:gap-3">
+                      <Check className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 sm:mt-1" style={{ color: categoryColors.wellness.primary }} />
                       <div className="flex-1">
-                        <h5 className="font-medium text-foreground mb-1">
+                        <h5 className="text-sm sm:text-base font-medium text-foreground mb-1">
                           {language === "es" ? therapy.nameES : therapy.name}
                         </h5>
                         {therapy.duration && therapy.capacity && (
@@ -381,9 +381,9 @@ export default function MembershipPage() {
                             {therapy.duration} min · Cap: {therapy.capacity}
                           </p>
                         )}
-                        <div className="mt-3">
+                        <div className="mt-2 sm:mt-3">
                           <span 
-                            className="inline-block px-3 py-1 rounded-full text-xs font-medium"
+                            className="inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium"
                             style={{ backgroundColor: categoryColors.wellness.light, color: categoryColors.wellness.primary }}
                           >
                             UNLIMITED
@@ -397,9 +397,9 @@ export default function MembershipPage() {
             </div>
 
             {/* Annual Sessions */}
-            <div className="mb-6">
-              <h4 className="text-lg font-medium text-foreground mb-4">{t.memberships.includedSessions}</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="mb-5 sm:mb-6">
+              <h4 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">{t.memberships.includedSessions}</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {wellnessAnnual.map((therapy, index) => {
                   const allocation = therapy.baseAllocation
                   if (allocation === 0 || !allocation) return null
@@ -407,13 +407,13 @@ export default function MembershipPage() {
                   return (
                     <div
                       key={index}
-                      className="rounded-lg border border-border/40 bg-card/20 p-5"
+                      className="rounded-lg border border-border/40 bg-card/20 p-4 sm:p-5 min-h-[44px]"
                     >
                       <div className="flex items-start justify-between gap-3 mb-2">
-                        <p className="text-sm font-medium text-foreground">
+                        <p className="text-xs sm:text-sm font-medium text-foreground">
                           {language === "es" ? therapy.nameES : therapy.name}
                         </p>
-                        <p className="text-lg font-mono font-bold text-primary whitespace-nowrap">
+                        <p className="text-base sm:text-lg font-mono font-bold text-primary whitespace-nowrap">
                           {allocation}
                         </p>
                       </div>
@@ -426,45 +426,45 @@ export default function MembershipPage() {
               </div>
             </div>
 
-            <p className="text-sm text-foreground/60 text-center">
+            <p className="text-xs sm:text-sm text-foreground/60 text-center">
               {t.memberships.totalTherapies}: 9 {t.memberships.unlimitedTherapies} + 3 {t.memberships.annualSessions}
             </p>
           </div>
         </div>
 
         {/* LONGEVITY DETAILED SECTION */}
-        <div ref={longevityRef} id="longevity-section" className="px-4 pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
+        <div ref={longevityRef} id="longevity-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
           <div className={`mx-auto max-w-6xl transition-all duration-1000 ${
             longevityVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
-            <div className="mb-8 md:mb-12 pb-6 border-b-2" style={{ borderColor: categoryColors.longevity.border }}>
-              <div className="flex items-center gap-4 mb-4 justify-center md:justify-start">
-                <div className="text-5xl">🧬</div>
-                <h2 className="text-3xl md:text-4xl font-light text-foreground">
+            <div className="mb-6 sm:mb-8 md:mb-12 pb-5 sm:pb-6 border-b-2" style={{ borderColor: categoryColors.longevity.border }}>
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-3 sm:mb-4 justify-center md:justify-start">
+                <div className="text-4xl sm:text-5xl">🧬</div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-foreground">
                   {categories?.longevity?.title || "Longevity"}
                 </h2>
               </div>
-              <p className="text-sm font-medium uppercase tracking-wide mb-3 text-center md:text-left" style={{ color: categoryColors.longevity.primary }}>
+              <p className="text-xs sm:text-sm font-medium uppercase tracking-wide mb-3 text-center md:text-left" style={{ color: categoryColors.longevity.primary }}>
                 {categories?.longevity?.subtitle || "Members Lounge & Health Tracking"}
               </p>
-              <p className="text-base md:text-lg text-foreground/70 leading-relaxed max-w-3xl">
+              <p className="text-sm sm:text-base md:text-lg text-foreground/70 leading-relaxed max-w-3xl">
                 {categories?.longevity?.description}
               </p>
             </div>
 
             {/* Members Lounge */}
-            <div className="mb-8">
-              <div className="rounded-xl border border-border/30 bg-card/15 p-6 md:p-8">
-                <h4 className="text-lg font-medium text-foreground mb-3">Members Lounge</h4>
-                <p className="text-sm text-foreground/70 leading-relaxed mb-4">
+            <div className="mb-6 sm:mb-8">
+              <div className="rounded-xl border border-border/30 bg-card/15 p-5 sm:p-6 md:p-8">
+                <h4 className="text-base sm:text-lg font-medium text-foreground mb-3">Members Lounge</h4>
+                <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed mb-4">
                   Private quiet space with optional silence zones. Access to cutting-edge longevity devices available with select add-on programs.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {['PEMF', 'HBOT', 'IHHT', 'H₂ therapy', 'Vagus nerve stimulation', 'Massage chair', 'Foot roller'].map((device, idx) => (
                     <span 
                       key={idx}
-                      className="px-3 py-1 rounded-full text-xs font-medium"
+                      className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-medium"
                       style={{ backgroundColor: categoryColors.longevity.light, color: categoryColors.longevity.primary }}
                     >
                       {device}
@@ -475,48 +475,48 @@ export default function MembershipPage() {
             </div>
 
             {/* Health Monitoring */}
-            <div className="mb-6">
-              <h4 className="text-lg font-medium text-foreground mb-4">Health Monitoring Included</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mb-5 sm:mb-6">
+              <h4 className="text-base sm:text-lg font-medium text-foreground mb-3 sm:mb-4">Health Monitoring Included</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Monthly */}
-                <div className="rounded-lg border border-border/40 bg-card/20 p-6">
+                <div className="rounded-lg border border-border/40 bg-card/20 p-5 sm:p-6 min-h-[44px]">
                   <div className="flex items-center gap-2 mb-3">
-                    <Activity className="h-5 w-5" style={{ color: categoryColors.longevity.primary }} />
-                    <h5 className="font-medium text-foreground">Monthly Checkups</h5>
+                    <Activity className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: categoryColors.longevity.primary }} />
+                    <h5 className="text-sm sm:text-base font-medium text-foreground">Monthly Checkups</h5>
                   </div>
-                  <ul className="space-y-2 text-sm text-foreground/70">
+                  <ul className="space-y-2 text-xs sm:text-sm text-foreground/70">
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
                       <span>Body Lab bioimpedance (unlimited)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
                       <span>Physical assessments</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
                       <span>Progress tracking</span>
                     </li>
                   </ul>
                 </div>
 
                 {/* Annual */}
-                <div className="rounded-lg border border-border/40 bg-card/20 p-6">
+                <div className="rounded-lg border border-border/40 bg-card/20 p-5 sm:p-6 min-h-[44px]">
                   <div className="flex items-center gap-2 mb-3">
-                    <Heart className="h-5 w-5" style={{ color: categoryColors.longevity.primary }} />
-                    <h5 className="font-medium text-foreground">Annual Assessment</h5>
+                    <Heart className="h-4 w-4 sm:h-5 sm:w-5" style={{ color: categoryColors.longevity.primary }} />
+                    <h5 className="text-sm sm:text-base font-medium text-foreground">Annual Assessment</h5>
                   </div>
-                  <ul className="space-y-2 text-sm text-foreground/70">
+                  <ul className="space-y-2 text-xs sm:text-sm text-foreground/70">
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
                       <span>Complete blood panel</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
                       <span>VO₂ max cardiopulmonary test</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0 mt-0.5" style={{ color: categoryColors.longevity.primary }} />
                       <span>Personalized longevity recommendations</span>
                     </li>
                   </ul>
@@ -524,8 +524,8 @@ export default function MembershipPage() {
               </div>
 
               {/* Guest Passes */}
-              <div className="mt-6 rounded-lg border border-border/40 bg-card/20 p-5 text-center">
-                <p className="text-sm text-foreground/70">
+              <div className="mt-5 sm:mt-6 rounded-lg border border-border/40 bg-card/20 p-4 sm:p-5 text-center">
+                <p className="text-xs sm:text-sm text-foreground/70">
                   <span className="font-medium text-foreground">Bonus:</span> 12 guest passes per year to share the Hamaria experience
                 </p>
               </div>
@@ -534,26 +534,26 @@ export default function MembershipPage() {
         </div>
 
         {/* ADD-ON PROGRAMS SECTION */}
-        <div ref={programsRef} data-section="programs" id="programs-section" className="px-4 pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
+        <div ref={programsRef} data-section="programs" id="programs-section" className="px-4 pb-12 sm:pb-16 sm:px-6 md:px-8 md:pb-20 lg:px-12 lg:pb-24 scroll-mt-20">
           <div className={`mx-auto max-w-7xl transition-all duration-1000 ${
             programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}>
             {/* Header */}
-            <div className="text-center mb-10 md:mb-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-4">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-3 sm:mb-4">
                 {t.memberships.addOnPrograms}
               </h2>
-              <p className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
                 {t.memberships.addOnProgramsSubtitle}
               </p>
             </div>
 
             {/* Programs Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
               {addOnPrograms.map((program, index) => (
                 <div
                   key={program.id}
-                  className={`rounded-xl border-2 border-border/30 bg-card/10 p-6 md:p-8 hover:border-primary/40 hover:bg-card/20 transition-all duration-300 group relative overflow-hidden ${
+                  className={`rounded-xl border-2 border-border/30 bg-card/10 p-5 sm:p-6 md:p-8 hover:border-primary/40 hover:bg-card/20 transition-all duration-300 group relative overflow-hidden min-h-[44px] ${
                     programsVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
                   }`}
                   style={{
@@ -563,28 +563,28 @@ export default function MembershipPage() {
                   }}
                 >
                   {/* Icon */}
-                  <div className="text-4xl md:text-5xl mb-4">{program.icon === 'sparkles' ? '💅' : program.icon === 'brain' ? '🧠' : program.icon === 'leaf' ? '⚖️' : program.icon === 'heart-pulse' ? '💪' : '🧬'}</div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">{program.icon === 'sparkles' ? '💅' : program.icon === 'brain' ? '🧠' : program.icon === 'leaf' ? '⚖️' : program.icon === 'heart-pulse' ? '💪' : '🧬'}</div>
                   
                   {/* Name */}
-                  <h3 className="text-xl md:text-2xl font-medium text-foreground mb-2">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2">
                     {language === "es" ? program.nameES : program.name}
                   </h3>
                   
                   {/* Tagline */}
-                  <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-4">
+                  <p className="text-xs font-medium uppercase tracking-wide text-foreground/50 mb-3 sm:mb-4">
                     {language === "es" ? program.taglineES : program.tagline}
                   </p>
                   
                   {/* One-liner */}
-                  <p className="text-sm md:text-base text-foreground/70 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm md:text-base text-foreground/70 leading-relaxed mb-5 sm:mb-6">
                     {language === "es" ? programOneLiners?.[program.id] : programOneLiners?.[program.id]}
                   </p>
                   
                   {/* Session count */}
-                  <div className="pt-4 border-t border-border/20">
+                  <div className="pt-3 sm:pt-4 border-t border-border/20">
                     <div className="flex items-center justify-between">
                       <p className="text-xs text-foreground/50">Annual sessions</p>
-                      <p className="text-sm font-mono font-medium text-primary">
+                      <p className="text-xs sm:text-sm font-mono font-medium text-primary">
                         {language === "es" ? program.sessionCountES : program.sessionCount}
                       </p>
                     </div>
@@ -596,17 +596,17 @@ export default function MembershipPage() {
         </div>
 
         {/* FINAL CTA SECTION */}
-        <div className="px-4 pb-20 sm:px-6 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
+        <div className="px-4 pb-16 sm:pb-20 sm:px-6 md:px-8 md:pb-24 lg:px-12 lg:pb-28">
           <div className="mx-auto max-w-4xl text-center">
-            <h3 className="text-2xl md:text-3xl font-light text-foreground mb-8">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-light text-foreground mb-6 sm:mb-8">
               Ready to begin your wellness journey?
             </h3>
             
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <div className="flex flex-col items-stretch sm:items-center gap-3 sm:gap-4 sm:flex-row sm:justify-center max-w-lg mx-auto">
               {/* Apply Now */}
               <MagneticButton
                 variant="primary"
-                className="w-full sm:w-auto min-w-[220px] shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 text-lg py-4 px-10"
+                className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px] shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 text-base sm:text-lg py-4 px-8 sm:px-10 min-h-[56px]"
                 onClick={() => router.push("/?section=contact")}
               >
                 {t.memberships.applyNow}
@@ -615,7 +615,7 @@ export default function MembershipPage() {
               {/* Schedule Tour */}
               <MagneticButton
                 variant="secondary"
-                className="w-full sm:w-auto min-w-[220px] text-lg py-4 px-10 border-2"
+                className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px] text-base sm:text-lg py-4 px-8 sm:px-10 border-2 min-h-[56px]"
                 onClick={() => router.push("/?section=contact")}
               >
                 {t.memberships.scheduleTour || "Schedule Tour"}

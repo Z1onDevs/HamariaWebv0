@@ -346,12 +346,12 @@ export function FilteredServices({
                     style={
                       selectedCategories.includes(category.id)
                         ? {
-                            backgroundColor: `${category.color}15`,
-                            borderColor: `${category.color}40`,
+                            backgroundColor: `${category.color}25`,
+                            borderColor: `${category.color}60`,
                           }
                         : {
-                            borderColor: 'oklch(0.88 0.015 80 / 0.5)',
-                            backgroundColor: 'oklch(0.98 0.005 85 / 0.2)',
+                            borderColor: 'oklch(0.35 0.04 250 / 0.5)',
+                            backgroundColor: 'oklch(0.25 0.04 250 / 0.3)',
                           }
                     }
                   >

@@ -61,7 +61,7 @@ export function InteractiveServiceTag({
           className="pointer-events-none absolute inset-0 blur-2xl transition-opacity duration-300"
           style={{
             backgroundColor: color,
-            opacity: isHovered || isActive ? 0.4 : 0,
+            opacity: isHovered || isActive ? 0.5 : 0,
             transform: "scale(1.8)",
           }}
         />
@@ -72,11 +72,11 @@ export function InteractiveServiceTag({
             isActive ? "shadow-lg" : "shadow-md"
           } ${isHovered ? "scale-105" : "scale-100"} active:scale-95`}
           style={{
-            backgroundColor: isHovered || isActive ? `${color}20` : `${color}10`,
-            borderColor: isHovered || isActive ? color : `${color}60`,
+            backgroundColor: isHovered || isActive ? `${color}35` : `${color}20`,
+            borderColor: isHovered || isActive ? color : `${color}70`,
             boxShadow: isHovered || isActive
-              ? `0 0 20px ${color}40, 0 4px 15px rgba(0,0,0,0.15)`
-              : "0 2px 8px rgba(0,0,0,0.1)",
+              ? `0 0 25px ${color}50, 0 4px 20px rgba(74, 144, 226, 0.2)`
+              : "0 2px 8px rgba(74, 144, 226, 0.1)",
           }}
         >
           <div className="flex flex-col items-start gap-0.5">
