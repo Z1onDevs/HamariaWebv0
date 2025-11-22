@@ -4,7 +4,7 @@ import { memo } from "react"
 import { useTranslation } from "@/hooks/use-translation"
 import { useReveal } from "@/hooks/use-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
-import { Check, Sparkles, ArrowRight } from "lucide-react"
+import { Check, ArrowRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { addOnPrograms } from "@/lib/membership-data"
 
@@ -26,6 +26,8 @@ export const NewMembershipSection = memo(function NewMembershipSection({
     yearlyPrice: '3780',
     color: '#4A90E2'
   }
+
+  const programOneLiners = t?.memberships?.programOneLiners || {}
 
   return (
     <section
@@ -259,9 +261,9 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                         {language === "es" ? (program?.taglineES || program?.tagline) : (program?.tagline || '')}
                       </p>
 
-                      {/* Key Therapies */}
+                      {/* One-liner Description */}
                       <p className="text-[10px] sm:text-xs text-foreground/70 leading-snug">
-                        {(language === "es" ? program?.keyTherapiesES : program?.keyTherapies)?.join(', ') || ''}
+                        {programOneLiners[program?.id as keyof typeof programOneLiners] || ''}
                       </p>
                     </div>
                   </div>

@@ -36,7 +36,6 @@ export const GallerySection = memo(function GallerySection() {
   const [showCarousel, setShowCarousel] = useState(false)
   const [mounted, setMounted] = useState(false)
 
-  // Swipe to close modal
   useSwipeToClose({ 
     onClose: () => setIsModalOpen(false), 
     enabled: isModalOpen && !showCarousel 
@@ -46,7 +45,6 @@ export const GallerySection = memo(function GallerySection() {
     setMounted(true)
   }, [])
 
-  // Lock scrolling when modal is open
   useEffect(() => {
     if (isModalOpen) {
       const scrollContainer = document.querySelector("[data-scroll-container]") as HTMLElement
@@ -55,7 +53,6 @@ export const GallerySection = memo(function GallerySection() {
       }
       document.body.style.overflow = "hidden"
 
-      // Close on Escape key
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
           setIsModalOpen(false)
@@ -85,23 +82,21 @@ export const GallerySection = memo(function GallerySection() {
         }
         const data = (await res.json()) as { files: string[] }
         
-        // Define original images to show on main page
         const originalImages = [
           "Gym 1 (planta baja).jpeg",
           "Massage room.jpeg",
+          "Loungers.png",
           "Salt & Magnesium Bath.jpeg",
           "Sauna & Ice plunge.jpeg",
-          "Spa Entrance.jpeg",
           "pool.jpg",
         ]
         
-        // Define specific order for new images in popup
         const newImagesOrder = [
           "Building Alfonso XII.png",
           "Mobility Room.jpg",
           "Sauna.png",
           "Red Light Bed.png",
-          "HBOT.jpg",
+          "HBOT.png",
           "Flotation Tank.jpg",
         ]
         
