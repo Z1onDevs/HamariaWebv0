@@ -7,6 +7,7 @@ import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { MagneticButton } from "@/components/magnetic-button"
 import { StructuredData } from "@/components/structured-data"
+import { CustomCursor } from "@/components/custom-cursor"
 import { ArrowLeft, Check, Heart, Activity, ChevronDown, ChevronUp } from "lucide-react"
 import { useEffect, useState } from "react"
 import { 
@@ -123,6 +124,7 @@ export default function MembershipPage() {
 
   return (
     <main className="relative min-h-screen bg-background overflow-x-hidden">
+      <CustomCursor />
       <StructuredData type="membership" data={membershipStructuredData} />
       
       {/* Background */}
@@ -585,7 +587,7 @@ export default function MembershipPage() {
             {/* Programs Accordion */}
             <div className="space-y-3">
               {addOnPrograms.map((program) => (
-                <div key={program.id} className="rounded-lg border bg-card/20 backdrop-blur-sm overflow-hidden" style={{ borderColor: `${program.color}30` }}>
+                <div key={program.id} className="rounded-lg border border-border/30 bg-card/20 backdrop-blur-sm overflow-hidden">
                   {/* Accordion Header */}
                   <button
                     onClick={() => toggleProgram(program.id)}
@@ -611,7 +613,7 @@ export default function MembershipPage() {
                             +€{program.yearlyPrice.toLocaleString()}/year
                           </span>
                         </div>
-                        <p className="text-xs uppercase tracking-wide" style={{ color: program.color }}>
+                        <p className="text-xs uppercase tracking-wide text-foreground/60">
                           {language === "es" ? program.taglineES : program.tagline}
                         </p>
                       </div>
@@ -625,7 +627,7 @@ export default function MembershipPage() {
 
                   {/* Accordion Content */}
                   {expandedPrograms[program.id] && (
-                    <div className="px-4 pb-4 border-t" style={{ borderColor: `${program.color}20` }}>
+                    <div className="px-4 pb-4 border-t border-border/20">
                       <div className="pt-4 space-y-4">
                         {/* Description */}
                         <p className="text-sm text-foreground/70 leading-relaxed">
@@ -665,7 +667,7 @@ export default function MembershipPage() {
                           <MagneticButton
                             variant="primary"
                             className="w-full shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 text-sm py-3 px-6 min-h-[44px]"
-                            onClick={() => router.push("/?section=contact")}
+                            onClick={() => router.push("/apply")}
                           >
                             {t.memberships.applyNow}
                           </MagneticButton>
@@ -691,7 +693,7 @@ export default function MembershipPage() {
               <MagneticButton
                 variant="primary"
                 className="w-full sm:w-auto min-w-[180px] shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 text-sm sm:text-base py-3 px-6 min-h-[44px]"
-                onClick={() => router.push("/?section=contact")}
+                onClick={() => router.push("/apply")}
               >
                 {t.memberships.applyNow}
               </MagneticButton>

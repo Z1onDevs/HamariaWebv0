@@ -203,7 +203,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                 <MagneticButton
                   variant="primary"
                   className="w-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 text-xs lg:text-sm py-2.5 lg:py-3 min-h-[40px] lg:min-h-[44px]"
-                  onClick={() => scrollToSection?.("contact")}
+                  onClick={() => router.push("/apply")}
                 >
                   {t?.memberships?.applyNow || 'Apply Now'}
                 </MagneticButton>
@@ -236,10 +236,6 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                   <div
                     key={program?.id || index}
                     className="group relative rounded-md border border-border/30 bg-card/10 p-2 lg:p-2 xl:p-2 hover:bg-card/20 hover:border-border/50 transition-all duration-300"
-                    style={{
-                      borderLeftWidth: '3px',
-                      borderLeftColor: program?.color || '#888',
-                    }}
                   >
                     <div className="space-y-0.5">
                       {/* Program Name */}
@@ -254,10 +250,7 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                       </div>
 
                       {/* Tagline */}
-                      <p 
-                        className="text-[8px] sm:text-[9px] uppercase tracking-wide font-medium"
-                        style={{ color: program?.color || '#888' }}
-                      >
+                      <p className="text-[8px] sm:text-[9px] uppercase tracking-wide font-medium text-foreground/60">
                         {language === "es" ? (program?.taglineES || program?.tagline) : (program?.tagline || '')}
                       </p>
 
