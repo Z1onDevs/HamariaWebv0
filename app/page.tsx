@@ -356,6 +356,18 @@ export default function Home() {
               <div className="absolute -left-3 -top-3 h-14 w-14 border-l-2 border-t-2 border-primary/30 xl:h-16 xl:w-16" />
               <div className="absolute -bottom-3 -right-3 h-14 w-14 border-b-2 border-r-2 border-primary/30 xl:h-16 xl:w-16" />
             </div>
+            
+            {/* Horizontal Text Below Image */}
+            {shouldRenderShader && (
+              <div className="mt-6 flex justify-center">
+                <p 
+                  className="animate-in fade-in slide-in-from-bottom-4 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 xl:text-base 2xl:text-lg text-center"
+                  style={{ writingMode: 'horizontal-tb' }}
+                >
+                  {t.verticalText}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="flex w-full items-end justify-between gap-6 lg:gap-8">
@@ -412,21 +424,6 @@ export default function Home() {
                 </MagneticButton>
               </div>
             </div>
-
-            {/* Vertical Text Only - DNA Helix moved to concept section */}
-            {shouldRenderShader && (
-              <div className="hidden xl:flex xl:items-center xl:gap-4 xl:-ml-12">
-                {/* Vertical Text */}
-                <div className="flex items-center">
-                  <p 
-                    className="animate-in fade-in slide-in-from-right-8 font-sans text-sm font-light tracking-[0.3em] text-foreground/60 duration-1000 delay-500 xl:text-base 2xl:text-lg"
-                    style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-                  >
-                    {t.verticalText}
-                  </p>
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 animate-in fade-in duration-1000 delay-500 xl:block">

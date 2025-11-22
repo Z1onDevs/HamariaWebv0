@@ -603,15 +603,6 @@ export default function MembershipPage() {
                           <h3 className="text-base sm:text-lg font-medium text-foreground">
                             {language === "es" ? program.nameES : program.name}
                           </h3>
-                          <span 
-                            className="px-2 py-0.5 rounded-full text-xs font-medium"
-                            style={{ 
-                              backgroundColor: `${program.color}20`,
-                              color: program.color
-                            }}
-                          >
-                            +€{program.yearlyPrice.toLocaleString()}/year
-                          </span>
                         </div>
                         <p className="text-xs uppercase tracking-wide text-foreground/60">
                           {language === "es" ? program.taglineES : program.tagline}

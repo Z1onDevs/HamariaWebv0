@@ -85,25 +85,14 @@ export const NewMembershipSection = memo(function NewMembershipSection({
                 </div>
 
                 {/* Yearly */}
-                <div className="flex items-baseline justify-between">
-                  <div>
-                    <p className="text-[9px] uppercase tracking-wide text-foreground/50 mb-0.5">
-                      {t?.memberships?.yearlyPrice || 'Yearly'}
-                    </p>
-                    <p className="font-sans text-lg sm:text-xl lg:text-2xl font-light text-foreground">
-                      €{membership.yearlyPrice}
-                      <span className="text-[10px] sm:text-xs text-foreground/60 ml-1">/ {language === "es" ? "año" : "yr"}</span>
-                    </p>
-                  </div>
-                  <div 
-                    className="px-2 py-0.5 rounded-full text-[9px] font-medium"
-                    style={{
-                      backgroundColor: membership.color,
-                      color: 'white',
-                    }}
-                  >
-                    {language === "es" ? "-10%" : "-10%"}
-                  </div>
+                <div>
+                  <p className="text-[9px] uppercase tracking-wide text-foreground/50 mb-0.5">
+                    {t?.memberships?.yearlyPrice || 'Yearly'}
+                  </p>
+                  <p className="font-sans text-lg sm:text-xl lg:text-2xl font-light text-foreground">
+                    €{membership.yearlyPrice}
+                    <span className="text-[10px] sm:text-xs text-foreground/60 ml-1">/ {language === "es" ? "año" : "yr"}</span>
+                  </p>
                 </div>
               </div>
 

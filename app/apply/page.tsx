@@ -6,6 +6,7 @@ import { useTranslation } from "@/hooks/use-translation"
 import { ShaderWrapper } from "@/components/shader-wrapper"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { MagneticButton } from "@/components/magnetic-button"
+import { CustomCursor } from "@/components/custom-cursor"
 import { ArrowLeft, Check, AlertCircle } from "lucide-react"
 import { addOnPrograms } from "@/lib/membership-data"
 
@@ -137,6 +138,7 @@ export default function ApplyPage() {
   if (submitStatus === 'success') {
     return (
       <main className="relative min-h-screen bg-background overflow-x-hidden flex items-center justify-center">
+        <CustomCursor />
         {/* Background */}
         <div className="fixed inset-0 z-0">
           <ShaderWrapper />
@@ -176,6 +178,7 @@ export default function ApplyPage() {
   if (submitStatus === 'error') {
     return (
       <main className="relative min-h-screen bg-background overflow-x-hidden flex items-center justify-center">
+        <CustomCursor />
         {/* Background */}
         <div className="fixed inset-0 z-0">
           <ShaderWrapper />
@@ -224,6 +227,7 @@ export default function ApplyPage() {
   // Form state
   return (
     <main className="relative min-h-screen bg-background overflow-x-hidden">
+      <CustomCursor />
       {/* Background */}
       <div className="fixed inset-0 z-0">
         <ShaderWrapper />
